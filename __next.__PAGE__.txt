@@ -9,5 +9,5 @@
 9:I[76184,["/_next/static/chunks/cee091839a64c4e7.js"],"default"]
 a:I[97367,["/_next/static/chunks/2f236954d6a65e12.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-0:{"buildId":"jIdSVvE3J6nkpEUuj6vnB","rsc":["$","$1","c",{"children":[[["$","$L2",null,{}],["$","main",null,{"children":[["$","$L3",null,{}],["$","$L4",null,{"quote":"언어는 단순한 출력이 아니라, 사고와 판단이 드러나는 구조라고 믿습니다."}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}]]}]],[["$","script","script-0",{"src":"/_next/static/chunks/cee091839a64c4e7.js","async":true}]],["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"M2TAfYj4JQgMaHsxaBZBw","rsc":["$","$1","c",{"children":[[["$","$L2",null,{}],["$","main",null,{"children":[["$","$L3",null,{}],["$","$L4",null,{"quote":"언어는 단순한 출력이 아니라, 사고와 판단이 드러나는 구조라고 믿습니다."}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}]]}]],[["$","script","script-0",{"src":"/_next/static/chunks/cee091839a64c4e7.js","async":true}]],["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"loading":null,"isPartial":false}
 c:null
