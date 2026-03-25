@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>이채연 — AI/NLP Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:        #0A0A0A;
+      --ink-mid:    #4B5563;
+      --ink-mute:   #9CA3AF;
+      --ink-ghost:  #D1D5DB;
+      --bg:         #FFFFFF;
+      --bg-2:       #F9FAFB;
+      --bg-3:       #F3F4F6;
+      --border:     #E5E7EB;
+      --border-2:   #F3F4F6;
+      --accent:     #2563EB;
+      --accent-lt:  #3B82F6;
+      --accent-bg:  #EFF6FF;
+      --accent-bd:  #BFDBFE;
+      --gold:       #F59E0B;
+      --gold-bg:    #FFFBEB;
+      --gold-bd:    #FDE68A;
+      --sans:  'Inter', 'Noto Sans KR', ui-sans-serif, sans-serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --disp:  'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A3 landscape; margin: 12mm 16mm; }
+
+    html, body {
+      font-family: var(--sans);
+      font-size: 9pt;
+      color: var(--ink);
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .break-before { page-break-before: always; break-before: page; }
+    .no-break     { page-break-inside: avoid;  break-inside: avoid; }
+
+    /* ── PRINT BUTTON ── */
+    #print-btn {
+      position: fixed; bottom: 28px; right: 28px;
+      padding: 10px 22px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 8px;
+      font-family: var(--sans); font-size: 13px; font-weight: 600;
+      cursor: pointer; box-shadow: 0 4px 16px rgba(37,99,235,.35);
+      z-index: 9999; transition: opacity .15s; letter-spacing: .01em;
+    }
+    #print-btn:hover { opacity: .88; }
+    #thumb-status {
+      position: fixed; bottom: 33px; right: 162px;
+      font-family: var(--mono); font-size: 11px; color: var(--ink-mute);
+      z-index: 9999;
+    }
+    @media print { #print-btn, #thumb-status { display: none !important; } }
+
+    /* ── SHARED ── */
+    .overline {
+      font-family: var(--mono); font-size: 6.5pt;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); display: block;
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 1 — OVERVIEW
+    ═══════════════════════════════════════ */
+
+    /* ── header ── */
+    .hdr {
+      background: linear-gradient(160deg, #06101f 0%, #0c1a33 50%, #06101f 100%);
+      border-radius: 8pt;
+      padding: 10pt 20pt;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14pt;
+      position: relative; overflow: hidden;
+    }
+    .hdr::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1.5pt;
+      background: linear-gradient(90deg, transparent 8%, #3B82F6 32%, #93C5FD 50%, #3B82F6 68%, transparent 92%);
+    }
+    .hdr-name {
+      font-family: var(--disp); font-size: 21pt; font-weight: 800;
+      letter-spacing: -.05em; color: #fff; line-height: 1;
+    }
+    .hdr-name span { color: #60A5FA; }
+    .hdr-sub {
+      font-family: var(--mono); font-size: 6.5pt;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: #374A62; margin-top: 4pt;
+    }
+    .hdr-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 4pt; }
+    .hdr-link {
+      font-family: var(--mono); font-size: 7pt; color: #5B7898;
+      display: flex; align-items: center; gap: 5pt;
+    }
+    .hdr-link::before { content: "→"; color: #3B82F6; }
+
+    /* ── hero grid ── */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 210pt 1fr;
+      gap: 20pt; margin-bottom: 14pt;
+    }
+    .hero-left { display: flex; gap: 13pt; align-items: flex-start; }
+    .hero-photo {
+      width: 64pt; aspect-ratio: 3/4;
+      border-radius: 7pt; overflow: hidden;
+      border: 1pt solid var(--border);
+      flex-shrink: 0;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .hero-text h1 {
+      font-family: var(--disp); font-size: 15pt; font-weight: 700;
+      letter-spacing: -.04em; line-height: 1.2;
+      color: var(--ink); margin-bottom: 6pt;
+    }
+    .hero-text h1 em { font-style: normal; color: var(--accent); }
+    .hero-text p { font-size: 7.5pt; line-height: 1.85; color: var(--ink-mid); }
+
+    /* ── impact — big number, clean column (website style) ── */
+    .impact-label-row { display: flex; align-items: center; gap: 8pt; margin-bottom: 8pt; }
+    .impact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5pt solid var(--border); gap: 0;
+    }
+    .impact-card {
+      background: transparent; border: none;
+      border-right: 1pt solid var(--border-2);
+      padding: 11pt 16pt 0 0;
+    }
+    .impact-card:not(:first-child) { padding-left: 16pt; }
+    .impact-card:last-child { border-right: none; }
+    .impact-val {
+      font-family: var(--disp); font-size: 36pt; font-weight: 800;
+      letter-spacing: -.06em; line-height: 1;
+      color: var(--accent); margin-bottom: 3pt;
+    }
+    .impact-lbl {
+      font-family: var(--mono); font-size: 6pt;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink-mute); margin-bottom: 7pt;
+    }
+    .impact-desc { font-size: 7.5pt; font-weight: 500; color: var(--ink); line-height: 1.55; margin-bottom: 3pt; }
+    .impact-note { font-family: var(--mono); font-size: 6.5pt; color: var(--ink-mute); line-height: 1.55; }
+
+    /* ── skills ── */
+    .skills-wrap { border-top: 1.5pt solid var(--ink); padding-top: 8pt; }
+    .skills-hdr { display: flex; align-items: center; gap: 8pt; margin-bottom: 6pt; }
+    .skill-row {
+      display: grid; grid-template-columns: 72pt 1fr;
+      gap: 8pt; align-items: start;
+      padding: 3.5pt 0; border-bottom: 1pt solid var(--border-2);
+    }
+    .skill-row:last-child { border-bottom: none; }
+    .skill-cat { font-family: var(--mono); font-size: 7pt; font-weight: 500; color: var(--accent); letter-spacing: .04em; padding-top: 1.5pt; }
+    .chips { display: flex; flex-wrap: wrap; gap: 3pt 4pt; }
+    .chip { font-size: 7.5pt; padding: 1.5pt 6pt; border-radius: 3pt; line-height: 1.5; }
+    /* no borders on chips — clean tag style */
+    .chip-p { background: var(--bg-3); border: none; color: var(--ink); font-weight: 500; }
+    .chip-s { background: transparent; border: none; color: var(--ink-mute); }
+
+    /* ═══════════════════════════════════════
+       PAGE 2 — PROJECTS
+    ═══════════════════════════════════════ */
+
+    .page-hdr {
+      display: flex; align-items: baseline; gap: 10pt;
+      margin-bottom: 10pt; padding-bottom: 8pt;
+      border-bottom: 1.5pt solid var(--ink);
+      position: relative;
+    }
+    .page-hdr::after {
+      content: '';
+      position: absolute; bottom: -1.5pt; left: 0;
+      width: 36pt; height: 1.5pt;
+      background: var(--accent);
+    }
+    .page-hdr-title {
+      font-family: var(--disp); font-size: 16pt; font-weight: 800;
+      letter-spacing: -.04em; color: var(--ink);
+    }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11pt; }
+
+    .pcard {
+      border: 0.75pt solid var(--border);
+      border-radius: 7pt; overflow: hidden;
+      page-break-inside: avoid; break-inside: avoid;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1pt 4pt rgba(0,0,0,.05);
+    }
+
+    /* per-project top accent bar */
+    .projects-grid .pcard:nth-child(1) { border-top: 2pt solid #2563EB; }
+    .projects-grid .pcard:nth-child(2) { border-top: 2pt solid #0D9488; }
+    .projects-grid .pcard:nth-child(3) { border-top: 2pt solid #16A34A; }
+    .projects-grid .pcard:nth-child(4) { border-top: 2pt solid #7C3AED; }
+    .projects-grid .pcard:nth-child(5) { border-top: 2pt solid #DC2626; }
+    .projects-grid .pcard:nth-child(6) { border-top: 2pt solid #78716C; }
+    .projects-grid .pcard:nth-child(7) { border-top: 2pt solid #EA580C; }
+    .projects-grid .pcard:nth-child(8) { border-top: 2pt solid #0284C7; }
+    .projects-grid .pcard:nth-child(9) { border-top: 2pt solid #4F46E5; }
+
+    /* thumbnail — 50pt, reduced from 64pt */
+    .pcard-thumb {
+      width: 100%; height: 50pt;
+      overflow: hidden; flex-shrink: 0;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* per-project gradient backgrounds — show when img missing/fails */
+    .projects-grid .pcard:nth-child(1) .pcard-thumb { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); }
+    .projects-grid .pcard:nth-child(2) .pcard-thumb { background: linear-gradient(135deg, #134e4a 0%, #0d9488 100%); }
+    .projects-grid .pcard:nth-child(3) .pcard-thumb { background: linear-gradient(135deg, #14532d 0%, #16a34a 100%); }
+    .projects-grid .pcard:nth-child(4) .pcard-thumb { background: linear-gradient(135deg, #2e1065 0%, #7c3aed 100%); }
+    .projects-grid .pcard:nth-child(5) .pcard-thumb { background: linear-gradient(135deg, #450a0a 0%, #dc2626 100%); }
+    .projects-grid .pcard:nth-child(6) .pcard-thumb { background: linear-gradient(135deg, #1c1917 0%, #57534e 100%); }
+    .projects-grid .pcard:nth-child(7) .pcard-thumb { background: linear-gradient(135deg, #431407 0%, #ea580c 100%); }
+    .projects-grid .pcard:nth-child(8) .pcard-thumb { background: linear-gradient(135deg, #0c2340 0%, #0369a1 100%); }
+    .projects-grid .pcard:nth-child(9) .pcard-thumb { background: linear-gradient(135deg, #0a0a1a 0%, #4338ca 100%); }
+
+
+    .pcard-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      filter: brightness(1.4) contrast(1.05);
+    }
+    .pcard-thumb img[src=""] { display: none; }
+
+    /* fallback — only shown when no image (gradient background visible) */
+    .pcard-thumb-fallback {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: transparent;
+      gap: 4pt;
+    }
+    .thumb-fallback-num {
+      font-family: var(--disp); font-size: 22pt; font-weight: 800;
+      color: rgba(255,255,255,.3); line-height: 1;
+    }
+    .thumb-fallback-text {
+      font-family: var(--mono); font-size: 6pt;
+      letter-spacing: .14em; color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+    }
+
+    .pcard-body { padding: 12pt; flex: 1; display: flex; flex-direction: column; }
+
+    .pcard-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 4pt; }
+    .pcard-num {
+      font-family: var(--mono); font-size: 6pt; color: var(--ink-mute);
+      letter-spacing: .1em; line-height: 1; font-weight: 500;
+    }
+    .award-chip {
+      font-family: var(--mono); font-size: 5pt;
+      padding: 1.5pt 5pt;
+      background: var(--gold-bg); color: #92400E;
+      border-radius: 2pt; border: 0.75pt solid var(--gold-bd);
+      white-space: nowrap;
+    }
+
+    .pcard-title {
+      font-family: var(--disp); font-size: 9.5pt; font-weight: 700;
+      color: var(--ink); line-height: 1.25; letter-spacing: -.025em;
+      margin-bottom: 2pt;
+    }
+    .pcard-period { font-family: var(--mono); font-size: 6pt; color: var(--ink-mute); margin-bottom: 8pt; }
+
+    /* KPI — first highlight only, large and clean, no box */
+    .pcard-highlights { margin-bottom: 8pt; }
+    .hl:nth-child(n+2) { display: none; }
+    .hl { flex: none; background: transparent; border: none; padding: 0; text-align: left; }
+    .hl-v {
+      font-family: var(--disp); font-size: 19pt; font-weight: 800;
+      color: var(--accent); letter-spacing: -.04em; line-height: 1; display: block;
+    }
+    .hl-l {
+      font-family: var(--mono); font-size: 6pt;
+      color: var(--ink-mute); text-transform: uppercase;
+      letter-spacing: .1em; margin-top: 2pt; display: block;
+    }
+
+    .pcard-bullets { margin-bottom: 8pt; flex: 1; }
+    .pcard-bullet {
+      font-size: 7.5pt; color: var(--ink-mid);
+      line-height: 1.55; padding-left: 9pt;
+      position: relative; margin-bottom: 2pt;
+    }
+    .pcard-bullet:nth-child(n+3) { display: none; } /* max 2 bullets */
+    .pcard-bullet::before { content: "–"; position: absolute; left: 0; color: var(--ink-ghost); }
+
+    .pcard-tags { display: flex; flex-wrap: wrap; gap: 2.5pt; }
+    .ptag {
+      font-family: var(--mono); font-size: 6pt;
+      padding: 1.5pt 5pt; background: var(--bg-3);
+      border: none; color: var(--ink-mid); border-radius: 2.5pt;
+    }
+    .ptag:nth-child(n+5) { display: none; } /* max 4 tags */
+
+    /* ═══════════════════════════════════════
+       PAGE 3 — EDUCATION
+    ═══════════════════════════════════════ */
+
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44pt; align-items: start; }
+    .edu-right { padding-left: 16pt; border-left: 1pt solid var(--border); }
+    .cat-block { margin-bottom: 12pt; }
+    .cat-lbl {
+      display: block;
+      font-family: var(--mono); font-size: 6.5pt; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent);
+      padding: 3pt 10pt;
+      background: var(--accent-bg);
+      border-left: 3pt solid var(--accent);
+      border-radius: 0 3pt 3pt 0;
+      margin-bottom: 2pt;
+    }
+    .edu-item { padding: 6pt 0 6pt 10pt; border-bottom: 1pt solid var(--border-2); }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-role { font-size: 8.5pt; font-weight: 600; color: var(--ink); line-height: 1.4; margin-bottom: 2pt; }
+    .edu-meta { display: flex; align-items: center; gap: 5pt; flex-wrap: wrap; }
+    .edu-org { font-family: var(--mono); font-size: 7pt; color: var(--ink-mute); }
+    .edu-dot { width: 2.5pt; height: 2.5pt; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    .edu-period { font-family: var(--mono); font-size: 7pt; color: var(--ink-mute); }
+  </style>
+</head>
+<body>
+
+<button id="print-btn" onclick="printNow()">PDF로 저장</button>
+
+
+<!-- ════════ PAGE 1: OVERVIEW ════════ -->
+
+<div class="hdr">
+  <div>
+    <div class="hdr-name">Lee Chaeyeon <span>·</span> 이채연</div>
+    <div class="hdr-sub">AI / NLP Engineer</div>
+  </div>
+  <div class="hdr-contact">
+    <span class="hdr-link">github.com/cofldus</span>
+    <span class="hdr-link">cofldus.github.io</span>
+  </div>
+</div>
+
+<div class="hero-grid">
+  <div class="hero-left">
+    <div class="hero-photo"><img src="2024-1.jpg" alt="이채연" /></div>
+    <div class="hero-text">
+      <h1>Building LLM systems<br /><em>that actually work.</em></h1>
+      <p>I build retrieval and generation systems designed to work reliably in production — from RAG pipelines and model compression to domain-specific Korean NLP. My focus is on making AI systems fast, accurate, and deployable on real devices.</p>
+    </div>
+  </div>
+
+  <div class="impact-wrap">
+    <div class="impact-label-row">
+      <span class="overline">Impact · 주요 성과</span>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-val">76%</div>
+        <div class="impact-lbl">모델 경량화</div>
+        <div class="impact-desc">경량화 76% 달성으로 모바일 온디바이스 실시간 추론 가능 수준 확보</div>
+        <div class="impact-note">LoRA + 4-bit NF4 + Token Pruning<br/>14GB → 3.0GB, CPU 추론 0.3s</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-val">0.9812</div>
+        <div class="impact-lbl">BERTScore F1</div>
+        <div class="impact-desc">난독화 한글 복원 AI에서 최고 BERTScore 0.9812 달성</div>
+        <div class="impact-note">KoELECTRA 분류기 → 분기형 KoBART<br/>베이스라인 대비 +5.6%p 향상</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-val">+0.16</div>
+        <div class="impact-lbl">RAG 성능 향상</div>
+        <div class="impact-desc">하이브리드 RAG 파이프라인으로 BERTScore +0.16↑, Accuracy +0.04↑</div>
+        <div class="impact-note">BM25 + FAISS 병렬 검색<br/>+ bge-reranker Top-5 압축</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="skills-wrap">
+  <div class="skills-hdr">
+    <span class="overline">Capabilities · 기술 스택</span>
+  </div>
+  <div class="skill-row"><span class="skill-cat">LLM / RAG</span><div class="chips"><span class="chip chip-p">LangChain</span><span class="chip chip-p">FAISS(IVF)</span><span class="chip chip-p">BM25</span><span class="chip chip-p">Hybrid Search</span><span class="chip chip-p">bge-reranker-v2-m3</span><span class="chip chip-s">온프레미스 LLM</span><span class="chip chip-s">CPT</span><span class="chip chip-s">SFT</span><span class="chip chip-s">GDPO</span><span class="chip chip-s">Multi-Reward RL</span></div></div>
+  <div class="skill-row"><span class="skill-cat">NLP / LLM</span><div class="chips"><span class="chip chip-p">Python</span><span class="chip chip-p">HuggingFace</span><span class="chip chip-p">KoBART</span><span class="chip chip-p">KoELECTRA</span><span class="chip chip-p">LoRA</span><span class="chip chip-s">T5</span><span class="chip chip-s">Quantization</span><span class="chip chip-s">Nougat/Marker</span><span class="chip chip-s">arXiv/PubMed 파이프라인</span></div></div>
+  <div class="skill-row"><span class="skill-cat">CV / ML</span><div class="chips"><span class="chip chip-p">PyTorch</span><span class="chip chip-p">XGBoost</span><span class="chip chip-p">Scikit-learn</span><span class="chip chip-p">OpenCV</span><span class="chip chip-s">CycleGAN</span><span class="chip chip-s">SHAP</span><span class="chip chip-s">KMeans</span><span class="chip chip-s">SMOTE</span></div></div>
+  <div class="skill-row"><span class="skill-cat">Backend</span><div class="chips"><span class="chip chip-p">FastAPI</span><span class="chip chip-p">PostgreSQL</span><span class="chip chip-p">Docker</span><span class="chip chip-p">Redis</span><span class="chip chip-s">Flask</span><span class="chip chip-s">SQLite</span><span class="chip chip-s">UiPath RPA</span></div></div>
+  <div class="skill-row"><span class="skill-cat">Frontend</span><div class="chips"><span class="chip chip-p">Next.js</span><span class="chip chip-p">TypeScript</span><span class="chip chip-p">Tailwind CSS</span><span class="chip chip-s">React Native</span><span class="chip chip-s">D3.js</span></div></div>
+  <div class="skill-row"><span class="skill-cat">자격증 · 어학</span><div class="chips"><span class="chip chip-p">빅데이터분석기사 (2025.12)</span><span class="chip chip-p">ADsP (2026.03)</span><span class="chip chip-p">OPIc IH (2025.08)</span></div></div>
+</div>
+
+
+<!-- ════════ PAGE 2: PROJECTS ════════ -->
+<div class="break-before">
+  <div class="page-hdr">
+    <span class="overline" style="margin:0">Projects</span>
+    <div class="page-hdr-title">프로젝트</div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- 01 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-01" src="airpa_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top">
+          <span class="pcard-num">01</span>
+          <span class="award-chip">특별상 · 한국지능정보사회진흥원</span>
+        </div>
+        <div class="pcard-title">AiRPA — 학생 진로 탐색 자동화 시스템</div>
+        <div class="pcard-period">한국지능정보사회진흥원 해커톤</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">95%+</div><div class="hl-l">자동화율</div></div>
+          <div class="hl"><div class="hl-v">8h→3h</div><div class="hl-l">처리 시간</div></div>
+          <div class="hl"><div class="hl-v">200건</div><div class="hl-l">수집량/회</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">UiPath RPA로 로그인·동적 로딩 포함 3개 이질 소스에서 학과 정보·졸업생 후기 200건 자동 수집</div>
+          <div class="pcard-bullet">T5 추상 요약: TF-IDF 대비 문장 자연도 23%↑, 학과 100개 처리 시간 8h→3h</div>
+          <div class="pcard-bullet">설문 기반 5개 시나리오('안정성 중시형·성장 지향형' 등) 개인화 추천, 자동화율 95%+</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">UiPath RPA</span><span class="ptag">Python</span><span class="ptag">HuggingFace T5</span><span class="ptag">TF-IDF</span><span class="ptag">Excel 자동화</span></div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-02" src="medical-chatbot_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">02</span></div>
+        <div class="pcard-title">이지스-바이오 센티넬스 — 의료자문봇</div>
+        <div class="pcard-period">멋쟁이사자처럼 AI NLP 집중과정 · 팀 프로젝트</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">+0.04</div><div class="hl-l">Accuracy</div></div>
+          <div class="hl"><div class="hl-v">+0.16</div><div class="hl-l">BERTScore</div></div>
+          <div class="hl"><div class="hl-v">5.5만건</div><div class="hl-l">코퍼스</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">BM25(k=20, 용어 매칭) + FAISS(k=20, 의미 검색) 병렬 수행으로 단일 벡터 검색의 Recall 상한 제거</div>
+          <div class="pcard-bullet">bge-reranker-v2-m3로 40개 후보→Top-5 압축, LLM 컨텍스트 노이즈 최소화</div>
+          <div class="pcard-bullet">5.5만 건 전문 의학 JSON(약 2.2억 토큰) 코퍼스, ReRanker 도입 후 Accuracy +0.04, BERTScore +0.16</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">EXAONE-3.5</span><span class="ptag">BM25</span><span class="ptag">FAISS</span><span class="ptag">RAG</span><span class="ptag">bge-reranker</span><span class="ptag">LangChain</span></div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-03" src="korean-noise-restoration_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">03</span></div>
+        <div class="pcard-title">난독화된 한글 리뷰 복원 AI</div>
+        <div class="pcard-period">2026.01 · AI NLP 집중과정 3기</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">0.9812</div><div class="hl-l">BERTScore</div></div>
+          <div class="hl"><div class="hl-v">0.0426</div><div class="hl-l">CER</div></div>
+          <div class="hl"><div class="hl-v">+5.6%p</div><div class="hl-l">개선폭</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">야민정음(시각 유사)·음운오류(발음 유사) 복원 방향이 근본적으로 달라 — 단일 모델 대신 분기 설계</div>
+          <div class="pcard-bullet">KoELECTRA Noise Classifier로 유형 분류 후 전용 KoBART 분기, JAMO 전처리로 토큰 손상 차단</div>
+          <div class="pcard-bullet">BERTScore 0.9812, CER 0.0426 달성 — 분기 설계 도입 전 베이스라인 대비 +5.6%p</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">KoBART</span><span class="ptag">KoELECTRA</span><span class="ptag">JAMO</span><span class="ptag">Noise Classifier</span><span class="ptag">PyTorch</span></div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-04" src="killkong_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top">
+          <span class="pcard-num">04</span>
+          <span class="award-chip">장려상 · 포스코 인재창조원 · 팀 리더</span>
+        </div>
+        <div class="pcard-title">KillKong — 콩글리쉬 교정 AI Agent</div>
+        <div class="pcard-period">2025.07–08 · 포스코 AI·BigData 아카데미 30기</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">76%</div><div class="hl-l">모델 경량화</div></div>
+          <div class="hl"><div class="hl-v">0.47s</div><div class="hl-l">응답 지연</div></div>
+          <div class="hl"><div class="hl-v">92%+</div><div class="hl-l">모바일 일관성</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%)으로 14GB→3.0GB(76%), CPU 추론 0.3s</div>
+          <div class="pcard-bullet">FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색</div>
+          <div class="pcard-bullet">응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ — 모델·DB 역할 분업이 핵심</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">Qwen2.5</span><span class="ptag">LoRA</span><span class="ptag">4-bit 양자화</span><span class="ptag">FAISS</span><span class="ptag">SQLite</span><span class="ptag">FastAPI</span><span class="ptag">Docker</span></div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-05" src="finview_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">05</span></div>
+        <div class="pcard-title">FinView — 생성형 AI 재무보고서 시스템</div>
+        <div class="pcard-period">2024.09–11 · 성신여자대학교 · 팀장</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">91%</div><div class="hl-l">신용등급 분류</div></div>
+          <div class="hl"><div class="hl-v">10배</div><div class="hl-l">생성 속도</div></div>
+          <div class="hl"><div class="hl-v">4.4/5</div><div class="hl-l">만족도</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">DART API(500개 상장사) + 네이버 뉴스 200건 ETL → XGBoost 신용등급 분류 91% + KMeans 군집화</div>
+          <div class="pcard-bullet">환각 차단: 군집 평균·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 서사 해설만 전담</div>
+          <div class="pcard-bullet">리포트 생성 5분→30초(10배), 사용자 문장 이해도 만족도 4.4/5.0</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">GPT-4</span><span class="ptag">XGBoost</span><span class="ptag">KMeans</span><span class="ptag">SHAP</span><span class="ptag">DART API</span><span class="ptag">D3.js</span><span class="ptag">Flask</span></div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb" id="thumb-wrap-06">
+        <div class="pcard-thumb-fallback"><div class="thumb-fallback-num">06</div><div class="thumb-fallback-text">CT → MRI</div></div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">06</span></div>
+        <div class="pcard-title">CycleGAN 기반 CT→MRI 교차-모달리티 변환</div>
+        <div class="pcard-period">2023.06–09 · 딥러닝연구개발소 단기근무 연구원</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">0.88</div><div class="hl-l">SSIM</div></div>
+          <div class="hl"><div class="hl-v">+6.2%p</div><div class="hl-l">SSIM 개선</div></div>
+          <div class="hl"><div class="hl-v">80%</div><div class="hl-l">의료진 평가</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">Unpaired Image-to-Image Translation: 1:1 Paired 데이터 없이 Cycle-Consistency Loss로 도메인 변환</div>
+          <div class="pcard-bullet">ResNet-9 + VGG Perceptual + Identity Loss 조합, G·D 학습률 분리(2e-4/1e-4)로 모드 콜랩스 없이 수렴</div>
+          <div class="pcard-bullet">SSIM 0.82→0.88(+6.2%p), 해부학 구조 유실률 30%↓, 의료진 맹검 80% '진단 보조 가치 있음'</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">CycleGAN</span><span class="ptag">ResNet-9</span><span class="ptag">PatchGAN</span><span class="ptag">VGG Perceptual</span><span class="ptag">PyTorch</span></div>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-07" src="hunchgame_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top">
+          <span class="pcard-num">07</span>
+          <span class="award-chip">장려상 · 성신여자대학교 IT경진대회</span>
+        </div>
+        <div class="pcard-title">눈치게임 — 위치 기반 인파 분산 서비스</div>
+        <div class="pcard-period">성신여자대학교 IT경진대회</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">84%</div><div class="hl-l">밀집도 예측</div></div>
+          <div class="hl"><div class="hl-v">87%</div><div class="hl-l">혼잡 회피율</div></div>
+          <div class="hl"><div class="hl-v">10만건</div><div class="hl-l">이동 로그</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">FP-Growth로 10만 건 이동 로그에서 '홍대 방문객 70%는 이태원 이동' 등 잠재 연관 규칙 추출</div>
+          <div class="pcard-bullet">혼잡도(40%)·거리(30%)·장소 유사도(20%)·시간대(10%) 4가지 정규화 가중치 추천 점수 엔진</div>
+          <div class="pcard-bullet">SQLite 기기 내 캐시로 오프라인 내성 확보 — 밀집도 예측 84%, 혼잡 회피율 87%</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">FP-Growth</span><span class="ptag">SQLite</span><span class="ptag">Python</span><span class="ptag">위치 API</span><span class="ptag">히트맵</span><span class="ptag">추천 엔진</span></div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb">
+        <img id="thumb-08" src="lovelop_thumb.png" alt="" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">08</span></div>
+        <div class="pcard-title">lovelop — 상권 분석 AI 시뮬레이션 SaaS</div>
+        <div class="pcard-period">2026.02 · AI NLP 집중과정 3기</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">160명</div><div class="hl-l">AI 페르소나</div></div>
+          <div class="hl"><div class="hl-v">80%</div><div class="hl-l">사용 의향</div></div>
+          <div class="hl"><div class="hl-v">11개</div><div class="hl-l">검증 지표</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">자영업자 15명 현장 인터뷰 기반 — '예측 정확도'보다 '조건 변경 시 미리 보기' 니즈 발굴, 시뮬레이션 엔진 설계</div>
+          <div class="pcard-bullet">2-Stage GPT(Temp 0.1 분석가 → Temp 0.7 전략가) 순차 처리, 신뢰성·창의성 동시 확보</div>
+          <div class="pcard-bullet">160 페르소나(4유형×5세대) Agent 5단계 의사결정, Before/After 11지표 검증 리포트, 사용 의향 80%</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">GPT-4.1</span><span class="ptag">LLM Agent</span><span class="ptag">Gemma-2-9b</span><span class="ptag">EXAONE</span><span class="ptag">React</span><span class="ptag">Flask</span></div>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="pcard no-break">
+      <div class="pcard-thumb" id="thumb-wrap-09">
+        <div class="pcard-thumb-fallback"><div class="thumb-fallback-num">09</div><div class="thumb-fallback-text">LLM for Science</div></div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-top"><span class="pcard-num">09</span></div>
+        <div class="pcard-title">LLM for Science — 과학 도메인 CPT·GDPO 연구</div>
+        <div class="pcard-period">Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중</div>
+        <div class="pcard-highlights">
+          <div class="hl"><div class="hl-v">3단계</div><div class="hl-l">연구 구조</div></div>
+          <div class="hl"><div class="hl-v">CPT</div><div class="hl-l">Phase 2</div></div>
+          <div class="hl"><div class="hl-v">GDPO</div><div class="hl-l">Phase 3</div></div>
+        </div>
+        <div class="pcard-bullets">
+          <div class="pcard-bullet">Phase 1: Nougat/Marker VLM 파서로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱</div>
+          <div class="pcard-bullet">Phase 2: 과학 데이터 80~85% / 일반 도메인 15~20% 혼합 CPT, Catastrophic Forgetting 억제 실험</div>
+          <div class="pcard-bullet">Phase 3: GDPO — Rubric·Format·Length 보상 신호를 그룹 내 독립 정규화로 다차원 정렬 메커니즘 분석</div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">CPT</span><span class="ptag">SFT</span><span class="ptag">GDPO</span><span class="ptag">Nougat/Marker</span><span class="ptag">arXiv/PubMed</span><span class="ptag">Pseudo Lab</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════ PAGE 3: EDUCATION ════════ -->
+<div class="break-before">
+  <div class="page-hdr">
+    <span class="overline" style="margin:0">Background</span>
+    <div class="page-hdr-title">학력 · 경력 · 이력</div>
+  </div>
+
+  <div class="edu-grid">
+    <div>
+      <div class="cat-block">
+        <span class="cat-lbl">학력</span>
+        <div class="edu-item">
+          <div class="edu-role">AI융합학부</div>
+          <div class="edu-meta"><span class="edu-org">성신여자대학교</span><span class="edu-dot"></span><span class="edu-period">졸업 예정 2026.08</span></div>
+        </div>
+      </div>
+      <div class="cat-block">
+        <span class="cat-lbl">경력 · 활동</span>
+        <div class="edu-item">
+          <div class="edu-role">CT·MRI 의료영상 AI 연구개발 · 논문 작성</div>
+          <div class="edu-meta"><span class="edu-org">(주)딥러닝연구개발 · 한성대학교 단기근무 연구원</span><span class="edu-dot"></span><span class="edu-period">2023.06–09</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">RAG 기반 강의 자동 퀴즈·학습 가이드 생성</div>
+          <div class="edu-meta"><span class="edu-org">멋쟁이사자처럼 로켓단 인턴십 · LangChain · FAISS</span><span class="edu-dot"></span><span class="edu-period">2026.03–04</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">정부지원 사업 Pre-TIPS 최종 합격 · 프로젝트 'MOIM' 개발</div>
+          <div class="edu-meta"><span class="edu-org">중소벤처기업부</span><span class="edu-dot"></span><span class="edu-period">2025.01</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">Scientific LLM · CPT · SFT · GDPO 리서치</div>
+          <div class="edu-meta"><span class="edu-org">가짜연구소 (Pseudo Lab) 12기 러너 · 오픈 리서치 커뮤니티</span><span class="edu-dot"></span><span class="edu-period">진행 중</span></div>
+        </div>
+      </div>
+      <div class="cat-block">
+        <span class="cat-lbl">교육이수</span>
+        <div class="edu-item">
+          <div class="edu-role">청년 AI·BigData 아카데미 30기 수료</div>
+          <div class="edu-meta"><span class="edu-org">포스코 인재창조원</span><span class="edu-dot"></span><span class="edu-period">2025.06–08</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">AI NLP 엔지니어 집중과정 3기 수료</div>
+          <div class="edu-meta"><span class="edu-org">멋쟁이사자처럼</span><span class="edu-dot"></span><span class="edu-period">2025.12–2026.02</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">스마트공장 제품 품질 상태 분류 AI 모델 개발</div>
+          <div class="edu-meta"><span class="edu-org">LG Aimers 2기 · LG AI Research</span><span class="edu-dot"></span><span class="edu-period">2023.01–02</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">Phase 1 수료</div>
+          <div class="edu-meta"><span class="edu-org">LG Aimers 3기 · LG AI Research</span><span class="edu-dot"></span><span class="edu-period">2023.08</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">MQL 데이터 기반 B2B 영업 기회 창출 예측 모델 개발</div>
+          <div class="edu-meta"><span class="edu-org">LG Aimers 4기 · LG AI Research</span><span class="edu-dot"></span><span class="edu-period">2024.01–02</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">정보보안과정 수료</div>
+          <div class="edu-meta"><span class="edu-org">Microsoft</span><span class="edu-dot"></span><span class="edu-period">2024.10</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-right">
+      <div class="cat-block">
+        <span class="cat-lbl">수상</span>
+        <div class="edu-item">
+          <div class="edu-role">Bias-A-Thon Track 2 리더보드 3위</div>
+          <div class="edu-meta"><span class="edu-org">성균관대 지능형멀티미디어연구센터 · 딥페이크연구센터</span><span class="edu-dot"></span><span class="edu-period">2025.05</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">AI 프로젝트 대회 장려상</div>
+          <div class="edu-meta"><span class="edu-org">포스코 인재창조원</span><span class="edu-dot"></span><span class="edu-period">2025.08</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">AiRPA 해커톤 특별상</div>
+          <div class="edu-meta"><span class="edu-org">한국지능정보사회진흥원</span><span class="edu-dot"></span><span class="edu-period">2023.11</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">소프트웨어 경진대회 장려상</div>
+          <div class="edu-meta"><span class="edu-org">성신여자대학교</span><span class="edu-dot"></span><span class="edu-period">2023.09</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">학생창업경진대회 A등급</div>
+          <div class="edu-meta"><span class="edu-org">교육부 · 연세대학교</span><span class="edu-dot"></span><span class="edu-period">2022.08</span></div>
+        </div>
+      </div>
+      <div class="cat-block">
+        <span class="cat-lbl">자격증</span>
+        <div class="edu-item">
+          <div class="edu-role">빅데이터분석기사</div>
+          <div class="edu-meta"><span class="edu-org">한국데이터산업진흥원</span><span class="edu-dot"></span><span class="edu-period">2025.12</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-role">ADsP — 데이터분석 준전문가</div>
+          <div class="edu-meta"><span class="edu-org">한국데이터산업진흥원</span><span class="edu-dot"></span><span class="edu-period">2026.03</span></div>
+        </div>
+      </div>
+      <div class="cat-block">
+        <span class="cat-lbl">어학</span>
+        <div class="edu-item">
+          <div class="edu-role">OPIc IH — Intermediate High</div>
+          <div class="edu-meta"><span class="edu-org">ACTFL</span><span class="edu-dot"></span><span class="edu-period">2025.08</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── hide broken/missing images → gradient fallback shows ──────────
+(function() {
+  const KW = ['Auto','RAG','NLP','LLM','Finance','CV','Location','SaaS','Science'];
+  document.querySelectorAll('.pcard-thumb').forEach((thumbEl, idx) => {
+    const img = thumbEl.querySelector('img');
+    if (!img) return;
+    const showFallback = () => {
+      img.style.display = 'none';
+      if (!thumbEl.querySelector('.pcard-thumb-fallback')) {
+        const wrap = document.createElement('div');
+        wrap.className = 'pcard-thumb-fallback';
+        wrap.innerHTML = `<div class="thumb-fallback-num">${String(idx+1).padStart(2,'0')}</div><div class="thumb-fallback-text">${KW[idx]||''}</div>`;
+        thumbEl.appendChild(wrap);
+      }
+    };
+    if (!img.src || img.src === window.location.href) { showFallback(); return; }
+    if (img.complete && img.naturalWidth === 0) { showFallback(); return; }
+    img.addEventListener('error', showFallback, { once: true });
+  });
+})();
+
+function printNow() {
+  window.print();
+}
+</script>
+</body>
+</html>
