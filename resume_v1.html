@@ -13,8 +13,8 @@
 
 body {
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-  font-size: 9pt;
-  line-height: 1.52;
+  font-size: 9.2pt;
+  line-height: 1.54;
   color: #1c1c1e;
   background: #fff;
   -webkit-print-color-adjust: exact;
@@ -33,7 +33,7 @@ body {
   background: #1a2744;
 }
 .content {
-  padding: 11mm 16mm 11mm;
+  padding: 11mm 15mm 13mm;
 }
 
 /* ─── HEADER ─── */
@@ -87,14 +87,14 @@ body {
 .lower-grid .sec { margin-bottom: 0; }
 
 .sec-title {
-  font-size: 8pt;
+  font-size: 8.5pt;
   font-weight: 700;
-  color: #1a2744;
-  letter-spacing: 1.4px;
+  color: #0e1b30;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  border-bottom: 1.5px solid #1a2744;
+  border-bottom: 1.5px solid #0e1b30;
   padding-bottom: 4px;
-  margin-bottom: 9px;
+  margin-bottom: 11px;
 }
 
 /* ─── EXPERIENCE ─── */
@@ -126,19 +126,19 @@ body {
   flex-shrink: 0;
 }
 .exp-d1 {
-  font-size: 8.7pt;
+  font-size: 9pt;
   color: #4a4a4a;
-  line-height: 1.52;
+  line-height: 1.54;
   margin-top: 2px;
 }
 .exp-d2 {
-  font-size: 8.7pt;
+  font-size: 9pt;
   color: #555;
-  line-height: 1.52;
+  line-height: 1.54;
 }
 
 /* ─── PROJECTS ─── */
-.proj-item { margin-bottom: 7px; }
+.proj-item { margin-bottom: 8px; }
 .proj-item:last-child { margin-bottom: 0; }
 
 .proj-head {
@@ -152,33 +152,27 @@ body {
   font-weight: 700;
   color: #0d0d0d;
 }
+.proj-role {
+  font-size: 8.7pt;
+  font-weight: 500;
+  color: #555;
+}
 .proj-right {
-  font-size: 8pt;
+  font-size: 8.2pt;
   color: #999;
   white-space: nowrap;
   flex-shrink: 0;
-  text-align: right;
-  display: flex;
-  align-items: baseline;
-  gap: 0;
-}
-.proj-right .proj-role {
-  color: #1a2744;
-  font-weight: 600;
-  padding-right: 8px;
-  margin-right: 8px;
-  border-right: 1px solid #c8cfe0;
 }
 .proj-tech {
-  font-size: 8.6pt;
+  font-size: 8.9pt;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.54;
   margin-top: 2px;
 }
 .proj-metric {
-  font-size: 8.6pt;
+  font-size: 8.9pt;
   color: #3a3a3a;
-  line-height: 1.5;
+  line-height: 1.54;
   margin-top: 2px;
 }
 .m { font-weight: 700; color: #080808; }
@@ -198,9 +192,9 @@ body {
   justify-content: space-between;
   align-items: baseline;
   gap: 8px;
-  font-size: 8.5pt;
+  font-size: 8.7pt;
   color: #3a3a3a;
-  padding: 3px 0;
+  padding: 3.5px 0;
   border-bottom: 1px solid #efefef;
 }
 .award-item:last-child { border-bottom: none; }
@@ -214,7 +208,7 @@ body {
 
 /* Education */
 .edu-item {
-  padding: 3px 0;
+  padding: 3.5px 0;
   border-bottom: 1px solid #efefef;
 }
 .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -225,7 +219,7 @@ body {
   gap: 6px;
 }
 .edu-org {
-  font-size: 8.6pt;
+  font-size: 8.7pt;
   font-weight: 600;
   color: #0d0d0d;
 }
@@ -236,43 +230,43 @@ body {
   margin-left: 4px;
 }
 .edu-date {
-  font-size: 7.8pt;
+  font-size: 8pt;
   color: #aaa;
   white-space: nowrap;
   flex-shrink: 0;
 }
 .edu-detail {
-  font-size: 8.3pt;
+  font-size: 8.5pt;
   color: #666;
-  line-height: 1.44;
+  line-height: 1.46;
   margin-top: 1.5px;
 }
 
 /* ─── CERT BAR ─── */
 .cert-row {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0;
-  font-size: 8.7pt;
+  font-size: 9pt;
   color: #3a3a3a;
-  padding: 7px 0 9px;
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1.5px solid #1a2744;
+  padding: 8px 0 11px;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1.5px solid #0e1b30;
 }
 .cert-item {
   display: flex;
   align-items: baseline;
   gap: 5px;
-  padding: 0 22px 0 0;
+  padding: 0 24px 0 0;
 }
 .cert-item:first-child { padding-left: 0; }
 .cert-item + .cert-item {
-  padding-left: 22px;
+  padding-left: 24px;
   border-left: 1px solid #ddd;
 }
 .cert-name { font-weight: 700; color: #0d0d0d; }
-.cert-date { font-size: 8pt; color: #999; }
+.cert-date { font-size: 8pt; color: #b8b8b8; }
 
 @media print {
   body { background: white; }
@@ -344,8 +338,8 @@ body {
 
       <div class="proj-item">
         <div class="proj-head">
-          <span class="proj-name">KillKong — 콩글리시 교정 AI Agent</span>
-          <span class="proj-right"><span class="proj-role">팀장</span>2025.07 – 2025.08</span>
+          <span class="proj-name">KillKong — 콩글리시 교정 AI Agent<span class="proj-role"> &nbsp;|&nbsp; 팀장</span></span>
+          <span class="proj-right">2025.07 – 2025.08</span>
         </div>
         <div class="proj-tech">Qwen2.5 기반 LoRA 파인튜닝 · 4bit 양자화 · RAG 구조 설계 · end-to-end 모바일 서비스 구현</div>
         <div class="proj-metric">모델 <span class="m">14GB→3.0GB</span> 경량화 &nbsp;·&nbsp; 응답지연 <span class="m">2.3s→0.47s</span> 단축 &nbsp;·&nbsp; 모바일 일관성 <span class="m">92%+</span> 확보</div>
@@ -353,8 +347,8 @@ body {
 
       <div class="proj-item">
         <div class="proj-head">
-          <span class="proj-name">FinView — 생성형 재무분석 서비스</span>
-          <span class="proj-right"><span class="proj-role">팀장</span>2024.09 – 2024.11</span>
+          <span class="proj-name">FinView — 생성형 재무분석 서비스<span class="proj-role"> &nbsp;|&nbsp; 팀장</span></span>
+          <span class="proj-right">2024.09 – 2024.11</span>
         </div>
         <div class="proj-tech">DART·뉴스 데이터 수집·정제 · XGBoost 등급화 · GPT-4 기반 리포트 자동화 · 정량·정성 통합 분석 구조</div>
         <div class="proj-metric">재무 리포트 생성시간 <span class="m">5분→30초</span> 이내 단축 &nbsp;·&nbsp; 정형 데이터 기반 자동 등급화 파이프라인 구축</div>
@@ -420,7 +414,7 @@ body {
             <span class="edu-org">포스코 청년 AI·BigData 아카데미<span class="edu-hours">424h</span></span>
             <span class="edu-date">2025.06 – 2025.08</span>
           </div>
-          <div class="edu-detail">이탈 예측·세그먼트 전략, 중고차 가격 예측, 후판 불량 예측, KillKong 개발 수행</div>
+          <div class="edu-detail">고객 이탈 예측·세그먼트 전략, 중고차 가격·후판 불량 예측, KillKong 개발</div>
         </div>
 
         <div class="edu-item">
@@ -428,7 +422,7 @@ body {
             <span class="edu-org">멋쟁이사자처럼 AI NLP 집중과정 3기<span class="edu-hours">343h</span></span>
             <span class="edu-date">2025.12 – 2026.02</span>
           </div>
-          <div class="edu-detail">LLM 파인튜닝, RAG 구축, 서비스형 AI 시스템 설계, 검색 고도화 실전 프로젝트 수행</div>
+          <div class="edu-detail">LLM 파인튜닝, RAG 구축, 서비스형 AI 시스템 설계, 검색 고도화 실전 수행</div>
         </div>
 
         <div class="edu-item">
@@ -436,7 +430,7 @@ body {
             <span class="edu-org">LG Aimers 4기<span class="edu-hours" style="margin-left:4px;">LG AI Research</span></span>
             <span class="edu-date">2024.02</span>
           </div>
-          <div class="edu-detail">스마트공장 제품 품질 분류 AI 모델 개발 · 제조 데이터 전처리·모델링·성능 개선</div>
+          <div class="edu-detail">스마트공장 품질 분류 AI 모델 개발 · 전처리·모델링·성능 개선</div>
         </div>
 
         <div class="edu-item">
@@ -451,7 +445,7 @@ body {
             <span class="edu-org">LG Aimers 2기<span class="edu-hours" style="margin-left:4px;">LG AI Research</span></span>
             <span class="edu-date">2023.02</span>
           </div>
-          <div class="edu-detail">MQL 데이터 기반 B2B 영업기회 예측 모델 개발 · 리드 데이터 분석·특성 엔지니어링·튜닝</div>
+          <div class="edu-detail">MQL 기반 B2B 영업기회 예측 모델 개발 · 특성 엔지니어링·모델 튜닝</div>
         </div>
 
         <div class="edu-item">
@@ -459,7 +453,7 @@ body {
             <span class="edu-org">Microsoft 정보보안과정<span class="edu-hours" style="margin-left:4px;">Microsoft · 고용노동부</span></span>
             <span class="edu-date">2023.10</span>
           </div>
-          <div class="edu-detail">클라우드 기반 정보보안, 보안 정책 수립 기초, 서비스 안정성·보안 관점 학습</div>
+          <div class="edu-detail">클라우드 기반 정보보안, 보안 정책 수립, 서비스 안정성 관점 학습</div>
         </div>
       </div>
 
