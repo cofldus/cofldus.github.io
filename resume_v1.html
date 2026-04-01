@@ -13,278 +13,226 @@
 
 body {
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-  font-size: 9.2pt;
-  line-height: 1.54;
-  color: #1c1c1e;
-  background: linear-gradient(135deg, #f2f4f9 0%, #edf1f8 50%, #f0f3fa 100%);
-  min-height: 100vh;
-  padding: 40px 20px;
+  font-size: 8.4pt;
+  line-height: 1.48;
+  color: #111;
+  background: #f0f2f5;
+  padding: 30px 20px;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
-/* ─── PAGE SHELL ─── */
 .page {
   width: 210mm;
   min-height: 297mm;
   margin: 0 auto;
+  padding: 11mm 15mm 9mm;
   background: #fff;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.13);
 }
 
-.accent-bar {
-  height: 4px;
-  background: #1a2744;
-}
-.content {
-  padding: 11mm 15mm 13mm;
-}
-
-/* ─── HEADER ─── */
+/* ── HEADER ── */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  padding-bottom: 12px;
-  margin-bottom: 13px;
-  border-bottom: 1px solid #b8c4d6;
+  gap: 14px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #000;
 }
 .hd-left .name {
-  font-size: 26pt;
+  font-size: 25pt;
   font-weight: 900;
   letter-spacing: -2px;
   line-height: 1.0;
-  color: #080808;
+  color: #000;
 }
 .hd-left .title-line {
   margin-top: 5px;
-  font-size: 9.2pt;
-  font-weight: 500;
-  color: #1a2744;
-  letter-spacing: 0.05px;
+  font-size: 8.8pt;
+  font-weight: 600;
+  color: #111;
 }
 .hd-left .contact-line {
-  margin-top: 7px;
-  font-size: 8pt;
-  color: #666;
+  margin-top: 6px;
+  font-size: 7.9pt;
+  color: #444;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0;
 }
-.contact-line .c-sep { margin: 0 6px; color: #ccc; font-size: 9pt; }
+.c-sep { margin: 0 6px; color: #aaa; }
 .photo {
-  width: 58px;
-  height: 73px;
+  width: 64px;
+  height: 80px;
   object-fit: cover;
   object-position: center top;
-  border: 1px solid #d8d8d8;
+  border: 1px solid #bbb;
   flex-shrink: 0;
   display: block;
-  margin-top: 2px;
 }
 
-/* ─── SECTION TITLE ─── */
-.sec { margin-bottom: 11px; }
+/* ── SECTION ── */
+.sec { margin-bottom: 12px; }
 .sec:last-child { margin-bottom: 0; }
-.lower-grid .sec { margin-bottom: 0; }
 
-.sec-title {
-  font-size: 8.5pt;
-  font-weight: 700;
-  color: #0e1b30;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  border-bottom: 1.5px solid #0e1b30;
-  padding-bottom: 4px;
-  margin-bottom: 11px;
-}
-
-/* ─── EXPERIENCE ─── */
-.exp-item { margin-bottom: 7px; }
-.exp-item:last-child { margin-bottom: 0; }
-
-.exp-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-}
-.exp-org {
-  font-size: 9.5pt;
-  font-weight: 700;
-  color: #0d0d0d;
-}
-.exp-role {
-  font-size: 8.5pt;
-  font-weight: 400;
-  color: #666;
-  margin-left: 8px;
-  flex: 1;
-}
-.exp-date {
-  font-size: 8pt;
-  color: #999;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.exp-d1 {
-  font-size: 9pt;
-  color: #4a4a4a;
-  line-height: 1.54;
-  margin-top: 2px;
-}
-.exp-d2 {
-  font-size: 9pt;
-  color: #555;
-  line-height: 1.54;
-}
-
-/* ─── PROJECTS ─── */
-.proj-item { margin-bottom: 8px; }
-.proj-item:last-child { margin-bottom: 0; }
-
-.proj-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-}
-.proj-name {
-  font-size: 9.5pt;
-  font-weight: 700;
-  color: #0d0d0d;
-}
-.proj-role {
-  font-size: 8.7pt;
-  font-weight: 500;
-  color: #555;
-}
-.proj-right {
-  font-size: 8.2pt;
-  color: #999;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.proj-tech {
-  font-size: 8.9pt;
-  color: #666;
-  line-height: 1.54;
-  margin-top: 2px;
-}
-.proj-metric {
-  font-size: 8.9pt;
-  color: #3a3a3a;
-  line-height: 1.54;
-  margin-top: 2px;
-}
-.m { font-weight: 700; color: #080808; }
-
-/* ─── LOWER 2-COLUMN GRID ─── */
-.lower-grid {
-  display: grid;
-  grid-template-columns: 42fr 58fr;
-  gap: 0 24px;
-  margin-bottom: 10px;
-  align-items: start;
-}
-.lower-grid .sec:last-child {
-  padding-left: 20px;
-  border-left: 1px solid #eaeaea;
-}
-
-/* ─── AWARDS ─── */
-.award-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-  padding: 4.5px 0;
-  border-bottom: 1px solid #f2f2f2;
-}
-.award-item:last-child { border-bottom: none; }
-.award-name {
-  flex: 1;
-  font-size: 8.7pt;
-  font-weight: 400;
-  color: #1e1e1e;
-  line-height: 1.46;
-}
-.award-name strong {
-  font-weight: 700;
-  color: #0d0d0d;
-}
-.award-date {
-  font-size: 7.5pt;
-  color: #c4c4c4;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* ─── EDUCATION CATALOG ─── */
-.edu-item {
-  padding: 5px 0;
-  border-bottom: 1px solid #f2f2f2;
-}
-.edu-item:last-child { border-bottom: none; padding-bottom: 0; }
-.edu-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-}
-.edu-name {
-  font-size: 8.7pt;
-  font-weight: 700;
-  color: #111;
-  flex: 1;
-  line-height: 1.42;
-}
-.edu-date {
-  font-size: 7.5pt;
-  color: #c4c4c4;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.edu-meta {
-  font-size: 7.8pt;
-  color: #aaa;
-  margin-top: 1px;
-  line-height: 1.3;
-}
-.edu-detail {
-  font-size: 8.4pt;
-  color: #505050;
-  line-height: 1.46;
-  margin-top: 2.5px;
-}
-
-/* ─── CERT BAR ─── */
-.cert-row {
+.sec-hd {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0;
-  font-size: 9pt;
-  color: #3a3a3a;
-  padding: 8px 0 11px;
-  border-top: 1px solid #e4e4e4;
-  border-bottom: 1.5px solid #0e1b30;
+  margin-bottom: 8px;
 }
-.cert-item {
+.sec-bar {
+  width: 3px;
+  height: 14px;
+  background: #000;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.sec-label {
+  font-size: 8pt;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-right: 9px;
+  white-space: nowrap;
+}
+.sec-rule {
+  flex: 1;
+  height: 1px;
+  background: #aaa;
+}
+
+/* ── 학력 ── */
+.sch-row {
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
-  gap: 5px;
-  padding: 0 24px 0 0;
+  gap: 8px;
 }
-.cert-item:first-child { padding-left: 0; }
-.cert-item + .cert-item {
-  padding-left: 24px;
-  border-left: 1px solid #ddd;
+.sch-name { font-size: 9.3pt; font-weight: 700; color: #000; }
+.sch-dept { font-size: 8.5pt; font-weight: 400; color: #444; margin-left: 8px; }
+.sch-date { font-size: 8pt; color: #555; white-space: nowrap; flex-shrink: 0; }
+.sch-gpa { font-size: 8.4pt; color: #333; margin-top: 2px; }
+.sch-gpa b { color: #000; font-weight: 700; }
+
+/* ── 요약 성과/활동 ── */
+.sum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
 }
-.cert-name { font-weight: 700; color: #0d0d0d; }
-.cert-date { font-size: 8pt; color: #b8b8b8; }
+.sum-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2.5px 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 8.2pt;
+  color: #111;
+  line-height: 1.4;
+}
+.sum-item:nth-last-child(-n+2) { border-bottom: none; }
+.sum-text { flex: 1; }
+.sum-org { color: #666; font-size: 7.6pt; }
+.sum-date { color: #666; font-size: 7.5pt; white-space: nowrap; flex-shrink: 0; }
+
+/* ── 경력 ── */
+.exp-block { margin-bottom: 9px; }
+.exp-block:last-child { margin-bottom: 0; }
+.exp-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.exp-org { font-size: 9.3pt; font-weight: 700; color: #000; }
+.exp-role { font-size: 8.3pt; font-weight: 400; color: #555; margin-left: 8px; }
+.exp-date { font-size: 7.9pt; color: #555; white-space: nowrap; flex-shrink: 0; }
+.exp-d1 { font-size: 8.6pt; font-weight: 600; color: #111; margin-top: 2px; }
+.exp-d2 { font-size: 8.3pt; color: #333; line-height: 1.48; }
+.num { font-weight: 700; color: #000; }
+
+/* ── 프로젝트 ── */
+.proj-block {
+  margin-bottom: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.proj-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.proj-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.proj-name { font-size: 9pt; font-weight: 700; color: #000; }
+.proj-subtitle { font-size: 8.3pt; font-weight: 400; color: #333; margin-left: 7px; }
+.proj-tag {
+  font-size: 7.6pt;
+  font-weight: 600;
+  color: #333;
+  border: 1px solid #aaa;
+  padding: 0 4px 1px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.proj-date { font-size: 7.8pt; color: #666; white-space: nowrap; flex-shrink: 0; }
+.proj-body { font-size: 8.3pt; color: #333; line-height: 1.48; margin-top: 2px; }
+
+/* ── 수상 ── */
+.award-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 8.3pt;
+  color: #111;
+  padding: 4px 0;
+  line-height: 1.44;
+}
+.award-main { flex: 1; }
+.award-main b { font-weight: 700; color: #000; }
+.award-org { color: #555; font-size: 7.9pt; }
+.award-dt { color: #666; font-size: 7.6pt; white-space: nowrap; flex-shrink: 0; }
+
+/* ── 교육 ── */
+.edu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 8.3pt;
+  color: #111;
+  padding: 4px 0;
+  line-height: 1.44;
+}
+.edu-main { flex: 1; }
+.edu-main b { font-weight: 700; color: #000; }
+.edu-org { color: #555; font-size: 7.9pt; }
+.edu-dt { color: #666; font-size: 7.6pt; white-space: nowrap; flex-shrink: 0; }
+
+.cert-bar {
+  margin-top: 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px 0;
+  font-size: 8.5pt;
+  color: #111;
+}
+.cert-chunk {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.cert-chunk b { font-weight: 700; color: #000; }
+.cert-chunk .cd { color: #777; font-size: 7.8pt; }
 
 @media print {
   body { background: white; padding: 0; }
@@ -295,214 +243,164 @@ body {
 <body>
 <div class="page">
 
-  <div class="accent-bar"></div>
-
-  <div class="content">
-
-    <!-- ──────────── HEADER ──────────── -->
-    <div class="header">
-      <div class="hd-left">
-        <div class="name">이채연</div>
-        <div class="title-line">AI · NLP Engineer &nbsp;|&nbsp; RAG · LLM 최적화 · 서비스형 AI 시스템 구현</div>
-        <div class="contact-line">
-          <span>2001.11.21</span>
-          <span class="c-sep">|</span>
-          <span>010-3741-5786</span>
-          <span class="c-sep">|</span>
-          <span>lcylcy3816@naver.com</span>
-          <span class="c-sep">|</span>
-          <span>github.com/cofldus</span>
-        </div>
-      </div>
-      <img class="photo" src="2024-1.jpg" alt="이채연">
-    </div>
-
-    <!-- ──────────── 학력 ──────────── -->
-    <div class="sec">
-      <div class="sec-title">주요 학력</div>
-      <div class="exp-head">
-        <span class="exp-org">성신여자대학교 <span class="exp-role">AI융합학부</span></span>
-        <span class="exp-date">2021.03 ~ 2026.08 졸업예정</span>
-      </div>
-      <div class="exp-d2">학점 <strong>3.94</strong>/4.50 &nbsp;·&nbsp; 전공학점 <strong>4.07</strong>/4.50</div>
-    </div>
-
-    <!-- ──────────── 경력 ──────────── -->
-    <div class="sec">
-      <div class="sec-title">경력사항</div>
-
-      <div class="exp-item">
-        <div class="exp-head">
-          <span class="exp-org">㈜샤이닝라이언<span class="exp-role">NLP 개발 인턴 · 프로덕트 PoC</span></span>
-          <span class="exp-date">2026.03 ~ 재직 중</span>
-        </div>
-        <div class="exp-d1">강의 STT 기반 퀴즈·학습 가이드 자동 생성 PoC 개발</div>
-        <div class="exp-d2">비정형 텍스트 전처리 후 FAISS 벡터스토어를 구축하고, 메타데이터 기반 RAG 파이프라인을 설계해 프론트엔드까지 end-to-end로 연동·구현</div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-head">
-          <span class="exp-org">㈜딥러닝연구개발<span class="exp-role">단기근무연구원</span></span>
-          <span class="exp-date">2023.06 ~ 2023.09</span>
-        </div>
-        <div class="exp-d1">CT↔MRI 의료영상 변환 연구개발 프로젝트 수행</div>
-        <div class="exp-d2">DICOM 전처리 파이프라인 구축, CycleGAN 기반 구조 설계, 손실함수 최적화 → SSIM <strong>0.82→0.88</strong> 개선</div>
+  <!-- ────── HEADER ────── -->
+  <div class="header">
+    <div class="hd-left">
+      <div class="name">이채연</div>
+      <div class="title-line">AI · NLP Engineer &nbsp;|&nbsp; RAG · LLM 최적화 · 서비스형 AI 시스템 구현</div>
+      <div class="contact-line">
+        <span>2001.11.21</span><span class="c-sep">|</span>
+        <span>010-3741-5786</span><span class="c-sep">|</span>
+        <span>lcylcy3816@naver.com</span><span class="c-sep">|</span>
+        <span>github.com/cofldus</span>
       </div>
     </div>
+    <img class="photo" src="2024-1.jpg" alt="이채연">
+  </div>
 
-    <!-- ──────────── 프로젝트 ──────────── -->
-    <div class="sec">
-      <div class="sec-title">주요 프로젝트</div>
+  <!-- ────── 학력 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">학력</span><div class="sec-rule"></div></div>
+    <div class="sch-row">
+      <span class="sch-name">성신여자대학교<span class="sch-dept">AI융합학부</span></span>
+      <span class="sch-date">2021.03 ~ 2026.08 졸업예정</span>
+    </div>
+    <div class="sch-gpa">학점 <b>3.94</b>/4.50 &nbsp;·&nbsp; 전공학점 <b>4.07</b>/4.50</div>
+  </div>
 
-      <div class="proj-item">
-        <div class="proj-head">
-          <span class="proj-name">KillKong — 콩글리시 교정 AI Agent<span class="proj-role"> &nbsp;|&nbsp; 팀장</span></span>
-          <span class="proj-right">2025.07 – 2025.08</span>
-        </div>
-        <div class="proj-tech">Qwen2.5 기반 LoRA 파인튜닝 · 4bit 양자화 · RAG 구조 설계 · end-to-end 모바일 서비스 구현</div>
-        <div class="proj-metric">모델 <span class="m">14GB→3.0GB</span> 경량화 &nbsp;·&nbsp; 응답지연 <span class="m">2.3s→0.47s</span> 단축 &nbsp;·&nbsp; 모바일 일관성 <span class="m">92%+</span> 확보</div>
+  <!-- ────── 경력사항 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">경력사항</span><div class="sec-rule"></div></div>
+
+    <div class="exp-block">
+      <div class="exp-hd">
+        <span class="exp-org">㈜샤이닝라이언<span class="exp-role"> &nbsp;|&nbsp; NLP 개발 인턴 · 프로덕트 PoC</span></span>
+        <span class="exp-date">2026.03 ~ 재직 중</span>
       </div>
-
-      <div class="proj-item">
-        <div class="proj-head">
-          <span class="proj-name">FinView — 생성형 재무분석 서비스<span class="proj-role"> &nbsp;|&nbsp; 팀장</span></span>
-          <span class="proj-right">2024.09 – 2024.11</span>
-        </div>
-        <div class="proj-tech">DART·뉴스 데이터 수집·정제 · XGBoost 등급화 · GPT-4 기반 리포트 자동화 · 정량·정성 통합 분석 구조</div>
-        <div class="proj-metric">재무 리포트 생성시간 <span class="m">5분→30초</span> 이내 단축 &nbsp;·&nbsp; 정형 데이터 기반 자동 등급화 파이프라인 구축</div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-head">
-          <span class="proj-name">난독화된 한글 리뷰 복원 AI</span>
-          <span class="proj-right">2026.01 – 2026.02</span>
-        </div>
-        <div class="proj-tech">KoELECTRA 분류기 + KoBART 복원 모델 기반 분기형 구조 설계 · 난독화 유형별 복원 경로 분리</div>
-        <div class="proj-metric">BERTScore <span class="m">0.9812</span> &nbsp;·&nbsp; CER <span class="m">0.0426</span> 달성</div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-head">
-          <span class="proj-name">의료자문봇</span>
-          <span class="proj-right">2026.02 – 2026.03</span>
-        </div>
-        <div class="proj-tech">BM25 · FAISS · Reranker 결합 하이브리드 RAG 설계 · 근거 기반 검색·응답 구조 고도화</div>
-        <div class="proj-metric">객관식 정확도 <span class="m">+0.04</span> &nbsp;·&nbsp; 서술형 BERTScore <span class="m">+0.16</span> 개선</div>
-      </div>
+      <div class="exp-d1">강의 STT 기반 퀴즈·학습 가이드 자동 생성 PoC 개발</div>
+      <div class="exp-d2">비정형 텍스트 전처리, FAISS 벡터스토어 구축, 메타데이터 기반 RAG 설계, 프론트엔드 연동, end-to-end 파이프라인 구현</div>
     </div>
 
-    <!-- ──────────── 수상·교육 2단 ──────────── -->
-    <div class="lower-grid">
-
-      <!-- 수상 / 성과 -->
-      <div class="sec">
-        <div class="sec-title">수상 / 성과</div>
-        <div class="award-item">
-          <span class="award-name">Dacon 2025 Bias-A-Thon Track 2 리더보드 <strong>3위</strong></span>
-          <span class="award-date">2025.05</span>
-        </div>
-        <div class="award-item">
-          <span class="award-name">포스코 인재창조원 AI 프로젝트 대회 <strong>장려상</strong></span>
-          <span class="award-date">2025.08</span>
-        </div>
-        <div class="award-item">
-          <span class="award-name">AiRPA 해커톤 <strong>특별상</strong></span>
-          <span class="award-date">2023.11</span>
-        </div>
-        <div class="award-item">
-          <span class="award-name">연세대학교 학생창업경진대회 <strong>A등급</strong></span>
-          <span class="award-date">2022.08</span>
-        </div>
-        <div class="award-item">
-          <span class="award-name">정부지원 Pre-TIPS 최종 합격 · 프로젝트 'MOIM' 개발</span>
-          <span class="award-date">2025.01</span>
-        </div>
-        <div class="award-item">
-          <span class="award-name">Pseudo Lab Scientific LLM 연구·논문 작성 참여</span>
-          <span class="award-date">2025.03</span>
-        </div>
+    <div class="exp-block">
+      <div class="exp-hd">
+        <span class="exp-org">㈜딥러닝연구개발<span class="exp-role"> &nbsp;|&nbsp; 단기근무연구원</span></span>
+        <span class="exp-date">2023.06 ~ 2023.09</span>
       </div>
+      <div class="exp-d1">CT↔MRI 의료영상 변환 연구개발 프로젝트 수행 및 논문 작성</div>
+      <div class="exp-d2">DICOM 전처리 파이프라인 구축, CycleGAN 기반 구조 설계, 손실함수 최적화 → SSIM <span class="num">0.82→0.88</span> 개선</div>
+    </div>
+  </div>
 
-      <!-- 교육 / 프로그램 -->
-      <div class="sec">
-        <div class="sec-title">교육 / 프로그램</div>
+  <!-- ────── 주요 프로젝트 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">주요 프로젝트</span><div class="sec-rule"></div></div>
 
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">포스코 청년 AI·BigData 아카데미</span>
-            <span class="edu-date">2025.06 – 2025.08</span>
-          </div>
-          <div class="edu-meta">포스코 인재창조원 &nbsp;·&nbsp; 424h</div>
-          <div class="edu-detail">고객 이탈 예측·세그먼트 전략, 중고차 가격·후판 불량 예측, KillKong 개발</div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">멋쟁이사자처럼 AI NLP 집중과정 3기</span>
-            <span class="edu-date">2025.12 – 2026.02</span>
-          </div>
-          <div class="edu-meta">멋쟁이사자처럼 &nbsp;·&nbsp; 343h</div>
-          <div class="edu-detail">LLM 파인튜닝, RAG 구축, 서비스형 AI 시스템 설계, 검색 고도화 실전 수행</div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">LG Aimers 4기</span>
-            <span class="edu-date">2024.02</span>
-          </div>
-          <div class="edu-meta">LG AI Research</div>
-          <div class="edu-detail">스마트공장 품질 분류 AI 모델 개발 · 전처리·모델링·성능 개선</div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">LG Aimers 3기 Phase 1 수료</span>
-            <span class="edu-date">2023.08</span>
-          </div>
-          <div class="edu-meta">LG AI Research</div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">LG Aimers 2기</span>
-            <span class="edu-date">2023.02</span>
-          </div>
-          <div class="edu-meta">LG AI Research</div>
-          <div class="edu-detail">MQL 기반 B2B 영업기회 예측 모델 개발 · 특성 엔지니어링·모델 튜닝</div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-head">
-            <span class="edu-name">Microsoft 정보보안과정</span>
-            <span class="edu-date">2023.10</span>
-          </div>
-          <div class="edu-meta">Microsoft · 고용노동부</div>
-          <div class="edu-detail">클라우드 기반 정보보안, 보안 정책 수립, 서비스 안정성 관점 학습</div>
-        </div>
+    <div class="proj-block">
+      <div class="proj-hd">
+        <span class="proj-name">KillKong<span class="proj-subtitle"> &nbsp;|&nbsp; 한국인 특화 콩글리시 교정 AI Agent</span><span class="proj-tag">팀장</span></span>
+        <span class="proj-date">2025.07 – 2025.08</span>
       </div>
-
-    </div><!-- /lower-grid -->
-
-    <!-- ──────────── 자격 / 어학 ──────────── -->
-    <div class="sec">
-      <div class="sec-title">자격 / 어학</div>
-      <div class="cert-row">
-        <div class="cert-item">
-          <span class="cert-name">빅데이터분석기사</span>
-          <span class="cert-date">2025.12</span>
-        </div>
-        <div class="cert-item">
-          <span class="cert-name">ADsP</span>
-          <span class="cert-date">2026.03</span>
-        </div>
-        <div class="cert-item">
-          <span class="cert-name">OPIc IH</span>
-          <span class="cert-date">2025.08</span>
-        </div>
-      </div>
+      <div class="proj-body">Qwen2.5 LoRA 파인튜닝, 4bit 양자화, RAG 구조 설계, end-to-end 모바일 서비스 구현 → 모델 <span class="num">14GB→3.0GB</span>, 응답지연 <span class="num">2.3s→0.47s</span>, 모바일 일관성 <span class="num">92%+</span></div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /page -->
+    <div class="proj-block">
+      <div class="proj-hd">
+        <span class="proj-name">FinView<span class="proj-subtitle"> &nbsp;|&nbsp; DART·뉴스 기반 생성형 재무분석 서비스</span><span class="proj-tag">팀장</span></span>
+        <span class="proj-date">2024.09 – 2024.11</span>
+      </div>
+      <div class="proj-body">DART 재무제표·뉴스 수집·정제, XGBoost 등급화, GPT-4 리포트 자동화 → 생성시간 <span class="num">5분→30초</span>, 정량·정성 통합 분석 파이프라인 구축</div>
+    </div>
+
+    <div class="proj-block">
+      <div class="proj-hd">
+        <span class="proj-name">난독화복원<span class="proj-subtitle"> &nbsp;|&nbsp; 난독화된 한글 리뷰 원문 자동 복원 AI</span></span>
+        <span class="proj-date">2026.01 – 2026.02</span>
+      </div>
+      <div class="proj-body">KoELECTRA 분류기 + KoBART 복원 모델 분기형 구조 설계, 유형별 복원 경로 분리 → BERTScore <span class="num">0.9812</span>, CER <span class="num">0.0426</span></div>
+    </div>
+
+    <div class="proj-block">
+      <div class="proj-hd">
+        <span class="proj-name">의료자문봇<span class="proj-subtitle"> &nbsp;|&nbsp; 근거 기반 의료 도메인 하이브리드 RAG 챗봇</span></span>
+        <span class="proj-date">2026.02 – 2026.03</span>
+      </div>
+      <div class="proj-body">BM25·FAISS·Reranker 결합 하이브리드 RAG 설계, 근거 기반 검색·응답 구조 고도화 → 객관식 정확도 <span class="num">+0.04</span>, 서술형 BERTScore <span class="num">+0.16</span></div>
+    </div>
+
+  </div>
+
+  <!-- ────── 수상 / 성과 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">수상 / 성과</span><div class="sec-rule"></div></div>
+
+    <div class="award-row">
+      <span class="award-main">Dacon 2025 Bias-A-Thon Track 2 리더보드 <b>3위</b> <span class="award-org"> &nbsp;|&nbsp;성균관대 지능형멀티미디어연구센터·딥페이크연구센터</span></span>
+      <span class="award-dt">2025.05</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">AI 프로젝트 대회 <b>장려상</b> <span class="award-org"> &nbsp;|&nbsp;포스코 인재창조원</span></span>
+      <span class="award-dt">2025.08</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">정부지원 Pre-TIPS 최종 합격 · 프로젝트 'MOIM' 개발 <span class="award-org"> &nbsp;|&nbsp;중소벤처기업부</span></span>
+      <span class="award-dt">2025.01</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">Pseudo Lab Scientific LLM 연구·논문 작성 참여 <span class="award-org"> &nbsp;|&nbsp;Pseudo Lab</span></span>
+      <span class="award-dt">2025.03</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">AiRPA 해커톤 <b>특별상</b> <span class="award-org"> &nbsp;|&nbsp;한국지능정보사회진흥원</span></span>
+      <span class="award-dt">2023.11</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">소프트웨어 경진대회 <b>장려상</b> <span class="award-org"> &nbsp;|&nbsp;성신여자대학교</span></span>
+      <span class="award-dt">2023.09</span>
+    </div>
+    <div class="award-row">
+      <span class="award-main">학생창업경진대회 <b>A등급</b> <span class="award-org"> &nbsp;|&nbsp;교육부·연세대학교</span></span>
+      <span class="award-dt">2022.08</span>
+    </div>
+
+  </div>
+
+  <!-- ────── 교육 / 프로그램 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">교육 / 프로그램</span><div class="sec-rule"></div></div>
+
+    <div class="edu-row">
+      <span class="edu-main"><b>멋쟁이사자처럼 AI NLP 엔지니어 집중과정 3기</b> <span class="edu-org">&nbsp;|&nbsp; 343h &nbsp;|&nbsp; 멋쟁이사자처럼</span></span>
+      <span class="edu-dt">2025.12 – 2026.02</span>
+    </div>
+    <div class="edu-row">
+      <span class="edu-main"><b>포스코 청년 AI·BigData 아카데미</b> <span class="edu-org">&nbsp;|&nbsp; 424h &nbsp;|&nbsp; 포스코</span></span>
+      <span class="edu-dt">2025.06 – 2025.08</span>
+    </div>
+    <div class="edu-row">
+      <span class="edu-main"><b>LG Aimers 4기</b> — 스마트공장 품질 분류 AI 모델 개발 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
+      <span class="edu-dt">2024.01 – 2024.02</span>
+    </div>
+    <div class="edu-row">
+      <span class="edu-main"><b>LG Aimers 2기</b> — MQL 기반 B2B 영업기회 예측 &nbsp;/&nbsp; <b>3기</b> Phase 1 수료 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
+      <span class="edu-dt">2023.01 – 2023.02 / 08</span>
+    </div>
+    <div class="edu-row">
+      <span class="edu-main"><b>Microsoft 정보보안과정</b> <span class="edu-org">&nbsp;|&nbsp; Microsoft · 고용노동부</span></span>
+      <span class="edu-dt">2023.10</span>
+    </div>
+
+  </div>
+
+  <!-- ────── 자격 / 어학 ────── -->
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">자격 / 어학</span><div class="sec-rule"></div></div>
+    <div class="cert-bar">
+      <span class="cert-chunk"><b>빅데이터분석기사</b><span class="cd">한국데이터산업진흥원 &nbsp;·&nbsp; 2025.12</span></span>
+      <span class="cert-chunk"><b>ADsP</b><span class="cd">한국데이터산업진흥원 &nbsp;·&nbsp; 2026.03</span></span>
+      <span class="cert-chunk"><b>OPIc IH</b><span class="cd">ACTFL &nbsp;·&nbsp; 2025.08</span></span>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>
