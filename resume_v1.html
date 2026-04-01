@@ -16,7 +16,9 @@ body {
   font-size: 9.2pt;
   line-height: 1.54;
   color: #1c1c1e;
-  background: #fff;
+  background: #d4d8e0;
+  min-height: 100vh;
+  padding: 40px 20px;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
@@ -27,7 +29,9 @@ body {
   min-height: 297mm;
   margin: 0 auto;
   background: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08);
 }
+
 .accent-bar {
   height: 4px;
   background: #1a2744;
@@ -180,66 +184,80 @@ body {
 /* ─── LOWER 2-COLUMN GRID ─── */
 .lower-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 20px;
+  grid-template-columns: 42fr 58fr;
+  gap: 0 24px;
   margin-bottom: 10px;
   align-items: start;
 }
+.lower-grid .sec:last-child {
+  padding-left: 20px;
+  border-left: 1px solid #eaeaea;
+}
 
-/* Awards */
+/* ─── AWARDS ─── */
 .award-item {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 8px;
-  font-size: 8.7pt;
-  color: #3a3a3a;
-  padding: 3.5px 0;
-  border-bottom: 1px solid #efefef;
+  gap: 10px;
+  padding: 4.5px 0;
+  border-bottom: 1px solid #f2f2f2;
 }
 .award-item:last-child { border-bottom: none; }
-.award-name { flex: 1; }
+.award-name {
+  flex: 1;
+  font-size: 8.7pt;
+  font-weight: 400;
+  color: #1e1e1e;
+  line-height: 1.46;
+}
+.award-name strong {
+  font-weight: 700;
+  color: #0d0d0d;
+}
 .award-date {
-  font-size: 7.8pt;
-  color: #aaa;
+  font-size: 7.5pt;
+  color: #c4c4c4;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* Education */
+/* ─── EDUCATION CATALOG ─── */
 .edu-item {
-  padding: 3.5px 0;
-  border-bottom: 1px solid #efefef;
+  padding: 5px 0;
+  border-bottom: 1px solid #f2f2f2;
 }
 .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
 .edu-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px;
 }
-.edu-org {
+.edu-name {
   font-size: 8.7pt;
-  font-weight: 600;
-  color: #0d0d0d;
-}
-.edu-hours {
-  font-size: 8pt;
-  font-weight: 400;
-  color: #999;
-  margin-left: 4px;
+  font-weight: 700;
+  color: #111;
+  flex: 1;
+  line-height: 1.42;
 }
 .edu-date {
-  font-size: 8pt;
-  color: #aaa;
+  font-size: 7.5pt;
+  color: #c4c4c4;
   white-space: nowrap;
   flex-shrink: 0;
 }
+.edu-meta {
+  font-size: 7.8pt;
+  color: #aaa;
+  margin-top: 1px;
+  line-height: 1.3;
+}
 .edu-detail {
-  font-size: 8.5pt;
-  color: #666;
+  font-size: 8.4pt;
+  color: #505050;
   line-height: 1.46;
-  margin-top: 1.5px;
+  margin-top: 2.5px;
 }
 
 /* ─── CERT BAR ─── */
@@ -269,8 +287,8 @@ body {
 .cert-date { font-size: 8pt; color: #b8b8b8; }
 
 @media print {
-  body { background: white; }
-  .page { margin: 0; }
+  body { background: white; padding: 0; }
+  .page { margin: 0; box-shadow: none; }
 }
 </style>
 </head>
@@ -411,48 +429,54 @@ body {
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">포스코 청년 AI·BigData 아카데미<span class="edu-hours">424h</span></span>
+            <span class="edu-name">포스코 청년 AI·BigData 아카데미</span>
             <span class="edu-date">2025.06 – 2025.08</span>
           </div>
+          <div class="edu-meta">포스코 인재창조원 &nbsp;·&nbsp; 424h</div>
           <div class="edu-detail">고객 이탈 예측·세그먼트 전략, 중고차 가격·후판 불량 예측, KillKong 개발</div>
         </div>
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">멋쟁이사자처럼 AI NLP 집중과정 3기<span class="edu-hours">343h</span></span>
+            <span class="edu-name">멋쟁이사자처럼 AI NLP 집중과정 3기</span>
             <span class="edu-date">2025.12 – 2026.02</span>
           </div>
+          <div class="edu-meta">멋쟁이사자처럼 &nbsp;·&nbsp; 343h</div>
           <div class="edu-detail">LLM 파인튜닝, RAG 구축, 서비스형 AI 시스템 설계, 검색 고도화 실전 수행</div>
         </div>
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">LG Aimers 4기<span class="edu-hours" style="margin-left:4px;">LG AI Research</span></span>
+            <span class="edu-name">LG Aimers 4기</span>
             <span class="edu-date">2024.02</span>
           </div>
+          <div class="edu-meta">LG AI Research</div>
           <div class="edu-detail">스마트공장 품질 분류 AI 모델 개발 · 전처리·모델링·성능 개선</div>
         </div>
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">LG Aimers 3기 Phase 1 수료<span class="edu-hours" style="margin-left:4px;">LG AI Research</span></span>
+            <span class="edu-name">LG Aimers 3기 Phase 1 수료</span>
             <span class="edu-date">2023.08</span>
           </div>
+          <div class="edu-meta">LG AI Research</div>
         </div>
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">LG Aimers 2기<span class="edu-hours" style="margin-left:4px;">LG AI Research</span></span>
+            <span class="edu-name">LG Aimers 2기</span>
             <span class="edu-date">2023.02</span>
           </div>
+          <div class="edu-meta">LG AI Research</div>
           <div class="edu-detail">MQL 기반 B2B 영업기회 예측 모델 개발 · 특성 엔지니어링·모델 튜닝</div>
         </div>
 
         <div class="edu-item">
           <div class="edu-head">
-            <span class="edu-org">Microsoft 정보보안과정<span class="edu-hours" style="margin-left:4px;">Microsoft · 고용노동부</span></span>
+            <span class="edu-name">Microsoft 정보보안과정</span>
             <span class="edu-date">2023.10</span>
           </div>
+          <div class="edu-meta">Microsoft · 고용노동부</div>
           <div class="edu-detail">클라우드 기반 정보보안, 보안 정책 수립, 서비스 안정성 관점 학습</div>
         </div>
       </div>
