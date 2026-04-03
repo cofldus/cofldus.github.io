@@ -1,11 +1,17 @@
 1:"$Sreact.fragment"
 9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
 a:"$Sreact.suspense"
-:HL["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","style"]
+:HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
 :HL["/arch/KillKong.svg","image"]
-2:T2290,
+2:T254f,
           * { margin: 0; padding: 0; box-sizing: border-box; }
           html, body { background: #EAECF0; }
+
+          :root {
+            --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
+            --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
+          }
 
           @page { size: A4 landscape; margin: 0; }
           @media print {
@@ -14,7 +20,7 @@ a:"$Sreact.suspense"
           }
 
           body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
             display: flex;
             justify-content: center;
@@ -55,10 +61,12 @@ a:"$Sreact.suspense"
           }
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
+            font-family: var(--font-label);
             font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
             text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
           }
           .hdr-title {
+            font-family: var(--font-display);
             font-size: 22px; font-weight: 800; color: #0F172A;
             letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
           }
@@ -66,11 +74,13 @@ a:"$Sreact.suspense"
             display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
           }
           .hdr-period {
+            font-family: var(--font-label);
             font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.01em;
           }
           .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
           .tags { display: flex; flex-wrap: wrap; gap: 3px; }
           .tag {
+            font-family: var(--font-label);
             font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em;
             text-transform: uppercase; background: #F1F5F9;
             border: 1px solid #DDE3EB; border-radius: 3px;
@@ -85,10 +95,12 @@ a:"$Sreact.suspense"
             background: #F8FBFF;
           }
           .kpi-v {
+            font-family: var(--font-display);
             font-size: 20px; font-weight: 900; color: #4fc0d1;
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
+            font-family: var(--font-label);
             font-size: 8px; font-weight: 600; color: #94A3B8;
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
@@ -103,6 +115,7 @@ a:"$Sreact.suspense"
           }
           .meta-item { display: flex; align-items: baseline; gap: 8px; }
           .meta-key {
+            font-family: var(--font-label);
             font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
             text-transform: uppercase; flex-shrink: 0;
           }
@@ -129,6 +142,7 @@ a:"$Sreact.suspense"
 
           /* ── Section label ── */
           .sec-label {
+            font-family: var(--font-label);
             font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
             text-transform: uppercase; color: #4fc0d1;
             margin-bottom: 9px; padding-bottom: 6px;
@@ -183,10 +197,11 @@ a:"$Sreact.suspense"
             border-radius: 6px; border-left: 3px solid #4fc0d1;
           }
           .decision-tech {
+            font-family: var(--font-display);
             font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px;
             line-height: 1.3;
           }
-          .decision-reason { font-size: 10.5px; line-height: 1.6; color: #475569; }
+          .decision-reason { font-family: var(--font-sans); font-size: 10.5px; line-height: 1.6; color: #475569; }
 
           /* ── Experiments ── */
           .experiments { display: flex; flex-direction: column; gap: 6px; }
@@ -231,10 +246,11 @@ a:"$Sreact.suspense"
             flex-shrink: 0;
           }
           .footer-name {
+            font-family: var(--font-label);
             font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url { font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
-        0:{"buildId":"kEg19CTdjEvnxEOd-MS88","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["KillKong: 콩글리쉬 교정 AI Agent"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+          .footer-url { font-family: var(--font-label); font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
+        0:{"buildId":"WAHq35xFmfIjHVBCtBvBY","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["KillKong: 콩글리쉬 교정 AI Agent"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
 3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","04","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"KillKong: 콩글리쉬 교정 AI Agent"}],["$","div",null,{"className":"hdr-meta","children":[["$","span",null,{"className":"hdr-period","children":"2025.07–08 · 포스코 AI·BigData 아카데미 30기"}],["$","span",null,{"className":"hdr-sep"}],["$","div",null,{"className":"tags","children":[["$","span","Qwen2.5",{"className":"tag","children":"Qwen2.5"}],["$","span","LoRA",{"className":"tag","children":"LoRA"}],["$","span","4-bit 양자화",{"className":"tag","children":"4-bit 양자화"}],["$","span","FAISS",{"className":"tag","children":"FAISS"}],["$","span","BM25",{"className":"tag","children":"BM25"}],["$","span","SQLite",{"className":"tag","children":"SQLite"}],["$","span","LangChain",{"className":"tag","children":"LangChain"}],["$","span","FastAPI",{"className":"tag","children":"FastAPI"}],["$","span","Docker",{"className":"tag","children":"Docker"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","모델 경량화",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"76%"}],["$","div",null,{"className":"kpi-l","children":"모델 경량화"}]]}],["$","div","응답 지연",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"0.47s"}],["$","div",null,{"className":"kpi-l","children":"응답 지연"}]]}],["$","div","모바일 일관성",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"92%+"}],["$","div",null,{"className":"kpi-l","children":"모바일 일관성"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-goal","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"14GB 다국어 LLM을 3GB로 압축해 CPU에서 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현"}]]}],["$","span",null,{"style":{"color":"#E2E8F0","fontSize":16,"alignSelf":"center"},"children":"·"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col","children":[["$","img",null,{"src":"/arch/KillKong.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다."}]]}]]}],["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), CPU 추론 0.3s"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색하는 개인화 메모리"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ 확보; 모델과 DB의 역할 분업이 속도·정확도를 동시에 달성"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","LoRA + 4-bit NF4 + 토큰 Pruning 조합",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"LoRA + 4-bit NF4 + 토큰 Pruning 조합"}],["$","div",null,{"className":"decision-reason","children":"세 기법은 각각 다른 병목을 공략합니다. LoRA는 파라미터 수를 줄이고, NF4 양자화는 가중치 비트폭을 줄이며, 멀티링구얼 토큰 Pruning은 한국어에 불필요한 어휘를 제거해 메모리를 추가로 확보합니다. 어느 하나만 적용하면 목표인 3.0GB에 도달하지 못했고, 세 가지를 조합했을 때 76% 압축과 CPU 0.3s 추론을 동시에 달성했습니다."}]]}],"$L5","$L6"]}]]}]]}],"$L7"]}],"$L8"]}]}]
 4:["$","$L9",null,{"children":["$","$a",null,{"name":"Next.MetadataOutlet","children":"$@b"}]}]
 5:["$","div","전용 FAISS 벡터 DB로 콩글리쉬 지식 분리",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"전용 FAISS 벡터 DB로 콩글리쉬 지식 분리"}],["$","div",null,{"className":"decision-reason","children":"630개 콩글리쉬 패턴을 파인튜닝으로 LLM에 주입하면 용례가 희소해 모델이 일관되게 기억하지 못합니다. RAG로 매번 검색하면 추론 지연이 늘어납니다. 전용 DB에 패턴을 저장하고 LLM은 문법·문맥 판단에만 집중하도록 역할을 분리하자 속도와 정확도 모두 올라갔습니다."}]]}]
