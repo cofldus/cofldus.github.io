@@ -1,0 +1,91 @@
+<svg width="800" height="320" viewBox="0 0 800 320" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="800" height="320" fill="#FAFAFA"/>
+
+  <!-- Stage label band -->
+  <rect x="0" y="0" width="800" height="28" fill="#F1F5F9"/>
+  <text x="56" y="18" font-size="9" font-weight="600" fill="#4fc0d1" text-anchor="middle" letter-spacing="1">입력</text>
+  <text x="210" y="18" font-size="9" font-weight="600" fill="#4fc0d1" text-anchor="middle" letter-spacing="1">전처리</text>
+  <text x="380" y="18" font-size="9" font-weight="600" fill="#4fc0d1" text-anchor="middle" letter-spacing="1">분류</text>
+  <text x="570" y="18" font-size="9" font-weight="600" fill="#4fc0d1" text-anchor="middle" letter-spacing="1">분기 복원</text>
+  <text x="746" y="18" font-size="9" font-weight="600" fill="#4fc0d1" text-anchor="middle" letter-spacing="1">출력</text>
+
+  <!-- Stage dividers -->
+  <line x1="112" y1="0" x2="112" y2="320" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="296" y1="0" x2="296" y2="320" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="464" y1="0" x2="464" y2="320" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="688" y1="0" x2="688" y2="320" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Node 1: 난독화 리뷰 입력 -->
+  <rect x="12" y="118" width="100" height="64" rx="8" fill="#F0FDFF" stroke="#CBD5E1" stroke-width="1"/>
+  <rect x="12" y="118" width="100" height="8" rx="8" fill="#4fc0d1" opacity="0.7"/>
+  <rect x="12" y="122" width="100" height="4" fill="#4fc0d1" opacity="0.7"/>
+  <text x="62" y="148" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">난독화</text>
+  <text x="62" y="163" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">리뷰 입력</text>
+  <text x="62" y="177" font-size="9" fill="#94A3B8" text-anchor="middle">야민정음 / 음운오류</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="112" y1="150" x2="132" y2="150" stroke="#4fc0d1" stroke-width="1.5"/>
+  <polygon points="132,146 140,150 132,154" fill="#4fc0d1"/>
+
+  <!-- Node 2: JAMO 전처리 -->
+  <rect x="140" y="106" width="146" height="88" rx="8" fill="#FFF7ED" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="213" y="136" font-size="12" font-weight="700" fill="#1E293B" text-anchor="middle">JAMO 전처리</text>
+  <text x="213" y="152" font-size="10" fill="#64748B" text-anchor="middle">초·중·종성 분리</text>
+  <text x="213" y="168" font-size="9" fill="#94A3B8" text-anchor="middle">자모 단위 토크나이징</text>
+  <text x="213" y="185" font-size="9" fill="#94A3B8" text-anchor="middle">Unicode 정규화</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="286" y1="150" x2="312" y2="150" stroke="#4fc0d1" stroke-width="1.5"/>
+  <polygon points="312,146 320,150 312,154" fill="#4fc0d1"/>
+
+  <!-- Node 3: KoELECTRA 분류기 -->
+  <rect x="320" y="106" width="136" height="88" rx="8" fill="#F5F3FF" stroke="#CBD5E1" stroke-width="1"/>
+  <rect x="320" y="106" width="136" height="8" rx="8" fill="#4fc0d1" opacity="0.5"/>
+  <rect x="320" y="110" width="136" height="4" fill="#4fc0d1" opacity="0.5"/>
+  <text x="388" y="140" font-size="12" font-weight="700" fill="#1E293B" text-anchor="middle">KoELECTRA</text>
+  <text x="388" y="156" font-size="10" fill="#64748B" text-anchor="middle">분류기</text>
+  <text x="388" y="172" font-size="9" fill="#94A3B8" text-anchor="middle">야민정음 vs 음운오류</text>
+  <text x="388" y="186" font-size="9" fill="#94A3B8" text-anchor="middle">Binary Classifier</text>
+
+  <!-- Fork from classifier -->
+  <line x1="456" y1="150" x2="476" y2="150" stroke="#4fc0d1" stroke-width="1.5"/>
+  <!-- Up branch -->
+  <line x1="476" y1="150" x2="476" y2="98" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="476" y1="98" x2="492" y2="98" stroke="#4fc0d1" stroke-width="1.5"/>
+  <!-- Down branch -->
+  <line x1="476" y1="150" x2="476" y2="202" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="476" y1="202" x2="492" y2="202" stroke="#4fc0d1" stroke-width="1.5"/>
+
+  <!-- Node 4a: 야민정음 KoBART -->
+  <rect x="492" y="62" width="148" height="72" rx="8" fill="#F0FDF4" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="566" y="90" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">야민정음 KoBART</text>
+  <text x="566" y="106" font-size="10" fill="#64748B" text-anchor="middle">야민정음 전용 복원</text>
+  <text x="566" y="122" font-size="9" fill="#94A3B8" text-anchor="middle">Fine-tuned Seq2Seq</text>
+
+  <!-- Node 4b: 음운오류 KoBART -->
+  <rect x="492" y="166" width="148" height="72" rx="8" fill="#FFF7ED" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="566" y="194" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">음운오류 KoBART</text>
+  <text x="566" y="210" font-size="10" fill="#64748B" text-anchor="middle">음운오류 전용 복원</text>
+  <text x="566" y="226" font-size="9" fill="#94A3B8" text-anchor="middle">Fine-tuned Seq2Seq</text>
+
+  <!-- Merge to output -->
+  <line x1="640" y1="98" x2="668" y2="98" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="668" y1="98" x2="668" y2="182" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="640" y1="202" x2="668" y2="202" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="668" y1="202" x2="668" y2="182" stroke="#4fc0d1" stroke-width="1.5"/>
+  <line x1="668" y1="182" x2="696" y2="182" stroke="#4fc0d1" stroke-width="1.5"/>
+  <polygon points="696,178 704,182 696,186" fill="#4fc0d1"/>
+
+  <!-- Node 5: Output -->
+  <rect x="704" y="148" width="82" height="68" rx="8" fill="#F0FDFF" stroke="#4fc0d1" stroke-width="1.5"/>
+  <text x="745" y="174" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">복원된</text>
+  <text x="745" y="189" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">한글 리뷰</text>
+  <text x="745" y="208" font-size="9" fill="#64748B" text-anchor="middle">정상 텍스트</text>
+
+  <!-- Title -->
+  <text x="400" y="278" font-size="13" font-weight="700" fill="#1E293B" text-anchor="middle">난독화된 한글 리뷰 복원 AI</text>
+  <text x="400" y="296" font-size="10" fill="#94A3B8" text-anchor="middle">JAMO 전처리 · KoELECTRA 분류 · KoBART 분기 복원</text>
+
+</svg>
