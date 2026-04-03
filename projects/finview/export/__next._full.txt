@@ -8,90 +8,212 @@ a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be
 c:I[68027,[],"default"]
 :HL["/_next/static/chunks/e01dd1869dfb2b26.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","style"]
-0:{"P":null,"b":"SEN9dzPeGWmx1tjFDRN3F","c":["","projects","finview","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","finview","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
-:HL["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","style"]
-d:T136f,
+0:{"P":null,"b":"INNd9CjuVwb_2BP0A81Tg","c":["","projects","finview","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","finview","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
+:HL["https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","style"]
+d:T1d10,
           * { margin: 0; padding: 0; box-sizing: border-box; }
+          html, body { background: #F4F6F8; }
+
+          /* ─── Print / Page setup ─── */
+          @page {
+            size: A4 landscape;
+            margin: 0;
+          }
+          @media print {
+            html, body { background: #fff; }
+            .page { box-shadow: none !important; }
+          }
+
+          /* ─── Page shell ─── */
           body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: #fff;
             -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 32px;
+            min-height: 100vh;
           }
+
           .page {
-            width: 1400px;
-            padding: 40px 48px;
+            width: 1123px;       /* A4 landscape @ 96dpi */
+            min-height: 794px;
             background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
           }
 
-          /* ── Header ── */
-          .hdr { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 2px solid #E2E8F0; }
-          .hdr-left {}
-          .hdr-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #94A3B8; margin-bottom: 5px; }
-          .hdr-title { font-size: 28px; font-weight: 800; color: #0F172A; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 6px; }
-          .hdr-period { font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.02em; margin-bottom: 10px; }
+          /* ─── Accent bar ─── */
+          .accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #4fc0d1 0%, #a78bfa 100%);
+          }
+
+          /* ─── Header ─── */
+          .hdr {
+            padding: 28px 36px 20px;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+          }
+          .hdr-left { flex: 1; min-width: 0; }
+          .hdr-num {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #94A3B8; margin-bottom: 6px;
+          }
+          .hdr-title {
+            font-size: 26px; font-weight: 800; color: #0F172A;
+            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 7px;
+          }
+          .hdr-period {
+            font-size: 11px; font-weight: 500; color: #64748B;
+            letter-spacing: 0.02em; margin-bottom: 10px;
+          }
           .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-          .tag { font-size: 9px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 3px; padding: 2px 7px; color: #64748B; }
-          .kpis { display: flex; gap: 12px; flex-shrink: 0; margin-left: 32px; }
-          .kpi { text-align: center; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 16px; min-width: 80px; }
-          .kpi-v { font-size: 22px; font-weight: 900; color: #4fc0d1; letter-spacing: -0.04em; line-height: 1; }
-          .kpi-l { font-size: 9px; font-weight: 600; color: #64748B; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+          .tag {
+            font-size: 9px; font-weight: 500; letter-spacing: 0.04em;
+            text-transform: uppercase; background: #F1F5F9;
+            border: 1px solid #E2E8F0; border-radius: 3px;
+            padding: 2px 7px; color: #64748B;
+          }
 
-          /* ── Body grid ── */
-          .body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-          .full { grid-column: 1 / -1; }
+          /* KPIs */
+          .kpis { display: flex; gap: 10px; flex-shrink: 0; }
+          .kpi {
+            text-align: center; border: 1px solid #E2E8F0;
+            border-radius: 8px; padding: 10px 18px; min-width: 76px;
+            background: #FAFCFF;
+          }
+          .kpi-v {
+            font-size: 22px; font-weight: 900; color: #4fc0d1;
+            letter-spacing: -0.04em; line-height: 1;
+          }
+          .kpi-l {
+            font-size: 8.5px; font-weight: 600; color: #94A3B8;
+            letter-spacing: 0.07em; text-transform: uppercase; margin-top: 4px;
+          }
 
-          /* ── Section ── */
-          .sec { }
-          .sec-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4fc0d1; margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid #E2E8F0; }
-
-          /* ── Goal / Role ── */
-          .meta-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+          /* ─── Meta row (goal/role) ─── */
+          .meta-row {
+            padding: 12px 36px;
+            background: #F8FAFC;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex; flex-direction: column; gap: 4px;
+          }
           .meta-item { display: flex; align-items: baseline; gap: 10px; }
-          .meta-key { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4fc0d1; flex-shrink: 0; min-width: 28px; }
-          .meta-key.role { color: #64748B; }
-          .meta-div { width: 1px; height: 10px; background: #E2E8F0; flex-shrink: 0; align-self: center; }
-          .meta-val { font-size: 12px; line-height: 1.6; color: #0F172A; }
+          .meta-key {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #4fc0d1; flex-shrink: 0; min-width: 28px;
+          }
+          .meta-key.role { color: #94A3B8; }
+          .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
+          .meta-val { font-size: 11.5px; line-height: 1.6; color: #0F172A; }
 
-          /* ── Desc ── */
-          .desc { font-size: 12px; line-height: 1.75; color: #334155; margin-bottom: 16px; }
+          /* ─── Body ─── */
+          .body {
+            padding: 20px 36px 24px;
+            display: grid;
+            grid-template-columns: 340px 1fr 1fr;
+            gap: 18px;
+            align-items: start;
+          }
 
-          /* ── Bullets ── */
-          .bullets { display: flex; flex-direction: column; gap: 6px; }
-          .bullet { display: flex; gap: 10px; align-items: flex-start; }
-          .bullet-num { font-size: 9px; font-weight: 800; color: #4fc0d1; flex-shrink: 0; padding-top: 2px; min-width: 16px; }
-          .bullet-text { font-size: 11.5px; line-height: 1.65; color: #334155; }
+          /* Architecture panel */
+          .arch-panel {}
+          .arch-img {
+            width: 100%; height: auto;
+            border: 1px solid #E2E8F0; border-radius: 8px;
+            background: #FAFCFF; padding: 12px;
+          }
 
-          /* ── Decisions ── */
-          .decisions { display: flex; flex-direction: column; gap: 10px; }
-          .decision { padding: 10px 12px; background: #F8FAFC; border-radius: 6px; border-left: 3px solid #4fc0d1; }
-          .decision-tech { font-size: 11.5px; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
-          .decision-reason { font-size: 11px; line-height: 1.6; color: #334155; }
+          /* Sections */
+          .sec-label {
+            font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; color: #4fc0d1;
+            margin-bottom: 8px; padding-bottom: 5px;
+            border-bottom: 1px solid #E2E8F0;
+          }
+          .sec { margin-bottom: 14px; }
 
-          /* ── Experiments ── */
-          .experiments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-          .exp { padding: 10px 12px; border: 1px solid #E2E8F0; border-radius: 6px; }
-          .exp-id { font-size: 9px; font-weight: 800; color: #4fc0d1; letter-spacing: 0.08em; margin-bottom: 5px; }
-          .exp-hypo { font-size: 10.5px; font-weight: 600; color: #0F172A; margin-bottom: 4px; line-height: 1.4; }
-          .exp-result { font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 4px; }
+          /* Desc */
+          .desc { font-size: 11px; line-height: 1.75; color: #475569; }
+
+          /* Bullets */
+          .bullets { display: flex; flex-direction: column; gap: 5px; }
+          .bullet { display: flex; gap: 8px; align-items: flex-start; }
+          .bullet-num {
+            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
+            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+          }
+          .bullet-text { font-size: 11px; line-height: 1.6; color: #334155; }
+
+          /* Decisions */
+          .decisions { display: flex; flex-direction: column; gap: 8px; }
+          .decision {
+            padding: 8px 11px; background: #F8FAFC;
+            border-radius: 5px; border-left: 2.5px solid #4fc0d1;
+          }
+          .decision-tech { font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px; }
+          .decision-reason { font-size: 10.5px; line-height: 1.55; color: #475569; }
+
+          /* Experiments */
+          .experiments { display: flex; flex-direction: column; gap: 6px; }
+          .exp {
+            padding: 8px 10px; border: 1px solid #E2E8F0;
+            border-radius: 5px; background: #fff;
+          }
+          .exp-id {
+            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
+            letter-spacing: 0.08em; margin-bottom: 3px;
+          }
+          .exp-hypo { font-size: 10.5px; font-weight: 600; color: #0F172A; margin-bottom: 3px; line-height: 1.35; }
+          .exp-result { font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 3px; }
           .exp-conc { font-size: 10px; font-weight: 600; color: #4fc0d1; }
 
-          /* ── Troubleshooting ── */
-          .troubles { display: flex; flex-direction: column; gap: 6px; }
-          .trouble { display: flex; gap: 10px; align-items: flex-start; }
-          .trouble-num { font-size: 9px; font-weight: 800; color: #F97316; flex-shrink: 0; padding-top: 2px; min-width: 16px; }
-          .trouble-text { font-size: 11px; line-height: 1.6; color: #334155; }
+          /* Troubles */
+          .troubles { display: flex; flex-direction: column; gap: 5px; }
+          .trouble { display: flex; gap: 8px; align-items: flex-start; }
+          .trouble-num {
+            font-size: 8.5px; font-weight: 800; color: #F97316;
+            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+          }
+          .trouble-text { font-size: 10.5px; line-height: 1.6; color: #475569; }
 
-          /* ── Insight ── */
-          .insight { padding: 14px 18px; border-left: 3px solid #4fc0d1; background: rgba(79,192,209,0.04); border-radius: 0 8px 8px 0; }
-          .insight-text { font-size: 12px; line-height: 1.8; color: #0F172A; }
-        4:["$","html",null,{"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["FinView: 생성형 AI 재무보고서 시스템"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
-e:["$","body",null,{"children":["$","div",null,{"className":"page","id":"export-root","children":[["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-num","children":["PROJECT ","05"]}],["$","div",null,{"className":"hdr-title","children":"FinView: 생성형 AI 재무보고서 시스템"}],["$","div",null,{"className":"hdr-period","children":"2024.09–11 · 성신여자대학교 · 팀장"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4",{"className":"tag","children":"GPT-4"}],["$","span","XGBoost",{"className":"tag","children":"XGBoost"}],["$","span","KMeans",{"className":"tag","children":"KMeans"}],["$","span","SHAP",{"className":"tag","children":"SHAP"}],["$","span","SMOTE",{"className":"tag","children":"SMOTE"}],["$","span","DART API",{"className":"tag","children":"DART API"}],["$","span","Flask",{"className":"tag","children":"Flask"}],["$","span","D3.js",{"className":"tag","children":"D3.js"}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","신용등급 분류",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"91%"}],["$","div",null,{"className":"kpi-l","children":"신용등급 분류"}]]}],["$","div","생성 속도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10배"}],["$","div",null,{"className":"kpi-l","children":"생성 속도"}]]}],["$","div","만족도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"4.4/5"}],["$","div",null,{"className":"kpi-l","children":"만족도"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","p",null,{"className":"meta-val","children":"500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","p",null,{"className":"meta-val","children":"팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"01 · 문제 정의"}],["$","p",null,{"className":"desc","children":"LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다."}],["$","div",null,{"className":"sec-label","style":{"marginTop":12},"children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"01"}],["$","span",null,{"className":"bullet-text","children":"ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"02"}],["$","span",null,{"className":"bullet-text","children":"환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"03"}],["$","span",null,{"className":"bullet-text","children":"리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"02 · 기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","XGBoost 분류 + GPT-4 해설 분리 아키텍처",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"XGBoost 분류 + GPT-4 해설 분리 아키텍처"}],["$","div",null,{"className":"decision-reason","children":"GPT-4에 직접 '이 회사 부채비율이 높나요?'를 물으면 학습 시점 데이터를 기반으로 수치를 지어내거나, 계산 과정에서 오류가 발생합니다. XGBoost가 실시간 DART 재무지표를 처리해 A~D 등급과 리스크 태그를 먼저 결정하고, 그 결과를 GPT-4 프롬프트에 구조화해 넣으면 LLM은 해설만 담당합니다. 수치 연산을 LLM 바깥으로 빼는 것이 환각 차단의 핵심이었습니다."}]]}],["$","div","KMeans 군집화로 비교 컨텍스트 제공",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"KMeans 군집화로 비교 컨텍스트 제공"}],["$","div",null,{"className":"decision-reason","children":"단일 기업의 지표만 보여주면 LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설이 나옵니다. 동종 업종·규모 유사 기업 군집의 평균 패턴을 컨텍스트에 함께 주입하면 GPT-4가 상대적 위치를 명확히 서술할 수 있었습니다. 군집화는 비교 기준을 자동으로 생성해주는 역할을 했습니다."}]]}],["$","div","SMOTE로 클래스 불균형 해결",{"className":"decision","children":["$Lf","$L10"]}]]}]]}],"$L11","$L12","$L13"]}]]}]}]
-f:["$","div",null,{"className":"decision-tech","children":"SMOTE로 클래스 불균형 해결"}]
-10:["$","div",null,{"className":"decision-reason","children":"500개 상장사 중 D등급(부실) 기업은 극히 소수라 학습 데이터가 불균형했습니다. XGBoost는 불균형 데이터에서 다수 클래스 편향이 생기고 소수 클래스 분류 성능이 떨어집니다. SMOTE로 D등급 합성 샘플을 생성했을 때 전체 분류 정확도 91%를 달성했고, 특히 부실 기업 감지율이 크게 올라갔습니다."}]
-11:["$","div",null,{"className":"sec full","children":[["$","div",null,{"className":"sec-label","children":"03 · 실험 로그"}],["$","div",null,{"className":"experiments","children":[["$","div","F1",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F1"}],["$","div",null,{"className":"exp-hypo","children":"GPT가 계산까지 해도 충분하다"}],["$","div",null,{"className":"exp-result","children":"동일 수치도 업종이 바뀌면 해석이 달라지는데 프롬프트만으로 통제 불가, 수치 오독과 비교 오류 다수"}],["$","div",null,{"className":"exp-conc","children":["→ ","계산 모듈과 언어 생성 모듈 분리 필수"]}]]}],["$","div","F2",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F2"}],["$","div",null,{"className":"exp-hypo","children":"업종 평균만 넣으면 된다"}],["$","div",null,{"className":"exp-result","children":"분위수·규모 차이 누락; 동일 부채비율이라도 스타트업과 대기업의 맥락이 달라 단순 비교 불가"}],["$","div",null,{"className":"exp-conc","children":["→ ","기준선 다층화 필요 (절사평균 + 분위수 + 규모별 비교군)"]}]]}],["$","div","F3",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F3"}],["$","div",null,{"className":"exp-hypo","children":"뉴스 원문을 많이 넣을수록 좋다"}],["$","div",null,{"className":"exp-result","children":"중요도 없는 기사까지 일반화, GPT가 기사 몇 건의 분위기를 과대해석"}],["$","div",null,{"className":"exp-conc","children":["→ ","위험 키워드/긍정 이벤트/불확실 이슈로 구조화된 중간 산출물 필요"]}]]}],["$","div","F4",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F4"}],["$","div",null,{"className":"exp-hypo","children":"XGBoost 등급만으로 충분하다"}],["$","div",null,{"className":"exp-result","children":"비슷한 기업과의 비교 부재, LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설 생성"}],["$","div",null,{"className":"exp-conc","children":["→ ","KMeans 군집화로 비교 컨텍스트 자동 제공"]}]]}],["$","div","F5",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F5"}],["$","div",null,{"className":"exp-hypo","children":"빠른 리포트가 사용자 만족에 중요하다"}],["$","div",null,{"className":"exp-result","children":"캐싱·비동기 처리 적용으로 30초 내 생성 안정화"}],["$","div",null,{"className":"exp-conc","children":["→ ","시스템 UX는 모델만큼 중요"]}]]}]]}]]}]
-12:["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"04 · 현장 이슈"}],["$","div",null,{"className":"troubles","children":[["$","div","0",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"01"}],["$","span",null,{"className":"trouble-text","children":"DART API 필드 누락과 회계 기준 차이 때문에 일부 기업은 비율 계산 자체가 실패했다. 결측값 보정과 기업별 스킵 규칙을 추가해 파이프라인 전체 중단을 막았다."}]]}],["$","div","1",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"02"}],["$","span",null,{"className":"trouble-text","children":"뉴스 크롤링에서 같은 이슈가 여러 기사로 중복되는 문제가 있어, 제목·본문 유사도 기반 중복 제거를 넣지 않으면 리스크가 과장되었다."}]]}],["$","div","2",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"03"}],["$","span",null,{"className":"trouble-text","children":"XGBoost 분류 결과가 그럴듯해도 GPT가 이를 지나치게 단정적으로 표현하는 경우가 있어, '추정', '시사', '가능성' 같은 hedge 표현 규칙을 프롬프트에 추가했다."}]]}],["$","div","3",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"04"}],["$","span",null,{"className":"trouble-text","children":"대시보드에서 숫자와 서술이 엇갈리면 신뢰도가 급격히 떨어져, 최종 표시 전 structured payload checksum 검증을 넣었다."}]]}]]}]]}]
-13:["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"05 · 배운 점"}],["$","div",null,{"className":"insight","children":["$","p",null,{"className":"insight-text","children":"LLM에게 숫자를 주고 분석하게 두면 설득력 있는 문장이 나온다. 문제는 그 문장이 틀렸을 때 검증할 방법이 없다는 것이었다. XGBoost 등급, KMeans 군집 평균, 리스크 태그를 비LLM 단계에서 먼저 계산하고, 그 결과를 구조화된 컨텍스트로 GPT에 주입하면 모델은 해설만 담당하게 된다. 수치 연산을 LLM 바깥으로 완전히 빼는 것이 환각을 80% 줄인 결정적 요인이었다. 뉴스 원문을 많이 넣는 것도 처음엔 좋아 보였지만, 중요도 없는 기사까지 포함하면 GPT가 분위기를 과대해석해 오히려 신뢰를 해쳤다. 위험 키워드·긍정 이벤트·불확실 이슈로 사전 분류된 구조적 요약만 넣는 것이 원문 전체보다 나았다. LLM 시스템 설계에서 핵심은 모델 자체가 아니라 모델 앞단의 중간 표현 설계다. 컨텍스트를 잘 설계할수록 LLM이 잘하는 일과 못하는 일이 명확해진다."}]}]]}]
+          /* Insight */
+          .insight {
+            padding: 11px 14px;
+            border-left: 3px solid #4fc0d1;
+            background: rgba(79,192,209,0.04);
+            border-radius: 0 6px 6px 0;
+          }
+          .insight-text { font-size: 11px; line-height: 1.8; color: #0F172A; }
+
+          /* ─── Footer ─── */
+          .footer {
+            padding: 10px 36px;
+            border-top: 1px solid #E2E8F0;
+            display: flex; align-items: center; justify-content: space-between;
+            background: #F8FAFC;
+          }
+          .footer-name {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+            color: #94A3B8;
+          }
+          .footer-url {
+            font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em;
+          }
+        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["FinView: 생성형 AI 재무보고서 시스템"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
+:HL["/arch/FinView.svg","image"]
+e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-num","children":["PROJECT ","05","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"FinView: 생성형 AI 재무보고서 시스템"}],["$","div",null,{"className":"hdr-period","children":"2024.09–11 · 성신여자대학교 · 팀장"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4",{"className":"tag","children":"GPT-4"}],["$","span","XGBoost",{"className":"tag","children":"XGBoost"}],["$","span","KMeans",{"className":"tag","children":"KMeans"}],["$","span","SHAP",{"className":"tag","children":"SHAP"}],["$","span","SMOTE",{"className":"tag","children":"SMOTE"}],["$","span","DART API",{"className":"tag","children":"DART API"}],["$","span","Flask",{"className":"tag","children":"Flask"}],["$","span","D3.js",{"className":"tag","children":"D3.js"}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","신용등급 분류",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"91%"}],["$","div",null,{"className":"kpi-l","children":"신용등급 분류"}]]}],["$","div","생성 속도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10배"}],["$","div",null,{"className":"kpi-l","children":"생성 속도"}]]}],["$","div","만족도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"4.4/5"}],["$","div",null,{"className":"kpi-l","children":"만족도"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"arch-panel","children":[["$","div",null,{"className":"sec-label","children":"아키텍처"}],["$","img",null,{"src":"/arch/FinView.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","style":{"marginTop":14},"children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다."}]]}]]}],["$","div",null,{"children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"01"}],["$","span",null,{"className":"bullet-text","children":"ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"02"}],["$","span",null,{"className":"bullet-text","children":"환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"03"}],["$","span",null,{"className":"bullet-text","children":"리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","XGBoost 분류 + GPT-4 해설 분리 아키텍처",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"XGBoost 분류 + GPT-4 해설 분리 아키텍처"}],["$","div",null,{"className":"decision-reason","children":"GPT-4에 직접 '이 회사 부채비율이 높나요?'를 물으면 학습 시점 데이터를 기반으로 수치를 지어내거나, 계산 과정에서 오류가 발생합니다. XGBoost가 실시간 DART 재무지표를 처리해 A~D 등급과 리스크 태그를 먼저 결정하고, 그 결과를 GPT-4 프롬프트에 구조화해 넣으면 LLM은 해설만 담당합니다. 수치 연산을 LLM 바깥으로 빼는 것이 환각 차단의 핵심이었습니다."}]]}],["$","div","KMeans 군집화로 비교 컨텍스트 제공",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"KMeans 군집화로 비교 컨텍스트 제공"}],["$","div",null,{"className":"decision-reason","children":"단일 기업의 지표만 보여주면 LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설이 나옵니다. 동종 업종·규모 유사 기업 군집의 평균 패턴을 컨텍스트에 함께 주입하면 GPT-4가 상대적 위치를 명확히 서술할 수 있었습니다. 군집화는 비교 기준을 자동으로 생성해주는 역할을 했습니다."}]]}],"$Lf"]}]]}],false]}],"$L10"]}],"$L11"]}]}]
+f:["$","div","SMOTE로 클래스 불균형 해결",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"SMOTE로 클래스 불균형 해결"}],["$","div",null,{"className":"decision-reason","children":"500개 상장사 중 D등급(부실) 기업은 극히 소수라 학습 데이터가 불균형했습니다. XGBoost는 불균형 데이터에서 다수 클래스 편향이 생기고 소수 클래스 분류 성능이 떨어집니다. SMOTE로 D등급 합성 샘플을 생성했을 때 전체 분류 정확도 91%를 달성했고, 특히 부실 기업 감지율이 크게 올라갔습니다."}]]}]
+10:["$","div",null,{"children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"실험 로그"}],["$","div",null,{"className":"experiments","children":[["$","div","F1",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F1"}],["$","div",null,{"className":"exp-hypo","children":"GPT가 계산까지 해도 충분하다"}],["$","div",null,{"className":"exp-result","children":"동일 수치도 업종이 바뀌면 해석이 달라지는데 프롬프트만으로 통제 불가, 수치 오독과 비교 오류 다수"}],["$","div",null,{"className":"exp-conc","children":["→ ","계산 모듈과 언어 생성 모듈 분리 필수"]}]]}],["$","div","F2",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F2"}],["$","div",null,{"className":"exp-hypo","children":"업종 평균만 넣으면 된다"}],["$","div",null,{"className":"exp-result","children":"분위수·규모 차이 누락; 동일 부채비율이라도 스타트업과 대기업의 맥락이 달라 단순 비교 불가"}],["$","div",null,{"className":"exp-conc","children":["→ ","기준선 다층화 필요 (절사평균 + 분위수 + 규모별 비교군)"]}]]}],["$","div","F3",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F3"}],["$","div",null,{"className":"exp-hypo","children":"뉴스 원문을 많이 넣을수록 좋다"}],["$","div",null,{"className":"exp-result","children":"중요도 없는 기사까지 일반화, GPT가 기사 몇 건의 분위기를 과대해석"}],["$","div",null,{"className":"exp-conc","children":["→ ","위험 키워드/긍정 이벤트/불확실 이슈로 구조화된 중간 산출물 필요"]}]]}],["$","div","F4",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F4"}],["$","div",null,{"className":"exp-hypo","children":"XGBoost 등급만으로 충분하다"}],["$","div",null,{"className":"exp-result","children":"비슷한 기업과의 비교 부재, LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설 생성"}],["$","div",null,{"className":"exp-conc","children":["→ ","KMeans 군집화로 비교 컨텍스트 자동 제공"]}]]}],["$","div","F5",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"F5"}],["$","div",null,{"className":"exp-hypo","children":"빠른 리포트가 사용자 만족에 중요하다"}],["$","div",null,{"className":"exp-result","children":"캐싱·비동기 처리 적용으로 30초 내 생성 안정화"}],["$","div",null,{"className":"exp-conc","children":["→ ","시스템 UX는 모델만큼 중요"]}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"현장 이슈"}],["$","div",null,{"className":"troubles","children":[["$","div","0",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"01"}],["$","span",null,{"className":"trouble-text","children":"DART API 필드 누락과 회계 기준 차이 때문에 일부 기업은 비율 계산 자체가 실패했다. 결측값 보정과 기업별 스킵 규칙을 추가해 파이프라인 전체 중단을 막았다."}]]}],["$","div","1",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"02"}],["$","span",null,{"className":"trouble-text","children":"뉴스 크롤링에서 같은 이슈가 여러 기사로 중복되는 문제가 있어, 제목·본문 유사도 기반 중복 제거를 넣지 않으면 리스크가 과장되었다."}]]}],["$","div","2",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"03"}],["$","span",null,{"className":"trouble-text","children":"XGBoost 분류 결과가 그럴듯해도 GPT가 이를 지나치게 단정적으로 표현하는 경우가 있어, '추정', '시사', '가능성' 같은 hedge 표현 규칙을 프롬프트에 추가했다."}]]}],["$","div","3",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"04"}],["$","span",null,{"className":"trouble-text","children":"대시보드에서 숫자와 서술이 엇갈리면 신뢰도가 급격히 떨어져, 최종 표시 전 structured payload checksum 검증을 넣었다."}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"배운 점"}],["$","div",null,{"className":"insight","children":["$","p",null,{"className":"insight-text","children":"LLM에게 숫자를 주고 분석하게 두면 설득력 있는 문장이 나온다. 문제는 그 문장이 틀렸을 때 검증할 방법이 없다는 것이었다. XGBoost 등급, KMeans 군집 평균, 리스크 태그를 비LLM 단계에서 먼저 계산하고, 그 결과를 구조화된 컨텍스트로 GPT에 주입하면 모델은 해설만 담당하게 된다. 수치 연산을 LLM 바깥으로 완전히 빼는 것이 환각을 80% 줄인 결정적 요인이었다. 뉴스 원문을 많이 넣는 것도 처음엔 좋아 보였지만, 중요도 없는 기사까지 포함하면 GPT가 분위기를 과대해석해 오히려 신뢰를 해쳤다. 위험 키워드·긍정 이벤트·불확실 이슈로 사전 분류된 구조적 요약만 넣는 것이 원문 전체보다 나았다. LLM 시스템 설계에서 핵심은 모델 자체가 아니라 모델 앞단의 중간 표현 설계다. 컨텍스트를 잘 설계할수록 LLM이 잘하는 일과 못하는 일이 명확해진다."}]}]]}]]}]
+11:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","finview"]}]]}]
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-14:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
+12:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
 7:null
-b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]
+b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L12","3",{}]]
