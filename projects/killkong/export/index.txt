@@ -8,214 +8,247 @@ a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be
 c:I[68027,[],"default"]
 :HL["/_next/static/chunks/e01dd1869dfb2b26.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","style"]
-0:{"P":null,"b":"VwwIewO7Kf1_Djj_Ci9AT","c":["","projects","killkong","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","killkong","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
-:HL["https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","style"]
-d:T1d10,
+0:{"P":null,"b":"kEg19CTdjEvnxEOd-MS88","c":["","projects","killkong","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","killkong","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
+:HL["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","style"]
+d:T2290,
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { background: #F4F6F8; }
+          html, body { background: #EAECF0; }
 
-          /* ─── Print / Page setup ─── */
-          @page {
-            size: A4 landscape;
-            margin: 0;
-          }
+          @page { size: A4 landscape; margin: 0; }
           @media print {
             html, body { background: #fff; }
-            .page { box-shadow: none !important; }
+            .page { box-shadow: none !important; border-radius: 0 !important; }
           }
 
-          /* ─── Page shell ─── */
           body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 32px;
+            padding: 28px;
             min-height: 100vh;
           }
 
+          /* ── Page shell ── */
           .page {
-            width: 1123px;       /* A4 landscape @ 96dpi */
+            width: 1123px;
             min-height: 794px;
+            height: 794px;
             background: #fff;
-            border-radius: 4px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            border-radius: 6px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.14);
             overflow: hidden;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
+            display: flex;
+            flex-direction: column;
           }
 
-          /* ─── Accent bar ─── */
+          /* ── Accent bar ── */
           .accent-bar {
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, #4fc0d1 0%, #a78bfa 100%);
+            flex-shrink: 0;
           }
 
-          /* ─── Header ─── */
+          /* ── Header ── */
           .hdr {
-            padding: 28px 36px 20px;
-            border-bottom: 1px solid #E2E8F0;
+            padding: 22px 32px 16px;
+            border-bottom: 1px solid #E8ECF0;
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            gap: 24px;
+            gap: 20px;
+            flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
-          .hdr-num {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #94A3B8; margin-bottom: 6px;
+          .hdr-eyebrow {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
           }
           .hdr-title {
-            font-size: 26px; font-weight: 800; color: #0F172A;
-            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 7px;
+            font-size: 22px; font-weight: 800; color: #0F172A;
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
+          }
+          .hdr-meta {
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
           }
           .hdr-period {
-            font-size: 11px; font-weight: 500; color: #64748B;
-            letter-spacing: 0.02em; margin-bottom: 10px;
+            font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.01em;
           }
-          .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+          .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
+          .tags { display: flex; flex-wrap: wrap; gap: 3px; }
           .tag {
-            font-size: 9px; font-weight: 500; letter-spacing: 0.04em;
+            font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em;
             text-transform: uppercase; background: #F1F5F9;
-            border: 1px solid #E2E8F0; border-radius: 3px;
-            padding: 2px 7px; color: #64748B;
+            border: 1px solid #DDE3EB; border-radius: 3px;
+            padding: 2px 6px; color: #64748B;
           }
 
           /* KPIs */
-          .kpis { display: flex; gap: 10px; flex-shrink: 0; }
+          .kpis { display: flex; gap: 8px; flex-shrink: 0; align-items: flex-start; }
           .kpi {
             text-align: center; border: 1px solid #E2E8F0;
-            border-radius: 8px; padding: 10px 18px; min-width: 76px;
-            background: #FAFCFF;
+            border-radius: 8px; padding: 9px 16px; min-width: 72px;
+            background: #F8FBFF;
           }
           .kpi-v {
-            font-size: 22px; font-weight: 900; color: #4fc0d1;
+            font-size: 20px; font-weight: 900; color: #4fc0d1;
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
-            font-size: 8.5px; font-weight: 600; color: #94A3B8;
-            letter-spacing: 0.07em; text-transform: uppercase; margin-top: 4px;
+            font-size: 8px; font-weight: 600; color: #94A3B8;
+            letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ─── Meta row (goal/role) ─── */
+          /* ── Goal/Role strip ── */
           .meta-row {
-            padding: 12px 36px;
+            padding: 9px 32px;
             background: #F8FAFC;
-            border-bottom: 1px solid #E2E8F0;
-            display: flex; flex-direction: column; gap: 4px;
+            border-bottom: 1px solid #E8ECF0;
+            display: flex; gap: 20px; align-items: baseline;
+            flex-shrink: 0;
           }
-          .meta-item { display: flex; align-items: baseline; gap: 10px; }
+          .meta-item { display: flex; align-items: baseline; gap: 8px; }
           .meta-key {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #4fc0d1; flex-shrink: 0; min-width: 28px;
-          }
-          .meta-key.role { color: #94A3B8; }
-          .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-          .meta-val { font-size: 11.5px; line-height: 1.6; color: #0F172A; }
-
-          /* ─── Body ─── */
-          .body {
-            padding: 20px 36px 24px;
-            display: grid;
-            grid-template-columns: 340px 1fr 1fr;
-            gap: 18px;
-            align-items: start;
-          }
-
-          /* Architecture panel */
-          .arch-panel {}
-          .arch-img {
-            width: 100%; height: auto;
-            border: 1px solid #E2E8F0; border-radius: 8px;
-            background: #FAFCFF; padding: 12px;
-          }
-
-          /* Sections */
-          .sec-label {
             font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; flex-shrink: 0;
+          }
+          .meta-key-goal { color: #4fc0d1; }
+          .meta-key-role { color: #94A3B8; }
+          .meta-div { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
+          .meta-val { font-size: 11.5px; line-height: 1.5; color: #1E293B; font-weight: 400; }
+
+          /* ── Body: always 3 cols ── */
+          .body {
+            flex: 1;
+            padding: 18px 32px 16px;
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+            overflow: hidden;
+            min-height: 0;
+          }
+
+          /* Col dividers */
+          .col { min-width: 0; }
+          .col + .col { border-left: 1px solid #F1F5F9; padding-left: 20px; }
+
+          /* ── Section label ── */
+          .sec-label {
+            font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
             text-transform: uppercase; color: #4fc0d1;
-            margin-bottom: 8px; padding-bottom: 5px;
-            border-bottom: 1px solid #E2E8F0;
+            margin-bottom: 9px; padding-bottom: 6px;
+            border-bottom: 1.5px solid #E8ECF0;
+            display: flex; align-items: center; gap: 6px;
           }
-          .sec { margin-bottom: 14px; }
+          .sec-label::before {
+            content: '';
+            display: inline-block;
+            width: 3px; height: 9px;
+            background: #4fc0d1;
+            border-radius: 2px;
+          }
+          .sec { margin-bottom: 16px; }
+          .sec:last-child { margin-bottom: 0; }
 
-          /* Desc */
-          .desc { font-size: 11px; line-height: 1.75; color: #475569; }
+          /* ── Arch image ── */
+          .arch-img {
+            width: 100%; height: auto; max-height: 220px;
+            object-fit: contain;
+            border: 1px solid #E8ECF0; border-radius: 6px;
+            background: #FAFCFF; padding: 8px;
+            margin-bottom: 14px;
+            display: block;
+          }
 
-          /* Bullets */
-          .bullets { display: flex; flex-direction: column; gap: 5px; }
-          .bullet { display: flex; gap: 8px; align-items: flex-start; }
+          /* ── Desc ── */
+          .desc {
+            font-size: 11.5px; line-height: 1.75; color: #475569;
+            word-break: keep-all;
+          }
+
+          /* ── Bullets ── */
+          .bullets { display: flex; flex-direction: column; gap: 7px; }
+          .bullet { display: flex; gap: 9px; align-items: flex-start; }
           .bullet-num {
-            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
-            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+            font-size: 8px; font-weight: 800; color: #fff;
+            background: #4fc0d1;
+            flex-shrink: 0;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+            letter-spacing: 0;
           }
-          .bullet-text { font-size: 11px; line-height: 1.6; color: #334155; }
+          .bullet-text { font-size: 11.5px; line-height: 1.65; color: #1E293B; }
 
-          /* Decisions */
-          .decisions { display: flex; flex-direction: column; gap: 8px; }
+          /* ── Decisions ── */
+          .decisions { display: flex; flex-direction: column; gap: 7px; }
           .decision {
-            padding: 8px 11px; background: #F8FAFC;
-            border-radius: 5px; border-left: 2.5px solid #4fc0d1;
+            padding: 9px 12px; background: #F8FAFC;
+            border-radius: 6px; border-left: 3px solid #4fc0d1;
           }
-          .decision-tech { font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px; }
-          .decision-reason { font-size: 10.5px; line-height: 1.55; color: #475569; }
+          .decision-tech {
+            font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px;
+            line-height: 1.3;
+          }
+          .decision-reason { font-size: 10.5px; line-height: 1.6; color: #475569; }
 
-          /* Experiments */
+          /* ── Experiments ── */
           .experiments { display: flex; flex-direction: column; gap: 6px; }
           .exp {
-            padding: 8px 10px; border: 1px solid #E2E8F0;
-            border-radius: 5px; background: #fff;
+            padding: 8px 10px; border: 1px solid #E8ECF0;
+            border-radius: 6px; background: #FAFCFF;
           }
+          .exp-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
           .exp-id {
-            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
-            letter-spacing: 0.08em; margin-bottom: 3px;
+            font-size: 7.5px; font-weight: 800; color: #fff;
+            background: #4fc0d1; border-radius: 3px;
+            padding: 1px 5px; letter-spacing: 0.06em; flex-shrink: 0;
           }
-          .exp-hypo { font-size: 10.5px; font-weight: 600; color: #0F172A; margin-bottom: 3px; line-height: 1.35; }
-          .exp-result { font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 3px; }
-          .exp-conc { font-size: 10px; font-weight: 600; color: #4fc0d1; }
+          .exp-hypo { font-size: 11px; font-weight: 600; color: #0F172A; line-height: 1.4; }
+          .exp-result { font-size: 10.5px; color: #64748B; line-height: 1.55; margin-bottom: 3px; }
+          .exp-conc { font-size: 10.5px; font-weight: 600; color: #4fc0d1; line-height: 1.4; }
 
-          /* Troubles */
+          /* ── Troubleshooting ── */
           .troubles { display: flex; flex-direction: column; gap: 5px; }
           .trouble { display: flex; gap: 8px; align-items: flex-start; }
-          .trouble-num {
-            font-size: 8.5px; font-weight: 800; color: #F97316;
-            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+          .trouble-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: #F97316; flex-shrink: 0; margin-top: 5px;
           }
-          .trouble-text { font-size: 10.5px; line-height: 1.6; color: #475569; }
+          .trouble-text { font-size: 11px; line-height: 1.65; color: #475569; }
 
-          /* Insight */
+          /* ── Insight ── */
           .insight {
-            padding: 11px 14px;
+            padding: 10px 13px;
             border-left: 3px solid #4fc0d1;
-            background: rgba(79,192,209,0.04);
+            background: rgba(79,192,209,0.05);
             border-radius: 0 6px 6px 0;
           }
-          .insight-text { font-size: 11px; line-height: 1.8; color: #0F172A; }
+          .insight-text { font-size: 11.5px; line-height: 1.75; color: #1E293B; }
 
-          /* ─── Footer ─── */
+          /* ── Footer ── */
           .footer {
-            padding: 10px 36px;
-            border-top: 1px solid #E2E8F0;
+            padding: 9px 32px;
+            border-top: 1px solid #E8ECF0;
             display: flex; align-items: center; justify-content: space-between;
             background: #F8FAFC;
+            flex-shrink: 0;
           }
           .footer-name {
-            font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
-            color: #94A3B8;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url {
-            font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em;
-          }
-        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["KillKong: 콩글리쉬 교정 AI Agent"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
+          .footer-url { font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
+        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["KillKong: 콩글리쉬 교정 AI Agent"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
 :HL["/arch/KillKong.svg","image"]
-e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-num","children":["PROJECT ","04","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"KillKong: 콩글리쉬 교정 AI Agent"}],["$","div",null,{"className":"hdr-period","children":"2025.07–08 · 포스코 AI·BigData 아카데미 30기"}],["$","div",null,{"className":"tags","children":[["$","span","Qwen2.5",{"className":"tag","children":"Qwen2.5"}],["$","span","LoRA",{"className":"tag","children":"LoRA"}],["$","span","4-bit 양자화",{"className":"tag","children":"4-bit 양자화"}],["$","span","FAISS",{"className":"tag","children":"FAISS"}],["$","span","BM25",{"className":"tag","children":"BM25"}],["$","span","SQLite",{"className":"tag","children":"SQLite"}],["$","span","LangChain",{"className":"tag","children":"LangChain"}],["$","span","FastAPI",{"className":"tag","children":"FastAPI"}],["$","span","Docker",{"className":"tag","children":"Docker"}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","모델 경량화",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"76%"}],["$","div",null,{"className":"kpi-l","children":"모델 경량화"}]]}],["$","div","응답 지연",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"0.47s"}],["$","div",null,{"className":"kpi-l","children":"응답 지연"}]]}],["$","div","모바일 일관성",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"92%+"}],["$","div",null,{"className":"kpi-l","children":"모바일 일관성"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"14GB 다국어 LLM을 3GB로 압축해 CPU에서 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"arch-panel","children":[["$","div",null,{"className":"sec-label","children":"아키텍처"}],["$","img",null,{"src":"/arch/KillKong.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","style":{"marginTop":14},"children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다."}]]}]]}],["$","div",null,{"children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"01"}],["$","span",null,{"className":"bullet-text","children":"모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), CPU 추론 0.3s"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"02"}],["$","span",null,{"className":"bullet-text","children":"지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색하는 개인화 메모리"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"03"}],["$","span",null,{"className":"bullet-text","children":"응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ 확보; 모델과 DB의 역할 분업이 속도·정확도를 동시에 달성"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","LoRA + 4-bit NF4 + 토큰 Pruning 조합",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"LoRA + 4-bit NF4 + 토큰 Pruning 조합"}],["$","div",null,{"className":"decision-reason","children":"세 기법은 각각 다른 병목을 공략합니다. LoRA는 파라미터 수를 줄이고, NF4 양자화는 가중치 비트폭을 줄이며, 멀티링구얼 토큰 Pruning은 한국어에 불필요한 어휘를 제거해 메모리를 추가로 확보합니다. 어느 하나만 적용하면 목표인 3.0GB에 도달하지 못했고, 세 가지를 조합했을 때 76% 압축과 CPU 0.3s 추론을 동시에 달성했습니다."}]]}],["$","div","전용 FAISS 벡터 DB로 콩글리쉬 지식 분리",{"className":"decision","children":["$Lf","$L10"]}],"$L11"]}]]}],false]}],"$L12"]}],"$L13"]}]}]
-f:["$","div",null,{"className":"decision-tech","children":"전용 FAISS 벡터 DB로 콩글리쉬 지식 분리"}]
-10:["$","div",null,{"className":"decision-reason","children":"630개 콩글리쉬 패턴을 파인튜닝으로 LLM에 주입하면 용례가 희소해 모델이 일관되게 기억하지 못합니다. RAG로 매번 검색하면 추론 지연이 늘어납니다. 전용 DB에 패턴을 저장하고 LLM은 문법·문맥 판단에만 집중하도록 역할을 분리하자 속도와 정확도 모두 올라갔습니다."}]
-11:["$","div","SQLite LRU 캐시 레이어 추가",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"SQLite LRU 캐시 레이어 추가"}],["$","div",null,{"className":"decision-reason","children":"FAISS 검색은 빠르지만 모바일 환경에서 동일 패턴이 반복 조회될 때 매번 벡터 연산을 실행하는 것은 낭비입니다. SQLite에 최근 조회 결과를 LRU 방식으로 캐싱하면 히트율 높은 패턴은 0.001s 이하로 처리됩니다. 이 레이어가 평균 응답 지연을 추가로 35% 단축했습니다."}]]}]
-12:["$","div",null,{"children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"실험 로그"}],["$","div",null,{"className":"experiments","children":[["$","div","E1",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"E1"}],["$","div",null,{"className":"exp-hypo","children":"Flan-T5면 충분할 수 있다"}],["$","div",null,{"className":"exp-result","children":"정답 교정은 가능하나 설명이 단조롭고 한국어·영어 혼합 표현에서 과보수적"}],["$","div",null,{"className":"exp-conc","children":["→ ","태스크 재정의 후 베이스 재검토"]}]]}],["$","div","E2",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"E2"}],["$","div",null,{"className":"exp-hypo","children":"Qwen은 회화 자연화에 유리하다"}],["$","div",null,{"className":"exp-result","children":"대안 표현 다양성과 맥락 확장 우수"}],["$","div",null,{"className":"exp-conc","children":["→ ","Qwen 채택, 단 경량화 연구가 따라붙는 결정"]}]]}],["$","div","E3",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"E3"}],["$","div",null,{"className":"exp-hypo","children":"LoRA rank를 높이면 설명 품질이 오른다"}],["$","div",null,{"className":"exp-result","children":"rank 16에서 비용 대비 이득 최대, rank 8은 설명 다양성 감소"}],["$","div",null,{"className":"exp-conc","children":["→ ","LoRA rank=16, alpha=32 채택"]}]]}],["$","div","E4",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"E4"}],["$","div",null,{"className":"exp-hypo","children":"4-bit NF4 양자화만으로 충분하다"}],["$","div",null,{"className":"exp-result","children":"모델 크기 급감, 일부 희귀 표현 설명 품질 저하"}],["$","div",null,{"className":"exp-conc","children":["→ ","일부 레이어 8bit 유지 + pruning으로 품질 손실 완화"]}]]}],["$","div","E5",{"className":"exp","children":[["$","div",null,{"className":"exp-id","children":"E5"}],["$","div",null,{"className":"exp-hypo","children":"병목은 모델 추론이다"}],["$","div",null,{"className":"exp-result","children":"cProfile 결과 FAISS 검색 0.21s, SQLite 조회 0.12s가 LLM 추론보다 컸다"}],["$","div",null,{"className":"exp-conc","children":["→ ","FAISS IVF 재구성 + SQLite 인덱스 + LRU 캐시로 검색 병목 우선 해소"]}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"현장 이슈"}],["$","div",null,{"className":"troubles","children":[["$","div","0",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"01"}],["$","span",null,{"className":"trouble-text","children":"양자화 강도를 높이면 교정문은 유지되어도 설명 문장의 문법 메타언어가 흔들렸다. 학습자 서비스에서 이 부분이 체감 품질을 크게 해쳤다. lm head와 일부 attention 경로를 보수적으로 유지했다."}]]}],["$","div","1",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"02"}],["$","span",null,{"className":"trouble-text","children":"RAG에서 너무 비슷한 예문만 주면 모델이 패턴을 복사해 사용자 문장을 과수정하는 현상이 있었다. 검색 다양성 제약을 추가했다."}]]}],["$","div","2",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"03"}],["$","span",null,{"className":"trouble-text","children":"개인화 메모리가 강하게 개입하면 이전 오류 유형이 현재 문장에도 과도하게 적용되는 메모리 오염 문제가 있었다. 세션 감쇠 규칙을 추가해 완화했다."}]]}],["$","div","3",{"className":"trouble","children":[["$","span",null,{"className":"trouble-num","children":"04"}],["$","span",null,{"className":"trouble-text","children":"UiPath에서 Python을 직접 호출하는 방식은 라이브러리 경로·버전 차이로 잦은 실패를 일으켰다. FAISS HNSW → IVF 구조로 변경 후 유사 예문 검색 0.21s → 0.07s로 단축됐다."}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"배운 점"}],["$","div",null,{"className":"insight","children":["$","p",null,{"className":"insight-text","children":"온디바이스 LLM 프로젝트에서 가장 큰 착각은 '모델이 병목'이라는 전제였다. cProfile로 실측해보니 FAISS 검색 0.21s, SQLite 조회 0.12s가 LLM 추론 시간보다 훨씬 컸다. 직관과 반대 방향으로 최적화를 시작했던 것이다. 두 번째 배움은 '지식'과 '언어 생성'의 책임 분리다. 630개 콩글리쉬 패턴을 파인튜닝으로 모델에 주입하면 희소 패턴은 필연적으로 망각된다. 모델이 언어·문맥 판단에만 집중하고 지식은 별도 벡터 DB가 관리하는 구조가, 두 책임을 하나의 모델에 합치는 것보다 훨씬 안정적이었다. 경량화는 단일 기법으로 목표에 도달하지 못했다. LoRA, NF4, 토큰 Pruning이 각각 다른 병목(파라미터 수, 비트폭, 어휘 크기)을 공략하기 때문에, 세 기법의 조합이 필요했다. '무엇이 병목인지 실제로 측정한 뒤 최적화하는 것'이 이 프로젝트 전체를 관통하는 교훈이었다."}]}]]}]]}]
-13:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","killkong"]}]]}]
+e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","04","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"KillKong: 콩글리쉬 교정 AI Agent"}],["$","div",null,{"className":"hdr-meta","children":[["$","span",null,{"className":"hdr-period","children":"2025.07–08 · 포스코 AI·BigData 아카데미 30기"}],["$","span",null,{"className":"hdr-sep"}],["$","div",null,{"className":"tags","children":[["$","span","Qwen2.5",{"className":"tag","children":"Qwen2.5"}],["$","span","LoRA",{"className":"tag","children":"LoRA"}],["$","span","4-bit 양자화",{"className":"tag","children":"4-bit 양자화"}],["$","span","FAISS",{"className":"tag","children":"FAISS"}],["$","span","BM25",{"className":"tag","children":"BM25"}],["$","span","SQLite",{"className":"tag","children":"SQLite"}],["$","span","LangChain",{"className":"tag","children":"LangChain"}],["$","span","FastAPI",{"className":"tag","children":"FastAPI"}],["$","span","Docker",{"className":"tag","children":"Docker"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","모델 경량화",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"76%"}],["$","div",null,{"className":"kpi-l","children":"모델 경량화"}]]}],["$","div","응답 지연",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"0.47s"}],["$","div",null,{"className":"kpi-l","children":"응답 지연"}]]}],["$","div","모바일 일관성",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"92%+"}],["$","div",null,{"className":"kpi-l","children":"모바일 일관성"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-goal","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"14GB 다국어 LLM을 3GB로 압축해 CPU에서 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현"}]]}],["$","span",null,{"style":{"color":"#E2E8F0","fontSize":16,"alignSelf":"center"},"children":"·"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col","children":[["$","img",null,{"src":"/arch/KillKong.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다."}]]}]]}],["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), CPU 추론 0.3s"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색하는 개인화 메모리"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ 확보; 모델과 DB의 역할 분업이 속도·정확도를 동시에 달성"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","LoRA + 4-bit NF4 + 토큰 Pruning 조합",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"LoRA + 4-bit NF4 + 토큰 Pruning 조합"}],["$","div",null,{"className":"decision-reason","children":"세 기법은 각각 다른 병목을 공략합니다. LoRA는 파라미터 수를 줄이고, NF4 양자화는 가중치 비트폭을 줄이며, 멀티링구얼 토큰 Pruning은 한국어에 불필요한 어휘를 제거해 메모리를 추가로 확보합니다. 어느 하나만 적용하면 목표인 3.0GB에 도달하지 못했고, 세 가지를 조합했을 때 76% 압축과 CPU 0.3s 추론을 동시에 달성했습니다."}]]}],"$Lf","$L10"]}]]}]]}],"$L11"]}],"$L12"]}]}]
+f:["$","div","전용 FAISS 벡터 DB로 콩글리쉬 지식 분리",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"전용 FAISS 벡터 DB로 콩글리쉬 지식 분리"}],["$","div",null,{"className":"decision-reason","children":"630개 콩글리쉬 패턴을 파인튜닝으로 LLM에 주입하면 용례가 희소해 모델이 일관되게 기억하지 못합니다. RAG로 매번 검색하면 추론 지연이 늘어납니다. 전용 DB에 패턴을 저장하고 LLM은 문법·문맥 판단에만 집중하도록 역할을 분리하자 속도와 정확도 모두 올라갔습니다."}]]}]
+10:["$","div","SQLite LRU 캐시 레이어 추가",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"SQLite LRU 캐시 레이어 추가"}],["$","div",null,{"className":"decision-reason","children":"FAISS 검색은 빠르지만 모바일 환경에서 동일 패턴이 반복 조회될 때 매번 벡터 연산을 실행하는 것은 낭비입니다. SQLite에 최근 조회 결과를 LRU 방식으로 캐싱하면 히트율 높은 패턴은 0.001s 이하로 처리됩니다. 이 레이어가 평균 응답 지연을 추가로 35% 단축했습니다."}]]}]
+11:["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"실험 로그"}],["$","div",null,{"className":"experiments","children":[["$","div","E1",{"className":"exp","children":[["$","div",null,{"className":"exp-header","children":[["$","span",null,{"className":"exp-id","children":"E1"}],["$","span",null,{"className":"exp-hypo","children":"Flan-T5면 충분할 수 있다"}]]}],["$","div",null,{"className":"exp-result","children":"정답 교정은 가능하나 설명이 단조롭고 한국어·영어 혼합 표현에서 과보수적"}],["$","div",null,{"className":"exp-conc","children":["→ ","태스크 재정의 후 베이스 재검토"]}]]}],["$","div","E2",{"className":"exp","children":[["$","div",null,{"className":"exp-header","children":[["$","span",null,{"className":"exp-id","children":"E2"}],["$","span",null,{"className":"exp-hypo","children":"Qwen은 회화 자연화에 유리하다"}]]}],["$","div",null,{"className":"exp-result","children":"대안 표현 다양성과 맥락 확장 우수"}],["$","div",null,{"className":"exp-conc","children":["→ ","Qwen 채택, 단 경량화 연구가 따라붙는 결정"]}]]}],["$","div","E3",{"className":"exp","children":[["$","div",null,{"className":"exp-header","children":[["$","span",null,{"className":"exp-id","children":"E3"}],["$","span",null,{"className":"exp-hypo","children":"LoRA rank를 높이면 설명 품질이 오른다"}]]}],["$","div",null,{"className":"exp-result","children":"rank 16에서 비용 대비 이득 최대, rank 8은 설명 다양성 감소"}],["$","div",null,{"className":"exp-conc","children":["→ ","LoRA rank=16, alpha=32 채택"]}]]}],["$","div","E4",{"className":"exp","children":[["$","div",null,{"className":"exp-header","children":[["$","span",null,{"className":"exp-id","children":"E4"}],["$","span",null,{"className":"exp-hypo","children":"4-bit NF4 양자화만으로 충분하다"}]]}],["$","div",null,{"className":"exp-result","children":"모델 크기 급감, 일부 희귀 표현 설명 품질 저하"}],["$","div",null,{"className":"exp-conc","children":["→ ","일부 레이어 8bit 유지 + pruning으로 품질 손실 완화"]}]]}],["$","div","E5",{"className":"exp","children":[["$","div",null,{"className":"exp-header","children":[["$","span",null,{"className":"exp-id","children":"E5"}],["$","span",null,{"className":"exp-hypo","children":"병목은 모델 추론이다"}]]}],["$","div",null,{"className":"exp-result","children":"cProfile 결과 FAISS 검색 0.21s, SQLite 조회 0.12s가 LLM 추론보다 컸다"}],["$","div",null,{"className":"exp-conc","children":["→ ","FAISS IVF 재구성 + SQLite 인덱스 + LRU 캐시로 검색 병목 우선 해소"]}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"현장 이슈"}],["$","div",null,{"className":"troubles","children":[["$","div","0",{"className":"trouble","children":[["$","span",null,{"className":"trouble-dot"}],["$","span",null,{"className":"trouble-text","children":"양자화 강도를 높이면 교정문은 유지되어도 설명 문장의 문법 메타언어가 흔들렸다. 학습자 서비스에서 이 부분이 체감 품질을 크게 해쳤다. lm head와 일부 attention 경로를 보수적으로 유지했다."}]]}],["$","div","1",{"className":"trouble","children":[["$","span",null,{"className":"trouble-dot"}],["$","span",null,{"className":"trouble-text","children":"RAG에서 너무 비슷한 예문만 주면 모델이 패턴을 복사해 사용자 문장을 과수정하는 현상이 있었다. 검색 다양성 제약을 추가했다."}]]}],["$","div","2",{"className":"trouble","children":[["$","span",null,{"className":"trouble-dot"}],["$","span",null,{"className":"trouble-text","children":"개인화 메모리가 강하게 개입하면 이전 오류 유형이 현재 문장에도 과도하게 적용되는 메모리 오염 문제가 있었다. 세션 감쇠 규칙을 추가해 완화했다."}]]}],["$","div","3",{"className":"trouble","children":[["$","span",null,{"className":"trouble-dot"}],["$","span",null,{"className":"trouble-text","children":"UiPath에서 Python을 직접 호출하는 방식은 라이브러리 경로·버전 차이로 잦은 실패를 일으켰다. FAISS HNSW → IVF 구조로 변경 후 유사 예문 검색 0.21s → 0.07s로 단축됐다."}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"배운 점"}],["$","div",null,{"className":"insight","children":["$","p",null,{"className":"insight-text","children":"온디바이스 LLM 프로젝트에서 가장 큰 착각은 '모델이 병목'이라는 전제였다. cProfile로 실측해보니 FAISS 검색 0.21s, SQLite 조회 0.12s가 LLM 추론 시간보다 훨씬 컸다. 직관과 반대 방향으로 최적화를 시작했던 것이다. 두 번째 배움은 '지식'과 '언어 생성'의 책임 분리다. 630개 콩글리쉬 패턴을 파인튜닝으로 모델에 주입하면 희소 패턴은 필연적으로 망각된다. 모델이 언어·문맥 판단에만 집중하고 지식은 별도 벡터 DB가 관리하는 구조가, 두 책임을 하나의 모델에 합치는 것보다 훨씬 안정적이었다. 경량화는 단일 기법으로 목표에 도달하지 못했다. LoRA, NF4, 토큰 Pruning이 각각 다른 병목(파라미터 수, 비트폭, 어휘 크기)을 공략하기 때문에, 세 기법의 조합이 필요했다. '무엇이 병목인지 실제로 측정한 뒤 최적화하는 것'이 이 프로젝트 전체를 관통하는 교훈이었다."}]}]]}]]}]
+12:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","killkong"]}]]}]
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-14:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
+13:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
 7:null
-b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]
+b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L13","3",{}]]

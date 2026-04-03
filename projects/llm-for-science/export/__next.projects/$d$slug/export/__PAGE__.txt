@@ -1,211 +1,243 @@
 1:"$Sreact.fragment"
-b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
-c:"$Sreact.suspense"
-:HL["https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","style"]
-2:T1d0e,
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+a:"$Sreact.suspense"
+:HL["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","style"]
+2:T2290,
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { background: #F4F6F8; }
+          html, body { background: #EAECF0; }
 
-          /* ─── Print / Page setup ─── */
-          @page {
-            size: A4 landscape;
-            margin: 0;
-          }
+          @page { size: A4 landscape; margin: 0; }
           @media print {
             html, body { background: #fff; }
-            .page { box-shadow: none !important; }
+            .page { box-shadow: none !important; border-radius: 0 !important; }
           }
 
-          /* ─── Page shell ─── */
           body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 32px;
+            padding: 28px;
             min-height: 100vh;
           }
 
+          /* ── Page shell ── */
           .page {
-            width: 1123px;       /* A4 landscape @ 96dpi */
+            width: 1123px;
             min-height: 794px;
+            height: 794px;
             background: #fff;
-            border-radius: 4px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            border-radius: 6px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.14);
             overflow: hidden;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
+            display: flex;
+            flex-direction: column;
           }
 
-          /* ─── Accent bar ─── */
+          /* ── Accent bar ── */
           .accent-bar {
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, #4fc0d1 0%, #a78bfa 100%);
+            flex-shrink: 0;
           }
 
-          /* ─── Header ─── */
+          /* ── Header ── */
           .hdr {
-            padding: 28px 36px 20px;
-            border-bottom: 1px solid #E2E8F0;
+            padding: 22px 32px 16px;
+            border-bottom: 1px solid #E8ECF0;
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            gap: 24px;
+            gap: 20px;
+            flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
-          .hdr-num {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #94A3B8; margin-bottom: 6px;
+          .hdr-eyebrow {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
           }
           .hdr-title {
-            font-size: 26px; font-weight: 800; color: #0F172A;
-            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 7px;
+            font-size: 22px; font-weight: 800; color: #0F172A;
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
+          }
+          .hdr-meta {
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
           }
           .hdr-period {
-            font-size: 11px; font-weight: 500; color: #64748B;
-            letter-spacing: 0.02em; margin-bottom: 10px;
+            font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.01em;
           }
-          .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+          .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
+          .tags { display: flex; flex-wrap: wrap; gap: 3px; }
           .tag {
-            font-size: 9px; font-weight: 500; letter-spacing: 0.04em;
+            font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em;
             text-transform: uppercase; background: #F1F5F9;
-            border: 1px solid #E2E8F0; border-radius: 3px;
-            padding: 2px 7px; color: #64748B;
+            border: 1px solid #DDE3EB; border-radius: 3px;
+            padding: 2px 6px; color: #64748B;
           }
 
           /* KPIs */
-          .kpis { display: flex; gap: 10px; flex-shrink: 0; }
+          .kpis { display: flex; gap: 8px; flex-shrink: 0; align-items: flex-start; }
           .kpi {
             text-align: center; border: 1px solid #E2E8F0;
-            border-radius: 8px; padding: 10px 18px; min-width: 76px;
-            background: #FAFCFF;
+            border-radius: 8px; padding: 9px 16px; min-width: 72px;
+            background: #F8FBFF;
           }
           .kpi-v {
-            font-size: 22px; font-weight: 900; color: #4fc0d1;
+            font-size: 20px; font-weight: 900; color: #4fc0d1;
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
-            font-size: 8.5px; font-weight: 600; color: #94A3B8;
-            letter-spacing: 0.07em; text-transform: uppercase; margin-top: 4px;
+            font-size: 8px; font-weight: 600; color: #94A3B8;
+            letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ─── Meta row (goal/role) ─── */
+          /* ── Goal/Role strip ── */
           .meta-row {
-            padding: 12px 36px;
+            padding: 9px 32px;
             background: #F8FAFC;
-            border-bottom: 1px solid #E2E8F0;
-            display: flex; flex-direction: column; gap: 4px;
+            border-bottom: 1px solid #E8ECF0;
+            display: flex; gap: 20px; align-items: baseline;
+            flex-shrink: 0;
           }
-          .meta-item { display: flex; align-items: baseline; gap: 10px; }
+          .meta-item { display: flex; align-items: baseline; gap: 8px; }
           .meta-key {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #4fc0d1; flex-shrink: 0; min-width: 28px;
-          }
-          .meta-key.role { color: #94A3B8; }
-          .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-          .meta-val { font-size: 11.5px; line-height: 1.6; color: #0F172A; }
-
-          /* ─── Body ─── */
-          .body {
-            padding: 20px 36px 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 18px;
-            align-items: start;
-          }
-
-          /* Architecture panel */
-          .arch-panel {}
-          .arch-img {
-            width: 100%; height: auto;
-            border: 1px solid #E2E8F0; border-radius: 8px;
-            background: #FAFCFF; padding: 12px;
-          }
-
-          /* Sections */
-          .sec-label {
             font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; flex-shrink: 0;
+          }
+          .meta-key-goal { color: #4fc0d1; }
+          .meta-key-role { color: #94A3B8; }
+          .meta-div { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
+          .meta-val { font-size: 11.5px; line-height: 1.5; color: #1E293B; font-weight: 400; }
+
+          /* ── Body: always 3 cols ── */
+          .body {
+            flex: 1;
+            padding: 18px 32px 16px;
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+            overflow: hidden;
+            min-height: 0;
+          }
+
+          /* Col dividers */
+          .col { min-width: 0; }
+          .col + .col { border-left: 1px solid #F1F5F9; padding-left: 20px; }
+
+          /* ── Section label ── */
+          .sec-label {
+            font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
             text-transform: uppercase; color: #4fc0d1;
-            margin-bottom: 8px; padding-bottom: 5px;
-            border-bottom: 1px solid #E2E8F0;
+            margin-bottom: 9px; padding-bottom: 6px;
+            border-bottom: 1.5px solid #E8ECF0;
+            display: flex; align-items: center; gap: 6px;
           }
-          .sec { margin-bottom: 14px; }
+          .sec-label::before {
+            content: '';
+            display: inline-block;
+            width: 3px; height: 9px;
+            background: #4fc0d1;
+            border-radius: 2px;
+          }
+          .sec { margin-bottom: 16px; }
+          .sec:last-child { margin-bottom: 0; }
 
-          /* Desc */
-          .desc { font-size: 11px; line-height: 1.75; color: #475569; }
+          /* ── Arch image ── */
+          .arch-img {
+            width: 100%; height: auto; max-height: 220px;
+            object-fit: contain;
+            border: 1px solid #E8ECF0; border-radius: 6px;
+            background: #FAFCFF; padding: 8px;
+            margin-bottom: 14px;
+            display: block;
+          }
 
-          /* Bullets */
-          .bullets { display: flex; flex-direction: column; gap: 5px; }
-          .bullet { display: flex; gap: 8px; align-items: flex-start; }
+          /* ── Desc ── */
+          .desc {
+            font-size: 11.5px; line-height: 1.75; color: #475569;
+            word-break: keep-all;
+          }
+
+          /* ── Bullets ── */
+          .bullets { display: flex; flex-direction: column; gap: 7px; }
+          .bullet { display: flex; gap: 9px; align-items: flex-start; }
           .bullet-num {
-            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
-            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+            font-size: 8px; font-weight: 800; color: #fff;
+            background: #4fc0d1;
+            flex-shrink: 0;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+            letter-spacing: 0;
           }
-          .bullet-text { font-size: 11px; line-height: 1.6; color: #334155; }
+          .bullet-text { font-size: 11.5px; line-height: 1.65; color: #1E293B; }
 
-          /* Decisions */
-          .decisions { display: flex; flex-direction: column; gap: 8px; }
+          /* ── Decisions ── */
+          .decisions { display: flex; flex-direction: column; gap: 7px; }
           .decision {
-            padding: 8px 11px; background: #F8FAFC;
-            border-radius: 5px; border-left: 2.5px solid #4fc0d1;
+            padding: 9px 12px; background: #F8FAFC;
+            border-radius: 6px; border-left: 3px solid #4fc0d1;
           }
-          .decision-tech { font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px; }
-          .decision-reason { font-size: 10.5px; line-height: 1.55; color: #475569; }
+          .decision-tech {
+            font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px;
+            line-height: 1.3;
+          }
+          .decision-reason { font-size: 10.5px; line-height: 1.6; color: #475569; }
 
-          /* Experiments */
+          /* ── Experiments ── */
           .experiments { display: flex; flex-direction: column; gap: 6px; }
           .exp {
-            padding: 8px 10px; border: 1px solid #E2E8F0;
-            border-radius: 5px; background: #fff;
+            padding: 8px 10px; border: 1px solid #E8ECF0;
+            border-radius: 6px; background: #FAFCFF;
           }
+          .exp-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
           .exp-id {
-            font-size: 8.5px; font-weight: 800; color: #4fc0d1;
-            letter-spacing: 0.08em; margin-bottom: 3px;
+            font-size: 7.5px; font-weight: 800; color: #fff;
+            background: #4fc0d1; border-radius: 3px;
+            padding: 1px 5px; letter-spacing: 0.06em; flex-shrink: 0;
           }
-          .exp-hypo { font-size: 10.5px; font-weight: 600; color: #0F172A; margin-bottom: 3px; line-height: 1.35; }
-          .exp-result { font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 3px; }
-          .exp-conc { font-size: 10px; font-weight: 600; color: #4fc0d1; }
+          .exp-hypo { font-size: 11px; font-weight: 600; color: #0F172A; line-height: 1.4; }
+          .exp-result { font-size: 10.5px; color: #64748B; line-height: 1.55; margin-bottom: 3px; }
+          .exp-conc { font-size: 10.5px; font-weight: 600; color: #4fc0d1; line-height: 1.4; }
 
-          /* Troubles */
+          /* ── Troubleshooting ── */
           .troubles { display: flex; flex-direction: column; gap: 5px; }
           .trouble { display: flex; gap: 8px; align-items: flex-start; }
-          .trouble-num {
-            font-size: 8.5px; font-weight: 800; color: #F97316;
-            flex-shrink: 0; padding-top: 2px; min-width: 14px;
+          .trouble-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: #F97316; flex-shrink: 0; margin-top: 5px;
           }
-          .trouble-text { font-size: 10.5px; line-height: 1.6; color: #475569; }
+          .trouble-text { font-size: 11px; line-height: 1.65; color: #475569; }
 
-          /* Insight */
+          /* ── Insight ── */
           .insight {
-            padding: 11px 14px;
+            padding: 10px 13px;
             border-left: 3px solid #4fc0d1;
-            background: rgba(79,192,209,0.04);
+            background: rgba(79,192,209,0.05);
             border-radius: 0 6px 6px 0;
           }
-          .insight-text { font-size: 11px; line-height: 1.8; color: #0F172A; }
+          .insight-text { font-size: 11.5px; line-height: 1.75; color: #1E293B; }
 
-          /* ─── Footer ─── */
+          /* ── Footer ── */
           .footer {
-            padding: 10px 36px;
-            border-top: 1px solid #E2E8F0;
+            padding: 9px 32px;
+            border-top: 1px solid #E8ECF0;
             display: flex; align-items: center; justify-content: space-between;
             background: #F8FAFC;
+            flex-shrink: 0;
           }
           .footer-name {
-            font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
-            color: #94A3B8;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url {
-            font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em;
-          }
-        0:{"buildId":"VwwIewO7Kf1_Djj_Ci9AT","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["LLM for Science: 과학 도메인 특화 CPT·GDPO 연구"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
-3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-num","children":["PROJECT ","09","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"LLM for Science: 과학 도메인 특화 CPT·GDPO 연구"}],["$","div",null,{"className":"hdr-period","children":"Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중"}],["$","div",null,{"className":"tags","children":[["$","span","Nemotron",{"className":"tag","children":"Nemotron"}],["$","span","CPT",{"className":"tag","children":"CPT"}],["$","span","SFT",{"className":"tag","children":"SFT"}],["$","span","GDPO",{"className":"tag","children":"GDPO"}],["$","span","arXiv/PubMed",{"className":"tag","children":"arXiv/PubMed"}],["$","span","Nougat/Marker",{"className":"tag","children":"Nougat/Marker"}],["$","span","HuggingFace",{"className":"tag","children":"HuggingFace"}],["$","span","Multi-Reward RL",{"className":"tag","children":"Multi-Reward RL"}],["$","span","Python",{"className":"tag","children":"Python"}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","연구 구조",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"3단계"}],["$","div",null,{"className":"kpi-l","children":"연구 구조"}]]}],["$","div","Phase 2",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"CPT"}],["$","div",null,{"className":"kpi-l","children":"Phase 2"}]]}],["$","div","Phase 3",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"GDPO"}],["$","div",null,{"className":"kpi-l","children":"Phase 3"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"과학 도메인(arXiv·PubMed) 특화 LLM 개발을 위한 CPT·SFT·GDPO 파이프라인 리서치, 수식·표 무손실 처리 방법론 탐구"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"Nougat/Marker 기반 파싱 파이프라인 분석 · CPT/SFT 데이터 생성 구조 스터디 · GDPO 멀티 리워드 RL 실험 참여"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"children":["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"과학 도메인 LLM 구축에는 세 개의 독립적인 병목이 있습니다: ① 일반 텍스트 파서가 수식·표를 손실시키는 파싱 문제, ② 도메인 특화 학습이 일반 언어 능력을 훼손하는 Catastrophic Forgetting, ③ 사실 정확도·형식 준수·응답 간결성 세 지표가 동일 보상 스칼라에서 상충하는 보상 붕괴. 이 세 병목을 하나의 파이프라인이 아닌 각기 다른 기술로 타겟팅하는 3단계 연구에 참여 중입니다."}]]}]}],["$","div",null,{"children":[null,["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","Nougat/Marker VLM 파서 vs 일반 텍스트 파서",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"Nougat/Marker VLM 파서 vs 일반 텍스트 파서"}],["$","div",null,{"className":"decision-reason","children":"arXiv 논문에서 수식을 일반 PDF 텍스트 파서로 추출하면 LaTeX가 깨지거나 누락됩니다. 수식이 손실된 데이터로 학습하면 모델이 과학 표기법을 제대로 배울 수 없습니다. VLM 기반 파서는 이미지로 렌더링된 수식을 인식해 LaTeX로 복원하기 때문에 데이터 품질의 상한이 다릅니다."}]]}],["$","div","과학 80~85% + 일반 15~20% 혼합 CPT 전략",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"과학 80~85% + 일반 15~20% 혼합 CPT 전략"}],["$","div",null,{"className":"decision-reason","children":"과학 데이터만으로 훈련하면 Catastrophic Forgetting이 발생해 기초 언어 능력이 퇴화합니다. 일반 도메인 데이터를 일정 비율로 혼합하면 기존 능력을 유지하면서 과학 지식을 추가로 주입할 수 있습니다. 15~20% 혼합 비율은 Forgetting 억제와 도메인 특화 사이의 실험적 균형점입니다."}]]}],["$","div","GDPO 그룹 내 독립 정규화 vs 단일 보상 스칼라 RLHF",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"GDPO 그룹 내 독립 정규화 vs 단일 보상 스칼라 RLHF"}],["$","div",null,{"className":"decision-reason","children":"사실 정확도·형식 준수·응답 간결성을 단일 스칼라로 합산하면 하나가 올라갈 때 다른 것이 내려가는 보상 붕괴가 발생합니다. GDPO는 각 보상 신호를 그룹 내에서 독립적으로 정규화해 상충을 방지합니다. 세 지표를 동시에 최적화할 수 있어 과학 도메인처럼 형식과 정확도 모두 중요한 태스크에 적합합니다."}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":["$L5","$L6"]}],"$L7","$L8"]}]]}]]}],"$L9"]}],"$La"]}]}]
-4:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
-5:["$","span",null,{"className":"bullet-num","children":"01"}]
-6:["$","span",null,{"className":"bullet-text","children":"Phase 1: Nougat/Marker(VLM 파서)로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱 파이프라인 이해 및 GPT-4o Teacher 기반 SFT 합성 데이터 생성 구조 분석"}]
-7:["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"02"}],["$","span",null,{"className":"bullet-text","children":"Phase 2 (Nemotron CPT): 과학 데이터 80~85% / 일반 도메인 15~20% 혼합 전략으로 Catastrophic Forgetting 억제 원리 및 next-token prediction 기반 도메인 지식 주입 실험 참여"}]]}]
-8:["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":"03"}],["$","span",null,{"className":"bullet-text","children":"Phase 3 (GDPO): Rubric(RaR)·Format·Length 세 보상 신호의 그룹 내 독립 정규화로 보상 붕괴 없이 다차원 정렬을 달성하는 메커니즘 분석 및 실험 중"}]]}]
-9:["$","div",null,{"children":["$undefined","$undefined","$undefined"]}]
-a:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","llm-for-science"]}]]}]
-d:null
+          .footer-url { font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
+        0:{"buildId":"kEg19CTdjEvnxEOd-MS88","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["LLM for Science: 과학 도메인 특화 CPT·GDPO 연구"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","09","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"LLM for Science: 과학 도메인 특화 CPT·GDPO 연구"}],["$","div",null,{"className":"hdr-meta","children":[["$","span",null,{"className":"hdr-period","children":"Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중"}],["$","span",null,{"className":"hdr-sep"}],["$","div",null,{"className":"tags","children":[["$","span","Nemotron",{"className":"tag","children":"Nemotron"}],["$","span","CPT",{"className":"tag","children":"CPT"}],["$","span","SFT",{"className":"tag","children":"SFT"}],["$","span","GDPO",{"className":"tag","children":"GDPO"}],["$","span","arXiv/PubMed",{"className":"tag","children":"arXiv/PubMed"}],["$","span","Nougat/Marker",{"className":"tag","children":"Nougat/Marker"}],["$","span","HuggingFace",{"className":"tag","children":"HuggingFace"}],["$","span","Multi-Reward RL",{"className":"tag","children":"Multi-Reward RL"}],["$","span","Python",{"className":"tag","children":"Python"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","연구 구조",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"3단계"}],["$","div",null,{"className":"kpi-l","children":"연구 구조"}]]}],["$","div","Phase 2",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"CPT"}],["$","div",null,{"className":"kpi-l","children":"Phase 2"}]]}],["$","div","Phase 3",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"GDPO"}],["$","div",null,{"className":"kpi-l","children":"Phase 3"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-goal","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"과학 도메인(arXiv·PubMed) 특화 LLM 개발을 위한 CPT·SFT·GDPO 파이프라인 리서치, 수식·표 무손실 처리 방법론 탐구"}]]}],["$","span",null,{"style":{"color":"#E2E8F0","fontSize":16,"alignSelf":"center"},"children":"·"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"Nougat/Marker 기반 파싱 파이프라인 분석 · CPT/SFT 데이터 생성 구조 스터디 · GDPO 멀티 리워드 RL 실험 참여"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col","children":["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"과학 도메인 LLM 구축에는 세 개의 독립적인 병목이 있습니다: ① 일반 텍스트 파서가 수식·표를 손실시키는 파싱 문제, ② 도메인 특화 학습이 일반 언어 능력을 훼손하는 Catastrophic Forgetting, ③ 사실 정확도·형식 준수·응답 간결성 세 지표가 동일 보상 스칼라에서 상충하는 보상 붕괴. 이 세 병목을 하나의 파이프라인이 아닌 각기 다른 기술로 타겟팅하는 3단계 연구에 참여 중입니다."}]]}]}],["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"Phase 1: Nougat/Marker(VLM 파서)로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱 파이프라인 이해 및 GPT-4o Teacher 기반 SFT 합성 데이터 생성 구조 분석"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"Phase 2 (Nemotron CPT): 과학 데이터 80~85% / 일반 도메인 15~20% 혼합 전략으로 Catastrophic Forgetting 억제 원리 및 next-token prediction 기반 도메인 지식 주입 실험 참여"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"Phase 3 (GDPO): Rubric(RaR)·Format·Length 세 보상 신호의 그룹 내 독립 정규화로 보상 붕괴 없이 다차원 정렬을 달성하는 메커니즘 분석 및 실험 중"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","Nougat/Marker VLM 파서 vs 일반 텍스트 파서",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"Nougat/Marker VLM 파서 vs 일반 텍스트 파서"}],["$","div",null,{"className":"decision-reason","children":"arXiv 논문에서 수식을 일반 PDF 텍스트 파서로 추출하면 LaTeX가 깨지거나 누락됩니다. 수식이 손실된 데이터로 학습하면 모델이 과학 표기법을 제대로 배울 수 없습니다. VLM 기반 파서는 이미지로 렌더링된 수식을 인식해 LaTeX로 복원하기 때문에 데이터 품질의 상한이 다릅니다."}]]}],"$L5","$L6"]}]]}]]}],"$L7"]}],"$L8"]}]}]
+4:["$","$L9",null,{"children":["$","$a",null,{"name":"Next.MetadataOutlet","children":"$@b"}]}]
+5:["$","div","과학 80~85% + 일반 15~20% 혼합 CPT 전략",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"과학 80~85% + 일반 15~20% 혼합 CPT 전략"}],["$","div",null,{"className":"decision-reason","children":"과학 데이터만으로 훈련하면 Catastrophic Forgetting이 발생해 기초 언어 능력이 퇴화합니다. 일반 도메인 데이터를 일정 비율로 혼합하면 기존 능력을 유지하면서 과학 지식을 추가로 주입할 수 있습니다. 15~20% 혼합 비율은 Forgetting 억제와 도메인 특화 사이의 실험적 균형점입니다."}]]}]
+6:["$","div","GDPO 그룹 내 독립 정규화 vs 단일 보상 스칼라 RLHF",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"GDPO 그룹 내 독립 정규화 vs 단일 보상 스칼라 RLHF"}],["$","div",null,{"className":"decision-reason","children":"사실 정확도·형식 준수·응답 간결성을 단일 스칼라로 합산하면 하나가 올라갈 때 다른 것이 내려가는 보상 붕괴가 발생합니다. GDPO는 각 보상 신호를 그룹 내에서 독립적으로 정규화해 상충을 방지합니다. 세 지표를 동시에 최적화할 수 있어 과학 도메인처럼 형식과 정확도 모두 중요한 태스크에 적합합니다."}]]}]
+7:["$","div",null,{"className":"col","children":["$undefined","$undefined","$undefined"]}]
+8:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","llm-for-science"]}]]}]
+b:null
