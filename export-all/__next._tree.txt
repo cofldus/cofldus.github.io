@@ -9,4 +9,4 @@
 :HL["/arch/FinView.svg","image"]
 :HL["/arch/CT-MRI.svg","image"]
 :HL["/arch/rocketan.svg","image"]
-0:{"buildId":"etutI3g-tufnjaIaMgjbA","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"Ul-oybOhZo-5cPl2WaaG6","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
