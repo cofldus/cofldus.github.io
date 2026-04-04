@@ -8,25 +8,30 @@ a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be
 c:I[68027,[],"default"]
 :HL["/_next/static/chunks/e01dd1869dfb2b26.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","style"]
-0:{"P":null,"b":"QUyumbW6udUS97MseqG66","c":["","projects","hunchgame","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","hunchgame","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-KZVMV4CQEJ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n          gtag('config', 'G-KZVMV4CQEJ');\n        "}}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
+0:{"P":null,"b":"kpPGcRqPNSCha3EiT2-Q-","c":["","projects","hunchgame","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","hunchgame","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-KZVMV4CQEJ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n          gtag('config', 'G-KZVMV4CQEJ');\n        "}}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
 :HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
-d:T259f,
+d:T20de,
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { background: #EAECF0; }
 
           :root {
             --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
             --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
+            --mint: #4fc0d1;
+            --ink: #0F172A;
+            --sub: #64748B;
+            --border: #E8ECF0;
           }
 
           @page { size: A4 landscape; margin: 0; }
+
           @media print {
-            html, body { background: #fff; padding: 0 !important; margin: 0; display: block; }
-            .page { box-shadow: none !important; border-radius: 0 !important; width: 1123px; height: 794px; }
+            html, body { background: #fff !important; padding: 0 !important; }
+            .page { box-shadow: none !important; border-radius: 0 !important; }
           }
 
-          body {
+          html, body {
+            background: #EAECF0;
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
             display: flex;
@@ -36,234 +41,213 @@ d:T259f,
             min-height: 100vh;
           }
 
-          /* ── Page shell ── */
+          /* ── Shell ── */
           .page {
             width: 1123px;
-            min-height: 794px;
             height: 794px;
             background: #fff;
             border-radius: 6px;
             box-shadow: 0 12px 48px rgba(0,0,0,0.14);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-          }
-
-          /* ── Accent bar ── */
-          .accent-bar {
-            height: 5px;
-            background: linear-gradient(90deg, #4fc0d1 0%, #a78bfa 100%);
+            display: grid;
+            grid-template-rows: 5px auto 1fr auto;
             flex-shrink: 0;
           }
 
+          /* ── Accent ── */
+          .accent { background: linear-gradient(90deg, var(--mint) 0%, #a78bfa 100%); }
+
           /* ── Header ── */
           .hdr {
-            padding: 22px 32px 16px;
-            border-bottom: 1px solid #E8ECF0;
+            padding: 18px 32px 14px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
             gap: 20px;
-            flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
             font-family: var(--font-label);
-            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-            text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
+            font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #94A3B8; margin-bottom: 4px;
           }
           .hdr-title {
             font-family: var(--font-display);
-            font-size: 22px; font-weight: 800; color: #0F172A;
-            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
+            font-size: 20px; font-weight: 800; color: var(--ink);
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 7px;
           }
-          .hdr-meta {
-            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-          }
+          .hdr-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
           .hdr-period {
             font-family: var(--font-label);
-            font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.01em;
+            font-size: 10.5px; color: var(--sub);
           }
-          .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
+          .sep { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; }
           .tags { display: flex; flex-wrap: wrap; gap: 3px; }
           .tag {
             font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em;
+            font-size: 8px; font-weight: 600; letter-spacing: 0.04em;
             text-transform: uppercase; background: #F1F5F9;
             border: 1px solid #DDE3EB; border-radius: 3px;
-            padding: 2px 6px; color: #64748B;
+            padding: 2px 6px; color: var(--sub);
           }
-
-          /* KPIs */
-          .kpis { display: flex; gap: 8px; flex-shrink: 0; align-items: flex-start; }
+          .kpis { display: flex; gap: 8px; flex-shrink: 0; }
           .kpi {
-            text-align: center; border: 1px solid #E2E8F0;
-            border-radius: 8px; padding: 9px 16px; min-width: 72px;
+            text-align: center; border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 14px; min-width: 68px;
             background: #F8FBFF;
           }
           .kpi-v {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 900; color: #4fc0d1;
+            font-size: 18px; font-weight: 900; color: var(--mint);
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 600; color: #94A3B8;
+            font-size: 7.5px; font-weight: 600; color: #94A3B8;
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ── Goal/Role strip ── */
-          .meta-row {
-            padding: 9px 32px;
-            background: #F8FAFC;
-            border-bottom: 1px solid #E8ECF0;
-            display: flex; gap: 20px; align-items: baseline;
+          /* ── Body: 2 cols ── */
+          .body {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            min-height: 0;
+            overflow: hidden;
+          }
+
+          /* Left col */
+          .col-left {
+            border-right: 1px solid var(--border);
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+          }
+
+          .arch-img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #FAFCFF;
+            padding: 8px;
+            display: block;
+          }
+
+          .ui-row {
+            display: flex;
+            gap: 8px;
             flex-shrink: 0;
           }
-          .meta-item { display: flex; align-items: baseline; gap: 8px; }
+          .ui-img {
+            flex: 1;
+            height: 100px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            display: block;
+          }
+
+          /* meta (goal/role) in left col when no arch */
+          .meta-block { display: flex; flex-direction: column; gap: 8px; }
+          .meta-item { display: flex; gap: 8px; align-items: baseline; }
           .meta-key {
             font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
-            text-transform: uppercase; flex-shrink: 0;
+            font-size: 8px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; flex-shrink: 0; min-width: 24px;
           }
-          .meta-key-goal { color: #4fc0d1; }
-          .meta-key-role { color: #94A3B8; }
+          .meta-key-g { color: var(--mint); }
+          .meta-key-r { color: #94A3B8; }
           .meta-div { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-          .meta-val { font-size: 11.5px; line-height: 1.5; color: #1E293B; font-weight: 400; }
+          .meta-val { font-family: var(--font-sans); font-size: 11px; line-height: 1.6; color: var(--ink); }
 
-          /* ── Body: always 3 cols ── */
-          .body {
-            flex: 1;
-            padding: 18px 32px 16px;
-            display: grid;
-            grid-template-columns: 300px 1fr 1fr;
-            gap: 20px;
-            align-items: start;
+          /* Right col */
+          .col-right {
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             overflow: hidden;
-            min-height: 0;
           }
 
-          /* Col dividers */
-          .col { min-width: 0; }
-          .col + .col { border-left: 1px solid #F1F5F9; padding-left: 20px; }
+          /* Goal/Role strip at top of right */
+          .goal-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 14px;
+            flex-shrink: 0;
+          }
 
-          /* ── Section label ── */
+          /* Section */
+          .sec { margin-bottom: 14px; flex-shrink: 0; }
+          .sec:last-child { margin-bottom: 0; }
           .sec-label {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #4fc0d1;
-            margin-bottom: 9px; padding-bottom: 6px;
-            border-bottom: 1.5px solid #E8ECF0;
-            display: flex; align-items: center; gap: 6px;
+            font-size: 7.5px; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--mint);
+            margin-bottom: 8px; padding-bottom: 5px;
+            border-bottom: 1.5px solid var(--border);
+            display: flex; align-items: center; gap: 5px;
           }
           .sec-label::before {
             content: '';
             display: inline-block;
-            width: 3px; height: 9px;
-            background: #4fc0d1;
+            width: 3px; height: 8px;
+            background: var(--mint);
             border-radius: 2px;
           }
-          .sec { margin-bottom: 16px; }
-          .sec:last-child { margin-bottom: 0; }
 
-          /* ── Arch image ── */
-          .arch-img {
-            width: 100%; height: auto; max-height: 220px;
-            object-fit: contain;
-            border: 1px solid #E8ECF0; border-radius: 6px;
-            background: #FAFCFF; padding: 8px;
-            margin-bottom: 14px;
-            display: block;
-          }
-
-          /* ── Desc ── */
-          .desc {
-            font-size: 11.5px; line-height: 1.75; color: #475569;
-            word-break: keep-all;
-          }
-
-          /* ── Bullets ── */
-          .bullets { display: flex; flex-direction: column; gap: 7px; }
-          .bullet { display: flex; gap: 9px; align-items: flex-start; }
+          /* Bullets */
+          .bullets { display: flex; flex-direction: column; gap: 6px; }
+          .bullet { display: flex; gap: 8px; align-items: flex-start; }
           .bullet-num {
-            font-size: 8px; font-weight: 800; color: #fff;
-            background: #4fc0d1;
-            flex-shrink: 0;
-            width: 16px; height: 16px;
-            border-radius: 50%;
+            font-size: 7.5px; font-weight: 800; color: #fff;
+            background: var(--mint); flex-shrink: 0;
+            width: 15px; height: 15px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-top: 1px;
-            letter-spacing: 0;
           }
-          .bullet-text { font-size: 11.5px; line-height: 1.65; color: #1E293B; }
+          .bullet-text { font-family: var(--font-sans); font-size: 11px; line-height: 1.65; color: #1E293B; }
 
-          /* ── Decisions ── */
-          .decisions { display: flex; flex-direction: column; gap: 7px; }
+          /* Decisions */
+          .decisions { display: flex; flex-direction: column; gap: 6px; }
           .decision {
-            padding: 9px 12px; background: #F8FAFC;
-            border-radius: 6px; border-left: 3px solid #4fc0d1;
+            padding: 8px 10px; background: #F8FAFC;
+            border-radius: 5px; border-left: 3px solid var(--mint);
           }
           .decision-tech {
             font-family: var(--font-display);
-            font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px;
-            line-height: 1.3;
+            font-size: 10.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px;
           }
-          .decision-reason { font-family: var(--font-sans); font-size: 10.5px; line-height: 1.6; color: #475569; }
-
-          /* ── Experiments ── */
-          .experiments { display: flex; flex-direction: column; gap: 6px; }
-          .exp {
-            padding: 8px 10px; border: 1px solid #E8ECF0;
-            border-radius: 6px; background: #FAFCFF;
+          .decision-reason {
+            font-family: var(--font-sans);
+            font-size: 10px; line-height: 1.55; color: var(--sub);
           }
-          .exp-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-          .exp-id {
-            font-size: 7.5px; font-weight: 800; color: #fff;
-            background: #4fc0d1; border-radius: 3px;
-            padding: 1px 5px; letter-spacing: 0.06em; flex-shrink: 0;
-          }
-          .exp-hypo { font-size: 11px; font-weight: 600; color: #0F172A; line-height: 1.4; }
-          .exp-result { font-size: 10.5px; color: #64748B; line-height: 1.55; margin-bottom: 3px; }
-          .exp-conc { font-size: 10.5px; font-weight: 600; color: #4fc0d1; line-height: 1.4; }
-
-          /* ── Troubleshooting ── */
-          .troubles { display: flex; flex-direction: column; gap: 5px; }
-          .trouble { display: flex; gap: 8px; align-items: flex-start; }
-          .trouble-dot {
-            width: 5px; height: 5px; border-radius: 50%;
-            background: #F97316; flex-shrink: 0; margin-top: 5px;
-          }
-          .trouble-text { font-size: 11px; line-height: 1.65; color: #475569; }
-
-          /* ── Insight ── */
-          .insight {
-            padding: 10px 13px;
-            border-left: 3px solid #4fc0d1;
-            background: rgba(79,192,209,0.05);
-            border-radius: 0 6px 6px 0;
-          }
-          .insight-text { font-size: 11.5px; line-height: 1.75; color: #1E293B; }
 
           /* ── Footer ── */
           .footer {
-            padding: 9px 32px;
-            border-top: 1px solid #E8ECF0;
+            padding: 8px 32px;
+            border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
             background: #F8FAFC;
-            flex-shrink: 0;
           }
           .footer-name {
             font-family: var(--font-label);
-            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
+            font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url { font-family: var(--font-label); font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
-        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["눈치게임: 위치 기반 인파 분산 서비스"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
+          .footer-url { font-family: var(--font-label); font-size: 9.5px; color: var(--mint); }
+        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["눈치게임: 위치 기반 인파 분산 서비스"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
 :HL["/arch/HunchGame.svg","image"]
-e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","07","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"눈치게임: 위치 기반 인파 분산 서비스"}],["$","div",null,{"className":"hdr-meta","children":[["$","span",null,{"className":"hdr-period","children":"성신여자대학교 IT경진대회"}],["$","span",null,{"className":"hdr-sep"}],["$","div",null,{"className":"tags","children":[["$","span","FP-Growth",{"className":"tag","children":"FP-Growth"}],["$","span","SQLite",{"className":"tag","children":"SQLite"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","위치 API",{"className":"tag","children":"위치 API"}],["$","span","히트맵",{"className":"tag","children":"히트맵"}],["$","span","추천 엔진",{"className":"tag","children":"추천 엔진"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","밀집도 예측",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"84%"}],["$","div",null,{"className":"kpi-l","children":"밀집도 예측"}]]}],["$","div","혼잡 회피율",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"87%"}],["$","div",null,{"className":"kpi-l","children":"혼잡 회피율"}]]}],["$","div","이동 로그",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10만건"}],["$","div",null,{"className":"kpi-l","children":"이동 로그"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-goal","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"축제·행사 시 특정 장소에 인파가 밀집되는 현상을 실시간 위치 데이터로 분산 유도, 안전사고 예방 서비스 구현"}]]}],["$","span",null,{"style":{"color":"#E2E8F0","fontSize":16,"alignSelf":"center"},"children":"·"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"위치 기반 혼잡도 알고리즘 설계 · 게이미피케이션 인센티브 시스템 개발 · 팀 기획 및 발표 리드"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col","children":[["$","img",null,{"src":"/arch/HunchGame.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"압사 사고의 공통 선행 조건은 '군중이 대안을 인지하지 못한 채 단일 지점에 집중된다'는 것입니다. 경고만으로는 부족하고, 사람들이 실제로 이동할 구체적인 대안 장소를 즉시 제시해야 합니다. FP-Growth로 10만 건 이동 로그에서 잠재 이동 패턴을 추출하고, 혼잡도·거리·장소 유사도·시간대 4개 가중치로 개인화 추천을 설계했습니다. 재난 상황의 네트워크 불안정을 고려해 오프라인 SQLite 캐시 아키텍처를 반드시 포함시켰습니다."}]]}]]}],["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"FP-Growth로 10만 건 이동 로그 패턴 분석 → '홍대 방문객 70%는 이태원으로 이동' 등 잠재 이동 연관 규칙 추출"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"추천 점수 엔진: 혼잡도(40%)·거리(30%)·장소 유사도(20%)·시간대(10%) 정규화 가중치 설계"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"오프라인 내성: SQLite 기기 내 캐시로 히트맵·추천 오프라인 동작을 보장, 실시간 밀집도 예측 84%·혼잡 회피율 87% 달성"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","FP-Growth vs 단순 거리 기반 추천",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"FP-Growth vs 단순 거리 기반 추천"}],["$","div",null,{"className":"decision-reason","children":"거리만 기준으로 삼으면 가장 가까운 장소를 추천하게 되는데, 현실에서 사람들은 단순 거리가 아니라 목적지 유형·과거 방문 패턴에 따라 이동합니다. FP-Growth로 이동 로그의 연관 규칙을 추출하면 '홍대에 있던 사람들이 실제로 어디로 갔는가'라는 잠재 선호를 데이터에서 직접 뽑을 수 있습니다. 이 패턴이 추천의 설득력을 높였습니다."}]]}],["$","div","SQLite 오프라인 캐시 필수화",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"SQLite 오프라인 캐시 필수화"}],["$","div",null,{"className":"decision-reason","children":"이 서비스가 가장 필요한 시점은 대규모 이벤트나 비상 상황입니다. 그 순간 네트워크는 폭증하거나 끊길 가능성이 높습니다. 평상시에 히트맵·추천 결과를 기기 내 SQLite에 캐싱해두면, 서버가 응답하지 않아도 마지막 업데이트 상태 기준으로 동작할 수 있습니다. 오프라인 내성은 기능이 아니라 이 서비스의 존재 이유입니다."}]]}],"$Lf"]}]]}]]}],"$L10"]}],"$L11"]}]}]
-f:["$","div","4개 가중치 추천 스코어 설계",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"4개 가중치 추천 스코어 설계"}],["$","div",null,{"className":"decision-reason","children":"단일 지표로 추천하면 극단적 결과가 나옵니다. 혼잡도만 보면 사막을 추천하고, 거리만 보면 목적이 다른 장소를 추천합니다. 4개 지표를 정규화해 가중합으로 점수를 계산하면 균형 잡힌 후보가 나옵니다. 가중치(혼잡도 40%)는 이 서비스의 핵심 목적이 분산임을 반영했고, 나머지는 이동 수용성을 높이기 위한 보조 지표입니다."}]]}]
-10:["$","div",null,{"className":"col","children":["$undefined","$undefined","$undefined"]}]
-11:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","hunchgame"]}]]}]
+e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","07","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"눈치게임: 위치 기반 인파 분산 서비스"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"성신여자대학교 IT경진대회"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","FP-Growth",{"className":"tag","children":"FP-Growth"}],["$","span","SQLite",{"className":"tag","children":"SQLite"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","위치 API",{"className":"tag","children":"위치 API"}],["$","span","히트맵",{"className":"tag","children":"히트맵"}],["$","span","추천 엔진",{"className":"tag","children":"추천 엔진"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","밀집도 예측",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"84%"}],["$","div",null,{"className":"kpi-l","children":"밀집도 예측"}]]}],["$","div","혼잡 회피율",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"87%"}],["$","div",null,{"className":"kpi-l","children":"혼잡 회피율"}]]}],["$","div","이동 로그",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10만건"}],["$","div",null,{"className":"kpi-l","children":"이동 로그"}]]}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col-left","children":[["$","img",null,{"src":"/arch/HunchGame.svg","alt":"architecture","className":"arch-img"}],false,false]}],["$","div",null,{"className":"col-right","children":[["$","div",null,{"className":"goal-strip","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-g","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"축제·행사 시 특정 장소에 인파가 밀집되는 현상을 실시간 위치 데이터로 분산 유도, 안전사고 예방 서비스 구현"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-r","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"위치 기반 혼잡도 알고리즘 설계 · 게이미피케이션 인센티브 시스템 개발 · 팀 기획 및 발표 리드"}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"FP-Growth로 10만 건 이동 로그 패턴 분석 → '홍대 방문객 70%는 이태원으로 이동' 등 잠재 이동 연관 규칙 추출"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"추천 점수 엔진: 혼잡도(40%)·거리(30%)·장소 유사도(20%)·시간대(10%) 정규화 가중치 설계"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"오프라인 내성: SQLite 기기 내 캐시로 히트맵·추천 오프라인 동작을 보장, 실시간 밀집도 예측 84%·혼잡 회피율 87% 달성"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","FP-Growth vs 단순 거리 기반 추천",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"FP-Growth vs 단순 거리 기반 추천"}],["$","div",null,{"className":"decision-reason","children":"거리만 기준으로 삼으면 가장 가까운 장소를 추천하게 되는데, 현실에서 사람들은 단순 거리가 아니라 목적지 유형·과거 방문 패턴에 따라 이동합니다. FP-Growth로 이동 로그의 연관 규칙을 추출하면 '홍대에 있던 사람들이 실제로 어디로 갔는가'라는 잠재 선호를 데이터에서 직접 뽑을 수 있습니다. 이 패턴이 추천의 설득력을 높였습니다."}]]}],["$","div","SQLite 오프라인 캐시 필수화",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"SQLite 오프라인 캐시 필수화"}],["$","div",null,{"className":"decision-reason","children":"이 서비스가 가장 필요한 시점은 대규모 이벤트나 비상 상황입니다. 그 순간 네트워크는 폭증하거나 끊길 가능성이 높습니다. 평상시에 히트맵·추천 결과를 기기 내 SQLite에 캐싱해두면, 서버가 응답하지 않아도 마지막 업데이트 상태 기준으로 동작할 수 있습니다. 오프라인 내성은 기능이 아니라 이 서비스의 존재 이유입니다."}]]}]]}]]}]]}]]}],["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","hunchgame"]}]]}]]}]}]
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-12:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
+f:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
 7:null
-b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L12","3",{}]]
+b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$Lf","3",{}]]

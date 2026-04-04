@@ -8,25 +8,30 @@ a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be
 c:I[68027,[],"default"]
 :HL["/_next/static/chunks/e01dd1869dfb2b26.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","style"]
-0:{"P":null,"b":"QUyumbW6udUS97MseqG66","c":["","projects","lovelop","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","lovelop","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-KZVMV4CQEJ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n          gtag('config', 'G-KZVMV4CQEJ');\n        "}}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
+0:{"P":null,"b":"kpPGcRqPNSCha3EiT2-Q-","c":["","projects","lovelop","export",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","lovelop","d"],{"children":["export",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e01dd1869dfb2b26.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon3.svg","type":"image/svg+xml"}],["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-KZVMV4CQEJ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n          gtag('config', 'G-KZVMV4CQEJ');\n        "}}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],null]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
 :HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
-d:T259f,
+d:T20de,
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { background: #EAECF0; }
 
           :root {
             --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
             --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
+            --mint: #4fc0d1;
+            --ink: #0F172A;
+            --sub: #64748B;
+            --border: #E8ECF0;
           }
 
           @page { size: A4 landscape; margin: 0; }
+
           @media print {
-            html, body { background: #fff; padding: 0 !important; margin: 0; display: block; }
-            .page { box-shadow: none !important; border-radius: 0 !important; width: 1123px; height: 794px; }
+            html, body { background: #fff !important; padding: 0 !important; }
+            .page { box-shadow: none !important; border-radius: 0 !important; }
           }
 
-          body {
+          html, body {
+            background: #EAECF0;
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
             display: flex;
@@ -36,236 +41,214 @@ d:T259f,
             min-height: 100vh;
           }
 
-          /* ── Page shell ── */
+          /* ── Shell ── */
           .page {
             width: 1123px;
-            min-height: 794px;
             height: 794px;
             background: #fff;
             border-radius: 6px;
             box-shadow: 0 12px 48px rgba(0,0,0,0.14);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-          }
-
-          /* ── Accent bar ── */
-          .accent-bar {
-            height: 5px;
-            background: linear-gradient(90deg, #4fc0d1 0%, #a78bfa 100%);
+            display: grid;
+            grid-template-rows: 5px auto 1fr auto;
             flex-shrink: 0;
           }
 
+          /* ── Accent ── */
+          .accent { background: linear-gradient(90deg, var(--mint) 0%, #a78bfa 100%); }
+
           /* ── Header ── */
           .hdr {
-            padding: 22px 32px 16px;
-            border-bottom: 1px solid #E8ECF0;
+            padding: 18px 32px 14px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
             gap: 20px;
-            flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
             font-family: var(--font-label);
-            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-            text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
+            font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #94A3B8; margin-bottom: 4px;
           }
           .hdr-title {
             font-family: var(--font-display);
-            font-size: 22px; font-weight: 800; color: #0F172A;
-            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
+            font-size: 20px; font-weight: 800; color: var(--ink);
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 7px;
           }
-          .hdr-meta {
-            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-          }
+          .hdr-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
           .hdr-period {
             font-family: var(--font-label);
-            font-size: 11px; font-weight: 500; color: #64748B; letter-spacing: 0.01em;
+            font-size: 10.5px; color: var(--sub);
           }
-          .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
+          .sep { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; }
           .tags { display: flex; flex-wrap: wrap; gap: 3px; }
           .tag {
             font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em;
+            font-size: 8px; font-weight: 600; letter-spacing: 0.04em;
             text-transform: uppercase; background: #F1F5F9;
             border: 1px solid #DDE3EB; border-radius: 3px;
-            padding: 2px 6px; color: #64748B;
+            padding: 2px 6px; color: var(--sub);
           }
-
-          /* KPIs */
-          .kpis { display: flex; gap: 8px; flex-shrink: 0; align-items: flex-start; }
+          .kpis { display: flex; gap: 8px; flex-shrink: 0; }
           .kpi {
-            text-align: center; border: 1px solid #E2E8F0;
-            border-radius: 8px; padding: 9px 16px; min-width: 72px;
+            text-align: center; border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 14px; min-width: 68px;
             background: #F8FBFF;
           }
           .kpi-v {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 900; color: #4fc0d1;
+            font-size: 18px; font-weight: 900; color: var(--mint);
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 600; color: #94A3B8;
+            font-size: 7.5px; font-weight: 600; color: #94A3B8;
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ── Goal/Role strip ── */
-          .meta-row {
-            padding: 9px 32px;
-            background: #F8FAFC;
-            border-bottom: 1px solid #E8ECF0;
-            display: flex; gap: 20px; align-items: baseline;
+          /* ── Body: 2 cols ── */
+          .body {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            min-height: 0;
+            overflow: hidden;
+          }
+
+          /* Left col */
+          .col-left {
+            border-right: 1px solid var(--border);
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+          }
+
+          .arch-img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #FAFCFF;
+            padding: 8px;
+            display: block;
+          }
+
+          .ui-row {
+            display: flex;
+            gap: 8px;
             flex-shrink: 0;
           }
-          .meta-item { display: flex; align-items: baseline; gap: 8px; }
+          .ui-img {
+            flex: 1;
+            height: 100px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            display: block;
+          }
+
+          /* meta (goal/role) in left col when no arch */
+          .meta-block { display: flex; flex-direction: column; gap: 8px; }
+          .meta-item { display: flex; gap: 8px; align-items: baseline; }
           .meta-key {
             font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
-            text-transform: uppercase; flex-shrink: 0;
+            font-size: 8px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; flex-shrink: 0; min-width: 24px;
           }
-          .meta-key-goal { color: #4fc0d1; }
-          .meta-key-role { color: #94A3B8; }
+          .meta-key-g { color: var(--mint); }
+          .meta-key-r { color: #94A3B8; }
           .meta-div { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-          .meta-val { font-size: 11.5px; line-height: 1.5; color: #1E293B; font-weight: 400; }
+          .meta-val { font-family: var(--font-sans); font-size: 11px; line-height: 1.6; color: var(--ink); }
 
-          /* ── Body: always 3 cols ── */
-          .body {
-            flex: 1;
-            padding: 18px 32px 16px;
-            display: grid;
-            grid-template-columns: 300px 1fr 1fr;
-            gap: 20px;
-            align-items: start;
+          /* Right col */
+          .col-right {
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             overflow: hidden;
-            min-height: 0;
           }
 
-          /* Col dividers */
-          .col { min-width: 0; }
-          .col + .col { border-left: 1px solid #F1F5F9; padding-left: 20px; }
+          /* Goal/Role strip at top of right */
+          .goal-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 14px;
+            flex-shrink: 0;
+          }
 
-          /* ── Section label ── */
+          /* Section */
+          .sec { margin-bottom: 14px; flex-shrink: 0; }
+          .sec:last-child { margin-bottom: 0; }
           .sec-label {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #4fc0d1;
-            margin-bottom: 9px; padding-bottom: 6px;
-            border-bottom: 1.5px solid #E8ECF0;
-            display: flex; align-items: center; gap: 6px;
+            font-size: 7.5px; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--mint);
+            margin-bottom: 8px; padding-bottom: 5px;
+            border-bottom: 1.5px solid var(--border);
+            display: flex; align-items: center; gap: 5px;
           }
           .sec-label::before {
             content: '';
             display: inline-block;
-            width: 3px; height: 9px;
-            background: #4fc0d1;
+            width: 3px; height: 8px;
+            background: var(--mint);
             border-radius: 2px;
           }
-          .sec { margin-bottom: 16px; }
-          .sec:last-child { margin-bottom: 0; }
 
-          /* ── Arch image ── */
-          .arch-img {
-            width: 100%; height: auto; max-height: 220px;
-            object-fit: contain;
-            border: 1px solid #E8ECF0; border-radius: 6px;
-            background: #FAFCFF; padding: 8px;
-            margin-bottom: 14px;
-            display: block;
-          }
-
-          /* ── Desc ── */
-          .desc {
-            font-size: 11.5px; line-height: 1.75; color: #475569;
-            word-break: keep-all;
-          }
-
-          /* ── Bullets ── */
-          .bullets { display: flex; flex-direction: column; gap: 7px; }
-          .bullet { display: flex; gap: 9px; align-items: flex-start; }
+          /* Bullets */
+          .bullets { display: flex; flex-direction: column; gap: 6px; }
+          .bullet { display: flex; gap: 8px; align-items: flex-start; }
           .bullet-num {
-            font-size: 8px; font-weight: 800; color: #fff;
-            background: #4fc0d1;
-            flex-shrink: 0;
-            width: 16px; height: 16px;
-            border-radius: 50%;
+            font-size: 7.5px; font-weight: 800; color: #fff;
+            background: var(--mint); flex-shrink: 0;
+            width: 15px; height: 15px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-top: 1px;
-            letter-spacing: 0;
           }
-          .bullet-text { font-size: 11.5px; line-height: 1.65; color: #1E293B; }
+          .bullet-text { font-family: var(--font-sans); font-size: 11px; line-height: 1.65; color: #1E293B; }
 
-          /* ── Decisions ── */
-          .decisions { display: flex; flex-direction: column; gap: 7px; }
+          /* Decisions */
+          .decisions { display: flex; flex-direction: column; gap: 6px; }
           .decision {
-            padding: 9px 12px; background: #F8FAFC;
-            border-radius: 6px; border-left: 3px solid #4fc0d1;
+            padding: 8px 10px; background: #F8FAFC;
+            border-radius: 5px; border-left: 3px solid var(--mint);
           }
           .decision-tech {
             font-family: var(--font-display);
-            font-size: 11px; font-weight: 700; color: #0F172A; margin-bottom: 3px;
-            line-height: 1.3;
+            font-size: 10.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px;
           }
-          .decision-reason { font-family: var(--font-sans); font-size: 10.5px; line-height: 1.6; color: #475569; }
-
-          /* ── Experiments ── */
-          .experiments { display: flex; flex-direction: column; gap: 6px; }
-          .exp {
-            padding: 8px 10px; border: 1px solid #E8ECF0;
-            border-radius: 6px; background: #FAFCFF;
+          .decision-reason {
+            font-family: var(--font-sans);
+            font-size: 10px; line-height: 1.55; color: var(--sub);
           }
-          .exp-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-          .exp-id {
-            font-size: 7.5px; font-weight: 800; color: #fff;
-            background: #4fc0d1; border-radius: 3px;
-            padding: 1px 5px; letter-spacing: 0.06em; flex-shrink: 0;
-          }
-          .exp-hypo { font-size: 11px; font-weight: 600; color: #0F172A; line-height: 1.4; }
-          .exp-result { font-size: 10.5px; color: #64748B; line-height: 1.55; margin-bottom: 3px; }
-          .exp-conc { font-size: 10.5px; font-weight: 600; color: #4fc0d1; line-height: 1.4; }
-
-          /* ── Troubleshooting ── */
-          .troubles { display: flex; flex-direction: column; gap: 5px; }
-          .trouble { display: flex; gap: 8px; align-items: flex-start; }
-          .trouble-dot {
-            width: 5px; height: 5px; border-radius: 50%;
-            background: #F97316; flex-shrink: 0; margin-top: 5px;
-          }
-          .trouble-text { font-size: 11px; line-height: 1.65; color: #475569; }
-
-          /* ── Insight ── */
-          .insight {
-            padding: 10px 13px;
-            border-left: 3px solid #4fc0d1;
-            background: rgba(79,192,209,0.05);
-            border-radius: 0 6px 6px 0;
-          }
-          .insight-text { font-size: 11.5px; line-height: 1.75; color: #1E293B; }
 
           /* ── Footer ── */
           .footer {
-            padding: 9px 32px;
-            border-top: 1px solid #E8ECF0;
+            padding: 8px 32px;
+            border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
             background: #F8FAFC;
-            flex-shrink: 0;
           }
           .footer-name {
             font-family: var(--font-label);
-            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
+            font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url { font-family: var(--font-label); font-size: 10px; color: #4fc0d1; letter-spacing: 0.02em; }
-        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — case study"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
+          .footer-url { font-family: var(--font-label); font-size: 9.5px; color: var(--mint); }
+        4:["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$d"}]]}],"$Le"]}]
 :HL["/arch/lovelop.svg","image"]
-e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent-bar"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","08","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"lovelop: 상권 분석 AI 시뮬레이션 SaaS"}],["$","div",null,{"className":"hdr-meta","children":[["$","span",null,{"className":"hdr-period","children":"2026.02 · AI 자연어처리 집중 과정 3기"}],["$","span",null,{"className":"hdr-sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4.1",{"className":"tag","children":"GPT-4.1"}],["$","span","LLM Agent",{"className":"tag","children":"LLM Agent"}],["$","span","Gemma-2-9b",{"className":"tag","children":"Gemma-2-9b"}],["$","span","EXAONE",{"className":"tag","children":"EXAONE"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","React",{"className":"tag","children":"React"}],["$","span","Flask",{"className":"tag","children":"Flask"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","AI 페르소나",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"160명"}],["$","div",null,{"className":"kpi-l","children":"AI 페르소나"}]]}],["$","div","사용 의향",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"80%"}],["$","div",null,{"className":"kpi-l","children":"사용 의향"}]]}],["$","div","검증 지표",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"11개"}],["$","div",null,{"className":"kpi-l","children":"검증 지표"}]]}]]}]]}],["$","div",null,{"className":"meta-row","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-goal","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원"}]]}],["$","span",null,{"style":{"color":"#E2E8F0","fontSize":16,"alignSelf":"center"},"children":"·"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-role","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정"}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col","children":[["$","img",null,{"src":"/arch/lovelop.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"문제 정의"}],["$","p",null,{"className":"desc","children":"자영업자 15명 현장 인터뷰에서 반복적으로 나온 말은 '예측 정확도보다 내 매장 조건이 바뀌면 어떻게 되는지 미리 보고 싶다'였습니다. 예측 모델이 아닌 시뮬레이션 엔진이 필요했습니다. GPT-4.1을 단일 호출하면 창의성과 신뢰성을 동시에 얻을 수 없어 Temperature를 분리한 2-Stage 구조를 설계했고, 다양한 실제 고객 유형을 재현하기 위해 160개 AI 페르소나가 5단계 Agent 의사결정으로 시나리오를 독립 검증하는 구조를 구축했습니다."}]]}]]}],["$","div",null,{"className":"col","children":[["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"160 페르소나 시뮬레이션: 방문 목적 4유형 × 세대 5종 × 성별·인원 구성으로 실제 고객 분포 재현, Agent 5단계 의사결정"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"Before/After 11지표 검증 리포트로 조건 변경 시나리오를 정량화, 자영업자 사용 의향 80% 확인"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","2-Stage Temperature 분리 vs 단일 GPT 호출",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"2-Stage Temperature 분리 vs 단일 GPT 호출"}],["$","div",null,{"className":"decision-reason","children":"Temperature 0.1에서는 데이터 기반 분석이 정확하지만 전략 제안이 뻔합니다. Temperature 0.7에서는 아이디어가 다양하지만 사실 오류가 섞입니다. 단일 호출로는 두 특성을 동시에 얻을 수 없습니다. 분석가 모듈이 먼저 수치·패턴을 구조화하고, 전략가 모듈이 그 결과를 입력받아 창의적 전략을 제안하도록 순서를 고정했더니 두 가지가 양립됐습니다."}]]}],["$","div","160 AI 페르소나 시뮬레이션",{"className":"decision","children":["$Lf","$L10"]}],"$L11"]}]]}]]}],"$L12"]}],"$L13"]}]}]
-f:["$","div",null,{"className":"decision-tech","children":"160 AI 페르소나 시뮬레이션"}]
-10:["$","div",null,{"className":"decision-reason","children":"상권 분석에서 '고객 반응'을 설문으로 수집하면 샘플 수가 적고 자영업자가 직접 설계하기 어렵습니다. AI 페르소나를 방문 목적·세대·성별·인원 구성의 조합으로 정의하면 실제 고객 분포를 통계적으로 재현할 수 있습니다. 각 페르소나가 5단계 Agent 의사결정(인지→관심→방문검토→결정→재방문)을 거치면 단순 설문보다 행동 패턴이 세밀하게 나왔습니다."}]
-11:["$","div","시뮬레이션 엔진 vs 예측 모델",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"시뮬레이션 엔진 vs 예측 모델"}],["$","div",null,{"className":"decision-reason","children":"예측 모델은 '현재 조건에서 매출이 얼마'를 알려주지만, 자영업자가 실제로 원하는 것은 '영업시간을 늘리면 어떻게 달라지는가'입니다. 조건 변경 시나리오를 정량화하려면 모델이 아니라 시뮬레이션 구조가 필요합니다. 이 차이를 15명 현장 인터뷰에서 발견하고 설계 방향 자체를 바꿨습니다."}]]}]
-12:["$","div",null,{"className":"col","children":["$undefined","$undefined","$undefined"]}]
-13:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","lovelop"]}]]}]
+e:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","08","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"lovelop: 상권 분석 AI 시뮬레이션 SaaS"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"2026.02 · AI 자연어처리 집중 과정 3기"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4.1",{"className":"tag","children":"GPT-4.1"}],["$","span","LLM Agent",{"className":"tag","children":"LLM Agent"}],["$","span","Gemma-2-9b",{"className":"tag","children":"Gemma-2-9b"}],["$","span","EXAONE",{"className":"tag","children":"EXAONE"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","React",{"className":"tag","children":"React"}],["$","span","Flask",{"className":"tag","children":"Flask"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","AI 페르소나",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"160명"}],["$","div",null,{"className":"kpi-l","children":"AI 페르소나"}]]}],["$","div","사용 의향",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"80%"}],["$","div",null,{"className":"kpi-l","children":"사용 의향"}]]}],["$","div","검증 지표",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"11개"}],["$","div",null,{"className":"kpi-l","children":"검증 지표"}]]}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col-left","children":[["$","img",null,{"src":"/arch/lovelop.svg","alt":"architecture","className":"arch-img"}],false,false]}],["$","div",null,{"className":"col-right","children":[["$","div",null,{"className":"goal-strip","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-g","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-r","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정"}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"160 페르소나 시뮬레이션: 방문 목적 4유형 × 세대 5종 × 성별·인원 구성으로 실제 고객 분포 재현, Agent 5단계 의사결정"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"Before/After 11지표 검증 리포트로 조건 변경 시나리오를 정량화, 자영업자 사용 의향 80% 확인"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","2-Stage Temperature 분리 vs 단일 GPT 호출",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"2-Stage Temperature 분리 vs 단일 GPT 호출"}],["$","div",null,{"className":"decision-reason","children":"Temperature 0.1에서는 데이터 기반 분석이 정확하지만 전략 제안이 뻔합니다. Temperature 0.7에서는 아이디어가 다양하지만 사실 오류가 섞입니다. 단일 호출로는 두 특성을 동시에 얻을 수 없습니다. 분석가 모듈이 먼저 수치·패턴을 구조화하고, 전략가 모듈이 그 결과를 입력받아 창의적 전략을 제안하도록 순서를 고정했더니 두 가지가 양립됐습니다."}]]}],["$","div","160 AI 페르소나 시뮬레이션",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"160 AI 페르소나 시뮬레이션"}],["$","div",null,{"className":"decision-reason","children":"상권 분석에서 '고객 반응'을 설문으로 수집하면 샘플 수가 적고 자영업자가 직접 설계하기 어렵습니다. AI 페르소나를 방문 목적·세대·성별·인원 구성의 조합으로 정의하면 실제 고객 분포를 통계적으로 재현할 수 있습니다. 각 페르소나가 5단계 Agent 의사결정(인지→관심→방문검토→결정→재방문)을 거치면 단순 설문보다 행동 패턴이 세밀하게 나왔습니다."}]]}]]}]]}]]}]]}],["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],"$Lf"]}]]}]}]
+f:["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","lovelop"]}]
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-14:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
+10:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
 7:null
-b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]
+b:[["$","title","0",{"children":"이채연 — AI / NLP Engineer Portfolio"}],["$","meta","1",{"name":"description","content":"AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.dc08583d.svg","sizes":"any","type":"image/svg+xml"}],["$","$L10","3",{}]]
