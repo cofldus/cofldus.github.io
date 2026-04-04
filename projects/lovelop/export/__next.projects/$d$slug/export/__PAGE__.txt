@@ -3,17 +3,18 @@
 7:"$Sreact.suspense"
 :HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
 :HL["/arch/lovelop.svg","image"]
-2:T20de,
+2:T1feb,
           * { margin: 0; padding: 0; box-sizing: border-box; }
 
           :root {
             --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
             --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
-            --mint: #4fc0d1;
+            --navy: #1E3A8A;
+            --navy-lt: #EEF2FF;
             --ink: #0F172A;
             --sub: #64748B;
-            --border: #E8ECF0;
+            --border: #E2E8F0;
           }
 
           @page { size: A4 landscape; margin: 0; }
@@ -48,11 +49,11 @@
           }
 
           /* ── Accent ── */
-          .accent { background: linear-gradient(90deg, var(--mint) 0%, #a78bfa 100%); }
+          .accent { background: var(--navy); }
 
           /* ── Header ── */
           .hdr {
-            padding: 18px 32px 14px;
+            padding: 16px 32px 13px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: flex-start;
@@ -62,49 +63,50 @@
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
             font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em;
-            text-transform: uppercase; color: #94A3B8; margin-bottom: 4px;
+            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--navy); margin-bottom: 4px;
+            opacity: 0.6;
           }
           .hdr-title {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 800; color: var(--ink);
+            font-size: 24px; font-weight: 800; color: var(--ink);
             letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 7px;
           }
           .hdr-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
           .hdr-period {
             font-family: var(--font-label);
-            font-size: 10.5px; color: var(--sub);
+            font-size: 12px; color: var(--sub);
           }
-          .sep { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; }
-          .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+          .sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
+          .tags { display: flex; flex-wrap: wrap; gap: 4px; }
           .tag {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 600; letter-spacing: 0.04em;
-            text-transform: uppercase; background: #F1F5F9;
-            border: 1px solid #DDE3EB; border-radius: 3px;
-            padding: 2px 6px; color: var(--sub);
+            font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+            text-transform: uppercase; background: var(--navy-lt);
+            border: 1px solid #C7D2FE; border-radius: 3px;
+            padding: 2px 7px; color: var(--navy);
           }
           .kpis { display: flex; gap: 8px; flex-shrink: 0; }
           .kpi {
             text-align: center; border: 1px solid var(--border);
-            border-radius: 8px; padding: 8px 14px; min-width: 68px;
-            background: #F8FBFF;
+            border-radius: 8px; padding: 8px 16px; min-width: 72px;
+            background: var(--navy-lt);
           }
           .kpi-v {
             font-family: var(--font-display);
-            font-size: 18px; font-weight: 900; color: var(--mint);
+            font-size: 20px; font-weight: 900; color: var(--navy);
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
             font-family: var(--font-label);
-            font-size: 7.5px; font-weight: 600; color: #94A3B8;
+            font-size: 8px; font-weight: 600; color: #94A3B8;
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
           /* ── Body: 2 cols ── */
           .body {
             display: grid;
-            grid-template-columns: 380px 1fr;
+            grid-template-columns: 420px 1fr;
             min-height: 0;
             overflow: hidden;
           }
@@ -112,22 +114,22 @@
           /* Left col */
           .col-left {
             border-right: 1px solid var(--border);
-            padding: 18px 20px;
+            padding: 16px 18px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             overflow: hidden;
           }
 
           .arch-img {
+            flex: 1;
+            min-height: 0;
             width: 100%;
-            height: auto;
-            max-height: 200px;
             object-fit: contain;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: #FAFCFF;
-            padding: 8px;
+            background: #F8FAFF;
+            padding: 10px;
             display: block;
           }
 
@@ -138,7 +140,7 @@
           }
           .ui-img {
             flex: 1;
-            height: 100px;
+            height: 130px;
             object-fit: cover;
             object-position: top;
             border-radius: 5px;
@@ -147,21 +149,21 @@
           }
 
           /* meta (goal/role) in left col when no arch */
-          .meta-block { display: flex; flex-direction: column; gap: 8px; }
-          .meta-item { display: flex; gap: 8px; align-items: baseline; }
+          .meta-block { display: flex; flex-direction: column; gap: 10px; }
+          .meta-item { display: flex; gap: 10px; align-items: baseline; }
           .meta-key {
             font-family: var(--font-label);
-            font-size: 8px; font-weight: 700; letter-spacing: 0.14em;
-            text-transform: uppercase; flex-shrink: 0; min-width: 24px;
+            font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; flex-shrink: 0; min-width: 28px;
           }
-          .meta-key-g { color: var(--mint); }
+          .meta-key-g { color: var(--navy); }
           .meta-key-r { color: #94A3B8; }
-          .meta-div { width: 1px; height: 9px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-          .meta-val { font-family: var(--font-sans); font-size: 11px; line-height: 1.6; color: var(--ink); }
+          .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
+          .meta-val { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--ink); }
 
           /* Right col */
           .col-right {
-            padding: 18px 24px;
+            padding: 16px 28px;
             display: flex;
             flex-direction: column;
             gap: 0;
@@ -172,57 +174,49 @@
           .goal-strip {
             display: flex;
             flex-direction: column;
-            gap: 5px;
-            padding-bottom: 14px;
+            gap: 7px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             flex-shrink: 0;
           }
 
           /* Section */
-          .sec { margin-bottom: 14px; flex-shrink: 0; }
+          .sec { margin-bottom: 16px; flex-shrink: 0; }
           .sec:last-child { margin-bottom: 0; }
           .sec-label {
             font-family: var(--font-label);
-            font-size: 7.5px; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; color: var(--mint);
-            margin-bottom: 8px; padding-bottom: 5px;
-            border-bottom: 1.5px solid var(--border);
-            display: flex; align-items: center; gap: 5px;
-          }
-          .sec-label::before {
-            content: '';
-            display: inline-block;
-            width: 3px; height: 8px;
-            background: var(--mint);
-            border-radius: 2px;
+            font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--navy);
+            margin-bottom: 10px; padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
           }
 
           /* Bullets */
-          .bullets { display: flex; flex-direction: column; gap: 6px; }
-          .bullet { display: flex; gap: 8px; align-items: flex-start; }
+          .bullets { display: flex; flex-direction: column; gap: 9px; }
+          .bullet { display: flex; gap: 10px; align-items: flex-start; }
           .bullet-num {
-            font-size: 7.5px; font-weight: 800; color: #fff;
-            background: var(--mint); flex-shrink: 0;
-            width: 15px; height: 15px; border-radius: 50%;
+            font-size: 8.5px; font-weight: 800; color: #fff;
+            background: var(--navy); flex-shrink: 0;
+            width: 18px; height: 18px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            margin-top: 1px;
+            margin-top: 2px;
           }
-          .bullet-text { font-family: var(--font-sans); font-size: 11px; line-height: 1.65; color: #1E293B; }
+          .bullet-text { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.7; color: #1E293B; }
 
           /* Decisions */
-          .decisions { display: flex; flex-direction: column; gap: 6px; }
+          .decisions { display: flex; flex-direction: column; gap: 8px; }
           .decision {
-            padding: 8px 10px; background: #F8FAFC;
-            border-radius: 5px; border-left: 3px solid var(--mint);
+            padding: 10px 14px; background: var(--navy-lt);
+            border-radius: 6px; border: 1px solid #C7D2FE;
           }
           .decision-tech {
             font-family: var(--font-display);
-            font-size: 10.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px;
+            font-size: 12.5px; font-weight: 700; color: var(--ink); margin-bottom: 3px;
           }
           .decision-reason {
             font-family: var(--font-sans);
-            font-size: 10px; line-height: 1.55; color: var(--sub);
+            font-size: 12px; line-height: 1.6; color: var(--sub);
           }
 
           /* ── Footer ── */
@@ -234,10 +228,10 @@
           }
           .footer-name {
             font-family: var(--font-label);
-            font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
           }
-          .footer-url { font-family: var(--font-label); font-size: 9.5px; color: var(--mint); }
-        0:{"buildId":"ZGChpvsyNIuCeiScFR4ow","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+          .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--navy); }
+        0:{"buildId":"Xo5wULB7vxmC7j0CcBrax","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
 3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","08","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"lovelop: 상권 분석 AI 시뮬레이션 SaaS"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"2026.02 · AI 자연어처리 집중 과정 3기"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4.1",{"className":"tag","children":"GPT-4.1"}],["$","span","LLM Agent",{"className":"tag","children":"LLM Agent"}],["$","span","Gemma-2-9b",{"className":"tag","children":"Gemma-2-9b"}],["$","span","EXAONE",{"className":"tag","children":"EXAONE"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","React",{"className":"tag","children":"React"}],["$","span","Flask",{"className":"tag","children":"Flask"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","AI 페르소나",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"160명"}],["$","div",null,{"className":"kpi-l","children":"AI 페르소나"}]]}],["$","div","사용 의향",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"80%"}],["$","div",null,{"className":"kpi-l","children":"사용 의향"}]]}],["$","div","검증 지표",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"11개"}],["$","div",null,{"className":"kpi-l","children":"검증 지표"}]]}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col-left","children":[["$","img",null,{"src":"/arch/lovelop.svg","alt":"architecture","className":"arch-img"}],false,false]}],["$","div",null,{"className":"col-right","children":[["$","div",null,{"className":"goal-strip","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-g","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-r","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정"}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"160 페르소나 시뮬레이션: 방문 목적 4유형 × 세대 5종 × 성별·인원 구성으로 실제 고객 분포 재현, Agent 5단계 의사결정"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"Before/After 11지표 검증 리포트로 조건 변경 시나리오를 정량화, 자영업자 사용 의향 80% 확인"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","2-Stage Temperature 분리 vs 단일 GPT 호출",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"2-Stage Temperature 분리 vs 단일 GPT 호출"}],["$","div",null,{"className":"decision-reason","children":"Temperature 0.1에서는 데이터 기반 분석이 정확하지만 전략 제안이 뻔합니다. Temperature 0.7에서는 아이디어가 다양하지만 사실 오류가 섞입니다. 단일 호출로는 두 특성을 동시에 얻을 수 없습니다. 분석가 모듈이 먼저 수치·패턴을 구조화하고, 전략가 모듈이 그 결과를 입력받아 창의적 전략을 제안하도록 순서를 고정했더니 두 가지가 양립됐습니다."}]]}],["$","div","160 AI 페르소나 시뮬레이션",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"160 AI 페르소나 시뮬레이션"}],["$","div",null,{"className":"decision-reason","children":"상권 분석에서 '고객 반응'을 설문으로 수집하면 샘플 수가 적고 자영업자가 직접 설계하기 어렵습니다. AI 페르소나를 방문 목적·세대·성별·인원 구성의 조합으로 정의하면 실제 고객 분포를 통계적으로 재현할 수 있습니다. 각 페르소나가 5단계 Agent 의사결정(인지→관심→방문검토→결정→재방문)을 거치면 단순 설문보다 행동 패턴이 세밀하게 나왔습니다."}]]}]]}]]}]]}]]}],["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],"$L5"]}]]}]}]
 4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 5:["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","lovelop"]}]

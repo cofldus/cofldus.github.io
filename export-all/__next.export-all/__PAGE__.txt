@@ -17,14 +17,15 @@
 :HL["/finview_ui/2.png","image"]
 :HL["/arch/CT-MRI.svg","image"]
 :HL["/arch/rocketan.svg","image"]
-2:T2a90,
+2:T29f9,
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --mint:   #4fc0d1;
+    --navy:   #1E3A8A;
+    --navy-lt: #EEF2FF;
     --ink:    #0F172A;
     --sub:    #64748B;
-    --border: #E8ECF0;
+    --border: #E2E8F0;
     --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
     --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
     --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
@@ -74,7 +75,7 @@
   ═══════════════════════════════════════ */
   .cover-accent {
     height: 4px;
-    background: linear-gradient(90deg, var(--mint) 0%, #a78bfa 100%);
+    background: linear-gradient(90deg, var(--navy) 0%, #a78bfa 100%);
     flex-shrink: 0;
   }
 
@@ -92,7 +93,7 @@
   .cover-eyebrow {
     font-family: var(--font-label);
     font-size: 9px; font-weight: 700; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--mint);
+    text-transform: uppercase; color: var(--navy);
     margin-bottom: 10px;
   }
 
@@ -120,8 +121,8 @@
     font-family: var(--font-label);
     font-size: 9px; font-weight: 600; letter-spacing: 0.06em;
     text-transform: uppercase;
-    background: #F1F5F9; border: 1px solid #DDE3EB;
-    border-radius: 3px; padding: 3px 8px; color: var(--sub);
+    background: var(--navy-lt); border: 1px solid #C7D2FE;
+    border-radius: 3px; padding: 3px 8px; color: var(--navy);
   }
 
   .cover-top-right {
@@ -163,7 +164,7 @@
   .cover-section-label {
     font-family: var(--font-label);
     font-size: 8px; font-weight: 700; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--mint);
+    text-transform: uppercase; color: var(--navy);
     margin-bottom: 12px;
   }
 
@@ -179,7 +180,7 @@
 
   .cover-pnum {
     font-family: var(--font-label);
-    font-size: 8.5px; font-weight: 700; color: var(--mint);
+    font-size: 8.5px; font-weight: 700; color: var(--navy);
     letter-spacing: 0.1em; flex-shrink: 0; min-width: 20px;
   }
 
@@ -218,7 +219,7 @@
   }
   .cover-url {
     font-family: var(--font-label);
-    font-size: 10px; color: var(--mint); letter-spacing: 0.04em;
+    font-size: 10px; color: var(--navy); letter-spacing: 0.04em;
   }
 
   /* ═══════════════════════════════════════
@@ -226,7 +227,7 @@
   ═══════════════════════════════════════ */
   .proj-accent {
     height: 4px;
-    background: linear-gradient(90deg, var(--mint) 0%, #a78bfa 100%);
+    background: linear-gradient(90deg, var(--navy) 0%, #a78bfa 100%);
     flex-shrink: 0;
   }
 
@@ -244,36 +245,36 @@
   .hdr-eyebrow {
     font-family: var(--font-label);
     font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #94A3B8; margin-bottom: 5px;
+    text-transform: uppercase; color: var(--navy); margin-bottom: 5px; opacity: 0.6;
   }
   .hdr-title {
     font-family: var(--font-display);
-    font-size: 24px; font-weight: 800; color: var(--ink);
+    font-size: 26px; font-weight: 800; color: var(--ink);
     letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 8px;
   }
   .hdr-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .hdr-period {
     font-family: var(--font-label);
-    font-size: 11.5px; font-weight: 500; color: var(--sub);
+    font-size: 13px; font-weight: 500; color: var(--sub);
   }
   .hdr-sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
-  .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
   .tag {
     font-family: var(--font-label);
     font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
-    text-transform: uppercase; background: #F1F5F9;
-    border: 1px solid #DDE3EB; border-radius: 3px;
-    padding: 2px 7px; color: var(--sub);
+    text-transform: uppercase; background: var(--navy-lt);
+    border: 1px solid #C7D2FE; border-radius: 3px;
+    padding: 2px 7px; color: var(--navy);
   }
 
   .kpis { display: flex; gap: 8px; flex-shrink: 0; align-items: flex-start; }
   .kpi {
-    text-align: center; border: 1px solid var(--border);
-    border-radius: 8px; padding: 9px 16px; min-width: 72px; background: #F8FBFF;
+    text-align: center; border: 1px solid #C7D2FE;
+    border-radius: 8px; padding: 9px 16px; min-width: 72px; background: var(--navy-lt);
   }
   .kpi-v {
     font-family: var(--font-display);
-    font-size: 20px; font-weight: 900; color: var(--mint);
+    font-size: 22px; font-weight: 900; color: var(--navy);
     letter-spacing: -0.04em; line-height: 1;
   }
   .kpi-l {
@@ -286,43 +287,43 @@
   .body {
     flex: 1;
     display: grid;
-    grid-template-columns: 390px 1fr;
+    grid-template-columns: 420px 1fr;
     min-height: 0;
     overflow: hidden;
   }
 
   .col-left {
     border-right: 1px solid var(--border);
-    padding: 20px 22px;
+    padding: 16px 18px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
     overflow: hidden;
   }
 
   .arch-img {
-    width: 100%; height: auto; max-height: 210px;
-    object-fit: contain;
+    flex: 1; min-height: 0;
+    width: 100%; object-fit: contain;
     border: 1px solid var(--border); border-radius: 6px;
-    background: #FAFCFF; padding: 10px; display: block;
+    background: #F8FAFF; padding: 10px; display: block;
   }
 
   .ui-row { display: flex; gap: 10px; flex-shrink: 0; }
   .ui-img {
-    flex: 1; height: 108px;
+    flex: 1; height: 130px;
     object-fit: cover; object-position: top;
     border-radius: 5px; border: 1px solid var(--border); display: block;
   }
 
   .col-right {
-    padding: 20px 28px;
+    padding: 16px 28px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
   .goal-strip {
-    display: flex; flex-direction: column; gap: 6px;
+    display: flex; flex-direction: column; gap: 7px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 16px; flex-shrink: 0;
@@ -330,54 +331,47 @@
   .meta-item { display: flex; align-items: baseline; gap: 10px; }
   .meta-key {
     font-family: var(--font-label);
-    font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; flex-shrink: 0; min-width: 26px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; flex-shrink: 0; min-width: 28px;
   }
-  .meta-key-goal { color: var(--mint); }
+  .meta-key-goal { color: var(--navy); }
   .meta-key-role { color: #94A3B8; }
   .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
-  .meta-val { font-family: var(--font-sans); font-size: 12px; line-height: 1.65; color: var(--ink); }
+  .meta-val { font-family: var(--font-sans); font-size: 13px; line-height: 1.7; color: var(--ink); }
 
   .sec { margin-bottom: 16px; flex-shrink: 0; }
   .sec:last-child { margin-bottom: 0; }
   .sec-label {
     font-family: var(--font-label);
-    font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--mint);
-    margin-bottom: 9px; padding-bottom: 6px;
-    border-bottom: 1.5px solid var(--border);
-    display: flex; align-items: center; gap: 5px;
-  }
-  .sec-label::before {
-    content: '';
-    display: inline-block;
-    width: 3px; height: 9px;
-    background: var(--mint); border-radius: 2px;
+    font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--navy);
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
   }
 
-  .bullets { display: flex; flex-direction: column; gap: 7px; }
-  .bullet { display: flex; gap: 9px; align-items: flex-start; }
+  .bullets { display: flex; flex-direction: column; gap: 9px; }
+  .bullet { display: flex; gap: 10px; align-items: flex-start; }
   .bullet-num {
-    font-size: 8px; font-weight: 800; color: #fff;
-    background: var(--mint); flex-shrink: 0;
-    width: 17px; height: 17px; border-radius: 50%;
+    font-size: 8.5px; font-weight: 800; color: #fff;
+    background: var(--navy); flex-shrink: 0;
+    width: 19px; height: 19px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin-top: 2px;
   }
-  .bullet-text { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.7; color: #1E293B; }
+  .bullet-text { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.7; color: #1E293B; }
 
   .decisions { display: flex; flex-direction: column; gap: 8px; }
   .decision {
-    padding: 10px 12px; background: #F8FAFC;
-    border-radius: 5px; border-left: 3px solid var(--mint);
+    padding: 10px 14px; background: var(--navy-lt);
+    border-radius: 6px; border: 1px solid #C7D2FE;
   }
   .decision-tech {
     font-family: var(--font-display);
-    font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px;
+    font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px;
   }
   .decision-reason {
     font-family: var(--font-sans);
-    font-size: 11px; line-height: 1.6; color: var(--sub);
+    font-size: 12px; line-height: 1.65; color: var(--sub);
   }
 
   /* Footer */
@@ -393,9 +387,9 @@
   }
   .footer-url {
     font-family: var(--font-label);
-    font-size: 10px; color: var(--mint); letter-spacing: 0.02em;
+    font-size: 10px; color: var(--navy); letter-spacing: 0.02em;
   }
-0:{"buildId":"ZGChpvsyNIuCeiScFR4ow","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":"이채연 — 포트폴리오 전체 케이스 스터디"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+0:{"buildId":"Xo5wULB7vxmC7j0CcBrax","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":"이채연 — 포트폴리오 전체 케이스 스터디"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
 3:["$","body",null,{"children":[["$","div",null,{"className":"page cover-page","children":[["$","div",null,{"className":"cover-accent"}],["$","div",null,{"className":"cover-top","children":[["$","div",null,{"className":"cover-top-left","children":[["$","p",null,{"className":"cover-eyebrow","children":"AI / NLP Portfolio  ·  2025 – 2026"}],["$","h1",null,{"className":"cover-name","children":"이채연"}],["$","p",null,{"className":"cover-role-label","children":"AI / NLP Engineer"}],["$","p",null,{"className":"cover-desc","children":["RAG와 reasoning, agentic workflows를 바탕으로",["$","br",null,{}],"실제 서비스 환경에서 작동하는 AI 시스템을 구현합니다."]}],["$","div",null,{"className":"cover-skill-row","children":[["$","span","Python",{"className":"cover-skill","children":"Python"}],["$","span","NLP / RAG",{"className":"cover-skill","children":"NLP / RAG"}],["$","span","LLM Fine-tuning",{"className":"cover-skill","children":"LLM Fine-tuning"}],["$","span","PyTorch",{"className":"cover-skill","children":"PyTorch"}],["$","span","LangChain",{"className":"cover-skill","children":"LangChain"}]]}]]}],["$","div",null,{"className":"cover-top-right","children":[["$","img",null,{"src":"/2024-1.jpg","alt":"이채연","className":"cover-photo"}],["$","div",null,{"className":"cover-contacts","children":[["$","p",null,{"className":"cover-contact","children":"cofldus.github.io"}],["$","p",null,{"className":"cover-contact","children":"github.com/cofldus"}]]}]]}]]}],["$","div",null,{"className":"cover-rule"}],["$","div",null,{"className":"cover-body","children":[["$","p",null,{"className":"cover-section-label","children":"주요 프로젝트"}],["$","div",null,{"className":"cover-projects","children":[["$","div","01",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"01"}],["$","span",null,{"className":"cover-ptitle","children":"AiRPA"}],["$","span",null,{"className":"cover-pdesc","children":"학생 진로탐색 자동화 · 한국지능정보사회진흥원 특별상"}]]}],["$","div","02",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"02"}],["$","span",null,{"className":"cover-ptitle","children":"Medical Chatbot"}],["$","span",null,{"className":"cover-pdesc","children":"하이브리드 RAG 의료자문봇 · BERTScore +0.16"}]]}],["$","div","03",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"03"}],["$","span",null,{"className":"cover-ptitle","children":"난독화 한글 복원 AI"}],["$","span",null,{"className":"cover-pdesc","children":"BERTScore 0.9812 · NLP 분기 설계"}]]}],["$","div","04",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"04"}],["$","span",null,{"className":"cover-ptitle","children":"KillKong"}],["$","span",null,{"className":"cover-pdesc","children":"콩글리쉬 교정 AI Agent · 포스코 인재창조원 장려상"}]]}],["$","div","05",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"05"}],["$","span",null,{"className":"cover-ptitle","children":"FinView"}],["$","span",null,{"className":"cover-pdesc","children":"생성형 AI 재무보고서 · 성신여자대학교 팀 프로젝트"}]]}],["$","div","06",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"06"}],["$","span",null,{"className":"cover-ptitle","children":"CT · MRI CycleGAN"}],["$","span",null,{"className":"cover-pdesc","children":"의료영상 도메인 변환 · (주)딥러닝연구개발 연구"}]]}],["$","div","07",{"className":"cover-project-row","children":[["$","span",null,{"className":"cover-pnum","children":"07"}],["$","span",null,{"className":"cover-ptitle","children":"Rocketan"}],["$","span",null,{"className":"cover-pdesc","children":"RAG 기반 강의 퀴즈 · 학습 가이드 자동 생성"}]]}]]}]]}],["$","div",null,{"className":"cover-footer","children":[["$","div",null,{"className":"cover-stats","children":[["$","div","Projects",{"className":"cover-stat","children":[["$","span",null,{"className":"cover-stat-n","children":"7"}],["$","span",null,{"className":"cover-stat-l","children":"Projects"}]]}],["$","div","Awards",{"className":"cover-stat","children":[["$","span",null,{"className":"cover-stat-n","children":"5"}],["$","span",null,{"className":"cover-stat-l","children":"Awards"}]]}],["$","div","Certifications",{"className":"cover-stat","children":[["$","span",null,{"className":"cover-stat-n","children":"2"}],["$","span",null,{"className":"cover-stat-l","children":"Certifications"}]]}]]}],["$","span",null,{"className":"cover-url","children":"cofldus.github.io"}]]}]]}],[["$","div","airpa",{"className":"page","children":[["$","div",null,{"className":"proj-accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","01","  ·  Case Study"]}],"$L5","$L6"]}],"$L7"]}],"$L8","$L9"]}],"$La","$Lb","$Lc","$Ld","$Le","$Lf"]]}]
 4:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
 5:["$","div",null,{"className":"hdr-title","children":"AiRPA: 학생 진로 탐색 자동화 시스템"}]
