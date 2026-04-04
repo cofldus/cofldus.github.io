@@ -5,17 +5,18 @@
 :HL["/arch/FinView.svg","image"]
 :HL["/finview_ui/1.png","image"]
 :HL["/finview_ui/2.png","image"]
-2:T1f23,
+2:T1b0a,
           * { margin: 0; padding: 0; box-sizing: border-box; }
 
           :root {
+            --blue:   #024df0;
+            --blue-lt: #eef2ff;
+            --blue-bd: #c7d2fe;
             --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
             --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
-            --navy: #1E3A8A;
-            --navy-lt: #EEF2FF;
-            --ink: #0F172A;
-            --sub: #64748B;
+            --ink:    #0F172A;
+            --sub:    #64748B;
             --border: #E2E8F0;
           }
 
@@ -27,40 +28,30 @@
           }
 
           html, body {
-            background: #EAECF0;
+            background: #E8EDF5;
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 28px;
-            min-height: 100vh;
+            display: flex; justify-content: center; align-items: flex-start;
+            padding: 28px; min-height: 100vh;
           }
 
-          /* ── Shell ── */
           .page {
-            width: 1123px;
-            height: 794px;
-            background: #fff;
-            border-radius: 6px;
-            box-shadow: 0 12px 48px rgba(0,0,0,0.14);
-            overflow: hidden;
-            display: grid;
-            grid-template-rows: 5px auto 1fr auto;
+            width: 1123px; height: 794px;
+            background: #fff; border-radius: 6px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+            overflow: hidden; display: flex; flex-direction: column;
             flex-shrink: 0;
           }
 
-          /* ── Accent ── */
-          .accent { background: var(--navy); }
+          /* Accent bar */
+          .accent { height: 5px; background: var(--blue); flex-shrink: 0; }
 
-          /* ── Header ── */
+          /* Header */
           .hdr {
-            padding: 14px 32px 12px;
+            padding: 13px 32px 11px;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: 20px; flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
@@ -71,31 +62,28 @@
           .hdr-title {
             font-family: var(--font-display);
             font-size: 25px; font-weight: 800; color: var(--ink);
-            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 6px;
+            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 5px;
           }
           .hdr-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-          .hdr-period {
-            font-family: var(--font-label);
-            font-size: 12px; color: var(--sub);
-          }
+          .hdr-period { font-family: var(--font-label); font-size: 12px; color: var(--sub); }
           .sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
           .tags { display: flex; flex-wrap: wrap; gap: 4px; }
           .tag {
             font-family: var(--font-label);
             font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
-            text-transform: uppercase; background: var(--navy-lt);
-            border: 1px solid #C7D2FE; border-radius: 3px;
-            padding: 2px 7px; color: var(--navy);
+            text-transform: uppercase; background: var(--blue-lt);
+            border: 1px solid var(--blue-bd); border-radius: 3px;
+            padding: 2px 7px; color: var(--blue);
           }
           .kpis { display: flex; gap: 8px; flex-shrink: 0; }
           .kpi {
-            text-align: center; border: 1px solid #C7D2FE;
+            text-align: center; border: 1px solid var(--blue-bd);
             border-radius: 6px; padding: 8px 16px; min-width: 72px;
-            background: var(--navy-lt);
+            background: var(--blue-lt);
           }
           .kpi-v {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 900; color: var(--navy);
+            font-size: 20px; font-weight: 900; color: var(--blue);
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
@@ -104,107 +92,69 @@
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ── Body: 2 cols ── */
-          .body {
-            display: grid;
-            grid-template-columns: 470px 1fr;
-            min-height: 0;
-            overflow: hidden;
-          }
-
-          /* Left col */
-          .col-left {
-            border-right: 1px solid var(--border);
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow: hidden;
-          }
-
-          .arch-img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-          }
-
-          .ui-row {
-            display: flex;
-            gap: 8px;
+          /* Image zone: full width */
+          .img-zone {
             flex-shrink: 0;
+            border-bottom: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            background: #FAFBFF;
           }
+          .arch-img {
+            width: 100%; display: block;
+            object-fit: contain; object-position: center;
+          }
+          .ui-row { display: flex; gap: 0; flex-shrink: 0; }
           .ui-img {
-            flex: 1;
-            height: 150px;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 4px;
-            display: block;
+            flex: 1; display: block;
+            object-fit: cover; object-position: top;
+            border-top: 1px solid var(--border);
           }
 
-          /* meta (goal/role) in left col when no arch */
-          .meta-block { display: flex; flex-direction: column; gap: 10px; }
-          .meta-item { display: flex; gap: 10px; align-items: baseline; }
+          /* Content: 3 columns */
+          .content {
+            flex: 1; min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            overflow: hidden;
+          }
+          .c-col {
+            padding: 16px 20px;
+            overflow: hidden;
+          }
+          .c-col + .c-col { border-left: 1px solid var(--border); }
+
+          .c-label {
+            font-family: var(--font-label);
+            font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--blue);
+            margin-bottom: 10px; padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+          }
+
+          .meta-item { display: flex; gap: 10px; align-items: baseline; margin-bottom: 10px; }
           .meta-key {
             font-family: var(--font-label);
             font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
             text-transform: uppercase; flex-shrink: 0; min-width: 28px;
           }
-          .meta-key-g { color: var(--navy); }
-          .meta-key-r { color: #94A3B8; }
           .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
           .meta-val { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--ink); }
 
-          /* Right col */
-          .col-right {
-            padding: 16px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            overflow: hidden;
-          }
-
-          /* Goal/Role strip at top of right */
-          .goal-strip {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 16px;
-            flex-shrink: 0;
-          }
-
-          /* Section */
-          .sec { margin-bottom: 16px; flex-shrink: 0; }
-          .sec:last-child { margin-bottom: 0; }
-          .sec-label {
-            font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; color: var(--navy);
-            margin-bottom: 10px; padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
-          }
-
-          /* Bullets */
-          .bullets { display: flex; flex-direction: column; gap: 9px; }
+          .bullets { display: flex; flex-direction: column; gap: 10px; }
           .bullet { display: flex; gap: 10px; align-items: flex-start; }
           .bullet-num {
             font-size: 8.5px; font-weight: 800; color: #fff;
-            background: var(--navy); flex-shrink: 0;
-            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--blue); flex-shrink: 0;
+            width: 19px; height: 19px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-top: 2px;
           }
-          .bullet-text { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.7; color: #1E293B; }
+          .bullet-text { font-family: var(--font-sans); font-size: 13px; line-height: 1.7; color: #1E293B; }
 
-          /* Decisions */
-          .decisions { display: flex; flex-direction: column; gap: 8px; }
+          .decisions { display: flex; flex-direction: column; gap: 9px; }
           .decision {
-            padding: 10px 14px; background: var(--navy-lt);
-            border-radius: 6px; border: 1px solid #C7D2FE;
+            padding: 10px 13px; background: var(--blue-lt);
+            border-radius: 6px; border: 1px solid var(--blue-bd);
           }
           .decision-tech {
             font-family: var(--font-display);
@@ -212,23 +162,19 @@
           }
           .decision-reason {
             font-family: var(--font-sans);
-            font-size: 12px; line-height: 1.6; color: var(--sub);
+            font-size: 12px; line-height: 1.65; color: var(--sub);
           }
 
-          /* ── Footer ── */
+          /* Footer */
           .footer {
-            padding: 8px 32px;
-            border-top: 1px solid var(--border);
+            padding: 8px 32px; border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
-            background: #F8FAFC;
+            background: #F8FAFC; flex-shrink: 0;
           }
-          .footer-name {
-            font-family: var(--font-label);
-            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
-          }
-          .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--navy); }
-        0:{"buildId":"4vJgfcZQpSIODW1U0Vl1z","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["FinView: 생성형 AI 재무보고서 시스템"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
-3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","05","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"FinView: 생성형 AI 재무보고서 시스템"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"2024.09–11 · 성신여자대학교 · 팀장"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4",{"className":"tag","children":"GPT-4"}],["$","span","XGBoost",{"className":"tag","children":"XGBoost"}],["$","span","KMeans",{"className":"tag","children":"KMeans"}],["$","span","SHAP",{"className":"tag","children":"SHAP"}],["$","span","SMOTE",{"className":"tag","children":"SMOTE"}],["$","span","DART API",{"className":"tag","children":"DART API"}],["$","span","Flask",{"className":"tag","children":"Flask"}],["$","span","D3.js",{"className":"tag","children":"D3.js"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","신용등급 분류",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"91%"}],["$","div",null,{"className":"kpi-l","children":"신용등급 분류"}]]}],["$","div","생성 속도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10배"}],["$","div",null,{"className":"kpi-l","children":"생성 속도"}]]}],["$","div","만족도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"4.4/5"}],["$","div",null,{"className":"kpi-l","children":"만족도"}]]}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col-left","children":[["$","img",null,{"src":"/arch/FinView.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"ui-row","children":[["$","img","0",{"src":"/finview_ui/1.png","alt":"UI 1","className":"ui-img"}],["$","img","1",{"src":"/finview_ui/2.png","alt":"UI 2","className":"ui-img"}]]}],false]}],["$","div",null,{"className":"col-right","children":[["$","div",null,{"className":"goal-strip","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-g","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-r","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발"}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","XGBoost 분류 + GPT-4 해설 분리 아키텍처",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"XGBoost 분류 + GPT-4 해설 분리 아키텍처"}],["$","div",null,{"className":"decision-reason","children":"GPT-4에 직접 '이 회사 부채비율이 높나요?'를 물으면 학습 시점 데이터를 기반으로 수치를 지어내거나, 계산 과정에서 오류가 발생합니다. XGBoost가 실시간 DART 재무지표를 처리해 A~D 등급과 리스크 태그를 먼저 결정하고, 그 결과를 GPT-4 프롬프트에 구조화해 넣으면 LLM은 해설만 담당합니다. 수치 연산을 LLM 바깥으로 빼는 것이 환각 차단의 핵심이었습니다."}]]}],["$","div","KMeans 군집화로 비교 컨텍스트 제공",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"KMeans 군집화로 비교 컨텍스트 제공"}],["$","div",null,{"className":"decision-reason","children":"단일 기업의 지표만 보여주면 LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설이 나옵니다. 동종 업종·규모 유사 기업 군집의 평균 패턴을 컨텍스트에 함께 주입하면 GPT-4가 상대적 위치를 명확히 서술할 수 있었습니다. 군집화는 비교 기준을 자동으로 생성해주는 역할을 했습니다."}]]}]]}]]}]]}]]}],"$L5"]}]}]
+          .footer-name { font-family: var(--font-label); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8; }
+          .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--blue); }
+        0:{"buildId":"XeHHtl7qEXCy83sl85xpR","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["FinView: 생성형 AI 재무보고서 시스템"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","05","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"FinView: 생성형 AI 재무보고서 시스템"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"2024.09–11 · 성신여자대학교 · 팀장"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4",{"className":"tag","children":"GPT-4"}],["$","span","XGBoost",{"className":"tag","children":"XGBoost"}],["$","span","KMeans",{"className":"tag","children":"KMeans"}],["$","span","SHAP",{"className":"tag","children":"SHAP"}],["$","span","SMOTE",{"className":"tag","children":"SMOTE"}],["$","span","DART API",{"className":"tag","children":"DART API"}],["$","span","Flask",{"className":"tag","children":"Flask"}],["$","span","D3.js",{"className":"tag","children":"D3.js"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","신용등급 분류",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"91%"}],["$","div",null,{"className":"kpi-l","children":"신용등급 분류"}]]}],["$","div","생성 속도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"10배"}],["$","div",null,{"className":"kpi-l","children":"생성 속도"}]]}],["$","div","만족도",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"4.4/5"}],["$","div",null,{"className":"kpi-l","children":"만족도"}]]}]]}]]}],["$","div",null,{"className":"img-zone","children":[["$","img",null,{"src":"/arch/FinView.svg","alt":"architecture","className":"arch-img","style":{"height":160}}],["$","div",null,{"className":"ui-row","children":[["$","img","0",{"src":"/finview_ui/1.png","alt":"UI 1","className":"ui-img","style":{"height":110}}],["$","img","1",{"src":"/finview_ui/2.png","alt":"UI 2","className":"ui-img","style":{"height":110}}]]}]]}],["$","div",null,{"className":"content","children":[["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"프로젝트 개요"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#024df0"},"children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#94A3B8"},"children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발"}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심"}]]}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","XGBoost 분류 + GPT-4 해설 분리 아키텍처",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"XGBoost 분류 + GPT-4 해설 분리 아키텍처"}],["$","div",null,{"className":"decision-reason","children":"GPT-4에 직접 '이 회사 부채비율이 높나요?'를 물으면 학습 시점 데이터를 기반으로 수치를 지어내거나, 계산 과정에서 오류가 발생합니다. XGBoost가 실시간 DART 재무지표를 처리해 A~D 등급과 리스크 태그를 먼저 결정하고, 그 결과를 GPT-4 프롬프트에 구조화해 넣으면 LLM은 해설만 담당합니다. 수치 연산을 LLM 바깥으로 빼는 것이 환각 차단의 핵심이었습니다."}]]}],["$","div","KMeans 군집화로 비교 컨텍스트 제공",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"KMeans 군집화로 비교 컨텍스트 제공"}],["$","div",null,{"className":"decision-reason","children":"단일 기업의 지표만 보여주면 LLM이 '높다/낮다'를 판단할 기준이 없어 애매한 해설이 나옵니다. 동종 업종·규모 유사 기업 군집의 평균 패턴을 컨텍스트에 함께 주입하면 GPT-4가 상대적 위치를 명확히 서술할 수 있었습니다. 군집화는 비교 기준을 자동으로 생성해주는 역할을 했습니다."}]]}]]}]]}]]}],"$L5"]}]}]
 4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 5:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","finview"]}]]}]
 8:null

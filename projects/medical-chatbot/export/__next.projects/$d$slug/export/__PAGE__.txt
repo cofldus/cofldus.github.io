@@ -4,17 +4,18 @@
 :HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
 :HL["/arch/medical-chatbot.svg","image"]
 :HL["/medical_chatbot_ui/1.png","image"]
-2:T1f23,
+2:T1b0a,
           * { margin: 0; padding: 0; box-sizing: border-box; }
 
           :root {
+            --blue:   #024df0;
+            --blue-lt: #eef2ff;
+            --blue-bd: #c7d2fe;
             --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-label:   'Outfit', 'Noto Sans KR', sans-serif;
             --font-sans:    'Inter', 'Noto Sans KR', sans-serif;
-            --navy: #1E3A8A;
-            --navy-lt: #EEF2FF;
-            --ink: #0F172A;
-            --sub: #64748B;
+            --ink:    #0F172A;
+            --sub:    #64748B;
             --border: #E2E8F0;
           }
 
@@ -26,40 +27,30 @@
           }
 
           html, body {
-            background: #EAECF0;
+            background: #E8EDF5;
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 28px;
-            min-height: 100vh;
+            display: flex; justify-content: center; align-items: flex-start;
+            padding: 28px; min-height: 100vh;
           }
 
-          /* ── Shell ── */
           .page {
-            width: 1123px;
-            height: 794px;
-            background: #fff;
-            border-radius: 6px;
-            box-shadow: 0 12px 48px rgba(0,0,0,0.14);
-            overflow: hidden;
-            display: grid;
-            grid-template-rows: 5px auto 1fr auto;
+            width: 1123px; height: 794px;
+            background: #fff; border-radius: 6px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+            overflow: hidden; display: flex; flex-direction: column;
             flex-shrink: 0;
           }
 
-          /* ── Accent ── */
-          .accent { background: var(--navy); }
+          /* Accent bar */
+          .accent { height: 5px; background: var(--blue); flex-shrink: 0; }
 
-          /* ── Header ── */
+          /* Header */
           .hdr {
-            padding: 14px 32px 12px;
+            padding: 13px 32px 11px;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: 20px; flex-shrink: 0;
           }
           .hdr-left { flex: 1; min-width: 0; }
           .hdr-eyebrow {
@@ -70,31 +61,28 @@
           .hdr-title {
             font-family: var(--font-display);
             font-size: 25px; font-weight: 800; color: var(--ink);
-            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 6px;
+            letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 5px;
           }
           .hdr-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-          .hdr-period {
-            font-family: var(--font-label);
-            font-size: 12px; color: var(--sub);
-          }
+          .hdr-period { font-family: var(--font-label); font-size: 12px; color: var(--sub); }
           .sep { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; }
           .tags { display: flex; flex-wrap: wrap; gap: 4px; }
           .tag {
             font-family: var(--font-label);
             font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
-            text-transform: uppercase; background: var(--navy-lt);
-            border: 1px solid #C7D2FE; border-radius: 3px;
-            padding: 2px 7px; color: var(--navy);
+            text-transform: uppercase; background: var(--blue-lt);
+            border: 1px solid var(--blue-bd); border-radius: 3px;
+            padding: 2px 7px; color: var(--blue);
           }
           .kpis { display: flex; gap: 8px; flex-shrink: 0; }
           .kpi {
-            text-align: center; border: 1px solid #C7D2FE;
+            text-align: center; border: 1px solid var(--blue-bd);
             border-radius: 6px; padding: 8px 16px; min-width: 72px;
-            background: var(--navy-lt);
+            background: var(--blue-lt);
           }
           .kpi-v {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 900; color: var(--navy);
+            font-size: 20px; font-weight: 900; color: var(--blue);
             letter-spacing: -0.04em; line-height: 1;
           }
           .kpi-l {
@@ -103,107 +91,69 @@
             letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
           }
 
-          /* ── Body: 2 cols ── */
-          .body {
-            display: grid;
-            grid-template-columns: 470px 1fr;
-            min-height: 0;
-            overflow: hidden;
-          }
-
-          /* Left col */
-          .col-left {
-            border-right: 1px solid var(--border);
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow: hidden;
-          }
-
-          .arch-img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-          }
-
-          .ui-row {
-            display: flex;
-            gap: 8px;
+          /* Image zone: full width */
+          .img-zone {
             flex-shrink: 0;
+            border-bottom: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            background: #FAFBFF;
           }
+          .arch-img {
+            width: 100%; display: block;
+            object-fit: contain; object-position: center;
+          }
+          .ui-row { display: flex; gap: 0; flex-shrink: 0; }
           .ui-img {
-            flex: 1;
-            height: 150px;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 4px;
-            display: block;
+            flex: 1; display: block;
+            object-fit: cover; object-position: top;
+            border-top: 1px solid var(--border);
           }
 
-          /* meta (goal/role) in left col when no arch */
-          .meta-block { display: flex; flex-direction: column; gap: 10px; }
-          .meta-item { display: flex; gap: 10px; align-items: baseline; }
+          /* Content: 3 columns */
+          .content {
+            flex: 1; min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            overflow: hidden;
+          }
+          .c-col {
+            padding: 16px 20px;
+            overflow: hidden;
+          }
+          .c-col + .c-col { border-left: 1px solid var(--border); }
+
+          .c-label {
+            font-family: var(--font-label);
+            font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--blue);
+            margin-bottom: 10px; padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+          }
+
+          .meta-item { display: flex; gap: 10px; align-items: baseline; margin-bottom: 10px; }
           .meta-key {
             font-family: var(--font-label);
             font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
             text-transform: uppercase; flex-shrink: 0; min-width: 28px;
           }
-          .meta-key-g { color: var(--navy); }
-          .meta-key-r { color: #94A3B8; }
           .meta-div { width: 1px; height: 10px; background: #CBD5E1; flex-shrink: 0; align-self: center; }
           .meta-val { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--ink); }
 
-          /* Right col */
-          .col-right {
-            padding: 16px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            overflow: hidden;
-          }
-
-          /* Goal/Role strip at top of right */
-          .goal-strip {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 16px;
-            flex-shrink: 0;
-          }
-
-          /* Section */
-          .sec { margin-bottom: 16px; flex-shrink: 0; }
-          .sec:last-child { margin-bottom: 0; }
-          .sec-label {
-            font-family: var(--font-label);
-            font-size: 8.5px; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; color: var(--navy);
-            margin-bottom: 10px; padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
-          }
-
-          /* Bullets */
-          .bullets { display: flex; flex-direction: column; gap: 9px; }
+          .bullets { display: flex; flex-direction: column; gap: 10px; }
           .bullet { display: flex; gap: 10px; align-items: flex-start; }
           .bullet-num {
             font-size: 8.5px; font-weight: 800; color: #fff;
-            background: var(--navy); flex-shrink: 0;
-            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--blue); flex-shrink: 0;
+            width: 19px; height: 19px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-top: 2px;
           }
-          .bullet-text { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.7; color: #1E293B; }
+          .bullet-text { font-family: var(--font-sans); font-size: 13px; line-height: 1.7; color: #1E293B; }
 
-          /* Decisions */
-          .decisions { display: flex; flex-direction: column; gap: 8px; }
+          .decisions { display: flex; flex-direction: column; gap: 9px; }
           .decision {
-            padding: 10px 14px; background: var(--navy-lt);
-            border-radius: 6px; border: 1px solid #C7D2FE;
+            padding: 10px 13px; background: var(--blue-lt);
+            border-radius: 6px; border: 1px solid var(--blue-bd);
           }
           .decision-tech {
             font-family: var(--font-display);
@@ -211,23 +161,19 @@
           }
           .decision-reason {
             font-family: var(--font-sans);
-            font-size: 12px; line-height: 1.6; color: var(--sub);
+            font-size: 12px; line-height: 1.65; color: var(--sub);
           }
 
-          /* ── Footer ── */
+          /* Footer */
           .footer {
-            padding: 8px 32px;
-            border-top: 1px solid var(--border);
+            padding: 8px 32px; border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
-            background: #F8FAFC;
+            background: #F8FAFC; flex-shrink: 0;
           }
-          .footer-name {
-            font-family: var(--font-label);
-            font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8;
-          }
-          .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--navy); }
-        0:{"buildId":"4vJgfcZQpSIODW1U0Vl1z","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["이지스-바이오 센티넬스 의료자문봇"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
-3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","02","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"이지스-바이오 센티넬스 의료자문봇"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"멋쟁이사자처럼 AI 자연어처리 집중과정 · 팀 프로젝트"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","EXAONE-3.5",{"className":"tag","children":"EXAONE-3.5"}],["$","span","BM25",{"className":"tag","children":"BM25"}],["$","span","FAISS",{"className":"tag","children":"FAISS"}],["$","span","RAG",{"className":"tag","children":"RAG"}],["$","span","bge-reranker-v2-m3",{"className":"tag","children":"bge-reranker-v2-m3"}],["$","span","LangChain",{"className":"tag","children":"LangChain"}],["$","span","Python",{"className":"tag","children":"Python"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","Accuracy",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"+0.04"}],["$","div",null,{"className":"kpi-l","children":"Accuracy"}]]}],["$","div","BERTScore",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"+0.16"}],["$","div",null,{"className":"kpi-l","children":"BERTScore"}]]}],["$","div","코퍼스",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"5.5만건"}],["$","div",null,{"className":"kpi-l","children":"코퍼스"}]]}]]}]]}],["$","div",null,{"className":"body","children":[["$","div",null,{"className":"col-left","children":[["$","img",null,{"src":"/arch/medical-chatbot.svg","alt":"architecture","className":"arch-img"}],["$","div",null,{"className":"ui-row","children":[["$","img","0",{"src":"/medical_chatbot_ui/1.png","alt":"UI 1","className":"ui-img"}]]}],false]}],["$","div",null,{"className":"col-right","children":[["$","div",null,{"className":"goal-strip","children":[["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-g","children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"Naive RAG의 낮은 Recall 한계를 하이브리드 검색 + 리랭커로 극복, 전문 의학 5.5만 건 코퍼스 기반 고정밀 자문봇 구축"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key meta-key-r","children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"BM25+FAISS 하이브리드 파이프라인 설계 · bge-reranker 통합 · 평가 지표(Accuracy, BERTScore) 실험 및 분석"}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"하이브리드 검색 설계: BM25(k=20, 용어 매칭) + FAISS(k=20, 의미 검색) 병렬 수행으로 Recall 상한 제거"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"BAAI/bge-reranker-v2-m3 재순위: 40개 후보→Top-5 압축으로 LLM 컨텍스트 노이즈 최소화"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"ReRanker 전후 비교: 객관식 정확도 +0.04, 서술형 BERTScore +0.16 향상, 단일 벡터 RAG 대비 명확한 개선"}]]}]]}]]}],["$","div",null,{"className":"sec","children":[["$","div",null,{"className":"sec-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","BM25 + FAISS 하이브리드 vs 단일 벡터 검색",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"BM25 + FAISS 하이브리드 vs 단일 벡터 검색"}],["$","div",null,{"className":"decision-reason","children":"'폐색전증의 D-dimer 기준치'처럼 전문 의학 용어는 의미 임베딩 공간에서 일반 단어와 거리가 좁아 벡터 검색만으로는 Recall 상한이 낮습니다. BM25는 정확한 용어 매칭을, FAISS는 의미적 유사성을 각자 담당하도록 역할을 분리하고 결과를 병렬로 합산했습니다. 어느 한쪽만 쓸 때보다 Recall 커버리지가 눈에 띄게 올라갔습니다."}]]}],["$","div","bge-reranker vs 단순 Top-K 절삭",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"bge-reranker vs 단순 Top-K 절삭"}],["$","div",null,{"className":"decision-reason","children":"BM25+FAISS로 40개 후보를 뽑은 뒤 전부 LLM 컨텍스트에 넣으면 관련 없는 문서가 섞여 답변이 흔들렸습니다. Reranker는 질문과 각 문서를 교차 인코딩해 정합성을 재평가하기 때문에, 단순 점수 기반 Top-K 절삭보다 노이즈 문서를 정확히 걸러냅니다. Top-5로 압축했을 때 BERTScore +0.16이 나왔고, Top-10에서는 개선폭이 절반 이하였습니다."}]]}]]}]]}]]}]]}],"$L5"]}]}]
+          .footer-name { font-family: var(--font-label); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8; }
+          .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--blue); }
+        0:{"buildId":"XeHHtl7qEXCy83sl85xpR","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["이지스-바이오 센티넬스 의료자문봇"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","02","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"이지스-바이오 센티넬스 의료자문봇"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"멋쟁이사자처럼 AI 자연어처리 집중과정 · 팀 프로젝트"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","EXAONE-3.5",{"className":"tag","children":"EXAONE-3.5"}],["$","span","BM25",{"className":"tag","children":"BM25"}],["$","span","FAISS",{"className":"tag","children":"FAISS"}],["$","span","RAG",{"className":"tag","children":"RAG"}],["$","span","bge-reranker-v2-m3",{"className":"tag","children":"bge-reranker-v2-m3"}],["$","span","LangChain",{"className":"tag","children":"LangChain"}],["$","span","Python",{"className":"tag","children":"Python"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","Accuracy",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"+0.04"}],["$","div",null,{"className":"kpi-l","children":"Accuracy"}]]}],["$","div","BERTScore",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"+0.16"}],["$","div",null,{"className":"kpi-l","children":"BERTScore"}]]}],["$","div","코퍼스",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"5.5만건"}],["$","div",null,{"className":"kpi-l","children":"코퍼스"}]]}]]}]]}],["$","div",null,{"className":"img-zone","children":[["$","img",null,{"src":"/arch/medical-chatbot.svg","alt":"architecture","className":"arch-img","style":{"height":160}}],["$","div",null,{"className":"ui-row","children":[["$","img","0",{"src":"/medical_chatbot_ui/1.png","alt":"UI 1","className":"ui-img","style":{"height":110}}]]}]]}],["$","div",null,{"className":"content","children":[["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"프로젝트 개요"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#024df0"},"children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"Naive RAG의 낮은 Recall 한계를 하이브리드 검색 + 리랭커로 극복, 전문 의학 5.5만 건 코퍼스 기반 고정밀 자문봇 구축"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#94A3B8"},"children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"BM25+FAISS 하이브리드 파이프라인 설계 · bge-reranker 통합 · 평가 지표(Accuracy, BERTScore) 실험 및 분석"}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"하이브리드 검색 설계: BM25(k=20, 용어 매칭) + FAISS(k=20, 의미 검색) 병렬 수행으로 Recall 상한 제거"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"BAAI/bge-reranker-v2-m3 재순위: 40개 후보→Top-5 압축으로 LLM 컨텍스트 노이즈 최소화"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"ReRanker 전후 비교: 객관식 정확도 +0.04, 서술형 BERTScore +0.16 향상, 단일 벡터 RAG 대비 명확한 개선"}]]}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","BM25 + FAISS 하이브리드 vs 단일 벡터 검색",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"BM25 + FAISS 하이브리드 vs 단일 벡터 검색"}],["$","div",null,{"className":"decision-reason","children":"'폐색전증의 D-dimer 기준치'처럼 전문 의학 용어는 의미 임베딩 공간에서 일반 단어와 거리가 좁아 벡터 검색만으로는 Recall 상한이 낮습니다. BM25는 정확한 용어 매칭을, FAISS는 의미적 유사성을 각자 담당하도록 역할을 분리하고 결과를 병렬로 합산했습니다. 어느 한쪽만 쓸 때보다 Recall 커버리지가 눈에 띄게 올라갔습니다."}]]}],["$","div","bge-reranker vs 단순 Top-K 절삭",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"bge-reranker vs 단순 Top-K 절삭"}],["$","div",null,{"className":"decision-reason","children":"BM25+FAISS로 40개 후보를 뽑은 뒤 전부 LLM 컨텍스트에 넣으면 관련 없는 문서가 섞여 답변이 흔들렸습니다. Reranker는 질문과 각 문서를 교차 인코딩해 정합성을 재평가하기 때문에, 단순 점수 기반 Top-K 절삭보다 노이즈 문서를 정확히 걸러냅니다. Top-5로 압축했을 때 BERTScore +0.16이 나왔고, Top-10에서는 개선폭이 절반 이하였습니다."}]]}]]}]]}]]}],"$L5"]}]}]
 4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 5:["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","medical-chatbot"]}]]}]
 8:null
