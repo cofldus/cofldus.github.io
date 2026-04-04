@@ -3,7 +3,7 @@
 7:"$Sreact.suspense"
 :HL["https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","style"]
 :HL["/arch/lovelop.svg","image"]
-2:T1b0a,
+2:T1be6,
           * { margin: 0; padding: 0; box-sizing: border-box; }
 
           :root {
@@ -147,7 +147,10 @@
             display: flex; align-items: center; justify-content: center;
             margin-top: 2px;
           }
-          .bullet-text { font-family: var(--font-sans); font-size: 13px; line-height: 1.7; color: #1E293B; }
+          .bullet-text {
+            font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: #1E293B;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+          }
 
           .decisions { display: flex; flex-direction: column; gap: 9px; }
           .decision {
@@ -156,11 +159,11 @@
           }
           .decision-tech {
             font-family: var(--font-display);
-            font-size: 12.5px; font-weight: 700; color: var(--ink); margin-bottom: 3px;
+            font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px;
           }
           .decision-reason {
-            font-family: var(--font-sans);
-            font-size: 12px; line-height: 1.65; color: var(--sub);
+            font-family: var(--font-sans); font-size: 11.5px; line-height: 1.6; color: var(--sub);
+            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
           }
 
           /* Footer */
@@ -171,7 +174,7 @@
           }
           .footer-name { font-family: var(--font-label); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #94A3B8; }
           .footer-url { font-family: var(--font-label); font-size: 10px; color: var(--blue); }
-        0:{"buildId":"XeHHtl7qEXCy83sl85xpR","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
+        0:{"buildId":"RpoXL1bmOls2R46MENNo5","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"ko","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","title",null,{"children":["lovelop: 상권 분석 AI 시뮬레이션 SaaS"," — export"]}],["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],null,"$L4"]}],"loading":null,"isPartial":false}
 3:["$","body",null,{"children":["$","div",null,{"className":"page","children":[["$","div",null,{"className":"accent"}],["$","div",null,{"className":"hdr","children":[["$","div",null,{"className":"hdr-left","children":[["$","div",null,{"className":"hdr-eyebrow","children":["PROJECT ","08","  ·  Case Study"]}],["$","div",null,{"className":"hdr-title","children":"lovelop: 상권 분석 AI 시뮬레이션 SaaS"}],["$","div",null,{"className":"hdr-row","children":[["$","span",null,{"className":"hdr-period","children":"2026.02 · AI 자연어처리 집중 과정 3기"}],["$","span",null,{"className":"sep"}],["$","div",null,{"className":"tags","children":[["$","span","GPT-4.1",{"className":"tag","children":"GPT-4.1"}],["$","span","LLM Agent",{"className":"tag","children":"LLM Agent"}],["$","span","Gemma-2-9b",{"className":"tag","children":"Gemma-2-9b"}],["$","span","EXAONE",{"className":"tag","children":"EXAONE"}],["$","span","Python",{"className":"tag","children":"Python"}],["$","span","React",{"className":"tag","children":"React"}],["$","span","Flask",{"className":"tag","children":"Flask"}]]}]]}]]}],["$","div",null,{"className":"kpis","children":[["$","div","AI 페르소나",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"160명"}],["$","div",null,{"className":"kpi-l","children":"AI 페르소나"}]]}],["$","div","사용 의향",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"80%"}],["$","div",null,{"className":"kpi-l","children":"사용 의향"}]]}],["$","div","검증 지표",{"className":"kpi","children":[["$","div",null,{"className":"kpi-v","children":"11개"}],["$","div",null,{"className":"kpi-l","children":"검증 지표"}]]}]]}]]}],["$","div",null,{"className":"img-zone","children":[["$","img",null,{"src":"/arch/lovelop.svg","alt":"architecture","className":"arch-img","style":{"height":240}}],false]}],["$","div",null,{"className":"content","children":[["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"프로젝트 개요"}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#024df0"},"children":"목표"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원"}]]}],["$","div",null,{"className":"meta-item","children":[["$","span",null,{"className":"meta-key","style":{"color":"#94A3B8"},"children":"역할"}],["$","span",null,{"className":"meta-div"}],["$","span",null,{"className":"meta-val","children":"LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정"}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"핵심 구현"}],["$","div",null,{"className":"bullets","children":[["$","div","0",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":1}],["$","span",null,{"className":"bullet-text","children":"2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보"}]]}],["$","div","1",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":2}],["$","span",null,{"className":"bullet-text","children":"160 페르소나 시뮬레이션: 방문 목적 4유형 × 세대 5종 × 성별·인원 구성으로 실제 고객 분포 재현, Agent 5단계 의사결정"}]]}],["$","div","2",{"className":"bullet","children":[["$","span",null,{"className":"bullet-num","children":3}],["$","span",null,{"className":"bullet-text","children":"Before/After 11지표 검증 리포트로 조건 변경 시나리오를 정량화, 자영업자 사용 의향 80% 확인"}]]}]]}]]}],["$","div",null,{"className":"c-col","children":[["$","div",null,{"className":"c-label","children":"기술 선택 근거"}],["$","div",null,{"className":"decisions","children":[["$","div","2-Stage Temperature 분리 vs 단일 GPT 호출",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"2-Stage Temperature 분리 vs 단일 GPT 호출"}],["$","div",null,{"className":"decision-reason","children":"Temperature 0.1에서는 데이터 기반 분석이 정확하지만 전략 제안이 뻔합니다. Temperature 0.7에서는 아이디어가 다양하지만 사실 오류가 섞입니다. 단일 호출로는 두 특성을 동시에 얻을 수 없습니다. 분석가 모듈이 먼저 수치·패턴을 구조화하고, 전략가 모듈이 그 결과를 입력받아 창의적 전략을 제안하도록 순서를 고정했더니 두 가지가 양립됐습니다."}]]}],["$","div","160 AI 페르소나 시뮬레이션",{"className":"decision","children":[["$","div",null,{"className":"decision-tech","children":"160 AI 페르소나 시뮬레이션"}],["$","div",null,{"className":"decision-reason","children":"상권 분석에서 '고객 반응'을 설문으로 수집하면 샘플 수가 적고 자영업자가 직접 설계하기 어렵습니다. AI 페르소나를 방문 목적·세대·성별·인원 구성의 조합으로 정의하면 실제 고객 분포를 통계적으로 재현할 수 있습니다. 각 페르소나가 5단계 Agent 의사결정(인지→관심→방문검토→결정→재방문)을 거치면 단순 설문보다 행동 패턴이 세밀하게 나왔습니다."}]]}]]}]]}]]}],["$","div",null,{"className":"footer","children":[["$","span",null,{"className":"footer-name","children":"이채연  ·  AI / NLP Engineer"}],"$L5"]}]]}]}]
 4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 5:["$","span",null,{"className":"footer-url","children":["cofldus.github.io/projects/","lovelop"]}]
