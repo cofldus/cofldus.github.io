@@ -16,4 +16,4 @@
 :HL["/finview_ui/2.png","image"]
 :HL["/arch/CT-MRI.svg","image"]
 :HL["/arch/rocketan.svg","image"]
-0:{"buildId":"1qYDDplcBq4STu8ANEuFN","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"-KblLBC_ZQrhzdB-qboYm","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
