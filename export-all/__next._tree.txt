@@ -9,11 +9,10 @@
 :HL["/medical_chatbot_ui/1.png","image"]
 :HL["/arch/korean-noise-restoration.svg","image"]
 :HL["/korean_noise_ui/1.png","image"]
-:HL["/korean_noise_ui/2.png","image"]
 :HL["/arch/KillKong.svg","image"]
 :HL["/arch/FinView.svg","image"]
 :HL["/finview_ui/1.png","image"]
 :HL["/finview_ui/2.png","image"]
 :HL["/arch/CT-MRI.svg","image"]
 :HL["/arch/rocketan.svg","image"]
-0:{"buildId":"-KblLBC_ZQrhzdB-qboYm","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"UHPkhb6op-6c8Om5c43hU","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"export-all","paramType":null,"paramKey":"export-all","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
