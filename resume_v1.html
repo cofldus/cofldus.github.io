@@ -238,10 +238,48 @@ body {
 @media print {
   body { background: white; padding: 0; }
   .page { margin: 0; box-shadow: none; }
+  .lang-toggle { display: none; }
+}
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  z-index: 100;
+  display: flex;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+.lang-toggle a {
+  padding: 6px 13px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-toggle .active {
+  background: #111;
+  color: #fff;
+}
+.lang-toggle .inactive {
+  background: #fff;
+  color: #888;
+}
+.lang-toggle .inactive:hover {
+  background: #f4f4f4;
+  color: #333;
 }
 </style>
 </head>
 <body>
+<div class="lang-toggle">
+  <a class="active" href="/resume_v1.html">KO</a>
+  <a class="inactive" href="/resume_en.html">EN</a>
+</div>
 <div class="page">
 
   <!-- ────── HEADER ────── -->
