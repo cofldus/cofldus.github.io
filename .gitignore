@@ -1,2 +1,8 @@
 finview_demo.mp4
 lovelop_demo.mp4
+
+# Next.js
+node_modules/
+out/
+.next/
+*.tsbuildinfo
