@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useCompany, type SkillGroup } from "@/context/CompanyContext";
 
-const groups = [
+const defaultGroups: SkillGroup[] = [
   {
     cat: "LLM / RAG",
     primary: ["LangChain", "FAISS(IVF)", "BM25", "Hybrid Search", "bge-reranker-v2-m3", "Multi-Agent"],
@@ -36,6 +37,9 @@ const groups = [
 ];
 
 export default function SkillsSection() {
+  const company = useCompany();
+  const groups = company.skillGroups ?? defaultGroups;
+
   return (
     <section id="tech-stack" style={{ borderTop: "1px solid var(--border)" }}>
       <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "40px var(--cp)" }}>

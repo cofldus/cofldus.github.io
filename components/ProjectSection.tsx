@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useCompany } from "@/context/CompanyContext";
 
 interface Project {
   slug: string;
@@ -24,7 +25,7 @@ const projects: Project[] = [
   {
     slug: "airpa",
     num: "01",
-    title: "AiRPA: 학생 진로 탐색 자동화 시스템",
+    title: "교육 정보 자동 수집·요약 기반 개인화 진로 탐색 시스템",
     period: "한국지능정보사회진흥원 해커톤",
     desc: "진로 상담 교사가 학생 한 명을 위해 교육부 포털·대학알리미·졸업생 블로그를 수동 탐색·요약하는 데 인당 30분 이상을 소비한다는 현장 관찰에서 시작했습니다. 문제의 본질은 소스마다 로그인 방식·동적 로딩 구조·데이터 포맷이 달라 단일 스크래퍼로 통합 불가하다는 이질성이었습니다. RPA로 소스 이질성을 흡수하고, T5 모델로 수집된 비정형 텍스트를 일관된 요약으로 압축한 뒤, 학생 가치관 설문 기반 5개 시나리오로 개인화 추천까지 연결했습니다.",
     bullets: [
@@ -45,7 +46,7 @@ const projects: Project[] = [
   {
     slug: "medical-chatbot",
     num: "02",
-    title: "이지스-바이오 센티넬스 의료자문봇",
+    title: "의학 코퍼스 하이브리드 RAG 질의응답 시스템",
     period: "멋쟁이사자처럼 AI 자연어처리 집중과정 · 팀 프로젝트",
     desc: "Naive RAG의 구조적 한계(단일 벡터 검색은 전문 의학 용어의 Recall 상한이 낮고, 검색된 문서 전부를 컨텍스트에 넣으면 LLM이 노이즈에 흔들린다)를 2단계 아키텍처로 정밀 해소했습니다. BM25가 용어 매칭 정확도를, FAISS가 의미적 유사성을 보완하고, bge-reranker가 최종 후보를 질문-문서 정합성 기준으로 Top-5로 압축해 LLM이 받는 컨텍스트 품질을 최대화했습니다. 5.5만 건 전문 의학 JSON(약 2.2억 토큰)을 처리한 코퍼스 기반 시스템입니다.",
     bullets: [
@@ -66,7 +67,7 @@ const projects: Project[] = [
   {
     slug: "korean-noise-restoration",
     num: "03",
-    title: "난독화된 한글 리뷰 복원 AI",
+    title: "한국어 변형 텍스트 원문 복원 AI",
     period: "2026.01 · AI 자연어처리 집중 과정 3기",
     desc: "야민정음(시각 유사도 기반 변형: '머 → 뫄')과 음운 오류(발음 유사 변형: '됩니다 → 됩니당')는 복원 방향이 근본적으로 다릅니다. 전자는 자모 그래픽 매핑 규칙이, 후자는 음성 전사 역변환이 필요합니다. 단일 모델은 두 방향 사이에서 최적점을 찾지 못해 출력이 불안정해집니다. 문제를 '모델 성능 부족'이 아닌 '태스크 정의 오류'로 재진단하고, 유형 분류 → 전용 복원 분기로 구조 자체를 바꿨습니다.",
     bullets: [
@@ -87,7 +88,7 @@ const projects: Project[] = [
   {
     slug: "killkong",
     num: "04",
-    title: "KillKong: 콩글리쉬 교정 AI Agent",
+    title: "콩글리쉬·슬랭 교정 특화 온디바이스 AI 에이전트",
     period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
     desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
     bullets: [
@@ -109,7 +110,7 @@ const projects: Project[] = [
   {
     slug: "finview",
     num: "05",
-    title: "FinView: 생성형 AI 재무보고서 시스템",
+    title: "재무제표 기반 AI 신용분석·보고서 자동화 시스템",
     period: "2024.09–11 · 성신여자대학교 · 팀장",
     desc: "LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다.",
     bullets: [
@@ -131,7 +132,7 @@ const projects: Project[] = [
   {
     slug: "ct-mri-cyclegan",
     num: "06",
-    title: "CycleGAN 기반 CT→MRI 교차-모달리티 변환",
+    title: "비지도 학습 기반 CT-MRI 의료영상 자동 변환 시스템",
     period: "2023.06–09 · 딥러닝연구개발소 (한성대학교 단기근무 연구원)",
     desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 임상 환경의 핵심 제약(1:1 Paired 데이터 획득 불가)을 Unpaired Image-to-Image Translation으로 극복하고, Generator·Discriminator 학습 불균형이라는 GAN 고유 불안정성을 실험적으로 탐색·해소했습니다.",
     bullets: [
@@ -151,7 +152,7 @@ const projects: Project[] = [
   {
     slug: "hunchgame",
     num: "07",
-    title: "눈치게임: 위치 기반 인파 분산 서비스",
+    title: "GPS 이동 패턴 기반 실시간 혼잡도 예측 및 대체 공간 추천 시스템",
     period: "성신여자대학교 IT경진대회",
     desc: "압사 사고의 공통 선행 조건은 '군중이 대안을 인지하지 못한 채 단일 지점에 집중된다'는 것입니다. 경고만으로는 부족하고, 사람들이 실제로 이동할 구체적인 대안 장소를 즉시 제시해야 합니다. FP-Growth로 10만 건 이동 로그에서 잠재 이동 패턴을 추출하고, 혼잡도·거리·장소 유사도·시간대 4개 가중치로 개인화 추천을 설계했습니다. 재난 상황의 네트워크 불안정을 고려해 오프라인 SQLite 캐시 아키텍처를 반드시 포함시켰습니다.",
     bullets: [
@@ -173,7 +174,7 @@ const projects: Project[] = [
   {
     slug: "lovelop",
     num: "08",
-    title: "lovelop: 상권 분석 AI 시뮬레이션 SaaS",
+    title: "다중 AI 페르소나 시뮬레이션 기반 상권 전략 사전 검증 플랫폼",
     period: "2026.02 · AI 자연어처리 집중 과정 3기",
     desc: "자영업자 15명 현장 인터뷰에서 반복적으로 나온 말은 '예측 정확도보다 내 매장 조건이 바뀌면 어떻게 되는지 미리 보고 싶다'였습니다. 예측 모델이 아닌 시뮬레이션 엔진이 필요했습니다. GPT-4.1을 단일 호출하면 창의성과 신뢰성을 동시에 얻을 수 없어 Temperature를 분리한 2-Stage 구조를 설계했고, 다양한 실제 고객 유형을 재현하기 위해 160개 AI 페르소나가 5단계 Agent 의사결정으로 시나리오를 독립 검증하는 구조를 구축했습니다.",
     bullets: [
@@ -992,11 +993,18 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
   );
 }
 
-const researchSlugs = ["ct-mri-cyclegan", "llm-for-science"];
+const DEFAULT_RESEARCH_SLUGS = ["ct-mri-cyclegan", "llm-for-science"];
 
 export default function ProjectSection() {
-  const videoProjects = projects.filter(p => !researchSlugs.includes(p.slug));
-  const svgProjects   = projects.filter(p => researchSlugs.includes(p.slug));
+  const company = useCompany();
+  const researchSlugs = company.researchSlugs ?? DEFAULT_RESEARCH_SLUGS;
+
+  const videoProjects = company.projectOrder
+    ? company.projectOrder
+        .map(slug => projects.find(p => p.slug === slug))
+        .filter((p): p is Project => p !== undefined)
+    : projects.filter(p => !researchSlugs.includes(p.slug));
+  const svgProjects = projects.filter(p => researchSlugs.includes(p.slug));
 
   return (
     <section id="projects" style={{ background: "var(--bg-subtle)", borderTop: "1px solid var(--border)" }}>

@@ -5,10 +5,11 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectSection from "@/components/ProjectSection";
 import EducationSection from "@/components/EducationSection";
 import PhilosophySection from "@/components/PhilosophySection";
+import { CompanyProvider } from "@/context/CompanyContext";
 
 export default function Home() {
   return (
-    <>
+    <CompanyProvider>
       <Navbar />
       <main style={{ paddingTop: 52 }}>
         <Hero />
@@ -18,6 +19,6 @@ export default function Home() {
         <EducationSection />
         <PhilosophySection />
       </main>
-    </>
+    </CompanyProvider>
   );
 }

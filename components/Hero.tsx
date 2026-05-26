@@ -3,6 +3,7 @@
 import { motion, type Variants, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
 import profilePhoto from "./profilePhoto";
+import { useCompany } from "@/context/CompanyContext";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -158,6 +159,7 @@ function RevealLine({
 }
 
 export default function Hero() {
+  const company = useCompany();
   const subtextControls = useAnimation();
   const labelControls = useAnimation();
   const photoControls = useAnimation();
@@ -205,7 +207,7 @@ export default function Hero() {
             marginBottom: 24,
           }}
         >
-          이채연 &nbsp;·&nbsp; AI / NLP Engineer
+          {company.label}
         </motion.p>
 
         {/* 메인 레이아웃: 헤드라인 + 사진 */}
@@ -230,11 +232,11 @@ export default function Hero() {
           >
             {/* line 1: clip reveal 0.25s 후 */}
             <span style={{ display: "block", position: "relative" }}>
-              <RevealLine text="From idea" revealDelay={0.25} waveDelay={1.2} scaleOrigin="left" />
+              <RevealLine text={company.headline1} revealDelay={0.25} waveDelay={1.2} scaleOrigin="left" />
               <StarCluster />
             </span>
             {/* line 2: clip reveal 0.9s 후, 착지 후 부들부들 */}
-            <RevealLine text="to Real Systems." revealDelay={0.9} waveDelay={2.35} shake />
+            <RevealLine text={company.headline2} revealDelay={0.9} waveDelay={2.35} shake />
           </h1>
 
           {/* 사진 */}
@@ -292,7 +294,7 @@ export default function Hero() {
               minWidth: 200,
             }}
           >
-            {"도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.".split("").map((ch, i) => (
+            {company.subtext.split("").map((ch, i) => (
               <motion.span
                 key={i}
                 variants={{
