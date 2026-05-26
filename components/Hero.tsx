@@ -323,7 +323,7 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="/resume"
+              href="/resume_v1.html"
               style={{
                 fontFamily: "var(--font-label)",
                 fontSize: 11, fontWeight: 600,
