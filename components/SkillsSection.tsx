@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useCompany, type SkillGroup } from "@/context/CompanyContext";
+import { useCompany } from "@/context/CompanyContext";
+import type { SkillGroup } from "@/lib/companyConfig";
 
 const defaultGroups: SkillGroup[] = [
   {
