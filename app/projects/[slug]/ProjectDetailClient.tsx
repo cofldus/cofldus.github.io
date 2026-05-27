@@ -32,12 +32,13 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 borderRadius: 10,
                 overflow: "hidden",
                 background: "#FAFBFC",
+                padding: 20,
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={src}
                   alt={`아키텍처 다이어그램 ${i + 1}`}
-                  style={{ width: "100%", height: "auto", display: "block" }}
+                  style={{ width: "100%", height: "auto", display: "block", borderRadius: 6 }}
                 />
               </div>
             ))}
