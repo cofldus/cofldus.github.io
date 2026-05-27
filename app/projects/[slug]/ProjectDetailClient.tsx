@@ -203,21 +203,38 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {/* 05 — 현장 이슈 */}
       {p.troubleshooting && p.troubleshooting.length > 0 && (
         <Section step="05" title="현장에서 부딪힌 문제">
-          {p.troubleshooting.map((t, i) => (
-            <div key={i} style={{
-              display: "flex", gap: 18, alignItems: "flex-start",
-              paddingBottom: 14, marginBottom: 14,
-              borderBottom: i < p.troubleshooting!.length - 1 ? `1px solid ${RULE}` : "none",
-            }}>
-              <Num>{String(i + 1).padStart(2, "0")}</Num>
-              <span style={{
-                fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.75,
-                color: BODY, wordBreak: "keep-all",
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {p.troubleshooting.map((t, i) => (
+              <div key={i} style={{
+                borderLeft: "3px solid #F59E0B",
+                background: "rgba(245,158,11,0.04)",
+                borderRadius: "0 8px 8px 0",
+                padding: "14px 18px",
               }}>
-                {t}
-              </span>
-            </div>
-          ))}
+                <div style={{
+                  fontFamily: "var(--font-label)",
+                  fontSize: 9,
+                  fontWeight: 800,
+                  color: "#D97706",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase" as const,
+                  marginBottom: 8,
+                }}>
+                  ISSUE {String(i + 1).padStart(2, "0")}
+                </div>
+                <p style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  color: BODY,
+                  margin: 0,
+                  wordBreak: "keep-all",
+                }}>
+                  {t}
+                </p>
+              </div>
+            ))}
+          </div>
         </Section>
       )}
 
