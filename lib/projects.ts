@@ -447,7 +447,7 @@ export const projects: Project[] = [
     tags: ["CycleGAN", "ResNet-9", "PatchGAN", "VGG Perceptual Loss", "Spectral Norm", "PyTorch", "OpenCV"],
     repoUrl: "https://github.com/cofldus/medical_image_translation",
     repoName: "medical_image_translation",
-    archImages: ["/arch/CT-MRI.svg", "/arch/proj05_arch2.svg"],
+    archImages: ["/arch/proj05_arch2.svg", "/arch/CT-MRI.svg"],
   },
   {
     slug: "hunchgame",
