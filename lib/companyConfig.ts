@@ -33,6 +33,19 @@ export const defaultConfig: CompanyConfig = {
   headline2: "to Real Systems.",
   subtext:
     "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
+  // 리뷰어 시선 기준: 설계 판단력이 강한 프로젝트 먼저
+  projectOrder: [
+    "killkong",               // 압축·역할분리·병목실측 — 아키텍처 판단 최강
+    "finview",                // 환각 차단 설계 — LLM 한계 인식
+    "medical-chatbot",        // RAG 파이프라인 깊이
+    "airpa",                  // 수상 + 자동화 파이프라인
+    "lovelop",                // 창의적 시뮬레이션 구조
+    "korean-noise-restoration", // 태스크 재정의
+    "hunchgame",              // 오프라인 내성 설계
+    "rocketan",               // 인턴십
+    "moim",                   // 풀스택
+  ],
+  researchSlugs: ["ct-mri-cyclegan", "llm-for-science"],
 };
 
 // ─── 아키브소프트 ─────────────────────────────────────────────────────────────

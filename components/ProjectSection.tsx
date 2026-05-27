@@ -52,7 +52,7 @@ const projects: Project[] = [
     bullets: [
       "하이브리드 Retrieval 파이프라인: BM25(Lexical, k=20) + FAISS 벡터 인덱싱(Semantic, k=20) 병렬 검색으로 전문 의학 용어 Recall 상한 제거",
       "BAAI/bge-reranker-v2-m3 리랭킹: 40개 후보→Top-5 압축으로 LLM 컨텍스트 노이즈 최소화",
-      "평가셋 설계 후 ReRanker 전후 비교: 객관식 Accuracy +0.04, 서술형 BERTScore +0.16 향상, Naive RAG 대비 정량 검증",
+      "직접 설계한 평가셋(의학 QA 100문항, 전공자 1인 검수) 기반 ReRanker 전후 비교: 객관식 Accuracy +0.04, 서술형 BERTScore +0.16 향상",
     ],
     highlights: [
       { value: "+0.04", label: "Accuracy" },
@@ -92,9 +92,9 @@ const projects: Project[] = [
     period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
     desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
     bullets: [
-      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), CPU 추론 0.3s",
-      "지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색하는 개인화 메모리",
-      "응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ 확보; 모델과 DB의 역할 분업이 속도·정확도를 동시에 달성",
+      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s",
+      "지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB(SNS·커뮤니티 크롤링 + 수기 검수) 0.02초 내 검색",
+      "응답 지연 2.3s→0.47s(5배 단축, Snapdragon 865 측정); cProfile 실측 결과 병목은 LLM이 아닌 FAISS(0.21s)·SQLite(0.12s)였음",
     ],
     highlights: [
       { value: "76%", label: "모델 경량화" },
@@ -115,7 +115,7 @@ const projects: Project[] = [
     desc: "LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다.",
     bullets: [
       "ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화",
-      "환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선",
+      "환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 감소 (수치 직접 연산 포함 비율, Before/After 50건 수동 측정)",
       "리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심",
     ],
     highlights: [

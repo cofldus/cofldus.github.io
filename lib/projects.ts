@@ -32,6 +32,8 @@ export interface Project {
   videoUrl?: string;
   thumbBg?: string;
   readmeImage?: string;
+  /** /arch/ 경로의 아키텍처 다이어그램 이미지 목록 */
+  archImages?: string[];
 }
 
 export const projects: Project[] = [
@@ -116,6 +118,7 @@ export const projects: Project[] = [
     award: "한국지능정보사회진흥원 해커톤 특별상",
     videoUrl: "/airpa_demo.mp4",
     thumbBg: "#FFFFFF",
+    archImages: ["/arch/RPA.svg"],
   },
   {
     slug: "medical-chatbot",
@@ -188,6 +191,7 @@ export const projects: Project[] = [
     videoUrl: "/medical-chatbot_demo.mp4",
     repoUrl: "https://github.com/cofldus/medical-chatbot_aegis-bio-sentinels",
     repoName: "medical-chatbot_aegis-bio-sentinels",
+    archImages: ["/arch/medical-chatbot.svg"],
   },
   {
     slug: "korean-noise-restoration",
@@ -273,6 +277,7 @@ export const projects: Project[] = [
     videoUrl: "/korean-noise-restoration_demo.mp4",
     repoUrl: "https://github.com/cofldus/korean-noise-restoration",
     repoName: "korean-noise-restoration",
+    archImages: ["/arch/korean-noise-restoration.svg"],
   },
   {
     slug: "killkong",
@@ -283,9 +288,9 @@ export const projects: Project[] = [
     myRole: "LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정",
     desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
     bullets: [
-      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), CPU 추론 0.3s",
-      "지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색하는 개인화 메모리",
-      "응답 지연 2.3s→0.47s(5배 단축), 모바일 일관성 92%+ 확보; 모델과 DB의 역할 분업이 속도·정확도를 동시에 달성",
+      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s 달성",
+      "지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB를 0.02초 내 검색; 콩글리쉬 패턴 DB는 SNS·커뮤니티 크롤링 + 팀 수기 검수로 구축",
+      "응답 지연 2.3s→0.47s(5배 단축, Snapdragon 865 ARM CPU 측정), 모바일 일관성 92%+ 확보; cProfile로 병목이 LLM이 아닌 FAISS(0.21s)·SQLite(0.12s)임을 실측 후 최적화",
     ],
     highlights: [
       { value: "76%", label: "모델 경량화" },
@@ -332,6 +337,7 @@ export const projects: Project[] = [
     videoUrl: "/killkong_demo.mp4",
     repoUrl: "https://github.com/cofldus/killkong_konglish-corrector",
     repoName: "killkong_konglish-corrector",
+    archImages: ["/arch/KillKong.svg"],
   },
   {
     slug: "finview",
@@ -343,7 +349,7 @@ export const projects: Project[] = [
     desc: "LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다.",
     bullets: [
       "ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화",
-      "환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 개선",
+      "환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 감소 (GPT-4 응답 내 수치 직접 연산 포함 비율을 Before/After 50건 수동 샘플링으로 측정)",
       "리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심",
     ],
     highlights: [
@@ -394,6 +400,7 @@ export const projects: Project[] = [
     thumbBg: "#FFFFFF",
     repoUrl: "https://github.com/cofldus/finview_generative-ai-report",
     repoName: "finview_generative-ai-report",
+    archImages: ["/arch/FinView.svg"],
   },
   {
     slug: "ct-mri-cyclegan",
@@ -440,6 +447,7 @@ export const projects: Project[] = [
     tags: ["CycleGAN", "ResNet-9", "PatchGAN", "VGG Perceptual Loss", "Spectral Norm", "PyTorch", "OpenCV"],
     repoUrl: "https://github.com/cofldus/medical_image_translation",
     repoName: "medical_image_translation",
+    archImages: ["/arch/CT-MRI.svg", "/arch/proj05_arch2.svg"],
   },
   {
     slug: "hunchgame",
@@ -481,6 +489,7 @@ export const projects: Project[] = [
     videoUrl: "/hunchgame_demo.mp4",
     repoUrl: "https://github.com/cofldus/hunchgame_density-predict-service",
     repoName: "hunchgame_density-predict-service",
+    archImages: ["/arch/HunchGame.svg"],
   },
   {
     slug: "lovelop",
@@ -522,6 +531,7 @@ export const projects: Project[] = [
     thumbBg: "#FFFFFF",
     repoUrl: "https://github.com/cofldus/lovelop_commerce-agent-simulation",
     repoName: "lovelop_commerce-agent-simulation",
+    archImages: ["/arch/lovelop.svg", "/arch/lovelop_step.svg", "/arch/lovelop_lop진단.svg", "/arch/lovelop_lop분석.svg"],
   },
   {
     slug: "llm-for-science",
@@ -562,6 +572,7 @@ export const projects: Project[] = [
       },
     ],
     tags: ["Nemotron", "CPT", "SFT", "GDPO", "arXiv/PubMed", "Nougat/Marker", "HuggingFace", "Multi-Reward RL", "Python"],
+    archImages: ["/arch/llm-for-science.svg"],
   },
   {
     slug: "rocketan",
@@ -628,6 +639,7 @@ export const projects: Project[] = [
     videoUrl: "/rocketan_demo.mp4",
     repoUrl: "https://github.com/orgs/Mutsa-Rocketdan/repositories",
     repoName: "Mutsa-Rocketdan",
+    archImages: ["/arch/rocketan.svg"],
   },
   {
     slug: "moim",

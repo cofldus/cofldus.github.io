@@ -22,6 +22,29 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
         </p>
       </Section>
 
+      {/* ARCH — 시스템 아키텍처 */}
+      {p.archImages && p.archImages.length > 0 && (
+        <Section step="ARCH" title="시스템 아키텍처">
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {p.archImages.map((src, i) => (
+              <div key={i} style={{
+                border: `1px solid ${RULE}`,
+                borderRadius: 10,
+                overflow: "hidden",
+                background: "#FAFBFC",
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={`아키텍처 다이어그램 ${i + 1}`}
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
       {/* 02 — 기술 선택 근거 */}
       <Section step="02" title="기술 선택 근거">
         {p.decisions.map((d, i) => (
