@@ -133,7 +133,7 @@ const projects: Project[] = [
     slug: "ct-mri-cyclegan",
     num: "06",
     title: "비지도 학습 기반 CT-MRI 의료영상 자동 변환 시스템",
-    period: "2023.06–09 · 딥러닝연구개발소 (한성대학교 단기근무 연구원)",
+    period: "2023.06–09 · 딥러닝연구개발소 · 한성대학교 연구원",
     desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 임상 환경의 핵심 제약(1:1 Paired 데이터 획득 불가)을 Unpaired Image-to-Image Translation으로 극복하고, Generator·Discriminator 학습 불균형이라는 GAN 고유 불안정성을 실험적으로 탐색·해소했습니다.",
     bullets: [
       "Loss 조합 실험: ResNet-9 + VGG Perceptual Loss + Identity Loss로 저주파 구조(뼈·장기 경계) 보존, Spectral Norm으로 학습 안정성 확보",
