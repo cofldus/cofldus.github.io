@@ -79,13 +79,13 @@ export default function SkillsSection() {
                 style={{
                   fontFamily: "var(--font-label)",
                   fontSize: 10,
-                  fontWeight: 800,
-                  color: "var(--accent)",
-                  letterSpacing: "0.14em",
+                  fontWeight: 700,
+                  color: "#64748B",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase" as const,
                   paddingTop: 5,
                   paddingLeft: 8,
-                  borderLeft: "2px solid var(--accent)",
+                  borderLeft: "2px solid #CBD5E1",
                   lineHeight: 1.2,
                 }}
               >
@@ -98,12 +98,12 @@ export default function SkillsSection() {
                   <span
                     key={sk}
                     style={{
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: "#fff",
-                      padding: "3px 11px",
-                      background: "var(--accent)",
-                      border: "1px solid var(--accent)",
+                      fontSize: 11,
+                      fontWeight: 500,
+                      color: "#0E7490",
+                      padding: "3px 9px",
+                      background: "#EFF9FB",
+                      border: "1px solid rgba(14,116,144,0.18)",
                       borderRadius: 4,
                       lineHeight: 1.6,
                       letterSpacing: "0.01em",
@@ -116,12 +116,12 @@ export default function SkillsSection() {
                   <span
                     key={sk}
                     style={{
-                      fontSize: 12,
-                      fontWeight: 500,
-                      color: "var(--ink)",
-                      padding: "3px 11px",
-                      background: "var(--bg)",
-                      border: "1px solid var(--border)",
+                      fontSize: 11,
+                      fontWeight: 400,
+                      color: "#475569",
+                      padding: "3px 9px",
+                      background: "#F8FAFC",
+                      border: "1px solid #E2E8F0",
                       borderRadius: 4,
                       lineHeight: 1.6,
                       letterSpacing: "-0.005em",
@@ -134,12 +134,12 @@ export default function SkillsSection() {
                   <span
                     key={sk}
                     style={{
-                      fontSize: 11,
+                      fontSize: 10.5,
                       fontWeight: 400,
-                      color: "var(--ink-light)",
-                      padding: "3px 10px",
-                      background: "var(--bg-subtle)",
-                      border: "1px solid var(--border-sub)",
+                      color: "#94A3B8",
+                      padding: "3px 9px",
+                      background: "transparent",
+                      border: "1px solid #E8ECF2",
                       borderRadius: 4,
                       lineHeight: 1.6,
                       letterSpacing: "-0.005em",

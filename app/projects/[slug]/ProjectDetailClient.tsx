@@ -166,9 +166,9 @@ function TroubleCard({
 
   return (
     <div style={{
-      borderRadius: 6,
-      border: `1px solid ${isOpen ? A : hovered ? "rgba(79,192,209,0.35)" : RULE}`,
-      background: isOpen ? "rgba(79,192,209,0.04)" : "#fff",
+      borderRadius: 4,
+      border: `1px solid ${isOpen ? "#94A3B8" : hovered ? "#CBD5E1" : RULE}`,
+      background: isOpen ? "#F8FAFC" : "#fff",
       overflow: "hidden",
       transition: "border-color 0.15s, background 0.15s",
     }}>
@@ -195,7 +195,7 @@ function TroubleCard({
           width: 20,
           height: 20,
           borderRadius: 3,
-          background: isOpen ? A : hovered ? "rgba(79,192,209,0.1)" : "#F1F5F9",
+          background: isOpen ? "#0E7490" : hovered ? "#EFF9FB" : "#F1F5F9",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -203,7 +203,7 @@ function TroubleCard({
           fontSize: 9,
           fontWeight: 900,
           lineHeight: 1,
-          color: isOpen ? "#fff" : hovered ? A : "#94A3B8",
+          color: isOpen ? "#fff" : hovered ? "#0E7490" : "#94A3B8",
           letterSpacing: "0.02em",
           transition: "background 0.15s, color 0.15s",
         }}>
@@ -216,7 +216,7 @@ function TroubleCard({
           fontFamily: "var(--font-label)",
           fontSize: 13,
           fontWeight: 600,
-          color: isOpen ? A : hovered ? "#334155" : "#475569",
+          color: isOpen ? "#0E7490" : hovered ? "#1E293B" : "#475569",
           letterSpacing: "-0.01em",
           lineHeight: 1.4,
           transition: "color 0.15s",
@@ -229,7 +229,7 @@ function TroubleCard({
           flexShrink: 0,
           fontSize: 18,
           fontWeight: 300,
-          color: isOpen ? A : "#CBD5E1",
+          color: isOpen ? "#0E7490" : hovered ? "#94A3B8" : "#CBD5E1",
           display: "inline-block",
           transition: "color 0.15s, transform 0.2s",
           transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
@@ -241,7 +241,7 @@ function TroubleCard({
       {isOpen && (
         <div style={{
           padding: "0 14px 14px 46px",
-          borderTop: `1px solid rgba(79,192,209,0.15)`,
+          borderTop: `1px solid #E2E8F0`,
         }}>
           <p style={{
             fontFamily: "var(--font-sans)",
@@ -289,19 +289,19 @@ function DetailAppendix({ p }: { p: Project }) {
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
-            background: "transparent",
-            border: `0.5px solid ${show ? "rgba(79,192,209,0.6)" : "#CBD5E1"}`,
-            borderRadius: 3,
+            background: show ? "#EFF9FB" : "#F8FAFC",
+            border: show ? "1px solid rgba(14,116,144,0.2)" : "1px solid #E2E8F0",
+            borderRadius: 4,
             cursor: "pointer",
-            padding: "6px 14px",
-            transition: "border-color 0.15s",
+            padding: "6px 16px",
+            transition: "background 0.15s, border-color 0.15s",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
             fontSize: 11,
             fontWeight: 500,
-            color: show ? A : "#64748B",
+            color: show ? "#0E7490" : "#64748B",
             letterSpacing: "0.06em",
             transition: "color 0.15s",
           }}>
@@ -309,7 +309,7 @@ function DetailAppendix({ p }: { p: Project }) {
           </span>
           <span style={{
             fontSize: 9,
-            color: show ? A : "#94A3B8",
+            color: show ? "#0E7490" : "#94A3B8",
             display: "inline-block",
             transition: "transform 0.2s, color 0.15s",
             transform: show ? "rotate(180deg)" : "rotate(0deg)",
