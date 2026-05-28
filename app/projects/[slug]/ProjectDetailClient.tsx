@@ -49,7 +49,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 <img
                   src={src}
                   alt={`아키텍처 다이어그램 ${i + 1}`}
-                  style={{ width: "100%", height: "auto", display: "block", borderRadius: 6 }}
+                  style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto", margin: "0 auto" }}
                 />
               </div>
             ))}
@@ -309,7 +309,7 @@ function DetailAppendix({ p }: { p: Project }) {
                     <img
                       src={src}
                       alt={`세부 다이어그램 ${i + 1}`}
-                      style={{ width: "100%", height: "auto", display: "block", borderRadius: 6 }}
+                      style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto", margin: "0 auto" }}
                     />
                   </div>
                 ))}
