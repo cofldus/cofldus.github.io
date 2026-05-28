@@ -213,14 +213,13 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
               }}>
                 <div style={{
                   fontFamily: "var(--font-label)",
-                  fontSize: 9,
-                  fontWeight: 800,
+                  fontSize: 11,
+                  fontWeight: 700,
                   color: "#D97706",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase" as const,
-                  marginBottom: 8,
+                  letterSpacing: "0.02em",
+                  marginBottom: 7,
                 }}>
-                  ISSUE {String(i + 1).padStart(2, "0")}
+                  {t.title}
                 </div>
                 <p style={{
                   fontFamily: "var(--font-sans)",
@@ -230,7 +229,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                   margin: 0,
                   wordBreak: "keep-all",
                 }}>
-                  {t}
+                  {t.body}
                 </p>
               </div>
             ))}

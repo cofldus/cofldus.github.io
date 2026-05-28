@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" width="680" height="200">
+  <rect width="680" height="200" fill="#FAFBFC" rx="6"/>
+
+  <!-- Title -->
+  <text x="340" y="19" text-anchor="middle"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="10.5" font-weight="700" fill="#0F172A" letter-spacing="-0.01em">
+    응답 지연 분석 · 최적화 결과  (cProfile · Snapdragon 865 ARM CPU)
+  </text>
+
+  <!-- ── Section 1: DB 레이어 병목 ── -->
+  <text x="10" y="34"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="7.5" font-weight="800" fill="#CBD5E1" letter-spacing="0.1em">
+    DB 레이어 병목  (cProfile 실측)
+  </text>
+
+  <!-- FAISS 검색 -->
+  <text x="10" y="52"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="9" font-weight="700" fill="#64748B">FAISS 검색</text>
+  <!-- before  0.21 s  →  0.21/0.25 × 400 = 336 px -->
+  <rect x="85" y="42" width="336" height="11" fill="#CBD5E1" rx="2"/>
+  <text x="425" y="51"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" font-weight="600" fill="#94A3B8">0.21 s</text>
+  <!-- after   0.07 s  →  0.07/0.25 × 400 = 112 px -->
+  <rect x="85" y="56" width="112" height="11" fill="#4fc0d1" rx="2"/>
+  <text x="201" y="65"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" font-weight="700" fill="#4fc0d1">0.07 s  (−67%)</text>
+
+  <!-- SQLite I/O -->
+  <text x="10" y="87"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="9" font-weight="700" fill="#64748B">SQLite I/O</text>
+  <!-- before  0.12 s  →  0.12/0.25 × 400 = 192 px -->
+  <rect x="85" y="77" width="192" height="11" fill="#CBD5E1" rx="2"/>
+  <text x="281" y="86"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" font-weight="600" fill="#94A3B8">0.12 s</text>
+  <!-- after   0.02 s  →  0.02/0.25 × 400 = 32 px -->
+  <rect x="85" y="91" width="32" height="11" fill="#4fc0d1" rx="2"/>
+  <text x="121" y="100"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" font-weight="700" fill="#4fc0d1">0.02 s  (−83%)</text>
+
+  <!-- Divider -->
+  <line x1="10" y1="112" x2="670" y2="112" stroke="#E2E8F0" stroke-width="0.75"/>
+
+  <!-- ── Section 2: 전체 응답 지연 ── -->
+  <text x="10" y="127"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="7.5" font-weight="800" fill="#CBD5E1" letter-spacing="0.1em">
+    전체 응답 지연
+  </text>
+
+  <!-- BEFORE  2.3 s  →  2.3/2.5 × 400 = 368 px -->
+  <text x="10" y="148"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8" font-weight="800" fill="#94A3B8" letter-spacing="0.06em">BEFORE</text>
+  <rect x="68" y="137" width="368" height="13" fill="#CBD5E1" rx="2"/>
+  <text x="440" y="148"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="9.5" font-weight="700" fill="#64748B">2.3 s</text>
+
+  <!-- AFTER   0.47 s  →  0.47/2.5 × 400 = 75 px -->
+  <text x="10" y="168"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8" font-weight="800" fill="#4fc0d1" letter-spacing="0.06em">AFTER</text>
+  <rect x="68" y="157" width="75" height="13" fill="#4fc0d1" rx="2"/>
+  <text x="147" y="168"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="9.5" font-weight="700" fill="#4fc0d1">0.47 s</text>
+
+  <!-- ×4.9 badge -->
+  <text x="222" y="170"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="17" font-weight="800" fill="#0F172A" letter-spacing="-0.03em">× 4.9 단축</text>
+
+  <!-- Legend -->
+  <rect x="10" y="184" width="8" height="8" fill="#CBD5E1" rx="1"/>
+  <text x="22" y="191"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" fill="#94A3B8">최적화 전</text>
+  <rect x="76" y="184" width="8" height="8" fill="#4fc0d1" rx="1"/>
+  <text x="88" y="191"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8.5" fill="#4fc0d1">최적화 후</text>
+  <text x="148" y="191"
+    font-family="'Pretendard','Inter',system-ui,sans-serif"
+    font-size="8" fill="#CBD5E1">* FAISS HNSW→IVF 재구성 + SQLite LRU 캐시 + LoRA/NF4 모델 압축 조합</text>
+</svg>
