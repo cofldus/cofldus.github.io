@@ -278,52 +278,52 @@ function DetailAppendix({ p }: { p: Project }) {
 
   return (
     <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
-      <button
-        onClick={() => setShow((v) => !v)}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          background: show ? "rgba(79,192,209,0.05)" : "var(--bg-subtle)",
-          border: `1px solid ${show ? "rgba(79,192,209,0.3)" : RULE}`,
-          borderRadius: 10,
-          cursor: "pointer",
-          padding: "14px 20px",
-          transition: "border-color 0.15s, background 0.15s",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{
-            fontFamily: "var(--font-label)",
-            fontSize: 11,
-            fontWeight: 700,
-            color: show ? A : "var(--ink)",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase" as const,
-            transition: "color 0.15s",
-          }}>
-            상세 기록
-          </span>
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ flex: 1, height: 1, background: RULE }} />
+        <button
+          onClick={() => setShow((v) => !v)}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 7,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: "6px 0",
+          }}
+        >
           <span style={{
             fontFamily: "var(--font-label)",
             fontSize: 10,
-            color: show ? "rgba(79,192,209,0.7)" : "var(--ink-light)",
-            letterSpacing: "0.02em",
+            fontWeight: 600,
+            color: show ? A : "var(--ink-light)",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase" as const,
             transition: "color 0.15s",
           }}>
-            {show ? "기술 선택 근거 · 실험 로그" : "기술 선택 근거 · 실험 로그 · 다이어그램"}
+            {show ? "접기" : "상세 기록"}
           </span>
-        </div>
-        <span style={{
-          fontSize: 13,
-          color: show ? A : "var(--ink-light)",
-          transition: "transform 0.2s, color 0.15s",
-          display: "inline-block",
-          transform: show ? "rotate(180deg)" : "rotate(0deg)",
-          lineHeight: 1,
-        }}>▾</span>
-      </button>
+          {!show && (
+            <span style={{
+              fontFamily: "var(--font-label)",
+              fontSize: 9.5,
+              color: "var(--ink-ghost)",
+              letterSpacing: "0.02em",
+            }}>
+              기술 선택 · 실험 로그
+            </span>
+          )}
+          <span style={{
+            fontSize: 9,
+            color: show ? A : "var(--ink-ghost)",
+            display: "inline-block",
+            transition: "transform 0.2s, color 0.15s",
+            transform: show ? "rotate(180deg)" : "rotate(0deg)",
+            lineHeight: 1,
+          }}>▾</span>
+        </button>
+        <div style={{ flex: 1, height: 1, background: RULE }} />
+      </div>
 
       {show && (
         <div style={{ marginTop: 36 }}>

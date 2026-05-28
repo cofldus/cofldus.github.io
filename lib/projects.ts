@@ -347,7 +347,7 @@ export const projects: Project[] = [
     videoUrl: "/killkong_demo.mp4",
     repoUrl: "https://github.com/cofldus/killkong_konglish-corrector",
     repoName: "killkong_konglish-corrector",
-    archImages: ["/arch/KillKong.svg", "/arch/killkong-latency.svg"],
+    archImages: ["/arch/KillKong.svg"],
   },
   {
     slug: "finview",

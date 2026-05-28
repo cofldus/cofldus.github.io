@@ -106,13 +106,14 @@ export default async function ProjectDetailPage({
                   {p.period}
                 </p>
                 <span style={{ width: 1, height: 12, background: RULE, flexShrink: 0 }} />
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                   {p.tags.map((t) => (
                     <span key={t} style={{
-                      fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 500,
-                      letterSpacing: "0.04em", textTransform: "uppercase",
-                      background: "var(--bg-subtle)", border: "1px solid var(--border)",
-                      borderRadius: 3, padding: "2px 7px", color: "var(--ink-mid)",
+                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 500,
+                      letterSpacing: "0.02em",
+                      background: "rgba(79,192,209,0.07)",
+                      border: "1px solid rgba(79,192,209,0.18)",
+                      borderRadius: 20, padding: "2px 10px", color: "#3ea8b8",
                     }}>
                       {t}
                     </span>
