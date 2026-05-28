@@ -8,6 +8,16 @@ const INK  = "#0F172A";
 const BODY = "#334155";
 const RULE = "#E2E8F0";
 
+/** 인사이트 문자열을 3문장 단위 단락으로 분리 */
+function splitInsight(text: string): string[] {
+  const sentences = text.split(/(?<=다[.!])\s+/).filter(Boolean);
+  const out: string[] = [];
+  for (let i = 0; i < sentences.length; i += 3) {
+    out.push(sentences.slice(i, i + 3).join(" "));
+  }
+  return out.length > 1 ? out : [text];
+}
+
 export default function ProjectDetailClient({ project: p }: { project: Project }) {
   return (
     <article>
@@ -76,19 +86,31 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {/* 04 — 배운 점 */}
       {p.insight && (
         <Section step="04" title="배운 점">
-          <p style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 16.5, lineHeight: 1.9,
-            color: INK, margin: 0, wordBreak: "keep-all",
+          <div style={{
             paddingLeft: 20,
             borderLeft: `3px solid ${A}`,
+            display: "flex",
+            flexDirection: "column",
+            gap: 18,
           }}>
-            {p.insight}
-          </p>
+            {splitInsight(p.insight).map((para, i) => (
+              <p key={i} style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: i === 0 ? 16.5 : 15.5,
+                fontWeight: i === 0 ? 600 : 400,
+                lineHeight: 1.9,
+                color: i === 0 ? INK : BODY,
+                margin: 0,
+                wordBreak: "keep-all",
+              }}>
+                {para}
+              </p>
+            ))}
+          </div>
         </Section>
       )}
 
-      {/* ── 상세 기록 (접힘) ── */}
+      {/* ── 상세 기록 (기본 접힘) ── */}
       <DetailAppendix p={p} />
 
     </article>
@@ -100,77 +122,135 @@ function TroubleshootingList({ items }: { items: NonNullable<Project["troublesho
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
       {items.map((t, i) => {
         const isOpen = open === i;
         return (
-          <div
+          <TroubleCard
             key={i}
-            style={{
-              borderLeft: `3px solid ${isOpen ? "#D97706" : "#FCD34D"}`,
-              background: isOpen ? "rgba(245,158,11,0.06)" : "rgba(245,158,11,0.025)",
-              borderRadius: "0 8px 8px 0",
-              overflow: "hidden",
-              transition: "background 0.15s",
-            }}
-          >
-            {/* 타이틀 행 — 클릭 토글 */}
-            <button
-              onClick={() => setOpen(isOpen ? null : i)}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 12,
-                padding: "13px 18px",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-              }}
-            >
-              <span style={{
-                fontFamily: "var(--font-label)",
-                fontSize: 13.5,
-                fontWeight: 700,
-                color: "#B45309",
-                letterSpacing: "-0.01em",
-                lineHeight: 1.4,
-              }}>
-                {t.title}
-              </span>
-              <span style={{
-                fontFamily: "var(--font-label)",
-                fontSize: 11,
-                color: "#D97706",
-                flexShrink: 0,
-                transition: "transform 0.15s",
-                display: "inline-block",
-                transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-              }}>
-                ▾
-              </span>
-            </button>
-
-            {/* 본문 — 열렸을 때만 */}
-            {isOpen && (
-              <div style={{ padding: "0 18px 14px" }}>
-                <p style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: 15,
-                  lineHeight: 1.8,
-                  color: BODY,
-                  margin: 0,
-                  wordBreak: "keep-all",
-                }}>
-                  {t.body}
-                </p>
-              </div>
-            )}
-          </div>
+            index={i}
+            title={t.title}
+            body={t.body}
+            isOpen={isOpen}
+            onToggle={() => setOpen(isOpen ? null : i)}
+          />
         );
       })}
+    </div>
+  );
+}
+
+function TroubleCard({
+  index, title, body, isOpen, onToggle,
+}: {
+  index: number;
+  title: string;
+  body: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const [hovered, setHovered] = useState(false);
+  const active = isOpen || hovered;
+
+  return (
+    <div style={{
+      borderRadius: 8,
+      border: `1px solid ${isOpen ? "#FCD34D" : active ? "#FDE68A" : RULE}`,
+      background: isOpen ? "rgba(251,191,36,0.06)" : active ? "rgba(251,191,36,0.03)" : "#fff",
+      overflow: "hidden",
+      transition: "border-color 0.15s, background 0.15s",
+    }}>
+      {/* 헤더 행 */}
+      <button
+        onClick={onToggle}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: 14,
+          padding: "13px 16px",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+        }}
+      >
+        {/* 번호 배지 */}
+        <span style={{
+          flexShrink: 0,
+          width: 22,
+          height: 22,
+          borderRadius: 4,
+          background: isOpen ? "#F59E0B" : active ? "#FCD34D" : "#F1F5F9",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "var(--font-display)",
+          fontSize: 9,
+          fontWeight: 900,
+          color: isOpen ? "#fff" : active ? "#92400E" : "#94A3B8",
+          letterSpacing: "0.04em",
+          transition: "background 0.15s, color 0.15s",
+        }}>
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* 소제목 */}
+        <span style={{
+          flex: 1,
+          fontFamily: "var(--font-label)",
+          fontSize: 13.5,
+          fontWeight: 700,
+          color: isOpen ? "#92400E" : active ? "#B45309" : "#475569",
+          letterSpacing: "-0.01em",
+          lineHeight: 1.4,
+          transition: "color 0.15s",
+        }}>
+          {title}
+        </span>
+
+        {/* 열기/닫기 아이콘 */}
+        <span style={{
+          flexShrink: 0,
+          width: 20,
+          height: 20,
+          borderRadius: "50%",
+          background: isOpen ? "#F59E0B" : active ? "#FEF3C7" : "#F8FAFC",
+          border: `1px solid ${isOpen ? "#F59E0B" : "#E2E8F0"}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "var(--font-display)",
+          fontSize: 11,
+          fontWeight: 700,
+          color: isOpen ? "#fff" : "#94A3B8",
+          transition: "all 0.15s",
+          lineHeight: 1,
+        }}>
+          {isOpen ? "−" : "+"}
+        </span>
+      </button>
+
+      {/* 본문 */}
+      {isOpen && (
+        <div style={{
+          padding: "0 16px 16px 52px",
+          borderTop: "1px solid #FDE68A",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: 14.5,
+            lineHeight: 1.85,
+            color: BODY,
+            margin: "14px 0 0",
+            wordBreak: "keep-all",
+          }}>
+            {body}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
@@ -183,13 +263,13 @@ function DetailAppendix({ p }: { p: Project }) {
   if (!hasDecisions && !hasExperiments) return null;
 
   return (
-    <section style={{ paddingTop: 40, borderTop: `1px solid ${RULE}` }}>
+    <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
       <button
         onClick={() => setShow((v) => !v)}
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 10,
+          gap: 8,
           background: "none",
           border: "none",
           cursor: "pointer",
@@ -198,7 +278,7 @@ function DetailAppendix({ p }: { p: Project }) {
       >
         <span style={{
           fontFamily: "var(--font-label)",
-          fontSize: 13,
+          fontSize: 12,
           fontWeight: 700,
           color: "#94A3B8",
           letterSpacing: "0.03em",
@@ -262,7 +342,6 @@ function DetailAppendix({ p }: { p: Project }) {
           {hasExperiments && (
             <div>
               <SubHeading step="B" title="실험 로그 — 시행착오 기록" />
-              {/* Progress dots */}
               <div style={{ display: "flex", alignItems: "center", marginBottom: 36, paddingLeft: 32 }}>
                 {p.experiments!.map((e, i) => {
                   const isLast = i === p.experiments!.length - 1;
@@ -280,7 +359,6 @@ function DetailAppendix({ p }: { p: Project }) {
                   );
                 })}
               </div>
-
               {p.experiments!.map((e, i) => {
                 const isLast = i === p.experiments!.length - 1;
                 return (
@@ -352,11 +430,11 @@ function Section({
 }) {
   return (
     <section style={{
-      paddingTop: first ? 40 : 48,
-      paddingBottom: 48,
+      paddingTop: first ? 40 : 36,
+      paddingBottom: 36,
       borderTop: first ? "none" : `1px solid ${RULE}`,
     }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 28 }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
         <span style={{
           fontFamily: "var(--font-display)", fontSize: 10, fontWeight: 900,
           color: A, letterSpacing: "0.1em", flexShrink: 0,
@@ -377,7 +455,7 @@ function Section({
 
 function SubHeading({ step, title }: { step: string; title: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 28 }}>
+    <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
       <span style={{
         fontFamily: "var(--font-display)", fontSize: 10, fontWeight: 900,
         color: "#94A3B8", letterSpacing: "0.1em", flexShrink: 0,
