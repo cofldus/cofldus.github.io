@@ -37,9 +37,6 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {p.archImages && p.archImages.length > 0 && (
         <Section step="ARCH" title="시스템 아키텍처">
           <div style={{
-            border: `1px solid ${RULE}`,
-            borderRadius: 10,
-            overflow: "hidden",
             display: "flex",
             alignItems: "stretch",
           }}>
@@ -51,7 +48,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 alignItems: "center",
                 justifyContent: "center",
                 padding: i === 0 ? 20 : 12,
-                borderLeft: i > 0 ? `1px solid ${RULE}` : "none",
+                borderLeft: i > 0 ? `0.5px solid ${RULE}` : "none",
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
