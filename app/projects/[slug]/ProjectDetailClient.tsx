@@ -36,7 +36,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
       {p.archImages && p.archImages.length > 0 && (
         <Section step="ARCH" title="시스템 아키텍처">
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start" }}>
             {p.archImages.slice(0, 2).map((src, i) => (
               <div key={i} style={{
                 border: `1px solid ${RULE}`,
@@ -44,12 +44,14 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 overflow: "hidden",
                 background: "#FAFBFC",
                 padding: 20,
+                flex: i === 0 ? "1 1 55%" : "1 1 35%",
+                minWidth: 0,
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={src}
                   alt={`아키텍처 다이어그램 ${i + 1}`}
-                  style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto", margin: "0 auto" }}
+                  style={{ display: "block", borderRadius: 6, width: "100%", height: "auto" }}
                 />
               </div>
             ))}
@@ -304,12 +306,15 @@ function DetailAppendix({ p }: { p: Project }) {
                     overflow: "hidden",
                     background: "#FAFBFC",
                     padding: 20,
+                    width: "fit-content",
+                    maxWidth: "100%",
+                    margin: "0 auto",
                   }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={src}
                       alt={`세부 다이어그램 ${i + 1}`}
-                      style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto", margin: "0 auto" }}
+                      style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto" }}
                     />
                   </div>
                 ))}
