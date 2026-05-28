@@ -89,9 +89,9 @@ export default async function ProjectDetailPage({
 
               <h1 style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(26px, 3.5vw, 46px)",
-                fontWeight: 800, color: INK,
-                letterSpacing: "-0.035em", lineHeight: 1.15,
+                fontSize: "clamp(22px, 2.8vw, 38px)",
+                fontWeight: 700, color: INK,
+                letterSpacing: "-0.025em", lineHeight: 1.2,
                 marginBottom: 16,
                 wordBreak: "keep-all", overflowWrap: "break-word",
               }}>
@@ -112,10 +112,12 @@ export default async function ProjectDetailPage({
                       fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 400,
                       letterSpacing: "0.04em",
                       background: "transparent",
-                      border: "1px solid #CBD5E1",
-                      borderRadius: 3, padding: "2px 8px",
-                      color: "#475569",
-                      display: "inline-flex", alignItems: "center", lineHeight: 1.5,
+                      border: "0.5px solid #CBD5E1",
+                      borderRadius: 3,
+                      padding: "0 8px",
+                      height: 20,
+                      color: "#64748B",
+                      display: "inline-flex", alignItems: "center", lineHeight: 1,
                     }}>
                       {t}
                     </span>
