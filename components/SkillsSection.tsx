@@ -85,7 +85,7 @@ export default function SkillsSection() {
                   textTransform: "uppercase" as const,
                   paddingTop: 5,
                   paddingLeft: 8,
-                  borderLeft: "2px solid #CBD5E1",
+                  borderLeft: "2px solid #334155",
                   lineHeight: 1.2,
                 }}
               >
@@ -100,11 +100,11 @@ export default function SkillsSection() {
                     style={{
                       fontSize: 11,
                       fontWeight: 500,
-                      color: "#0E7490",
+                      color: "#F1F5F9",
                       padding: "3px 9px",
-                      background: "#EFF9FB",
-                      border: "1px solid rgba(14,116,144,0.18)",
-                      borderRadius: 4,
+                      background: "#0F172A",
+                      border: "none",
+                      borderRadius: 3,
                       lineHeight: 1.6,
                       letterSpacing: "0.01em",
                     }}
@@ -120,9 +120,9 @@ export default function SkillsSection() {
                       fontWeight: 400,
                       color: "#475569",
                       padding: "3px 9px",
-                      background: "#F8FAFC",
-                      border: "1px solid #E2E8F0",
-                      borderRadius: 4,
+                      background: "transparent",
+                      border: "1px solid #CBD5E1",
+                      borderRadius: 3,
                       lineHeight: 1.6,
                       letterSpacing: "-0.005em",
                     }}
@@ -139,8 +139,8 @@ export default function SkillsSection() {
                       color: "#94A3B8",
                       padding: "3px 9px",
                       background: "transparent",
-                      border: "1px solid #E8ECF2",
-                      borderRadius: 4,
+                      border: "none",
+                      borderRadius: 3,
                       lineHeight: 1.6,
                       letterSpacing: "-0.005em",
                     }}
