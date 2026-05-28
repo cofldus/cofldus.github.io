@@ -6,29 +6,29 @@ import type { SkillGroup } from "@/lib/companyConfig";
 
 const defaultGroups: SkillGroup[] = [
   {
-    cat: "LLM / RAG",
-    primary: ["LangChain", "FAISS(IVF)", "BM25", "Hybrid Search", "bge-reranker-v2-m3", "Multi-Agent"],
-    secondary: ["인덱싱 파이프라인", "평가셋 설계", "온프레미스 LLM", "CPT", "SFT", "GDPO"],
+    cat: "LLM / 에이전트",
+    primary: ["LangChain", "FAISS(IVF)", "BM25", "bge-reranker-v2-m3", "Multi-Agent"],
+    secondary: ["GPT-4.1", "EXAONE", "Qwen2.5", "Gemma-2", "CPT", "SFT", "GDPO"],
   },
   {
-    cat: "NLP / LLM",
-    primary: ["Python", "HuggingFace", "KoBART", "KoELECTRA", "LoRA", "Quantization"],
+    cat: "NLP / 파인튜닝",
+    primary: ["HuggingFace", "KoBART", "KoELECTRA", "LoRA", "Quantization"],
     secondary: ["T5", "JAMO 전처리", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
   },
   {
     cat: "ML / 분석",
     primary: ["PyTorch", "XGBoost", "Scikit-learn", "SHAP"],
-    secondary: ["CycleGAN", "KMeans", "SMOTE", "OpenCV"],
+    secondary: ["CycleGAN", "KMeans", "SMOTE", "OpenCV", "FP-Growth"],
   },
   {
     cat: "서빙 / 인프라",
-    primary: ["FastAPI", "Docker", "PostgreSQL"],
-    secondary: ["Flask", "SQLite", "Redis", "UiPath RPA"],
+    primary: ["Python", "FastAPI", "Docker"],
+    secondary: ["Flask", "PostgreSQL", "SQLite", "Redis", "UiPath RPA"],
   },
   {
-    cat: "자격증 · 어학",
-    primary: ["빅데이터분석기사 (2025.12)", "ADsP (2026.03)", "OPIc IH (2025.08)"],
-    secondary: [],
+    cat: "프론트 / 시각화",
+    primary: ["React", "Next.js", "D3.js"],
+    secondary: ["TypeScript", "Tailwind CSS", "Zustand"],
   },
 ];
 

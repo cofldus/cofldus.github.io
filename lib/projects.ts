@@ -290,7 +290,7 @@ export const projects: Project[] = [
   {
     slug: "killkong",
     num: "04",
-    title: "맥락 기반 콩글리쉬 LLM 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
+    title: "맥락 기반 콩글리쉬 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
     period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
     goal: "14GB 다국어 LLM을 3GB로 압축해 CPU에서 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현",
     myRole: "LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정",
