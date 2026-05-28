@@ -162,13 +162,12 @@ function TroubleCard({
   onToggle: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
-  const active = isOpen || hovered;
 
   return (
     <div style={{
-      borderRadius: 8,
-      border: `1px solid ${isOpen ? "#FCD34D" : active ? "#FDE68A" : RULE}`,
-      background: isOpen ? "rgba(251,191,36,0.06)" : active ? "rgba(251,191,36,0.03)" : "#fff",
+      borderRadius: 6,
+      border: `1px solid ${isOpen ? A : hovered ? "rgba(79,192,209,0.35)" : RULE}`,
+      background: isOpen ? "rgba(79,192,209,0.04)" : "#fff",
       overflow: "hidden",
       transition: "border-color 0.15s, background 0.15s",
     }}>
@@ -181,8 +180,8 @@ function TroubleCard({
           width: "100%",
           display: "flex",
           alignItems: "center",
-          gap: 14,
-          padding: "13px 16px",
+          gap: 12,
+          padding: "11px 14px",
           background: "transparent",
           border: "none",
           cursor: "pointer",
@@ -192,18 +191,19 @@ function TroubleCard({
         {/* 번호 배지 */}
         <span style={{
           flexShrink: 0,
-          width: 22,
-          height: 22,
-          borderRadius: 4,
-          background: isOpen ? "#F59E0B" : active ? "#FCD34D" : "#F1F5F9",
+          width: 20,
+          height: 20,
+          borderRadius: 3,
+          background: isOpen ? A : hovered ? "rgba(79,192,209,0.1)" : "#F1F5F9",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           fontFamily: "var(--font-display)",
           fontSize: 9,
           fontWeight: 900,
-          color: isOpen ? "#fff" : active ? "#92400E" : "#94A3B8",
-          letterSpacing: "0.04em",
+          lineHeight: 1,
+          color: isOpen ? "#fff" : hovered ? A : "#94A3B8",
+          letterSpacing: "0.02em",
           transition: "background 0.15s, color 0.15s",
         }}>
           {String(index + 1).padStart(2, "0")}
@@ -213,9 +213,9 @@ function TroubleCard({
         <span style={{
           flex: 1,
           fontFamily: "var(--font-label)",
-          fontSize: 13.5,
-          fontWeight: 700,
-          color: isOpen ? "#92400E" : active ? "#B45309" : "#475569",
+          fontSize: 13,
+          fontWeight: 600,
+          color: isOpen ? A : hovered ? "#334155" : "#475569",
           letterSpacing: "-0.01em",
           lineHeight: 1.4,
           transition: "color 0.15s",
@@ -226,37 +226,28 @@ function TroubleCard({
         {/* 열기/닫기 아이콘 */}
         <span style={{
           flexShrink: 0,
-          width: 20,
-          height: 20,
-          borderRadius: "50%",
-          background: isOpen ? "#F59E0B" : active ? "#FEF3C7" : "#F8FAFC",
-          border: `1px solid ${isOpen ? "#F59E0B" : "#E2E8F0"}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "var(--font-display)",
-          fontSize: 11,
-          fontWeight: 700,
-          color: isOpen ? "#fff" : "#94A3B8",
-          transition: "all 0.15s",
+          fontSize: 18,
+          fontWeight: 300,
+          color: isOpen ? A : "#CBD5E1",
+          display: "inline-block",
+          transition: "color 0.15s, transform 0.2s",
+          transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
           lineHeight: 1,
-        }}>
-          {isOpen ? "−" : "+"}
-        </span>
+        }}>+</span>
       </button>
 
       {/* 본문 */}
       {isOpen && (
         <div style={{
-          padding: "0 16px 16px 52px",
-          borderTop: "1px solid #FDE68A",
+          padding: "0 14px 14px 46px",
+          borderTop: `1px solid rgba(79,192,209,0.15)`,
         }}>
           <p style={{
             fontFamily: "var(--font-sans)",
-            fontSize: 14.5,
+            fontSize: 14,
             lineHeight: 1.85,
             color: BODY,
-            margin: "14px 0 0",
+            margin: "12px 0 0",
             wordBreak: "keep-all",
           }}>
             {body}
@@ -286,18 +277,20 @@ function DetailAppendix({ p }: { p: Project }) {
             display: "inline-flex",
             alignItems: "center",
             gap: 7,
-            background: "none",
-            border: "none",
+            background: show ? "rgba(79,192,209,0.09)" : "#F8FAFC",
+            border: `1px solid ${show ? A : "#CBD5E1"}`,
+            borderRadius: 20,
             cursor: "pointer",
-            padding: "6px 0",
+            padding: "5px 16px 5px 12px",
+            transition: "background 0.15s, border-color 0.15s",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
-            fontSize: 10,
-            fontWeight: 600,
-            color: show ? A : "var(--ink-light)",
-            letterSpacing: "0.12em",
+            fontSize: 11,
+            fontWeight: 700,
+            color: show ? A : "#64748B",
+            letterSpacing: "0.1em",
             textTransform: "uppercase" as const,
             transition: "color 0.15s",
           }}>
@@ -306,16 +299,16 @@ function DetailAppendix({ p }: { p: Project }) {
           {!show && (
             <span style={{
               fontFamily: "var(--font-label)",
-              fontSize: 9.5,
-              color: "var(--ink-ghost)",
+              fontSize: 10,
+              color: "#94A3B8",
               letterSpacing: "0.02em",
             }}>
               기술 선택 · 실험 로그
             </span>
           )}
           <span style={{
-            fontSize: 9,
-            color: show ? A : "var(--ink-ghost)",
+            fontSize: 10,
+            color: show ? A : "#94A3B8",
             display: "inline-block",
             transition: "transform 0.2s, color 0.15s",
             transform: show ? "rotate(180deg)" : "rotate(0deg)",

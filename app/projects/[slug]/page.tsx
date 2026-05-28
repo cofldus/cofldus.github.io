@@ -110,10 +110,11 @@ export default async function ProjectDetailPage({
                   {p.tags.map((t) => (
                     <span key={t} style={{
                       fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 500,
-                      letterSpacing: "0.02em",
-                      background: "rgba(79,192,209,0.07)",
-                      border: "1px solid rgba(79,192,209,0.18)",
-                      borderRadius: 20, padding: "2px 10px", color: "#3ea8b8",
+                      letterSpacing: "0.04em",
+                      background: "rgba(79,192,209,0.06)",
+                      border: "0.5px solid rgba(79,192,209,0.3)",
+                      borderRadius: 20, padding: "3px 10px", color: "#3ea8b8",
+                      display: "inline-flex", alignItems: "center", lineHeight: 1,
                     }}>
                       {t}
                     </span>
