@@ -123,7 +123,7 @@ export const projects: Project[] = [
   {
     slug: "medical-chatbot",
     num: "02",
-    title: "이지스-바이오 센티넬스 의료자문봇",
+    title: "BM25·FAISS·리랭커 3단 파이프라인으로 설계한 의료 자문봇",
     period: "멋쟁이사자처럼 AI 자연어처리 집중과정 · 팀 프로젝트",
     goal: "Naive RAG의 낮은 Recall 한계를 하이브리드 검색 + 리랭커로 극복, 전문 의학 5.5만 건 코퍼스 기반 고정밀 자문봇 구축",
     myRole: "BM25+FAISS 하이브리드 파이프라인 설계 · bge-reranker 통합 · 평가 지표(Accuracy, BERTScore) 실험 및 분석",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
   {
     slug: "korean-noise-restoration",
     num: "03",
-    title: "난독화된 한글 리뷰 복원 AI",
+    title: "분류기→복원기 2단 구조로 재설계한 한글 난독화 복원 AI",
     period: "2026.01 · AI 자연어처리 집중 과정 3기",
     goal: "자음·모음 치환, 받침 탈락 등 의도적 난독화로 필터를 우회하는 악성 리뷰를 원형 한글로 복원, 콘텐츠 모더레이션 신뢰도 향상",
     myRole: "노이즈 패턴 분석 · Seq2Seq 복원 모델 설계 및 학습 · 음소 토크나이저 커스터마이징 · 평가 파이프라인 구축",
@@ -352,7 +352,7 @@ export const projects: Project[] = [
   {
     slug: "finview",
     num: "05",
-    title: "FinView: 생성형 AI 재무보고서 시스템",
+    title: "500개 상장사 재무를 즉시 해설해주는 AI 애널리스트",
     period: "2024.09–11 · 성신여자대학교 · 팀장",
     goal: "500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화",
     myRole: "팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발",
@@ -507,7 +507,7 @@ export const projects: Project[] = [
   {
     slug: "lovelop",
     num: "08",
-    title: "lovelop: 상권 분석 AI 시뮬레이션 SaaS",
+    title: "160 AI 고객 페르소나로 운영 변화 전후 소비 행동을 시뮬레이션하는 실상권 플랫폼",
     period: "2026.02 · AI 자연어처리 집중 과정 3기",
     goal: "GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원",
     myRole: "LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정",
