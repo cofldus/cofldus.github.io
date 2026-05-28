@@ -30,7 +30,7 @@ export const defaultConfig: CompanyConfig = {
   id: "default",
   label: "이채연 · AI / NLP Engineer",
   headline1: "Design the pipeline.",
-  headline2: "Prove it works.",
+  headline2: "Measure every step.",
   subtext:
     "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
   projectOrder: [

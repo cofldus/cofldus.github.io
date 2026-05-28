@@ -121,7 +121,7 @@ const projects: Project[] = [
     highlights: [
       { value: "91%", label: "신용등급 분류" },
       { value: "10배", label: "생성 속도" },
-      { value: "4.4/5", label: "만족도" },
+      { value: "500사", label: "ETL 규모" },
     ],
     tags: ["GPT-4", "XGBoost", "KMeans", "SHAP", "SMOTE", "DART API", "Flask", "D3.js"],
     videoUrl: "/finview_demo.mp4",
@@ -184,7 +184,7 @@ const projects: Project[] = [
     ],
     highlights: [
       { value: "160명", label: "AI 페르소나" },
-      { value: "80%", label: "사용 의향" },
+      { value: "2-Stage", label: "GPT 구조" },
       { value: "11개", label: "검증 지표" },
     ],
     tags: ["GPT-4.1", "Multi-Agent", "LLM Agent", "Gemma-2-9b", "EXAONE", "Python", "React", "Flask"],

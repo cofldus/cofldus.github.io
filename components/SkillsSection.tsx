@@ -8,27 +8,22 @@ const defaultGroups: SkillGroup[] = [
   {
     cat: "LLM / RAG",
     primary: ["LangChain", "FAISS(IVF)", "BM25", "Hybrid Search", "bge-reranker-v2-m3", "Multi-Agent"],
-    secondary: ["인덱싱 파이프라인", "평가셋 설계", "온프레미스 LLM", "CPT", "SFT", "GDPO", "Multi-Reward RL"],
+    secondary: ["인덱싱 파이프라인", "평가셋 설계", "온프레미스 LLM", "CPT", "SFT", "GDPO"],
   },
   {
     cat: "NLP / LLM",
-    primary: ["Python", "HuggingFace", "KoBART", "KoELECTRA", "LoRA"],
-    secondary: ["T5", "Quantization", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
+    primary: ["Python", "HuggingFace", "KoBART", "KoELECTRA", "LoRA", "Quantization"],
+    secondary: ["T5", "JAMO 전처리", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
   },
   {
-    cat: "CV / ML",
-    primary: ["PyTorch", "XGBoost", "Scikit-learn", "OpenCV"],
-    secondary: ["CycleGAN", "SHAP", "KMeans", "SMOTE"],
+    cat: "ML / 분석",
+    primary: ["PyTorch", "XGBoost", "Scikit-learn", "SHAP"],
+    secondary: ["CycleGAN", "KMeans", "SMOTE", "OpenCV"],
   },
   {
-    cat: "Backend",
-    primary: ["FastAPI", "PostgreSQL", "Docker", "Redis"],
-    secondary: ["Flask", "SQLite", "UiPath RPA"],
-  },
-  {
-    cat: "Frontend",
-    primary: ["Next.js", "TypeScript", "Tailwind CSS"],
-    secondary: ["React Native", "D3.js"],
+    cat: "서빙 / 인프라",
+    primary: ["FastAPI", "Docker", "PostgreSQL"],
+    secondary: ["Flask", "SQLite", "Redis", "UiPath RPA"],
   },
   {
     cat: "자격증 · 어학",
