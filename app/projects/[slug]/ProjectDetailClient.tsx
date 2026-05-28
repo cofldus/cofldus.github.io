@@ -271,24 +271,38 @@ function DetailAppendix({ p }: { p: Project }) {
       <button
         onClick={() => setShow((v) => !v)}
         style={{
-          display: "flex",
+          display: "inline-flex",
           alignItems: "center",
           gap: 8,
-          background: "none",
-          border: "none",
+          background: show ? "rgba(79,192,209,0.06)" : "var(--bg)",
+          border: `1px solid ${show ? "rgba(79,192,209,0.35)" : RULE}`,
+          borderRadius: 8,
           cursor: "pointer",
-          padding: 0,
+          padding: "10px 16px",
+          transition: "border-color 0.15s, background 0.15s",
         }}
       >
         <span style={{
           fontFamily: "var(--font-label)",
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: 700,
-          color: "#94A3B8",
-          letterSpacing: "0.03em",
+          color: show ? A : "#64748B",
+          letterSpacing: "0.06em",
+          textTransform: "uppercase" as const,
+          transition: "color 0.15s",
         }}>
-          {show ? "▾ 상세 기록 접기" : "▸ 상세 기록 — 기술 선택 근거 · 실험 로그"}
+          {show ? "▾ 상세 기록 접기" : "▸ 상세 기록"}
         </span>
+        {!show && (
+          <span style={{
+            fontFamily: "var(--font-label)",
+            fontSize: 10,
+            color: "#94A3B8",
+            letterSpacing: "0.02em",
+          }}>
+            기술 선택 근거 · 실험 로그
+          </span>
+        )}
       </button>
 
       {show && (
