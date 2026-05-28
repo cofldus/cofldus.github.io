@@ -79,9 +79,22 @@ export default async function ProjectDetailPage({
                 </span>
                 {p.award && (
                   <span style={{
-                    fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 600,
-                    color: A, borderLeft: `1px solid #C7D2FE`, paddingLeft: 14,
+                    fontFamily: "var(--font-label)",
+                    fontSize: 9.5,
+                    fontWeight: 600,
+                    color: "#92400E",
+                    background: "#FFFBEB",
+                    border: "0.5px solid rgba(245,158,11,0.28)",
+                    borderRadius: 3,
+                    padding: "0 9px",
+                    height: 20,
+                    letterSpacing: "0.03em",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                    lineHeight: 1,
                   }}>
+                    <span style={{ fontSize: 8, color: "#F59E0B", lineHeight: 1 }}>★</span>
                     {p.award}
                   </span>
                 )}
