@@ -135,7 +135,7 @@ function TroubleshootingList({ items }: { items: NonNullable<Project["troublesho
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <div style={{ borderTop: `1px solid ${RULE}` }}>
       {items.map((t, i) => {
         const isOpen = open === i;
         return (
@@ -165,14 +165,7 @@ function TroubleCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div style={{
-      borderRadius: 4,
-      border: `1px solid ${isOpen ? "#94A3B8" : hovered ? "#CBD5E1" : RULE}`,
-      background: isOpen ? "#F8FAFC" : "#fff",
-      overflow: "hidden",
-      transition: "border-color 0.15s, background 0.15s",
-    }}>
-      {/* 헤더 행 */}
+    <div style={{ borderBottom: `1px solid ${RULE}` }}>
       <button
         onClick={onToggle}
         onMouseEnter={() => setHovered(true)}
@@ -181,74 +174,59 @@ function TroubleCard({
           width: "100%",
           display: "flex",
           alignItems: "center",
-          gap: 12,
-          padding: "11px 14px",
+          gap: 16,
+          padding: "14px 0",
           background: "transparent",
           border: "none",
           cursor: "pointer",
           textAlign: "left",
         }}
       >
-        {/* 번호 배지 */}
         <span style={{
           flexShrink: 0,
-          width: 20,
-          height: 20,
-          borderRadius: 3,
-          background: isOpen ? "#0E7490" : hovered ? "#EFF9FB" : "#F1F5F9",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontFamily: "var(--font-display)",
-          fontSize: 9,
-          fontWeight: 900,
-          lineHeight: 1,
-          color: isOpen ? "#fff" : hovered ? "#0E7490" : "#94A3B8",
-          letterSpacing: "0.02em",
-          transition: "background 0.15s, color 0.15s",
+          fontSize: 10,
+          fontWeight: 800,
+          color: isOpen ? "#0E7490" : "#CBD5E1",
+          letterSpacing: "0.06em",
+          minWidth: 22,
+          transition: "color 0.15s",
         }}>
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        {/* 소제목 */}
         <span style={{
           flex: 1,
           fontFamily: "var(--font-label)",
-          fontSize: 13,
-          fontWeight: 600,
-          color: isOpen ? "#0E7490" : hovered ? "#1E293B" : "#475569",
-          letterSpacing: "-0.01em",
+          fontSize: 13.5,
+          fontWeight: isOpen ? 600 : 500,
+          color: isOpen ? "#1E293B" : hovered ? "#334155" : "#475569",
+          letterSpacing: "-0.015em",
           lineHeight: 1.4,
           transition: "color 0.15s",
         }}>
           {title}
         </span>
 
-        {/* 열기/닫기 아이콘 */}
         <span style={{
           flexShrink: 0,
-          fontSize: 18,
-          fontWeight: 300,
-          color: isOpen ? "#0E7490" : hovered ? "#94A3B8" : "#CBD5E1",
+          fontSize: 12,
+          color: isOpen ? "#0E7490" : "#CBD5E1",
           display: "inline-block",
           transition: "color 0.15s, transform 0.2s",
-          transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
           lineHeight: 1,
-        }}>+</span>
+        }}>▾</span>
       </button>
 
-      {/* 본문 */}
       {isOpen && (
-        <div style={{
-          padding: "0 14px 14px 46px",
-          borderTop: `1px solid #E2E8F0`,
-        }}>
+        <div style={{ paddingBottom: 18, paddingLeft: 38 }}>
           <p style={{
             fontFamily: "var(--font-sans)",
             fontSize: 14,
             lineHeight: 1.85,
             color: BODY,
-            margin: "12px 0 0",
+            margin: 0,
             wordBreak: "keep-all",
           }}>
             {body}
@@ -286,15 +264,13 @@ function DetailAppendix({ p }: { p: Project }) {
         <button
           onClick={() => setShow((v) => !v)}
           style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
             display: "inline-flex",
             alignItems: "center",
-            gap: 6,
-            background: show ? "#EFF9FB" : "#F8FAFC",
-            border: show ? "1px solid rgba(14,116,144,0.2)" : "1px solid #E2E8F0",
-            borderRadius: 4,
-            cursor: "pointer",
-            padding: "6px 16px",
-            transition: "background 0.15s, border-color 0.15s",
+            gap: 5,
+            padding: "2px 0",
           }}
         >
           <span style={{
@@ -303,7 +279,9 @@ function DetailAppendix({ p }: { p: Project }) {
             fontWeight: 500,
             color: show ? "#0E7490" : "#64748B",
             letterSpacing: "0.06em",
-            transition: "color 0.15s",
+            borderBottom: `1px solid ${show ? "rgba(14,116,144,0.3)" : "#CBD5E1"}`,
+            paddingBottom: 1,
+            transition: "color 0.15s, border-color 0.15s",
           }}>
             {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
           </span>
