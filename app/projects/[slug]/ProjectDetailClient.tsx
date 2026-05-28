@@ -72,8 +72,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
         {p.bullets.map((b, i) => (
           <div key={i} style={{
             display: "flex", gap: 18, alignItems: "flex-start",
-            paddingBottom: 14, marginBottom: 14,
-            borderBottom: i < p.bullets.length - 1 ? `1px solid ${RULE}` : "none",
+            paddingBottom: 12, marginBottom: 12,
           }}>
             <Num>{String(i + 1).padStart(2, "0")}</Num>
             <span style={{
@@ -132,7 +131,7 @@ function TroubleshootingList({ items }: { items: NonNullable<Project["troublesho
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div style={{ borderTop: `1px solid ${RULE}` }}>
+    <div style={{ borderTop: `0.5px solid ${RULE}` }}>
       {items.map((t, i) => {
         const isOpen = open === i;
         return (
@@ -162,7 +161,7 @@ function TroubleCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div style={{ borderBottom: `1px solid ${RULE}` }}>
+    <div style={{ borderBottom: `0.5px solid ${RULE}` }}>
       <button
         onClick={onToggle}
         onMouseEnter={() => setHovered(true)}
@@ -466,7 +465,7 @@ function Section({
     <section style={{
       paddingTop: first ? 40 : 36,
       paddingBottom: 36,
-      borderTop: first ? "none" : `1px solid ${RULE}`,
+      borderTop: first ? "none" : `0.5px solid ${RULE}`,
     }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
         <span style={{
@@ -518,5 +517,5 @@ function Num({ children }: { children: React.ReactNode }) {
 }
 
 function Divider() {
-  return <div style={{ height: 1, background: "#E2E8F0", margin: "24px 0" }} />;
+  return <div style={{ height: "0.5px", background: "#E2E8F0", margin: "24px 0" }} />;
 }
