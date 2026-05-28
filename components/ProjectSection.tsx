@@ -19,6 +19,7 @@ interface Project {
   videoUrl?: string;
   youtubeId?: string;
   thumbBg?: string;
+  thumbImg?: string;
   thumbAutoHeight?: boolean;
 }
 
@@ -119,8 +120,8 @@ const projects: Project[] = [
     slug: "ct-mri-cyclegan",
     num: "06",
     title: "CycleGAN 기반 CT→MRI 교차-모달리티 변환",
-    topic: "페어 데이터 없이 CT와 MRI 도메인을 상호 변환하는 비지도 의료 영상 AI",
-    oneliner: "CT→MRI 변환 — CycleGAN과 VGG Perceptual Loss로 해부학 구조를 보존하며 도메인을 변환하는 연구",
+    topic: "CT→MRI 의료영상 변환 연구",
+    oneliner: "CycleGAN 기반 도메인 변환으로 구조 보존 성능을 개선한 생성 모델 실험",
     period: "2023.06–09 · 딥러닝연구개발소 · 한성대학교 연구원",
     desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 임상 환경의 핵심 제약(1:1 Paired 데이터 획득 불가)을 Unpaired Image-to-Image Translation으로 극복하고, Generator·Discriminator 학습 불균형이라는 GAN 고유 불안정성을 실험적으로 탐색·해소했습니다.",
     bullets: [
@@ -132,6 +133,7 @@ const projects: Project[] = [
     repoUrl: "https://github.com/cofldus/medical_image_translation",
     repoName: "medical_image_translation",
     thumbBg: "#0F172A",
+    thumbImg: "/arch/ct-mri-result.png",
   },
   {
     slug: "hunchgame",
@@ -772,6 +774,9 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           />
         ) : p.videoUrl ? (
           <video src={p.videoUrl} autoPlay loop muted playsInline style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined} />
+        ) : p.thumbImg ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         ) : (
           <div className="pcard-thumb-svg">
             {Thumb && <Thumb />}

@@ -36,19 +36,22 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
       {p.archImages && p.archImages.length > 0 && (
         <Section step="ARCH" title="시스템 아키텍처">
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "flex-start" }}>
-            {p.archImages.slice(0, 2).map((src, i) => (
+          <div style={{
+            border: `1px solid ${RULE}`,
+            borderRadius: 10,
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "stretch",
+          }}>
+            {p.archImages.slice(0, 2).map((src, i, arr) => (
               <div key={i} style={{
-                border: `1px solid ${RULE}`,
-                borderRadius: 10,
-                overflow: "hidden",
-                background: "#FAFBFC",
-                padding: i === 0 ? 20 : 0,
-                flex: i === 0 ? "1 1 68%" : "1 1 24%",
+                flex: i === 0 ? "1 1 0" : "0 0 28%",
                 minWidth: 0,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                padding: i === 0 ? 20 : 12,
+                borderLeft: i > 0 ? `1px solid ${RULE}` : "none",
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -56,10 +59,8 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                   alt={`아키텍처 다이어그램 ${i + 1}`}
                   style={{
                     display: "block",
-                    borderRadius: i === 0 ? 6 : 0,
                     width: "100%",
-                    height: "auto",
-                    maxHeight: i === 1 ? "260px" : undefined,
+                    height: arr.length === 2 ? "100%" : "auto",
                     objectFit: "contain",
                   }}
                 />
