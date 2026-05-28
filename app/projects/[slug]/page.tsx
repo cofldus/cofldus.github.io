@@ -111,8 +111,8 @@ export default async function ProjectDetailPage({
                     <span key={t} style={{
                       fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 400,
                       letterSpacing: "0.04em",
-                      background: "transparent",
-                      border: "0.5px solid #CBD5E1",
+                      background: "#F4F7F8",
+                      border: "none",
                       borderRadius: 3,
                       padding: "0 8px",
                       height: 20,
