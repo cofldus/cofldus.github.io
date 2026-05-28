@@ -289,26 +289,26 @@ function DetailAppendix({ p }: { p: Project }) {
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
-            background: show ? "rgba(79,192,209,0.07)" : "#fff",
-            border: `1px solid ${show ? A : "#CBD5E1"}`,
-            borderRadius: 6,
+            background: "transparent",
+            border: `0.5px solid ${show ? "rgba(79,192,209,0.6)" : "#CBD5E1"}`,
+            borderRadius: 3,
             cursor: "pointer",
-            padding: "9px 20px",
-            transition: "background 0.15s, border-color 0.15s",
+            padding: "6px 14px",
+            transition: "border-color 0.15s",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
-            fontSize: 12,
-            fontWeight: 600,
-            color: show ? A : "#475569",
-            letterSpacing: "0.04em",
+            fontSize: 11,
+            fontWeight: 500,
+            color: show ? A : "#64748B",
+            letterSpacing: "0.06em",
             transition: "color 0.15s",
           }}>
             {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
           </span>
           <span style={{
-            fontSize: 10,
+            fontSize: 9,
             color: show ? A : "#94A3B8",
             display: "inline-block",
             transition: "transform 0.2s, color 0.15s",

@@ -109,13 +109,13 @@ export default async function ProjectDetailPage({
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                   {p.tags.map((t, idx) => (
                     <span key={t} style={{
-                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: idx < 2 ? 600 : 500,
-                      letterSpacing: "0.04em",
-                      background: idx < 2 ? "#4fc0d1" : "rgba(79,192,209,0.06)",
-                      border: idx < 2 ? "1px solid #4fc0d1" : "0.5px solid rgba(79,192,209,0.3)",
-                      borderRadius: 20, padding: "3px 10px",
-                      color: idx < 2 ? "#fff" : "#3ea8b8",
-                      display: "inline-flex", alignItems: "center", lineHeight: 1,
+                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: idx < 2 ? 500 : 400,
+                      letterSpacing: "0.05em",
+                      background: idx < 2 ? "rgba(79,192,209,0.9)" : "transparent",
+                      border: idx < 2 ? "0.5px solid rgba(79,192,209,0.7)" : "0.5px solid rgba(79,192,209,0.22)",
+                      borderRadius: 2, padding: "2px 8px",
+                      color: idx < 2 ? "#fff" : "#4fc0d1",
+                      display: "inline-flex", alignItems: "center", lineHeight: 1.5,
                     }}>
                       {t}
                     </span>
