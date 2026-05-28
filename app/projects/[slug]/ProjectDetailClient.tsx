@@ -47,7 +47,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: i === 0 ? 20 : 12,
+                padding: i === 0 ? 36 : 24,
                 borderLeft: i > 0 ? `0.5px solid ${RULE}` : "none",
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -172,10 +172,12 @@ function TroubleCard({
           alignItems: "center",
           gap: 16,
           padding: "14px 0",
-          background: "transparent",
+          background: hovered ? "#F8FAFC" : "transparent",
           border: "none",
           cursor: "pointer",
-          textAlign: "left",
+          textAlign: "left" as const,
+          borderRadius: 3,
+          transition: "background 0.12s",
         }}
       >
         <span style={{
@@ -260,24 +262,24 @@ function DetailAppendix({ p }: { p: Project }) {
         <button
           onClick={() => setShow((v) => !v)}
           style={{
-            background: "none",
-            border: "none",
+            background: "transparent",
+            border: show ? "1px solid rgba(14,116,144,0.35)" : "1px solid #CBD5E1",
+            borderRadius: 4,
             cursor: "pointer",
             display: "inline-flex",
             alignItems: "center",
-            gap: 5,
-            padding: "2px 0",
+            gap: 6,
+            padding: "8px 20px",
+            transition: "border-color 0.15s",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 500,
-            color: show ? "#0E7490" : "#64748B",
-            letterSpacing: "0.06em",
-            borderBottom: `1px solid ${show ? "rgba(14,116,144,0.3)" : "#CBD5E1"}`,
-            paddingBottom: 1,
-            transition: "color 0.15s, border-color 0.15s",
+            color: show ? "#0E7490" : "#475569",
+            letterSpacing: "0.05em",
+            transition: "color 0.15s",
           }}>
             {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
           </span>
@@ -295,35 +297,7 @@ function DetailAppendix({ p }: { p: Project }) {
       {show && (
         <div style={{ marginTop: 36 }}>
 
-          {/* 세부 다이어그램 (archImages[2+]) */}
-          {hasExtraArch && (
-            <div style={{ marginBottom: 48 }}>
-              <SubHeading step="C" title="다이어그램 — 세부 플로우" />
-              <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingLeft: 32 }}>
-                {extraArch.map((src, i) => (
-                  <div key={i} style={{
-                    border: `1px solid ${RULE}`,
-                    borderRadius: 10,
-                    overflow: "hidden",
-                    background: "#FAFBFC",
-                    padding: 20,
-                    width: "fit-content",
-                    maxWidth: "100%",
-                    margin: "0 auto",
-                  }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={src}
-                      alt={`세부 다이어그램 ${i + 1}`}
-                      style={{ display: "block", borderRadius: 6, maxWidth: "100%", maxHeight: 600, width: "auto", height: "auto" }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* 기술 선택 근거 */}
+          {/* A — 기술 선택 근거 */}
           {hasDecisions && (
             <div style={{ marginBottom: 48 }}>
               <SubHeading step="A" title="기술 선택 근거" />
@@ -371,9 +345,9 @@ function DetailAppendix({ p }: { p: Project }) {
             </div>
           )}
 
-          {/* 실험 로그 */}
+          {/* B — 실험 로그 */}
           {hasExperiments && (
-            <div>
+            <div style={{ marginBottom: hasExtraArch ? 48 : 0 }}>
               <SubHeading step="B" title="실험 로그 — 시행착오 기록" />
               <div style={{ display: "flex", alignItems: "center", marginBottom: 36, paddingLeft: 32 }}>
                 {p.experiments!.map((e, i) => {
@@ -448,6 +422,24 @@ function DetailAppendix({ p }: { p: Project }) {
                   </div>
                 );
               })}
+            </div>
+          )}
+
+          {/* C — 세부 다이어그램 */}
+          {hasExtraArch && (
+            <div>
+              <SubHeading step="C" title="다이어그램 — 세부 플로우" />
+              <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingLeft: 32 }}>
+                {extraArch.map((src, i) => (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`세부 다이어그램 ${i + 1}`}
+                    style={{ display: "block", width: "100%", height: "auto" }}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>

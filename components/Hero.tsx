@@ -44,10 +44,10 @@ function StarCluster() {
 }
 
 // 사인파 idle wave — 더 크고 느리게
-const WAVE_Y = [0, -1, -2.5, -3.5, -4, -2.5, 0, 2.5, 4, 3.5, 2.5, 1, 0];
+const WAVE_Y = [0, -0.4, -1, -1.4, -1.6, -1, 0, 1, 1.6, 1.4, 1, 0.4, 0];
 const WAVE_T = [0, 0.083, 0.167, 0.25, 0.333, 0.417, 0.5, 0.583, 0.667, 0.75, 0.833, 0.917, 1];
-const WAVE_DUR = 7.0;   // 더 느린 주기
-const WAVE_STAGGER = 0.09; // 글자 간 위상차
+const WAVE_DUR = 10.0;
+const WAVE_STAGGER = 0.07;
 
 // ⑤ clip reveal: 마스크 안에서 아래→위로 밀려 올라옴, 이후 idle wave
 function RevealLine({
