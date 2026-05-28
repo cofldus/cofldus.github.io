@@ -33,11 +33,11 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
         </p>
       </Section>
 
-      {/* ARCH — 시스템 아키텍처 */}
+      {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
       {p.archImages && p.archImages.length > 0 && (
         <Section step="ARCH" title="시스템 아키텍처">
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {p.archImages.map((src, i) => (
+            {p.archImages.slice(0, 2).map((src, i) => (
               <div key={i} style={{
                 border: `1px solid ${RULE}`,
                 borderRadius: 10,
@@ -260,7 +260,9 @@ function DetailAppendix({ p }: { p: Project }) {
   const [show, setShow] = useState(false);
   const hasDecisions = p.decisions && p.decisions.length > 0;
   const hasExperiments = p.experiments && p.experiments.length > 0;
-  if (!hasDecisions && !hasExperiments) return null;
+  const extraArch = (p.archImages ?? []).slice(2);
+  const hasExtraArch = extraArch.length > 0;
+  if (!hasDecisions && !hasExperiments && !hasExtraArch) return null;
 
   return (
     <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
@@ -289,6 +291,31 @@ function DetailAppendix({ p }: { p: Project }) {
 
       {show && (
         <div style={{ marginTop: 36 }}>
+
+          {/* 세부 다이어그램 (archImages[2+]) */}
+          {hasExtraArch && (
+            <div style={{ marginBottom: 48 }}>
+              <SubHeading step="C" title="다이어그램 — 세부 플로우" />
+              <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingLeft: 32 }}>
+                {extraArch.map((src, i) => (
+                  <div key={i} style={{
+                    border: `1px solid ${RULE}`,
+                    borderRadius: 10,
+                    overflow: "hidden",
+                    background: "#FAFBFC",
+                    padding: 20,
+                  }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt={`세부 다이어그램 ${i + 1}`}
+                      style={{ width: "100%", height: "auto", display: "block", borderRadius: 6 }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* 기술 선택 근거 */}
           {hasDecisions && (
