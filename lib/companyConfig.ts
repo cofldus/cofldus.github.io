@@ -3,6 +3,7 @@
 
 export interface SkillGroup {
   cat: string;
+  core?: string[];
   primary: string[];
   secondary: string[];
 }

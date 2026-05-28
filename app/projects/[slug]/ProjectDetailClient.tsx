@@ -270,43 +270,43 @@ function DetailAppendix({ p }: { p: Project }) {
 
   return (
     <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <div style={{ flex: 1, height: 1, background: RULE }} />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        {!show && (
+          <p style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: 13,
+            color: "#94A3B8",
+            margin: 0,
+            textAlign: "center",
+            letterSpacing: "-0.01em",
+          }}>
+            기술 선택 이유, 실험 과정, 트레이드오프를 기록했습니다.
+          </p>
+        )}
         <button
           onClick={() => setShow((v) => !v)}
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 7,
-            background: show ? "rgba(79,192,209,0.09)" : "#F8FAFC",
+            gap: 6,
+            background: show ? "rgba(79,192,209,0.07)" : "#fff",
             border: `1px solid ${show ? A : "#CBD5E1"}`,
-            borderRadius: 20,
+            borderRadius: 6,
             cursor: "pointer",
-            padding: "5px 16px 5px 12px",
+            padding: "9px 20px",
             transition: "background 0.15s, border-color 0.15s",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
-            fontSize: 11,
-            fontWeight: 700,
-            color: show ? A : "#64748B",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase" as const,
+            fontSize: 12,
+            fontWeight: 600,
+            color: show ? A : "#475569",
+            letterSpacing: "0.04em",
             transition: "color 0.15s",
           }}>
-            {show ? "접기" : "상세 기록"}
+            {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
           </span>
-          {!show && (
-            <span style={{
-              fontFamily: "var(--font-label)",
-              fontSize: 10,
-              color: "#94A3B8",
-              letterSpacing: "0.02em",
-            }}>
-              기술 선택 · 실험 로그
-            </span>
-          )}
           <span style={{
             fontSize: 10,
             color: show ? A : "#94A3B8",
@@ -316,7 +316,6 @@ function DetailAppendix({ p }: { p: Project }) {
             lineHeight: 1,
           }}>▾</span>
         </button>
-        <div style={{ flex: 1, height: 1, background: RULE }} />
       </div>
 
       {show && (

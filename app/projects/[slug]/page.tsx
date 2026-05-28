@@ -107,13 +107,14 @@ export default async function ProjectDetailPage({
                 </p>
                 <span style={{ width: 1, height: 12, background: RULE, flexShrink: 0 }} />
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                  {p.tags.map((t) => (
+                  {p.tags.map((t, idx) => (
                     <span key={t} style={{
-                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 500,
+                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: idx < 2 ? 600 : 500,
                       letterSpacing: "0.04em",
-                      background: "rgba(79,192,209,0.06)",
-                      border: "0.5px solid rgba(79,192,209,0.3)",
-                      borderRadius: 20, padding: "3px 10px", color: "#3ea8b8",
+                      background: idx < 2 ? "#4fc0d1" : "rgba(79,192,209,0.06)",
+                      border: idx < 2 ? "1px solid #4fc0d1" : "0.5px solid rgba(79,192,209,0.3)",
+                      borderRadius: 20, padding: "3px 10px",
+                      color: idx < 2 ? "#fff" : "#3ea8b8",
                       display: "inline-flex", alignItems: "center", lineHeight: 1,
                     }}>
                       {t}

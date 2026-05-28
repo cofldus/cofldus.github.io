@@ -7,28 +7,33 @@ import type { SkillGroup } from "@/lib/companyConfig";
 const defaultGroups: SkillGroup[] = [
   {
     cat: "LLM / 에이전트",
-    primary: ["LangChain", "FAISS(IVF)", "BM25", "bge-reranker-v2-m3", "Multi-Agent"],
-    secondary: ["GPT-4.1", "EXAONE", "Qwen2.5", "Gemma-2", "CPT", "SFT", "GDPO"],
+    core: ["LangChain", "FAISS(IVF)", "bge-reranker-v2-m3"],
+    primary: ["BM25", "Multi-Agent", "GPT-4.1"],
+    secondary: ["EXAONE", "Qwen2.5", "Gemma-2", "CPT", "SFT", "GDPO"],
   },
   {
     cat: "NLP / 파인튜닝",
-    primary: ["HuggingFace", "KoBART", "KoELECTRA", "LoRA", "Quantization"],
-    secondary: ["T5", "JAMO 전처리", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
+    core: ["HuggingFace", "LoRA", "KoBART"],
+    primary: ["KoELECTRA", "Quantization", "JAMO 전처리"],
+    secondary: ["T5", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
   },
   {
     cat: "ML / 분석",
-    primary: ["PyTorch", "XGBoost", "Scikit-learn", "SHAP"],
-    secondary: ["CycleGAN", "KMeans", "SMOTE", "OpenCV", "FP-Growth"],
+    core: ["PyTorch", "XGBoost"],
+    primary: ["Scikit-learn", "SHAP", "OpenCV"],
+    secondary: ["CycleGAN", "KMeans", "SMOTE", "FP-Growth"],
   },
   {
     cat: "서빙 / 인프라",
-    primary: ["Python", "FastAPI", "Docker"],
-    secondary: ["Flask", "PostgreSQL", "SQLite", "Redis", "UiPath RPA"],
+    core: ["Python", "FastAPI", "Docker"],
+    primary: ["PostgreSQL", "Redis"],
+    secondary: ["Flask", "SQLite", "UiPath RPA"],
   },
   {
     cat: "프론트 / 시각화",
-    primary: ["React", "Next.js", "D3.js"],
-    secondary: ["TypeScript", "Tailwind CSS", "Zustand"],
+    core: ["React", "Next.js"],
+    primary: ["D3.js", "TypeScript"],
+    secondary: ["Tailwind CSS", "Zustand"],
   },
 ];
 
@@ -73,23 +78,45 @@ export default function SkillsSection() {
               <span
                 style={{
                   fontFamily: "var(--font-label)",
-                  fontSize: 12,
-                  fontWeight: 700,
+                  fontSize: 10,
+                  fontWeight: 800,
                   color: "var(--accent)",
-                  letterSpacing: "0.04em",
-                  paddingTop: 4,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase" as const,
+                  paddingTop: 5,
+                  paddingLeft: 8,
+                  borderLeft: "2px solid var(--accent)",
+                  lineHeight: 1.2,
                 }}
               >
                 {g.cat}
               </span>
 
-              {/* 스킬 칩 */}
+              {/* 스킬 칩 — core / primary / secondary 3단 위계 */}
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 7px" }}>
+                {(g.core ?? []).map((sk) => (
+                  <span
+                    key={sk}
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "#fff",
+                      padding: "3px 11px",
+                      background: "var(--accent)",
+                      border: "1px solid var(--accent)",
+                      borderRadius: 4,
+                      lineHeight: 1.6,
+                      letterSpacing: "0.01em",
+                    }}
+                  >
+                    {sk}
+                  </span>
+                ))}
                 {g.primary.map((sk) => (
                   <span
                     key={sk}
                     style={{
-                      fontSize: 13,
+                      fontSize: 12,
                       fontWeight: 500,
                       color: "var(--ink)",
                       padding: "3px 11px",
@@ -107,10 +134,10 @@ export default function SkillsSection() {
                   <span
                     key={sk}
                     style={{
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: 400,
                       color: "var(--ink-light)",
-                      padding: "3px 11px",
+                      padding: "3px 10px",
                       background: "var(--bg-subtle)",
                       border: "1px solid var(--border-sub)",
                       borderRadius: 4,
