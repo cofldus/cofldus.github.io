@@ -274,38 +274,48 @@ function DetailAppendix({ p }: { p: Project }) {
       <button
         onClick={() => setShow((v) => !v)}
         style={{
-          display: "inline-flex",
+          display: "flex",
           alignItems: "center",
-          gap: 8,
-          background: show ? "rgba(79,192,209,0.06)" : "var(--bg)",
-          border: `1px solid ${show ? "rgba(79,192,209,0.35)" : RULE}`,
-          borderRadius: 8,
+          justifyContent: "space-between",
+          width: "100%",
+          background: show ? "rgba(79,192,209,0.05)" : "var(--bg-subtle)",
+          border: `1px solid ${show ? "rgba(79,192,209,0.3)" : RULE}`,
+          borderRadius: 10,
           cursor: "pointer",
-          padding: "10px 16px",
+          padding: "14px 20px",
           transition: "border-color 0.15s, background 0.15s",
         }}
       >
-        <span style={{
-          fontFamily: "var(--font-label)",
-          fontSize: 11,
-          fontWeight: 700,
-          color: show ? A : "#64748B",
-          letterSpacing: "0.06em",
-          textTransform: "uppercase" as const,
-          transition: "color 0.15s",
-        }}>
-          {show ? "▾ 상세 기록 접기" : "▸ 상세 기록"}
-        </span>
-        {!show && (
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{
+            fontFamily: "var(--font-label)",
+            fontSize: 11,
+            fontWeight: 700,
+            color: show ? A : "var(--ink)",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase" as const,
+            transition: "color 0.15s",
+          }}>
+            상세 기록
+          </span>
           <span style={{
             fontFamily: "var(--font-label)",
             fontSize: 10,
-            color: "#94A3B8",
+            color: show ? "rgba(79,192,209,0.7)" : "var(--ink-light)",
             letterSpacing: "0.02em",
+            transition: "color 0.15s",
           }}>
-            기술 선택 근거 · 실험 로그
+            {show ? "기술 선택 근거 · 실험 로그" : "기술 선택 근거 · 실험 로그 · 다이어그램"}
           </span>
-        )}
+        </div>
+        <span style={{
+          fontSize: 13,
+          color: show ? A : "var(--ink-light)",
+          transition: "transform 0.2s, color 0.15s",
+          display: "inline-block",
+          transform: show ? "rotate(180deg)" : "rotate(0deg)",
+          lineHeight: 1,
+        }}>▾</span>
       </button>
 
       {show && (

@@ -148,6 +148,7 @@ const projects: Project[] = [
     tags: ["CycleGAN", "ResNet-9", "PatchGAN", "VGG Perceptual Loss", "Spectral Norm", "PyTorch", "OpenCV"],
     repoUrl: "https://github.com/cofldus/medical_image_translation",
     repoName: "medical_image_translation",
+    thumbBg: "#0F172A",
   },
   {
     slug: "hunchgame",
@@ -530,59 +531,6 @@ function Thumb05() {
   );
 }
 
-function Thumb06() {
-  const BG = "#0A1120";
-  const AC = "#38BDF8";
-  const GR = "#34D399";
-  const W = "#E2E8F0";
-  const M2 = "#4B6080";
-  return (
-    <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="360" height="200" fill={BG}/>
-      <text x={14} y={14} fill={M2} fontSize={8} fontFamily={MON} letterSpacing="0.14em">MEDICAL CV · UNPAIRED DOMAIN TRANSFER</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke="rgba(56,189,248,0.1)" strokeWidth={0.6}/>
-
-      <text x={14} y={56} fill={AC} fontSize={38} fontFamily={SAN} fontWeight="800" letterSpacing="-0.04em">CT → MRI</text>
-      <text x={14} y={71} fill={M2} fontSize={9} fontFamily={MON}>CycleGAN · ResNet-9 · VGG Loss · Unpaired · PyTorch</text>
-
-      {/* Pipeline: 3 nodes */}
-      {[
-        { cx: 60,  label: "CT",       sub: "Input",       hi: false },
-        { cx: 180, label: "CycleGAN", sub: "G: X→Y  F: Y→X", hi: true  },
-        { cx: 300, label: "MRI",      sub: "Output",      hi: false },
-      ].map((s, i) => (
-        <g key={i}>
-          <circle cx={s.cx} cy={108} r={28}
-            fill={s.hi ? "rgba(56,189,248,0.1)" : "rgba(71,96,128,0.15)"}
-            stroke={s.hi ? "rgba(56,189,248,0.4)" : "rgba(71,96,128,0.3)"}
-            strokeWidth={1.2}/>
-          <text x={s.cx} y={104} textAnchor="middle" fill={s.hi ? AC : W} fontSize={s.hi ? 11 : 10} fontFamily={SAN} fontWeight="700">{s.label}</text>
-          <text x={s.cx} y={116} textAnchor="middle" fill={M2} fontSize={6.5} fontFamily={MON}>{s.sub}</text>
-          {i < 2 && (
-            <>
-              <line x1={s.cx+28} y1={108} x2={s.cx+60} y2={108} stroke="rgba(56,189,248,0.25)" strokeWidth={1} strokeDasharray="4 3"/>
-              <polygon points={`${s.cx+58},105 ${s.cx+64},108 ${s.cx+58},111`} fill="rgba(56,189,248,0.3)"/>
-            </>
-          )}
-        </g>
-      ))}
-
-      {/* Metrics */}
-      <line x1={14} y1={148} x2={346} y2={148} stroke="rgba(56,189,248,0.08)" strokeWidth={0.6}/>
-      {[
-        { x: 14,  label: "SSIM",        value: "0.88", c: GR },
-        { x: 134, label: "의료진 평가",  value: "80%+", c: AC },
-        { x: 254, label: "학습 데이터",  value: "800장", c: W },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x-6} y1={152} x2={m.x-6} y2={196} stroke="rgba(56,189,248,0.07)" strokeWidth={0.6}/>}
-          <text x={m.x} y={163} fill={M2} fontSize={8} fontFamily={MON}>{m.label}</text>
-          <text x={m.x} y={192} fill={m.c} fontSize={26} fontFamily={MON} fontWeight="700">{m.value}</text>
-        </g>
-      ))}
-    </svg>
-  );
-}
 
 function Thumb07() {
   const AC = "#3D7A5A";
@@ -781,7 +729,7 @@ function Thumb11() {
 
 const thumbMap: Record<string, React.FC> = {
   "01": Thumb01, "02": Thumb02, "03": Thumb03, "04": Thumb04,
-  "05": Thumb05, "06": Thumb06, "07": Thumb07, "08": Thumb08,
+  "05": Thumb05, "07": Thumb07, "08": Thumb08,
   "09": Thumb09, "11": Thumb11,
 };
 
