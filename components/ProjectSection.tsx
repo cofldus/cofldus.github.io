@@ -788,7 +788,7 @@ export default function ProjectSection() {
           </p>
         </div>
         <div className="pcard-grid pcard-grid-svg">
-          {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={videoProjects.length + i} />)}
+          {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={filteredProjects.length + i} />)}
         </div>
       </div>
 
