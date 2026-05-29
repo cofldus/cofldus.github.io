@@ -821,12 +821,11 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
             )}
             {p.award && (
               <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 600,
-                color: "#92400E", background: "#FFFBEB",
-                border: "0.5px solid rgba(245,158,11,0.28)", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", gap: 4, lineHeight: 1,
+                fontFamily: "var(--font-sans)", fontSize: 9, fontWeight: 400,
+                color: "#4fc0d1", background: "rgba(79,192,209,0.08)",
+                border: "1px solid rgba(79,192,209,0.35)", borderRadius: 20,
+                padding: "2px 7px", display: "inline-flex", alignItems: "center", lineHeight: 1,
               }}>
-                <span style={{ fontSize: 7, color: "#F59E0B", lineHeight: 1 }}>★</span>
                 {p.award}
               </span>
             )}
