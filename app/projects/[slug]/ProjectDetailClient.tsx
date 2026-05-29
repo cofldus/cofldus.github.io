@@ -42,7 +42,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
           }}>
             {p.archImages.slice(0, 2).map((src, i, arr) => (
               <div key={i} style={{
-                flex: i === 0 ? "1 1 0" : "0 0 28%",
+                flex: i === 0 ? "1 1 0" : "0 0 42%",
                 minWidth: 0,
                 display: "flex",
                 alignItems: "center",

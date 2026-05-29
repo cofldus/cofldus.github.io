@@ -84,7 +84,7 @@ const projects: Project[] = [
     title: "맥락 기반 콩글리쉬 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
     topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
     oneliner: "LoRA·4bit 양자화와 FAISS 개인화 메모리로 0.47초 응답을 구현한 콩글리시 교정 에이전트",
-    period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
+    period: "2025.07–08",
     desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
     bullets: [
       "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s",
@@ -764,7 +764,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       }}
     >
       {/* Thumbnail */}
-      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] ? { height: "auto" } : {}) }}>
+      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
         {p.youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${p.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${p.youtubeId}&controls=0&modestbranding=1&rel=0`}
@@ -787,16 +787,31 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       {/* Body */}
       <div style={{ padding: "22px 24px 0", display: "flex", flexDirection: "column", flex: 1 }}>
 
-        {/* num row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-          <span style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.2em", fontWeight: 700, color: "var(--accent)" }}>
+        {/* num + metadata chips */}
+        <div style={{ marginBottom: 10 }}>
+          <span style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.2em", fontWeight: 700, color: "var(--accent)", display: "block", marginBottom: 7 }}>
             {displayNum}
           </span>
-          {p.award && (
-            <span style={{ fontFamily: "var(--font-sans)", fontSize: 9, padding: "2px 7px", color: "#4fc0d1", background: "rgba(79,192,209,0.08)", border: "1px solid rgba(79,192,209,0.35)", borderRadius: 20 }}>
-              {p.award}
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
+            <span style={{
+              fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 400,
+              color: "#64748B", background: "#F4F7F8", borderRadius: 3,
+              padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
+            }}>
+              {p.period}
             </span>
-          )}
+            {p.award && (
+              <span style={{
+                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 600,
+                color: "#92400E", background: "#FFFBEB",
+                border: "0.5px solid rgba(245,158,11,0.28)", borderRadius: 3,
+                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", gap: 4, lineHeight: 1,
+              }}>
+                <span style={{ fontSize: 7, color: "#F59E0B", lineHeight: 1 }}>★</span>
+                {p.award}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* topic — 주제 어구 */}
@@ -805,13 +820,8 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         </h3>
 
         {/* oneliner — 서비스명 + 구체 한 줄 */}
-        <p style={{ fontSize: 12, fontWeight: 400, lineHeight: 1.6, letterSpacing: "-0.008em", color: "var(--ink-light)", marginBottom: 16 }}>
+        <p style={{ fontSize: 12, fontWeight: 400, lineHeight: 1.6, letterSpacing: "-0.008em", color: "var(--ink-light)", marginBottom: 14 }}>
           {p.oneliner}
-        </p>
-
-        {/* period */}
-        <p style={{ fontFamily: "var(--font-label)", fontSize: 10, color: "var(--ink-ghost)", marginBottom: 14 }}>
-          {p.period}
         </p>
 
         {/* Tags */}

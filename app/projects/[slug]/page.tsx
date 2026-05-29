@@ -179,7 +179,7 @@ export default async function ProjectDetailPage({
                     height: "auto",
                     display: "block",
                     borderRadius: 8,
-                    border: `1px solid ${RULE}`,
+                    border: `0.5px solid ${RULE}`,
                   }}
                 />
               </div>
