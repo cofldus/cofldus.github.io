@@ -573,15 +573,6 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
             {displayNum}
           </span>
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
-            {p.date && (
-              <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 500,
-                color: "#475569", background: "#F1F5F9", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
-              }}>
-                {p.date}
-              </span>
-            )}
             {p.period && (
               <span style={{
                 fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 400,
