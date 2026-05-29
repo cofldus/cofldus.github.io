@@ -263,22 +263,22 @@ function DetailAppendix({ p }: { p: Project }) {
           onClick={() => setShow((v) => !v)}
           style={{
             background: "transparent",
-            border: show ? "1px solid rgba(14,116,144,0.35)" : "1px solid #CBD5E1",
-            borderRadius: 4,
+            border: "none",
             cursor: "pointer",
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
-            padding: "8px 20px",
-            transition: "border-color 0.15s",
+            padding: "4px 0",
+            outline: "none",
           }}
         >
           <span style={{
             fontFamily: "var(--font-label)",
-            fontSize: 12,
-            fontWeight: 500,
-            color: show ? "#0E7490" : "#475569",
-            letterSpacing: "0.05em",
+            fontSize: 11,
+            fontWeight: 600,
+            color: show ? "#0E7490" : "#64748B",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
             transition: "color 0.15s",
           }}>
             {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}

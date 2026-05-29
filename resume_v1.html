@@ -235,11 +235,6 @@ body {
 .cert-chunk b { font-weight: 700; color: #000; }
 .cert-chunk .cd { color: #888; font-size: 7.8pt; }
 
-@media print {
-  body { background: white; padding: 0; }
-  .page { margin: 0; box-shadow: none; }
-  .lang-toggle { display: none; }
-}
 .lang-toggle {
   position: fixed;
   top: 20px;
@@ -272,6 +267,11 @@ body {
 .lang-toggle .inactive:hover {
   background: #f4f4f4;
   color: #333;
+}
+@media print {
+  body { background: white; padding: 0; }
+  .page { margin: 0; box-shadow: none; }
+  .lang-toggle { display: none !important; }
 }
 </style>
 </head>
@@ -336,7 +336,7 @@ body {
 
     <div class="proj-block">
       <div class="proj-hd">
-        <span class="proj-name">KillKong<span class="proj-subtitle"> &nbsp;|&nbsp; 한국인 특화 콩글리시 교정 AI Agent</span><span class="proj-tag">팀장</span></span>
+        <span class="proj-name">KillKong<span class="proj-subtitle"> &nbsp;|&nbsp; 콩글리시 교정 LLM Agent · 온디바이스 모델 압축</span><span class="proj-tag">팀장</span></span>
         <span class="proj-date">2025.07 – 2025.08</span>
       </div>
       <div class="proj-body">팀장으로 Qwen2.5-7B LoRA SFT 파인튜닝 · 4bit GPTQ 양자화 · FAISS 기반 RAG 파이프라인 설계 · iOS 모바일 서비스 end-to-end 구현</div>
@@ -381,7 +381,7 @@ body {
       <span class="award-dt">2026.03 ~ 현재</span>
     </div>
     <div class="award-row">
-      <span class="award-main">AI 프로젝트 대회 <b>장려상</b> <span class="award-org"> &nbsp;|&nbsp; 포스코 인재창조원</span></span>
+      <span class="award-main">포스코 청년 AI·BigData 아카데미 프로젝트 <b>장려상</b> <span class="award-org"> &nbsp;|&nbsp; 포스코 인재창조원</span></span>
       <span class="award-dt">2025.08</span>
     </div>
     <div class="award-row">
