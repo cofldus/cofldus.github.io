@@ -1,13 +1,238 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useMemo } from "react";
 import { useCompany } from "@/context/CompanyContext";
-import { projects as libProjects } from "@/lib/projects";
-import type { Project } from "@/lib/projects";
 
-const FILTER_CATS = ["전체", "금융 AI", "RAG/LLM", "NLP", "데이터 파이프라인", "제조/시뮬레이션"] as const;
-type FilterCat = typeof FILTER_CATS[number];
+interface Project {
+  slug: string;
+  num: string;
+  title: string;
+  topic: string;
+  oneliner: string;
+  date?: string;
+  period?: string;
+  desc: string;
+  bullets: string[];
+  tags: string[];
+  award?: string;
+  repoUrl?: string;
+  repoName?: string;
+  videoUrl?: string;
+  youtubeId?: string;
+  thumbBg?: string;
+  thumbImg?: string;
+  thumbAutoHeight?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    slug: "airpa",
+    num: "01",
+    title: "AiRPA: 학생 진로 탐색 자동화 시스템",
+    topic: "진로 상담 교사의 학과 탐색·요약을 자동화하는 교육 지원 시스템",
+    oneliner: "AiRPA — UiPath RPA와 T5 요약 모델로 인당 30분 학과 탐색을 즉시 완료하는 자동화 서비스",
+    date: "2023.11",
+    desc: "진로 상담 교사가 학생 한 명을 위해 교육부 포털·대학알리미·졸업생 블로그를 수동 탐색·요약하는 데 인당 30분 이상을 소비한다는 현장 관찰에서 시작했습니다. 문제의 본질은 소스마다 로그인 방식·동적 로딩 구조·데이터 포맷이 달라 단일 스크래퍼로 통합 불가하다는 이질성이었습니다. RPA로 소스 이질성을 흡수하고, T5 모델로 수집된 비정형 텍스트를 일관된 요약으로 압축한 뒤, 학생 가치관 설문 기반 5개 시나리오로 개인화 추천까지 연결했습니다.",
+    bullets: [
+      "UiPath RPA로 로그인·동적 로딩 포함 3개 이질적 소스에서 학과 정보·졸업생 후기 평균 200건 자동 수집",
+      "TF-IDF 대비 문장 자연도 23% 향상, 학과 100개 처리 시간 8h→3h 단축; T5의 추상 요약이 핵심 차이",
+      "설문 기반 '안정성 중시형·성장 지향형' 등 5가지 시나리오로 개인화 추천, 전체 자동화율 95%+",
+    ],
+    tags: ["UiPath RPA", "Python", "HuggingFace T5", "TF-IDF", "Excel 자동화"],
+    award: "한국지능정보사회진흥원 해커톤 특별상",
+    videoUrl: "/airpa_demo.mp4",
+    thumbBg: "#FFFFFF",
+  },
+  {
+    slug: "medical-chatbot",
+    num: "02",
+    title: "BM25·FAISS·리랭커 3단 파이프라인으로 설계한 의료 자문봇",
+    topic: "의료 질의에 근거 있는 답변을 제공하는 Advanced RAG 시스템",
+    oneliner: "BM25·FAISS·ReRanker를 결합해 전문 의료 데이터 검색 정확도를 높인 근거 기반 답변 시스템",
+    period: "AI NLP 집중과정 · 팀",
+    desc: "Naive RAG의 구조적 한계(단일 벡터 검색은 전문 의학 용어의 Recall 상한이 낮고, 검색된 문서 전부를 컨텍스트에 넣으면 LLM이 노이즈에 흔들린다)를 2단계 아키텍처로 정밀 해소했습니다. BM25가 용어 매칭 정확도를, FAISS가 의미적 유사성을 보완하고, bge-reranker가 최종 후보를 질문-문서 정합성 기준으로 Top-5로 압축해 LLM이 받는 컨텍스트 품질을 최대화했습니다. 5.5만 건 전문 의학 JSON(약 2.2억 토큰)을 처리한 코퍼스 기반 시스템입니다.",
+    bullets: [
+      "하이브리드 Retrieval 파이프라인: BM25(Lexical, k=20) + FAISS 벡터 인덱싱(Semantic, k=20) 병렬 검색으로 전문 의학 용어 Recall 상한 제거",
+      "BAAI/bge-reranker-v2-m3 리랭킹: 40개 후보→Top-5 압축으로 LLM 컨텍스트 노이즈 최소화",
+      "직접 설계한 평가셋(의학 QA 100문항, 전공자 1인 검수) 기반 ReRanker 전후 비교: 객관식 Accuracy +0.04, 서술형 BERTScore +0.16 향상",
+    ],
+    tags: ["EXAONE-3.5", "BM25", "FAISS", "RAG", "bge-reranker-v2-m3", "LangChain", "Python"],
+    videoUrl: "/medical-chatbot_demo.mp4",
+    repoUrl: "https://github.com/cofldus/medical-chatbot_aegis-bio-sentinels",
+    repoName: "medical-chatbot_aegis-bio-sentinels",
+  },
+  {
+    slug: "korean-noise-restoration",
+    num: "03",
+    title: "분류기→복원기 2단 구조로 재설계한 한글 난독화 복원 AI",
+    topic: "난독화된 한글 리뷰를 유형별로 복원하는 NLP 파이프라인",
+    oneliner: "KoELECTRA 분류기와 KoBART 복원 모델을 분기해 노이즈 유형별 복원 안정성을 높인 시스템",
+    date: "2026.01",
+    period: "AI NLP 집중과정 3기",
+    desc: "야민정음(시각 유사도 기반 변형: '머 → 뫄')과 음운 오류(발음 유사 변형: '됩니다 → 됩니당')는 복원 방향이 근본적으로 다릅니다. 전자는 자모 그래픽 매핑 규칙이, 후자는 음성 전사 역변환이 필요합니다. 단일 모델은 두 방향 사이에서 최적점을 찾지 못해 출력이 불안정해집니다. 문제를 '모델 성능 부족'이 아닌 '태스크 정의 오류'로 재진단하고, 유형 분류 → 전용 복원 분기로 구조 자체를 바꿨습니다.",
+    bullets: [
+      "KoELECTRA Noise Classifier로 입력 유형 판별 후 야민정음·음운오류 전용 KoBART 모델로 분기 처리",
+      "핵심 선행 과제: BPE 토크나이저가 야민정음 자모를 분해 실패 → JAMO(초·중·종성) 전처리로 토큰 손상 원천 차단",
+      "BERTScore 0.9812 · CER 0.0426 달성, 분기 설계 도입 전 베이스라인 대비 +5.6%p 개선",
+    ],
+    tags: ["KoBART", "KoELECTRA", "JAMO", "Noise Classifier", "PyTorch", "HuggingFace"],
+    videoUrl: "/korean-noise-restoration_demo.mp4",
+    repoUrl: "https://github.com/cofldus/korean-noise-restoration",
+    repoName: "korean-noise-restoration",
+  },
+  {
+    slug: "killkong",
+    num: "04",
+    title: "맥락 기반 콩글리쉬 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
+    topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
+    oneliner: "LoRA·4bit 양자화와 FAISS 개인화 메모리로 0.47초 응답을 구현한 콩글리시 교정 에이전트",
+    date: "2025.07–08",
+    desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
+    bullets: [
+      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s",
+      "지식 분리: FAISS(IVF) + SQLite LRU 캐시 하이브리드로 630개 콩글리쉬 패턴 DB(SNS·커뮤니티 크롤링 + 수기 검수) 0.02초 내 검색",
+      "응답 지연 2.3s→0.47s(5배 단축, Snapdragon 865 측정); cProfile 실측 결과 병목은 LLM이 아닌 FAISS(0.21s)·SQLite(0.12s)였음",
+    ],
+    tags: ["Qwen2.5", "LoRA", "4-bit 양자화", "FAISS", "BM25", "SQLite", "LangChain", "FastAPI", "Docker"],
+    award: "포스코 인재창조원 장려상 · 팀 리더",
+    videoUrl: "/killkong_demo.mp4",
+    repoUrl: "https://github.com/cofldus/killkong_konglish-corrector",
+    repoName: "killkong_konglish-corrector",
+  },
+  {
+    slug: "finview",
+    num: "05",
+    title: "500개 상장사 재무를 즉시 해설해주는 AI 애널리스트",
+    topic: "재무제표와 뉴스를 함께 해석하는 생성형 AI 재무 분석 서비스",
+    oneliner: "공시 수치 계산 모듈과 GPT 리포트 생성을 분리해 재무 리스크를 설명하는 AI 애널리스트",
+    date: "2024.09–11",
+    period: "성신여대 · 팀장",
+    desc: "LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다.",
+    bullets: [
+      "ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화",
+      "환각 차단 설계: 군집 평균 패턴·리스크 태깅을 GPT-4 컨텍스트에 주입, LLM은 해설 전담 → 환각 80% 감소 (수치 직접 연산 포함 비율, Before/After 50건 수동 측정)",
+      "리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0; 수치와 언어의 역할 분리가 핵심",
+    ],
+    tags: ["GPT-4", "XGBoost", "KMeans", "SHAP", "SMOTE", "DART API", "Flask", "D3.js"],
+    videoUrl: "/finview_demo.mp4",
+    thumbBg: "#FFFFFF",
+    repoUrl: "https://github.com/cofldus/finview_generative-ai-report",
+    repoName: "finview_generative-ai-report",
+  },
+  {
+    slug: "ct-mri-cyclegan",
+    num: "06",
+    title: "CycleGAN 기반 CT→MRI 교차-모달리티 변환",
+    topic: "CT→MRI 의료영상 변환 연구",
+    oneliner: "CycleGAN 기반 도메인 변환으로 구조 보존 성능을 개선한 생성 모델 실험",
+    date: "2023.06–09",
+    period: "딥러닝연구개발소",
+    desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 임상 환경의 핵심 제약(1:1 Paired 데이터 획득 불가)을 Unpaired Image-to-Image Translation으로 극복하고, Generator·Discriminator 학습 불균형이라는 GAN 고유 불안정성을 실험적으로 탐색·해소했습니다.",
+    bullets: [
+      "Loss 조합 실험: ResNet-9 + VGG Perceptual Loss + Identity Loss로 저주파 구조(뼈·장기 경계) 보존, Spectral Norm으로 학습 안정성 확보",
+      "GAN 학습 불균형 해소: G·D 학습률 분리(2e-4/1e-4) + 업데이트 비율 G:D=2:1 설계로 모드 콜랩스 없이 수렴",
+      "정량 평가: SSIM 0.82→0.88(+6.2%p), 해부학적 구조 유실률 30% 감소 · 의료진 맹검 평가 80% '진단 보조 가치 있음'",
+    ],
+    tags: ["CycleGAN", "ResNet-9", "PatchGAN", "VGG Perceptual Loss", "Spectral Norm", "PyTorch", "OpenCV"],
+    repoUrl: "https://github.com/cofldus/medical_image_translation",
+    repoName: "medical_image_translation",
+    thumbBg: "#0F172A",
+    thumbImg: "/arch/ct-mri-result.png",
+  },
+  {
+    slug: "hunchgame",
+    num: "07",
+    title: "눈치게임: 위치 기반 인파 분산 서비스",
+    topic: "유동인구 밀집도를 예측해 혼잡 회피 경로를 실시간으로 추천하는 안전 서비스",
+    oneliner: "HunchGame — FP-Growth 패턴 마이닝과 XGBoost 밀집도 예측으로 행사장 분산 동선을 제공하는 시스템",
+    date: "2023.09",
+    desc: "압사 사고의 공통 선행 조건은 '군중이 대안을 인지하지 못한 채 단일 지점에 집중된다'는 것입니다. 경고만으로는 부족하고, 사람들이 실제로 이동할 구체적인 대안 장소를 즉시 제시해야 합니다. Naver Maps 혼잡도 API·사용자 제보 보정과 seed_data.py로 연령·성별·시간대 변수를 조합해 생성한 시뮬레이션 이동 로그를 조합해 FP-Growth로 잠재 이동 패턴을 추출하고, 혼잡도·거리·장소 유사도·시간대 4개 가중치로 개인화 추천을 설계했습니다. 재난 상황의 네트워크 불안정을 고려해 오프라인 SQLite 캐시 아키텍처를 반드시 포함시켰습니다.",
+    bullets: [
+      "FP-Growth로 시뮬레이션 이동 로그(seed_data.py: 연령·성별·시간대 변수 조합 생성, 10,000건 처리 검증) + Naver Maps 혼잡도 조합 → 장소 간 이동 선호 연관 규칙 추출",
+      "추천 점수 엔진: 혼잡도(40%)·거리(30%)·장소 유사도(20%)·시간대(10%) 정규화 가중치 설계",
+      "오프라인 내성: SQLite 기기 내 캐시로 히트맵·추천 오프라인 동작을 보장, 실시간 밀집도 예측 84%·혼잡 회피율 87% 달성",
+    ],
+    tags: ["FP-Growth", "SQLite", "Python", "위치 API", "히트맵", "추천 엔진"],
+    award: "성신여자대학교 IT경진대회 장려상",
+    videoUrl: "/hunchgame_demo.mp4",
+    repoUrl: "https://github.com/cofldus/hunchgame_density-predict-service",
+    repoName: "hunchgame_density-predict-service",
+  },
+  {
+    slug: "lovelop",
+    num: "08",
+    title: "160 AI 고객 페르소나로 운영 변화 전후 소비 행동을 시뮬레이션하는 실상권 플랫폼",
+    topic: "가게 운영 변화를 고객 반응으로 미리 검증하는 AI 시뮬레이션 플랫폼",
+    oneliner: "160개 AI 고객 페르소나와 11개 지표로 가격·메뉴·운영 변화의 영향을 실험하는 의사결정 지원 시스템",
+    date: "2026.02",
+    period: "AI NLP 집중과정 3기",
+    desc: "자영업자 15명 현장 인터뷰에서 반복적으로 나온 말은 '예측 정확도보다 내 매장 조건이 바뀌면 어떻게 되는지 미리 보고 싶다'였습니다. 예측 모델이 아닌 시뮬레이션 엔진이 필요했습니다. GPT-4.1을 단일 호출하면 창의성과 신뢰성을 동시에 얻을 수 없어 Temperature를 분리한 2-Stage 구조를 설계했고, 다양한 실제 고객 유형을 재현하기 위해 160개 AI 페르소나가 5단계 Agent 의사결정으로 시나리오를 독립 검증하는 구조를 구축했습니다.",
+    bullets: [
+      "2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보",
+      "160 페르소나 시뮬레이션: 방문 목적 4유형 × 세대 5종 × 성별·인원 구성으로 실제 고객 분포 재현, Agent 5단계 의사결정",
+      "Before/After 11지표 검증 리포트로 조건 변경 시나리오를 정량화, 자영업자 사용 의향 80% 확인",
+    ],
+    tags: ["GPT-4.1", "Multi-Agent", "LLM Agent", "Gemma-2-9b", "EXAONE", "Python", "React", "Flask"],
+    videoUrl: "/lovelop_demo.mp4",
+    thumbBg: "#FFFFFF",
+    repoUrl: "https://github.com/cofldus/lovelop_commerce-agent-simulation",
+    repoName: "lovelop_commerce-agent-simulation",
+  },
+  {
+    slug: "llm-for-science",
+    num: "09",
+    title: "LLM for Science: 과학 도메인 특화 CPT·GDPO 연구",
+    topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구 프로젝트",
+    oneliner: "LLM for Science — CPT·SFT·GDPO 파이프라인으로 arXiv·PubMed 데이터를 과학 도메인에 정렬하는 오픈 리서치",
+    date: "2026.03~",
+    period: "Pseudo Lab · 진행 중",
+    desc: "과학 도메인 LLM 구축에는 세 개의 독립적인 병목이 있습니다: ① 일반 텍스트 파서가 수식·표를 손실시키는 파싱 문제, ② 도메인 특화 학습이 일반 언어 능력을 훼손하는 Catastrophic Forgetting, ③ 사실 정확도·형식 준수·응답 간결성 세 지표가 동일 보상 스칼라에서 상충하는 보상 붕괴. 이 세 병목을 하나의 파이프라인이 아닌 각기 다른 기술로 타겟팅하는 3단계 연구에 참여 중입니다.",
+    bullets: [
+      "Phase 1: Nougat/Marker(VLM 파서)로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱 파이프라인 이해 및 GPT-4o Teacher 기반 SFT 합성 데이터 생성 구조 분석",
+      "Phase 2 (Nemotron CPT): 과학 데이터 80~85% / 일반 도메인 15~20% 혼합 전략으로 Catastrophic Forgetting 억제 원리 및 next-token prediction 기반 도메인 지식 주입 실험 참여",
+      "Phase 3 (GDPO): Rubric(RaR)·Format·Length 세 보상 신호의 그룹 내 독립 정규화로 보상 붕괴 없이 다차원 정렬을 달성하는 메커니즘 분석 및 실험 중",
+    ],
+    tags: ["Nemotron", "CPT", "SFT", "GDPO", "arXiv/PubMed", "Nougat/Marker", "HuggingFace", "Multi-Reward RL", "Python"],
+  },
+  {
+    slug: "rocketan",
+    num: "10",
+    title: "STT 강의 스크립트 퀴즈·학습 가이드 자동 생성기",
+    topic: "강의 자료에서 맥락 기반 퀴즈와 학습 가이드를 자동 생성하는 RAG 시스템",
+    oneliner: "로켓단 퀴즈 생성기 — FAISS 벡터 검색과 LangChain으로 강의 내용 기반 문항을 즉시 생성하는 출제 자동화 서비스",
+    date: "2026.03–04",
+    period: "로켓단 인턴십",
+    thumbAutoHeight: true,
+    desc: "강의 영상과 자료를 업로드하면 핵심 개념 퀴즈와 학습 가이드를 자동으로 생성하는 시스템입니다. 강사가 수업 자료를 반복 정리·출제하는 데 소요하는 시간을 RAG 파이프라인으로 자동화했습니다. FAISS 벡터 검색과 LangChain 기반 체인 설계로 강의 맥락을 정확히 반영한 문제·해설을 생성합니다.",
+    bullets: [
+      "문서 청크 설계 → FAISS 인덱싱 파이프라인 → Semantic 검색 → LLM 퀴즈·해설 자동 생성; 청크 크기·overlap 실험으로 검색 품질 최적화",
+      "LangChain RetrievalQA 체인으로 강의 맥락 기반 객관식·서술형 혼합 문제 생성; 평가셋 설계로 난이도별 품질 정량 검증",
+      "강의별 독립 인덱스 네임스페이스 구조로 다중 코스 동시 운영 지원, temperature·캐싱으로 생성 재현성 확보",
+    ],
+    tags: ["LangChain", "FAISS", "RAG", "Python", "OpenAI API", "LLM"],
+    videoUrl: "/rocketan_demo.mp4",
+    repoUrl: "https://github.com/orgs/Mutsa-Rocketdan/repositories",
+    repoName: "Mutsa-Rocketdan",
+  },
+  {
+    slug: "moim",
+    num: "11",
+    title: "MOIM: 실시간 채팅 기반 모임 플랫폼",
+    topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",
+    oneliner: "MOIM — STOMP WebSocket과 Kakao Maps를 채팅과 통합해 외부 앱 없이 장소 선택부터 모임 확정까지 지원하는 서비스",
+    date: "2024.12–2025.03",
+    period: "경기대학교 LINKVERSE",
+    desc: "〔AI 기술 비사용 풀스택 프로젝트〕 약속 잡기의 모든 흐름(장소 검색 → 후보 핀 등록 → 투표 → 확정)을 실시간 채팅 안에서 완결합니다. Next.js 15 App Router + STOMP WebSocket으로 실시간성을 확보하고, Kakao Maps API로 장소 핀 공유를 채팅 메시지와 동일한 인터페이스로 통합했습니다. 프로덕션 수준 Next.js/TypeScript/WebSocket 개발 역량 증거로 포함했습니다.",
+    bullets: [
+      "STOMP/WebSocket 기반 실시간 채팅: 채팅 메시지 · 장소 핀 공유 · 투표 현황을 단일 소켓 채널에서 동기화",
+      "Kakao Maps PinMap: 후보 장소를 지도 핀으로 등록·공유, 투표 결과와 마커를 실시간 연동",
+      "Zustand + Next.js 15: SSR Hydration 이슈 해결 · 모바일 터치 이벤트 탭/스크롤 분리",
+    ],
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "WebSocket/STOMP", "Kakao Maps API", "Docker"],
+    repoUrl: "https://github.com/cofldus/MOIM-Client",
+    repoName: "MOIM-Client",
+  },
+];
 
 // ─── SVG shared constants ─────────────────────────────────────────
 const SAN = "Inter, -apple-system, system-ui, sans-serif";
@@ -547,7 +772,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       }}
     >
       {/* Thumbnail */}
-      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] ? { height: "auto" } : {}) }}>
+      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
         {p.youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${p.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${p.youtubeId}&controls=0&modestbranding=1&rel=0`}
@@ -557,6 +782,9 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           />
         ) : p.videoUrl ? (
           <video src={p.videoUrl} autoPlay loop muted playsInline style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined} />
+        ) : p.thumbImg ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         ) : (
           <div className="pcard-thumb-svg">
             {Thumb && <Thumb />}
@@ -573,6 +801,15 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
             {displayNum}
           </span>
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
+            {p.date && (
+              <span style={{
+                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 500,
+                color: "#475569", background: "#F1F5F9", borderRadius: 3,
+                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
+              }}>
+                {p.date}
+              </span>
+            )}
             {p.period && (
               <span style={{
                 fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 400,
@@ -694,25 +931,13 @@ const DEFAULT_RESEARCH_SLUGS = ["ct-mri-cyclegan", "llm-for-science"];
 export default function ProjectSection() {
   const company = useCompany();
   const researchSlugs = company.researchSlugs ?? DEFAULT_RESEARCH_SLUGS;
-  const [selectedCat, setSelectedCat] = useState<FilterCat>("전체");
 
-  const orderedProjects = useMemo(() => {
-    return company.projectOrder
-      ? company.projectOrder
-          .map(slug => libProjects.find(p => p.slug === slug))
-          .filter((p): p is Project => p !== undefined)
-      : libProjects.filter(p => !researchSlugs.includes(p.slug));
-  }, [company.projectOrder, researchSlugs]);
-
-  const filteredProjects = useMemo(() => {
-    if (selectedCat === "전체") return orderedProjects;
-    return orderedProjects.filter(p => p.categories?.includes(selectedCat));
-  }, [orderedProjects, selectedCat]);
-
-  const svgProjects = useMemo(
-    () => libProjects.filter(p => researchSlugs.includes(p.slug)),
-    [researchSlugs]
-  );
+  const videoProjects = company.projectOrder
+    ? company.projectOrder
+        .map(slug => projects.find(p => p.slug === slug))
+        .filter((p): p is Project => p !== undefined)
+    : projects.filter(p => !researchSlugs.includes(p.slug));
+  const svgProjects = projects.filter(p => researchSlugs.includes(p.slug));
 
   return (
     <section id="projects" style={{ background: "var(--bg-subtle)", borderTop: "1px solid var(--border)" }}>
@@ -723,7 +948,7 @@ export default function ProjectSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 32 }}
+          style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40 }}
         >
           <div>
             <p style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>
@@ -749,33 +974,8 @@ export default function ProjectSection() {
           </a>
         </motion.div>
 
-        {/* Filter tabs */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 36 }}>
-          {FILTER_CATS.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCat(cat)}
-              style={{
-                fontFamily: "var(--font-label)",
-                fontSize: 11.5,
-                fontWeight: selectedCat === cat ? 600 : 400,
-                padding: "6px 14px",
-                borderRadius: 20,
-                border: selectedCat === cat ? "1.5px solid var(--accent)" : "1px solid var(--border)",
-                background: selectedCat === cat ? "rgba(79,192,209,0.09)" : "var(--bg)",
-                color: selectedCat === cat ? "var(--accent)" : "var(--ink-light)",
-                cursor: "pointer",
-                transition: "all 0.15s",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         <div className="pcard-grid" style={{ marginBottom: 60 }}>
-          {filteredProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={i} />)}
+          {videoProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={i} />)}
         </div>
 
         {/* Research section */}
@@ -788,7 +988,7 @@ export default function ProjectSection() {
           </p>
         </div>
         <div className="pcard-grid pcard-grid-svg">
-          {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={filteredProjects.length + i} />)}
+          {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={videoProjects.length + i} />)}
         </div>
       </div>
 

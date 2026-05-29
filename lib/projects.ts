@@ -11,21 +11,10 @@ export interface Experiment {
   conclusion: string;
 }
 
-export interface ProjectSummary {
-  problem: string;
-  decision: string;
-  result: string;
-  competencies: string[];
-}
-
 export interface Project {
   slug: string;
   num: string;
   title: string;
-  /** 카드에 표시되는 짧은 주제 어구 */
-  topic: string;
-  /** 카드 한 줄 결론 */
-  oneliner: string;
   period: string;
   goal?: string;
   myRole?: string;
@@ -33,14 +22,6 @@ export interface Project {
   bullets: string[];
   highlights: { value: string; label: string }[];
   tags: string[];
-  /** 필터링 카테고리: 금융 AI, RAG/LLM, NLP, 데이터 파이프라인, 제조/시뮬레이션 */
-  categories?: string[];
-  /** 협업/책임/판단을 보여주는 문장 */
-  teamworkNote?: string;
-  /** 실무 적용 가능성 문장 */
-  practicalNote?: string;
-  /** 상세 페이지 상단 15초 요약 박스 */
-  summary?: ProjectSummary;
   decisions: Decision[];
   experiments?: Experiment[];
   troubleshooting?: { title: string; body: string }[];
@@ -50,8 +31,6 @@ export interface Project {
   repoName?: string;
   videoUrl?: string;
   thumbBg?: string;
-  thumbAutoHeight?: boolean;
-  youtubeId?: string;
   readmeImage?: string;
   /** /arch/ 경로의 아키텍처 다이어그램 이미지 목록 */
   archImages?: string[];
@@ -61,21 +40,10 @@ export const projects: Project[] = [
   {
     slug: "airpa",
     num: "01",
-    title: "AiRPA — 진로 상담 리포트 자동화 시스템",
-    topic: "교사의 학과 탐색·수집·요약을 자동화해 개인화 진로 리포트를 생성하는 시스템",
-    oneliner: "교사가 여러 사이트를 오가며 수집하던 학과 정보를 RPA·T5 요약·엑셀 자동화로 연결해 상담용 리포트 생성 시간을 줄였습니다.",
+    title: "AiRPA: 학생 진로 탐색 자동화 시스템",
     period: "한국지능정보사회진흥원 해커톤",
     goal: "진로 상담 교사의 학과 탐색·요약 시간을 인당 30분 → 즉시로 단축, 학생 가치관 기반 개인화 추천 리포트 자동 생성",
     myRole: "전체 아키텍처 설계 · UiPath RPA 시나리오 구현 · T5 요약 모델 연동 · 개인화 추천 로직 및 엑셀 리포트 출력 개발",
-    categories: ["데이터 파이프라인", "NLP"],
-    teamworkNote: "해커톤 팀에서 전체 아키텍처 방향을 제안하고, 파이프라인 단계별 역할 분담과 일정을 조율해 제한된 시간 안에 완성도를 확보했습니다.",
-    practicalNote: "이 경험은 교육·의료·제조 현장의 반복 데이터 수집 업무를 RPA와 AI 요약으로 자동화하는 파이프라인으로 확장할 수 있습니다.",
-    summary: {
-      problem: "진로 상담 교사가 학생 한 명을 위해 여러 교육 포털을 수동 탐색·요약하는 데 인당 30분 이상 소비",
-      decision: "소스 이질성은 RPA로 흡수하고, T5 추상 요약으로 통일된 포맷 생성 후 설문 기반 5개 시나리오로 개인화 추천",
-      result: "자동화율 95%+, 처리 시간 8h→3h, 회당 200건 수집",
-      competencies: ["문제정의", "아키텍처 설계", "트러블슈팅"],
-    },
     desc: "진로 상담 교사가 학생 한 명을 위해 교육부 포털·대학알리미·졸업생 블로그를 수동 탐색·요약하는 데 인당 30분 이상을 소비한다는 현장 관찰에서 시작했습니다. 문제의 본질은 소스마다 로그인 방식·동적 로딩 구조·데이터 포맷이 달라 단일 스크래퍼로 통합 불가하다는 이질성이었습니다. RPA로 소스 이질성을 흡수하고, T5 모델로 수집된 비정형 텍스트를 일관된 요약으로 압축한 뒤, 학생 가치관 설문 기반 5개 시나리오로 개인화 추천까지 연결했습니다.",
     bullets: [
       "UiPath RPA로 로그인·동적 로딩 포함 3개 이질적 소스에서 학과 정보·졸업생 후기 평균 200건 자동 수집",
@@ -155,21 +123,10 @@ export const projects: Project[] = [
   {
     slug: "medical-chatbot",
     num: "02",
-    title: "의료자문봇 — 근거 기반 Advanced RAG 시스템",
-    topic: "의료 질의에 근거 있는 답변을 제공하는 하이브리드 RAG 자문 시스템",
-    oneliner: "의료 답변의 환각 위험을 줄이기 위해 BM25·FAISS·ReRanker를 결합하고, 40개 후보를 Top-5로 압축해 LLM 컨텍스트 품질을 높였습니다.",
+    title: "BM25·FAISS·리랭커 3단 파이프라인으로 설계한 의료 자문봇",
     period: "멋쟁이사자처럼 AI 자연어처리 집중과정 · 팀 프로젝트",
     goal: "Naive RAG의 낮은 Recall 한계를 하이브리드 검색 + 리랭커로 극복, 전문 의학 5.5만 건 코퍼스 기반 고정밀 자문봇 구축",
     myRole: "BM25+FAISS 하이브리드 파이프라인 설계 · bge-reranker 통합 · 평가 지표(Accuracy, BERTScore) 실험 및 분석",
-    categories: ["RAG/LLM"],
-    teamworkNote: "팀 내 평가 기준 설계를 주도해 전공자 검수를 거친 100문항 평가셋을 구축했고, 실험 결과를 팀 전체가 같은 기준으로 비교할 수 있게 했습니다.",
-    practicalNote: "이 구조는 금융·법률·의료 등 도메인 전문 지식이 필요한 AI 서비스에서 환각을 줄이는 검색-생성 파이프라인으로 바로 응용할 수 있습니다.",
-    summary: {
-      problem: "Naive RAG는 전문 의학 용어에서 Recall 상한이 낮고, 검색된 40개 문서를 전부 LLM에 주면 노이즈로 답변이 흔들림",
-      decision: "BM25(용어 매칭)+FAISS(의미 검색) 병렬로 Recall 확보 후, bge-reranker로 Top-5 압축해 LLM 컨텍스트를 최소화",
-      result: "Accuracy +0.04, BERTScore +0.16, 5.5만 건 전문 의학 코퍼스 기반",
-      competencies: ["아키텍처 설계", "문제정의", "운영 안정화"],
-    },
     desc: "Naive RAG로 프로토타입을 올리고 국가고시 기출 문제로 실제 테스트를 돌렸을 때, 표면적으로는 '작동'했습니다. 문제는 정밀도였습니다. '폐색전증 항응고 치료 시작 기준'을 물으면 벡터 검색이 '항응고제 일반 개요'나 '혈전예방 가이드라인 서문' 같은 의미적으로 유사하지만 임상 수치가 없는 문서를 상위에 올렸습니다. 실제 D-dimer·INR 수치 기준이 담긴 핵심 문서는 순위 밖이었습니다. 임베딩 공간에서 전문 의학 용어의 유사도는 의미 유사성이지 용어 정합성이 아니기 때문에 발생하는 Recall 상한 문제였습니다. 반대로 BM25만 단독으로 쓰면 원문이 영문 번역체인 문서—'anticoagulation initiation threshold'를 한국어로 풀어쓴 데이터—는 정확한 표면 매칭이 없어 완전히 누락됐습니다. 두 검색 방식이 서로 다른 방향의 빈틈을 채운다는 걸 확인한 뒤 하이브리드 병렬 구조로 전환했고, 40개 후보를 reranker로 Top-5로 압축하는 2단계 파이프라인을 설계했습니다. 40개를 전부 LLM에 주면 컨텍스트 길이가 늘어날수록 LLM이 핵심 문서보다 노이즈 문서를 참조하는 비율이 올라가는 현상이 BERTScore에서도 수치로 확인됐습니다. '많이 뽑고, 리랭킹으로 압축하고, LLM엔 최소한만 준다'는 원칙이 이 파이프라인의 핵심입니다.",
     bullets: [
       "하이브리드 검색 설계: BM25(k=20, 용어 매칭) + FAISS(k=20, 의미 검색) 병렬 수행으로 Recall 상한 제거",
@@ -248,21 +205,10 @@ export const projects: Project[] = [
   {
     slug: "korean-noise-restoration",
     num: "03",
-    title: "난독화 한글 리뷰 복원 AI — 유형 분기형 NLP 복원 모델",
-    topic: "난독화된 한글 리뷰를 유형별로 분류하고 전담 모델로 복원하는 NLP 파이프라인",
-    oneliner: "야민정음과 음운 오류를 단일 복원 문제가 아니라 서로 다른 규칙 선택 문제로 재정의하고, 분류기 기반 분기 구조로 안정성을 높였습니다.",
+    title: "분류기→복원기 2단 구조로 재설계한 한글 난독화 복원 AI",
     period: "2026.01 · AI 자연어처리 집중 과정 3기",
     goal: "자음·모음 치환, 받침 탈락 등 의도적 난독화로 필터를 우회하는 악성 리뷰를 원형 한글로 복원, 콘텐츠 모더레이션 신뢰도 향상",
     myRole: "노이즈 패턴 분석 · Seq2Seq 복원 모델 설계 및 학습 · 음소 토크나이저 커스터마이징 · 평가 파이프라인 구축",
-    categories: ["NLP"],
-    teamworkNote: "문제를 '모델 성능 부족'이 아닌 '태스크 정의 오류'로 재진단하는 과정에서 실험 실패를 투명하게 공유하고 설계 방향을 전환했습니다.",
-    practicalNote: "이 분기형 복원 구조는 콘텐츠 모더레이션, 챗봇 입력 정규화, 금융 문서 OCR 후처리처럼 노이즈 정제가 필요한 현장에 바로 적용할 수 있습니다.",
-    summary: {
-      problem: "야민정음(시각 유사 변형)과 음운 오류(발음 유사 변형)가 혼재한 악성 리뷰가 필터를 우회해 콘텐츠 모더레이션 신뢰도를 낮춤",
-      decision: "태스크를 '단일 복원'이 아닌 '유형 분기' 문제로 재정의 — KoELECTRA로 유형 판별 후 전담 KoBART로 라우팅",
-      result: "BERTScore 0.9812, CER 0.0426, 베이스라인 대비 +5.6%p 개선",
-      competencies: ["문제정의", "아키텍처 설계", "트러블슈팅"],
-    },
     desc: "야민정음(시각 유사도 기반 변형: '머 → 뫄')과 음운 오류(발음 유사 변형: '됩니다 → 됩니당')는 복원 방향이 근본적으로 다릅니다. 전자는 자모 그래픽 매핑 규칙이, 후자는 음성 전사 역변환이 필요합니다. 단일 모델은 두 방향 사이에서 최적점을 찾지 못해 출력이 불안정해집니다. 문제를 '모델 성능 부족'이 아닌 '태스크 정의 오류'로 재진단하고, 유형 분류 → 전용 복원 분기로 구조 자체를 바꿨습니다.",
     bullets: [
       "KoELECTRA Noise Classifier로 입력 유형 판별 후 야민정음·음운오류 전용 KoBART 모델로 분기 처리",
@@ -345,21 +291,10 @@ export const projects: Project[] = [
   {
     slug: "killkong",
     num: "04",
-    title: "KillKong — 콩글리쉬 교정 경량 LLM 에이전트",
-    topic: "한국인 특화 콩글리쉬를 모바일에서 실시간 교정하는 경량화 LLM 에이전트",
-    oneliner: "LLM은 문맥 판단, RAG는 오류 지식 검색, SQLite는 개인화 메모리를 담당하도록 역할을 분리해 응답 지연 2.3s→0.47s를 달성했습니다.",
+    title: "맥락 기반 콩글리쉬 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
     period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
     goal: "14GB 다국어 LLM을 3GB로 압축해 CPU에서 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현",
-    myRole: "팀 리더 · LoRA+4-bit 양자화+토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정",
-    categories: ["RAG/LLM", "NLP"],
-    teamworkNote: "팀 리더로서 모델 성능뿐 아니라 일정, 역할 분담, 최종 발표 흐름까지 조율했고, 포스코 인재창조원 장려상 수상으로 이어졌습니다.",
-    practicalNote: "경량화와 역할 분리 설계는 온디바이스 AI, 모바일 서비스, 비용 민감한 실무 환경에서 LLM을 안정적으로 운영하는 구조로 바로 확장할 수 있습니다.",
-    summary: {
-      problem: "한국인 특화 콩글리쉬는 LLM 학습 분포에서 희소해 교정이 불안정하고, 14GB 모델을 모바일 CPU에서 실시간 추론해야 하는 이중 제약 존재",
-      decision: "LLM은 문맥 판단만, 콩글리쉬 DB 검색은 FAISS, 개인화 기억은 SQLite — 역할 분리로 각자 최적화",
-      result: "14GB→3.0GB(76% 경량화), 응답 지연 2.3s→0.47s, 모바일 일관성 92%+",
-      competencies: ["아키텍처 설계", "운영 안정화", "트러블슈팅"],
-    },
+    myRole: "LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정",
     desc: "'블랙 컨슈머', 'after 신청'처럼 한국인 특화 콩글리쉬는 GPT 학습 분포에서 극히 희소해 교정 품질이 불안정합니다. 온디바이스 목표를 설정하자 두 번째 제약이 즉시 발생했습니다: 14GB 모델을 스마트폰 CPU에서 실시간 추론해야 한다는 것. 모델 압축과 지식 분리를 동시에 설계해 해결했습니다. LLM은 문법·문맥 판단만, 콩글리쉬 용례 검색은 전용 벡터 DB가 담당하는 역할 분업입니다.",
     bullets: [
       "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s 달성",
@@ -418,21 +353,10 @@ export const projects: Project[] = [
   {
     slug: "finview",
     num: "05",
-    title: "FinView — 생성형 AI 재무보고서 자동화 시스템",
-    topic: "공식 데이터 기반 수치 환각을 차단한 AI 재무 분석 서비스",
-    oneliner: "재무 수치 계산을 LLM에 맡기지 않고 XGBoost·KMeans·검증 모듈이 처리하게 하여 GPT 환각을 줄인 검증 가능한 금융 리포트 자동화 시스템입니다.",
+    title: "500개 상장사 재무를 즉시 해설해주는 AI 애널리스트",
     period: "2024.09–11 · 성신여자대학교 · 팀장",
     goal: "500개 상장사 재무제표를 자동 분석해 환각 없는 AI 재무보고서를 5분 → 30초에 생성, 전문가 수준의 리포트 자동화",
     myRole: "팀장 · ETL 파이프라인 설계 · XGBoost/KMeans 모델링 · GPT-4 환각 차단 아키텍처 · D3.js 시각화 인터페이스 개발",
-    categories: ["금융 AI", "데이터 파이프라인"],
-    teamworkNote: "팀장으로서 DART ETL·ML 모델링·LLM 프롬프트 설계까지 전 구간을 분담해 조율했고, 수치-텍스트 checksum 검증처럼 팀 전체에 영향을 미치는 구조적 결정을 주도했습니다.",
-    practicalNote: "수치 계산과 LLM 해설을 분리하는 이 설계는 금융·회계·컴플라이언스 분야에서 AI 결과의 신뢰성을 검증 가능하게 만드는 구조로 바로 적용할 수 있습니다.",
-    summary: {
-      problem: "LLM에 재무 수치 계산을 맡기면 수치를 지어내거나 계산 오류가 발생해 금융 리포트의 신뢰성이 붕괴",
-      decision: "XGBoost가 재무지표를 A~D 등급으로 분류하고 KMeans가 군집화 — GPT-4는 이미 계산된 결과를 받아 서사적 해설만 담당",
-      result: "분류 정확도 91%, 리포트 생성 5분→30초, 수동 측정 환각 80% 감소, 만족도 4.4/5",
-      competencies: ["아키텍처 설계", "문제정의", "운영 안정화"],
-    },
     desc: "LLM에게 '삼성전자의 부채비율이 높은가?'를 직접 물으면 환각이 발생합니다. 수치 계산 책임을 LLM에 주는 것 자체가 설계 오류입니다. 역할을 명확히 분리했습니다: XGBoost가 500개 상장사 재무지표를 A~D 등급으로 분류하고, KMeans가 유사 기업을 군집화합니다. GPT-4는 이미 통계 모델이 계산·태깅한 결과를 받아 서사적 해설만 생성합니다. 수치 연산을 LLM 바깥으로 완전히 빼낸 아키텍처입니다.",
     bullets: [
       "ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화",
@@ -495,19 +419,8 @@ export const projects: Project[] = [
   {
     slug: "ct-mri-cyclegan",
     num: "06",
-    title: "CT→MRI 교차-모달리티 변환 — CycleGAN 생성 모델 연구",
-    topic: "페어 데이터 없이 CT↔MRI 교차 변환을 연구한 생성 모델 실험",
-    oneliner: "CycleGAN 기반 도메인 변환으로 해부학적 구조 보존 성능을 개선하고, GAN 학습 불균형 문제를 실험적으로 해소했습니다.",
+    title: "CycleGAN 기반 CT→MRI 교차-모달리티 변환",
     period: "2023.06–09 · 딥러닝연구개발소 (한성대학교 단기근무 연구원)",
-    categories: ["NLP"],
-    teamworkNote: "연구원으로 논문 작성에 참여하면서 실험 결과를 정리·공유하는 문서화 습관을 형성했고, 의료진과의 맹검 평가 설계를 지원했습니다.",
-    practicalNote: "Unpaired 변환 연구 경험은 데이터 수집이 어려운 의료·산업 도메인에서 도메인 적응 모델을 설계하는 데 직접 연결됩니다.",
-    summary: {
-      problem: "임상 환경에서 동일 환자의 CT·MRI를 동시 촬영하기 어려워 Paired 데이터셋 구축이 현실적으로 불가능",
-      decision: "CycleGAN의 Cycle-Consistency Loss로 페어 없이 도메인 간 변환 학습, VGG Perceptual Loss로 해부학적 구조 보존",
-      result: "SSIM 0.82→0.88(+6.2%p), 의료진 맹검 평가 80% '진단 보조 가치 있음'",
-      competencies: ["문제정의", "트러블슈팅", "아키텍처 설계"],
-    },
     goal: "페어 데이터 없이 CT↔MRI 교차 변환 모델을 연구, 부족한 의료 모달리티를 AI로 보완할 수 있는 가능성 탐구 및 논문 기여",
     myRole: "CycleGAN 모델 구현 및 학습 · 데이터 전처리 파이프라인 구축 · FID/SSIM 평가 · 연구원 단기 근무로 논문 작성 참여",
     desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 임상 환경의 핵심 제약—1:1 Paired 데이터 획득 불가—를 Unpaired Image-to-Image Translation으로 극복하고, Generator·Discriminator 학습 불균형이라는 GAN 고유 불안정성을 실험적으로 탐색·해소했습니다.",
@@ -555,21 +468,10 @@ export const projects: Project[] = [
   {
     slug: "hunchgame",
     num: "07",
-    title: "눈치게임 — 혼잡 예측·대체 장소 추천 서비스",
-    topic: "유동인구 밀집도를 예측해 혼잡 회피 경로를 실시간으로 추천하는 안전 서비스",
-    oneliner: "단순 혼잡도 표시를 넘어, FP-Growth 이동 패턴과 추천 점수 엔진으로 사용자가 실제 이동할 대체 장소를 제안했습니다.",
+    title: "눈치게임: 위치 기반 인파 분산 서비스",
     period: "성신여자대학교 IT경진대회",
     goal: "축제·행사 시 특정 장소에 인파가 밀집되는 현상을 실시간 위치 데이터로 분산 유도, 안전사고 예방 서비스 구현",
-    myRole: "위치 기반 혼잡도 알고리즘 설계 · 추천 점수 엔진 설계 · 오프라인 SQLite 캐시 아키텍처 구현 · 팀 기획 및 발표 리드",
-    categories: ["데이터 파이프라인"],
-    teamworkNote: "압사 사고라는 사회적 문제를 기술로 풀어내기 위해 팀 기획부터 발표까지 리드했고, 오프라인 내성이라는 비기능 요구사항을 설계 초기부터 포함시켰습니다.",
-    practicalNote: "이 추천·예측 구조는 공연장·대형마트·교통 허브 등 실제 운영 환경의 밀집도 관리 시스템으로 바로 확장할 수 있습니다.",
-    summary: {
-      problem: "축제·행사에서 인파가 경고를 받아도 대안을 몰라 단일 지점에 계속 집중되는 안전 문제",
-      decision: "FP-Growth로 이동 패턴을 추출하고 혼잡도·거리·장소 유사도·시간대 4개 가중치로 대체 장소를 추천, 오프라인 SQLite 캐시로 네트워크 단절 대응",
-      result: "밀집도 예측 84%, 혼잡 회피율 87%, 10,000건 처리 검증",
-      competencies: ["문제정의", "아키텍처 설계", "운영 안정화"],
-    },
+    myRole: "위치 기반 혼잡도 알고리즘 설계 · 게이미피케이션 인센티브 시스템 개발 · 팀 기획 및 발표 리드",
     desc: "압사 사고의 공통 선행 조건은 '군중이 대안을 인지하지 못한 채 단일 지점에 집중된다'는 것입니다. 경고만으로는 부족하고, 사람들이 실제로 이동할 구체적인 대안 장소를 즉시 제시해야 합니다. Naver Maps 혼잡도 API·사용자 제보 보정과, seed_data.py로 연령·성별·시간대 변수를 조합해 생성한 시뮬레이션 이동 로그를 조합해 FP-Growth로 잠재 이동 패턴을 추출하고, 혼잡도·거리·장소 유사도·시간대 4개 가중치로 개인화 추천을 설계했습니다. 재난 상황의 네트워크 불안정을 고려해 오프라인 SQLite 캐시 아키텍처를 반드시 포함시켰습니다.",
     bullets: [
       "FP-Growth로 시뮬레이션 이동 로그(seed_data.py: 연령·성별·시간대 변수 조합 생성, 10,000건 처리 검증) + Naver Maps 혼잡도 조합 → 장소 간 이동 선호 연관 규칙 추출",
@@ -609,21 +511,10 @@ export const projects: Project[] = [
   {
     slug: "lovelop",
     num: "08",
-    title: "lovelop — AI 상권 전략 시뮬레이션 SaaS",
-    topic: "가게 운영 변화를 고객 반응으로 미리 검증하는 AI 시뮬레이션 플랫폼",
-    oneliner: "자영업자가 실행 전 전략의 효과와 리스크를 비교할 수 있도록 160개 페르소나 기반 Before/After 시뮬레이션 구조를 설계했습니다.",
+    title: "160 AI 고객 페르소나로 운영 변화 전후 소비 행동을 시뮬레이션하는 실상권 플랫폼",
     period: "2026.02 · AI 자연어처리 집중 과정 3기",
     goal: "GPT-4.1 멀티 에이전트로 실제 상권 데이터를 기반으로 한 B2B 상권 분석 시뮬레이션 SaaS 구현, 창업 의사결정 지원",
-    myRole: "AI Agent 의사결정 파이프라인 설계 · 160개 페르소나 설계 · 시뮬레이션 검증 구조 구현 · Flask API + React 프론트 연동",
-    categories: ["RAG/LLM", "제조/시뮬레이션"],
-    teamworkNote: "에이전트 간 수치 환각 전파 문제를 발견했을 때 단순 수정이 아니라, 파이프라인 전체 경계에 fact-check 레이어를 삽입해 재설계했습니다.",
-    practicalNote: "이 시뮬레이션 구조는 신제품 출시, 가격 정책 변경, 매장 운영 개선처럼 실행 전 검증이 필요한 의사결정 지원 시스템으로 직접 응용할 수 있습니다.",
-    summary: {
-      problem: "자영업자는 예측 정확도보다 '내 매장 조건이 바뀌면 어떻게 되는지' 미리 확인하고 싶지만, 기존 예측 모델은 조건 변경 시나리오를 지원하지 않음",
-      decision: "GPT-4.1을 T=0.1 분석가와 T=0.7 전략가로 분리, 160개 AI 페르소나가 5단계 의사결정으로 독립 시뮬레이션",
-      result: "160개 페르소나, 11개 검증 지표, 자영업자 사용 의향 80%",
-      competencies: ["문제정의", "아키텍처 설계", "트러블슈팅"],
-    },
+    myRole: "LLM Agent 오케스트레이션 설계 · Gemma-2-9b/EXAONE 역할 분담 구조 · Flask API + React 프론트 연동 전 과정",
     desc: "자영업자 15명 현장 인터뷰에서 반복적으로 나온 말은 '예측 정확도보다 내 매장 조건이 바뀌면 어떻게 되는지 미리 보고 싶다'였습니다. 예측 모델이 아닌 시뮬레이션 엔진이 필요했습니다. GPT-4.1을 단일 호출하면 창의성과 신뢰성을 동시에 얻을 수 없어 Temperature를 분리한 2-Stage 구조를 설계했고, 다양한 실제 고객 유형을 재현하기 위해 160개 AI 페르소나가 5단계 Agent 의사결정으로 시나리오를 독립 검증하는 구조를 구축했습니다.",
     bullets: [
       "2-Stage GPT: Temp 0.1 '분석가' 모듈(신뢰성)→ Temp 0.7 '전략가' 모듈(창의성) 순차 처리로 신뢰+창의 동시 확보",
@@ -695,21 +586,10 @@ export const projects: Project[] = [
   {
     slug: "llm-for-science",
     num: "09",
-    title: "LLM for Science — 과학 도메인 특화 CPT·GDPO 연구",
-    topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구",
-    oneliner: "CPT·SFT·GDPO 파이프라인으로 arXiv·PubMed 데이터를 과학 도메인에 정렬하는 오픈 리서치에 참여 중입니다.",
+    title: "LLM for Science: 과학 도메인 특화 CPT·GDPO 연구",
     period: "Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중",
     goal: "과학 도메인(arXiv·PubMed) 특화 LLM 개발을 위한 CPT·SFT·GDPO 파이프라인 리서치, 수식·표 무손실 처리 방법론 탐구",
     myRole: "Nougat/Marker 기반 파싱 파이프라인 분석 · CPT/SFT 데이터 생성 구조 스터디 · GDPO 멀티 리워드 RL 실험 참여",
-    categories: ["RAG/LLM"],
-    teamworkNote: "오픈 리서치 커뮤니티에서 실험 결과를 동료와 공유하며 3단계 연구 파이프라인 전체에 기여하고 있습니다.",
-    practicalNote: "이 연구 경험은 도메인 특화 LLM 개발, 파인튜닝 파이프라인 설계, 멀티 리워드 정렬에서 실무 수준의 이해를 제공합니다.",
-    summary: {
-      problem: "과학 데이터 파싱 손실, Catastrophic Forgetting, 다차원 보상 상충이라는 세 독립적인 병목이 과학 도메인 LLM 구축을 막고 있음",
-      decision: "각 병목을 하나의 파이프라인이 아닌 Nougat 파싱·Nemotron CPT·GDPO로 각기 다른 기술로 타겟팅",
-      result: "Nemotron 기반 CPT, GDPO 3×리워드 정렬 실험 참여 진행 중",
-      competencies: ["문제정의", "아키텍처 설계"],
-    },
     desc: "Pseudo Lab 오픈 리서치 커뮤니티의 스터디 멤버로 참여 중인 공동 연구입니다(기여 범위: 파싱 파이프라인 분석·CPT 데이터 전략 스터디·GDPO 실험 참여). 과학 도메인 LLM 구축에는 세 개의 독립적인 병목이 있습니다: ① 일반 텍스트 파서가 수식·표를 손실시키는 파싱 문제, ② 도메인 특화 학습이 일반 언어 능력을 훼손하는 Catastrophic Forgetting, ③ 사실 정확도·형식 준수·응답 간결성 세 지표가 동일 보상 스칼라에서 상충하는 보상 붕괴. 이 세 병목을 하나의 파이프라인이 아닌 각기 다른 기술로 타겟팅하는 3단계 연구에 참여 중입니다.",
     bullets: [
       "Phase 1: Nougat/Marker(VLM 파서)로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱 파이프라인 이해 및 GPT-4o Teacher 기반 SFT 합성 데이터 생성 구조 분석",
@@ -749,21 +629,9 @@ export const projects: Project[] = [
     slug: "rocketan",
     num: "10",
     title: "STT 강의 스크립트 퀴즈·학습 가이드 자동 생성기",
-    topic: "강의 자료에서 맥락 기반 퀴즈와 학습 가이드를 자동 생성하는 RAG 시스템",
-    oneliner: "강의 STT를 전처리·청킹·FAISS 기반 RAG로 연결해 퀴즈와 학습 가이드를 자동 생성했습니다.",
     period: "2026.03–04 · 멋쟁이사자처럼 로켓단 인턴십",
     goal: "강의 영상·자료 업로드만으로 퀴즈·학습 가이드를 자동 생성, 강사의 반복 출제 시간을 RAG 파이프라인으로 완전 자동화",
-    myRole: "RAG 파이프라인 전체 설계 · FAISS 청크 전략 실험 · LangChain RetrievalQA 체인 구현 · 재현성 캐싱 레이어 개발",
-    categories: ["RAG/LLM"],
-    teamworkNote: "인턴십 환경에서 실제 운영 요구사항(강의별 업데이트, 재현성, 응답 속도)을 파악해 설계에 반영하고, 결과물을 서비스 수준으로 완성했습니다.",
-    practicalNote: "FAISS 인덱스와 LangChain 체인 구조는 사내 문서 QA, 교육 콘텐츠 자동화, 지식 관리 시스템으로 바로 확장할 수 있습니다.",
-    summary: {
-      problem: "강사가 강의 자료를 반복 정리·출제하는 데 소요하는 시간과, 동일 요청마다 완전히 다른 문항이 생성되는 재현성 문제",
-      decision: "FAISS 벡터 검색으로 강의 맥락 청크를 검색하고 LangChain 체인으로 퀴즈 생성, 24시간 캐시로 재현성 확보",
-      result: "청크 크기 256토큰 최적화, 3단계 난이도 체계화, 재요청 응답 3.2s→0.08s",
-      competencies: ["아키텍처 설계", "트러블슈팅", "운영 안정화"],
-    },
-    thumbAutoHeight: true,
+    myRole: "RAG 파이프라인 전체 설계 · FAISS 청크 전략 실험 · LangChain RetrievalQA 체인 구현 · 재현성 확보를 위한 캐싱 레이어 개발",
     desc: "강의 영상과 자료를 업로드하면 핵심 개념 퀴즈와 학습 가이드를 자동으로 생성하는 시스템입니다. 강사가 수업 자료를 반복 정리·출제하는 데 소요하는 시간을 RAG 파이프라인으로 자동화했습니다. FAISS 벡터 검색과 LangChain 기반 체인 설계로 강의 맥락을 정확히 반영한 문제·해설을 생성합니다.",
     bullets: [
       "강의 문서 → FAISS 벡터 인덱싱 → 관련 청크 검색 → LLM 퀴즈·해설 자동 생성 파이프라인 구축",
@@ -827,21 +695,10 @@ export const projects: Project[] = [
   {
     slug: "moim",
     num: "11",
-    title: "MOIM — 실시간 채팅 기반 모임 플랫폼",
-    topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",
-    oneliner: "STOMP WebSocket과 Kakao Maps를 채팅과 통합해 외부 앱 없이 장소 선택부터 모임 확정까지 지원하는 서비스입니다.",
+    title: "MOIM: 실시간 채팅 기반 모임 플랫폼",
     period: "2024.12–2025.03 · 경기대학교 LINKVERSE · 팀 프로젝트",
     goal: "약속 잡기의 모든 흐름(장소 검색 → 후보 핀 등록 → 투표 → 확정)을 실시간 채팅 안에서 완결, 외부 앱 전환 없이 모임 성사",
     myRole: "장소 검색 쿼리 스토어 설계(Zustand) · Kakao Maps PinMap 연동 · SSR Hydration 이슈 해결 · 모바일 터치 이벤트 처리",
-    categories: ["데이터 파이프라인"],
-    teamworkNote: "SSR Hydration 이슈처럼 팀 전체에 영향을 미치는 문제를 발견하고 구조적으로 해결해 프로덕션 수준의 안정성을 확보했습니다.",
-    practicalNote: "Next.js + WebSocket + 외부 Maps API 통합 경험은 실시간 협업 플랫폼, 공유 작업 공간, 이벤트 관리 서비스 개발에 직접 응용할 수 있습니다.",
-    summary: {
-      problem: "약속 잡기 앱이 있음에도 카카오톡 단톡방으로 돌아가는 이유 — 지도 공유·투표·채팅이 분산되어 컨텍스트 전환 마찰이 큰 문제",
-      decision: "STOMP WebSocket으로 채팅·핀 공유·투표를 단일 소켓 채널에 통합, Kakao Maps PinMap을 채팅과 동일한 인터페이스로 연결",
-      result: "1,124 커밋, SSR Hydration 이슈 해결, 모바일 터치 이벤트 탭/스크롤 분리",
-      competencies: ["아키텍처 설계", "트러블슈팅", "운영 안정화"],
-    },
     desc: "〔AI 기술 비사용 풀스택 프로젝트〕 약속 잡기 앱이 있음에도 카카오톡 단톡방으로 돌아가는 이유는 '채팅이 끊기기 때문'입니다. 카카오맵 링크를 공유하고, 투표 링크를 따로 보내고, 다시 채팅으로 돌아오는 컨텍스트 분산이 가장 큰 마찰입니다. MOIM은 장소 검색 → 후보 핀 등록 → 실시간 투표 → 모임 확정 전체 흐름을 채팅 안에서 완결합니다. Next.js 15 App Router + STOMP WebSocket으로 실시간성을 확보하고, Kakao Maps API로 장소 핀 공유를 채팅 메시지와 동일한 인터페이스로 통합했습니다. AI 기술을 직접 사용하지 않지만, 실사용자 문제 해결을 위한 프로덕션 수준 Next.js/TypeScript/WebSocket 개발 역량 증거로 포함했습니다.",
     bullets: [
       "STOMP/WebSocket 기반 실시간 채팅: 채팅 메시지 · 장소 핀 공유 · 투표 현황을 단일 소켓 채널에서 실시간 동기화",
