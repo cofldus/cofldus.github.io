@@ -547,7 +547,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       }}
     >
       {/* Thumbnail */}
-      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
+      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] ? { height: "auto" } : {}) }}>
         {p.youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${p.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${p.youtubeId}&controls=0&modestbranding=1&rel=0`}
@@ -557,9 +557,6 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           />
         ) : p.videoUrl ? (
           <video src={p.videoUrl} autoPlay loop muted playsInline style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined} />
-        ) : p.thumbImg ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         ) : (
           <div className="pcard-thumb-svg">
             {Thumb && <Thumb />}
