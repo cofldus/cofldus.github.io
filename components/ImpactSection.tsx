@@ -3,20 +3,16 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-function CountUp({ end, decimals = 0 }: { end: number; decimals?: number }) {
+function CountUp({ end, decimals = 0, ariaLabel }: { end: number; decimals?: number; ariaLabel: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
-  const [val, setVal] = useState(0);
-
-  // 인쇄 시 즉시 최종값으로 설정
-  useEffect(() => {
-    const handler = () => setVal(end);
-    window.addEventListener("beforeprint", handler);
-    return () => window.removeEventListener("beforeprint", handler);
-  }, [end]);
+  const [val, setVal] = useState(end); // 초기값을 실제 값으로 설정
+  const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || animated) return;
+    setAnimated(true);
+    setVal(0);
     const t0 = performance.now();
     const run = (now: number) => {
       const p = Math.min((now - t0) / 1400, 1);
@@ -25,8 +21,9 @@ function CountUp({ end, decimals = 0 }: { end: number; decimals?: number }) {
       if (p < 1) requestAnimationFrame(run);
     };
     requestAnimationFrame(run);
-  }, [inView, end, decimals]);
-  return <span ref={ref}>{val.toFixed(decimals)}</span>;
+  }, [inView, end, decimals, animated]);
+
+  return <span ref={ref} aria-label={ariaLabel}>{val.toFixed(decimals)}</span>;
 }
 
 const achievements = [
@@ -93,7 +90,7 @@ export default function ImpactSection() {
                 fontVariantNumeric: "tabular-nums",
                 textAlign: "center",
               }}>
-                <CountUp end={a.end} decimals={a.decimals} />{a.suffix}
+                <CountUp end={a.end} decimals={a.decimals} ariaLabel={`${a.end.toFixed(a.decimals)}${a.suffix}`} />{a.suffix}
               </div>
               <p style={{
                 fontFamily: "var(--font-label)",

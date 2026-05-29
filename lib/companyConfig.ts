@@ -30,16 +30,16 @@ export interface CompanyConfig {
 export const defaultConfig: CompanyConfig = {
   id: "default",
   label: "이채연 · AI / NLP Engineer",
-  headline1: "Build the pipeline.",
-  headline2: "Verify the output.",
+  headline1: "문제를 구조로 바꾸고,",
+  headline2: "AI를 실제 서비스로.",
   subtext:
-    "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
+    "RAG·LLM·데이터 파이프라인을 설계하며 정확도뿐 아니라 지연시간, 비용, 운영 안정성까지 함께 최적화합니다.",
   projectOrder: [
-    "killkong",                 // 압축·역할분리·병목실측 — 아키텍처 판단 최강
-    "medical-chatbot",          // RAG 파이프라인 깊이 + 평가셋 설계
-    "korean-noise-restoration", // 태스크 재정의 — 구조적 진단
-    "finview",                  // 환각 차단 설계 — LLM 한계 인식
-    "lovelop",                  // 창의적 시뮬레이션 구조
+    "killkong",
+    "medical-chatbot",
+    "korean-noise-restoration",
+    "finview",
+    "lovelop",
   ],
   researchSlugs: ["ct-mri-cyclegan"],
 };
@@ -105,10 +105,68 @@ const archivSoftConfig: CompanyConfig = {
   researchSlugs: ["ct-mri-cyclegan"],
 };
 
+// ─── 금융권 제출용 ────────────────────────────────────────────────────────────
+const financeConfig: CompanyConfig = {
+  id: "finance",
+  label: "이채연 · 신뢰 가능한 AI 서비스를 설계합니다",
+  headline1: "수치는 검증하고,",
+  headline2: "AI는 해설만.",
+  subtext:
+    "공식 데이터 기반 수치 계산과 LLM 해설을 분리해 환각을 차단하고, 검증 가능한 AI 서비스 구조를 설계합니다. 금융·의료·법률처럼 신뢰성이 핵심인 현장에 바로 적용 가능한 파이프라인을 구축해왔습니다.",
+  projectOrder: [
+    "finview",
+    "medical-chatbot",
+    "killkong",
+    "airpa",
+    "korean-noise-restoration",
+  ],
+  researchSlugs: ["ct-mri-cyclegan", "llm-for-science"],
+};
+
+// ─── AI/NLP 제출용 ────────────────────────────────────────────────────────────
+const aiNlpConfig: CompanyConfig = {
+  id: "ainlp",
+  label: "이채연 · AI / NLP Engineer",
+  headline1: "문제를 구조로 바꾸고,",
+  headline2: "AI를 실제 서비스로.",
+  subtext:
+    "RAG·LLM·NLP 파이프라인을 설계하며 정확도뿐 아니라 지연시간, 비용, 운영 안정성까지 함께 최적화합니다. 태스크 재정의부터 아키텍처 설계, 정량 평가까지 전 과정을 직접 수행합니다.",
+  projectOrder: [
+    "medical-chatbot",
+    "korean-noise-restoration",
+    "killkong",
+    "rocketan",
+    "lovelop",
+    "airpa",
+  ],
+  researchSlugs: ["ct-mri-cyclegan", "llm-for-science"],
+};
+
+// ─── 제조/IT 제출용 ───────────────────────────────────────────────────────────
+const manufacturingConfig: CompanyConfig = {
+  id: "manufacturing",
+  label: "이채연 · 데이터 파이프라인 · AI 자동화",
+  headline1: "반복 업무를 자동화하고,",
+  headline2: "AI로 의사결정을 지원합니다.",
+  subtext:
+    "RPA·데이터 파이프라인·시뮬레이션 엔진으로 제조·운영 현장의 반복 업무를 자동화하고, AI 결과의 신뢰성을 정량 검증합니다.",
+  projectOrder: [
+    "airpa",
+    "lovelop",
+    "finview",
+    "hunchgame",
+    "killkong",
+  ],
+  researchSlugs: ["ct-mri-cyclegan", "llm-for-science"],
+};
+
 // ─── 회사 맵 ──────────────────────────────────────────────────────────────────
 const companyConfigs: Record<string, CompanyConfig> = {
   archivsoft: archivSoftConfig,
   full: fullConfig,
+  finance: financeConfig,
+  ainlp: aiNlpConfig,
+  manufacturing: manufacturingConfig,
 };
 
 export function getCompanyConfig(company: string | null): CompanyConfig {
