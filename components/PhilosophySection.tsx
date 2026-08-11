@@ -85,7 +85,7 @@ export default function PhilosophySection() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
-                { href: "mailto:lcylcy1717@gmail.com", icon: <IconMail />, label: "lcylcy1717@gmail.com" },
+                { href: "mailto:lcylcy3816@naver.com", icon: <IconMail />, label: "lcylcy3816@naver.com" },
                 { href: "https://github.com/cofldus", icon: <IconGithub />, label: "github.com/cofldus", external: true },
               ].map((item) => (
                 <a
