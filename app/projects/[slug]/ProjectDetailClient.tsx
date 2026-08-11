@@ -348,7 +348,7 @@ function DetailAppendix({ p }: { p: Project }) {
           {/* B — 실험 로그 */}
           {hasExperiments && (
             <div style={{ marginBottom: hasExtraArch ? 48 : 0 }}>
-              <SubHeading step="B" title="실험 로그 — 시행착오 기록" />
+              <SubHeading step="B" title="실험 로그 (시행착오 기록)" />
               <div style={{ display: "flex", alignItems: "center", marginBottom: 36, paddingLeft: 32 }}>
                 {p.experiments!.map((e, i) => {
                   const isLast = i === p.experiments!.length - 1;
@@ -428,7 +428,7 @@ function DetailAppendix({ p }: { p: Project }) {
           {/* C — 세부 다이어그램 */}
           {hasExtraArch && (
             <div>
-              <SubHeading step="C" title="다이어그램 — 세부 플로우" />
+              <SubHeading step="C" title="다이어그램 (세부 플로우)" />
               <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingLeft: 32 }}>
                 {extraArch.map((src, i) => (
                   /* eslint-disable-next-line @next/next/no-img-element */
