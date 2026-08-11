@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const links = [
-  { label: "프로젝트",  href: "#projects" },
+  { label: "소개",      href: "#about" },
+  { label: "성과",      href: "#impact" },
   { label: "기술",      href: "#tech-stack" },
-  { label: "경력",      href: "#education" },
+  { label: "프로젝트",  href: "#projects" },
+  { label: "이력",      href: "#education" },
   { label: "연락",      href: "#contact" },
 ];
 
@@ -40,14 +42,19 @@ export default function Navbar() {
           maxWidth: "var(--cw)", margin: "0 auto", padding: "0 var(--cp)",
           height: 52, display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
-          {/* 이름 */}
+          {/* 상태 배지 */}
           <a href="#about" style={{ textDecoration: "none" }}>
-            <span style={{
-              fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 700,
-              letterSpacing: "-0.02em", color: "var(--ink)",
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 5,
+              padding: "3px 10px", border: "1px solid rgba(79,192,209,0.3)",
+              borderRadius: 20,
+              background: "linear-gradient(135deg, rgba(79,192,209,0.12) 0%, rgba(180,120,230,0.08) 100%)",
             }}>
-              이채연
-            </span>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
+              <span style={{ fontFamily: "var(--font-label)", fontSize: 9, letterSpacing: "0.08em", color: "var(--accent)", textTransform: "uppercase" }}>
+                Open to opportunities
+              </span>
+            </div>
           </a>
 
           {/* 데스크톱 링크 */}

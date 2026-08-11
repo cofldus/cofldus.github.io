@@ -288,9 +288,9 @@ body {
       <div class="name">이채연</div>
       <div class="title-line">AI · NLP Engineer &nbsp;|&nbsp; RAG · LLM 최적화 · 서비스형 AI 시스템 구현</div>
       <div class="contact-line">
+        <span>2001.11.21</span><span class="c-sep">|</span>
+        <span>010-3741-5786</span><span class="c-sep">|</span>
         <span>lcylcy3816@naver.com</span><span class="c-sep">|</span>
-        <span>linkedin.com/in/chaeyeon-lee-113698274</span><span class="c-sep">|</span>
-        <span>velog.io/@miainflorence</span><span class="c-sep">|</span>
         <span>github.com/cofldus</span>
       </div>
     </div>
@@ -310,15 +310,6 @@ body {
   <!-- ────── 경력사항 ────── -->
   <div class="sec">
     <div class="sec-hd"><div class="sec-bar"></div><span class="sec-label">경력사항</span><div class="sec-rule"></div></div>
-
-    <div class="exp-block">
-      <div class="exp-hd">
-        <span class="exp-org">문서 AI 기업<span class="exp-role"> &nbsp;|&nbsp; 문서 인식 엔진 품질 개선</span></span>
-        <span class="exp-date">2026.07 ~ 재직 중</span>
-      </div>
-      <div class="exp-d1">공문서 항목 추출 엔진의 단계별 손실 측정 체계 구축 및 인식 구조 개선</div>
-      <div class="exp-d2">정답 좌표가 포함된 합성 테스트셋 420장·4,732필드 생성, 단계별 정답 주입으로 위치·인식·연결 손실 분리 측정, VLM 관계 명시형 KIE 전환 → 항목 추출 정확도 <span class="num">34.1%→91.7%</span></div>
-    </div>
 
     <div class="exp-block">
       <div class="exp-hd">
@@ -348,17 +339,19 @@ body {
         <span class="proj-name">KillKong<span class="proj-subtitle"> &nbsp;|&nbsp; 콩글리시 교정 LLM Agent · 온디바이스 모델 압축</span><span class="proj-tag">팀장</span></span>
         <span class="proj-date">2025.07 – 2025.08</span>
       </div>
-      <div class="proj-body">팀장으로 Qwen2.5-7B LoRA SFT 파인튜닝 · 4bit NF4 양자화 · FAISS 기반 RAG 파이프라인 설계 · Android 온디바이스 추론 end-to-end 구현</div>
-      <div class="proj-body">모델 용량 <span class="num">14GB→3.0GB</span> 압축 · 추론 응답지연 <span class="num">2.3s→0.47s</span> 단축(Snapdragon 865 ARM CPU 측정) · 교정 일관성 <span class="num">92%+</span> 유지 · 포스코 AI 대회 장려상 수상</div>
+      <div class="proj-body">팀장으로 Qwen2.5-7B LoRA SFT 파인튜닝 · 4bit GPTQ 양자화 · FAISS 기반 RAG 파이프라인 설계 · iOS 모바일 서비스 end-to-end 구현</div>
+      <div class="proj-body">모델 용량 <span class="num">14GB→3.0GB</span> 압축 · 추론 응답지연 <span class="num">2.3s→0.47s</span> 단축 · 모바일 교정 일관성 <span class="num">92%+</span> 유지 · 포스코 AI 대회 장려상 수상</div>
     </div>
+
     <div class="proj-block">
       <div class="proj-hd">
-        <span class="proj-name">의료자문봇<span class="proj-subtitle"> &nbsp;|&nbsp; 근거 기반 의료 도메인 하이브리드 RAG 챗봇</span></span>
-        <span class="proj-date">2026.02 – 2026.03</span>
+        <span class="proj-name">FinView<span class="proj-subtitle"> &nbsp;|&nbsp; DART·뉴스 기반 생성형 재무분석 서비스</span><span class="proj-tag">팀장</span></span>
+        <span class="proj-date">2024.09 – 2024.11</span>
       </div>
-      <div class="proj-body">BM25 희소 검색 · FAISS 밀집 벡터 검색 · Cross-Encoder Reranker 결합 하이브리드 RAG 설계 · 의료 도메인 특화 청킹·색인 전략 적용</div>
-      <div class="proj-body">객관식 정확도 <span class="num">+0.04</span> · 서술형 BERTScore <span class="num">+0.16</span> 향상 · 근거 문서 인용 기반 신뢰도 강화 응답 구조 구현</div>
+      <div class="proj-body">팀장으로 DART 재무제표·뉴스 크롤링·정제 · XGBoost 신용등급 분류 모델 개발 · GPT-4 Turbo 기반 리포트 자동화 파이프라인 설계 및 구현</div>
+      <div class="proj-body">분석 리포트 생성시간 <span class="num">5분→30초</span> 단축 · 재무 정량 지표와 뉴스 감성분석 통합 구조 설계 · 기업별 맞춤 리포트 자동 생성</div>
     </div>
+
     <div class="proj-block">
       <div class="proj-hd">
         <span class="proj-name">난독화복원<span class="proj-subtitle"> &nbsp;|&nbsp; 난독화된 한글 리뷰 복원 AI</span></span>
@@ -367,13 +360,14 @@ body {
       <div class="proj-body">KoELECTRA 기반 6종 난독화 유형 분류기 + KoBART seq2seq 복원 모델 분기형 아키텍처 설계 · 유형별 복원 경로 분리 구현</div>
       <div class="proj-body">BERTScore F1 <span class="num">0.9812</span> · CER <span class="num">0.0426</span> 달성 · 초성체·이모지·특수문자 치환 등 다중 난독화 패턴 동시 대응</div>
     </div>
+
     <div class="proj-block">
       <div class="proj-hd">
-        <span class="proj-name">FinView<span class="proj-subtitle"> &nbsp;|&nbsp; DART·뉴스 기반 생성형 재무분석 서비스</span><span class="proj-tag">팀장</span></span>
-        <span class="proj-date">2024.09 – 2024.11</span>
+        <span class="proj-name">의료자문봇<span class="proj-subtitle"> &nbsp;|&nbsp; 근거 기반 의료 도메인 하이브리드 RAG 챗봇</span></span>
+        <span class="proj-date">2026.02 – 2026.03</span>
       </div>
-      <div class="proj-body">팀장으로 DART 재무제표·뉴스 크롤링·정제 · XGBoost 신용등급 분류 모델 개발 · GPT-4 Turbo 기반 리포트 자동화 파이프라인 설계 및 구현</div>
-      <div class="proj-body">분석 리포트 생성시간 <span class="num">5분→30초</span> 단축 · 재무 정량 지표와 뉴스 감성분석 통합 구조 설계 · 기업별 맞춤 리포트 자동 생성</div>
+      <div class="proj-body">BM25 희소 검색 · FAISS 밀집 벡터 검색 · Cross-Encoder Reranker 결합 하이브리드 RAG 설계 · 의료 도메인 특화 청킹·색인 전략 적용</div>
+      <div class="proj-body">객관식 정확도 <span class="num">+0.04</span> · 서술형 BERTScore <span class="num">+0.16</span> 향상 · 근거 문서 인용 기반 신뢰도 강화 응답 구조 구현</div>
     </div>
 
   </div>
@@ -426,11 +420,11 @@ body {
       <span class="edu-dt">2025.06 – 2025.08</span>
     </div>
     <div class="edu-row">
-      <span class="edu-main"><b>LG Aimers 4기</b> MQL 기반 B2B 영업기회 예측 모델 개발 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
+      <span class="edu-main"><b>LG Aimers 4기</b> — MQL 기반 B2B 영업기회 예측 모델 개발 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
       <span class="edu-dt">2024.01 – 2024.02</span>
     </div>
     <div class="edu-row">
-      <span class="edu-main"><b>LG Aimers 2기</b> 스마트공장 품질 분류 AI 모델 개발 &nbsp;/&nbsp; <b>3기</b> Phase 1 수료 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
+      <span class="edu-main"><b>LG Aimers 2기</b> — 스마트공장 품질 분류 AI 모델 개발 &nbsp;/&nbsp; <b>3기</b> Phase 1 수료 <span class="edu-org">&nbsp;|&nbsp; LG AI Research</span></span>
       <span class="edu-dt">2023.01 – 2023.02 / 08</span>
     </div>
     <div class="edu-row">

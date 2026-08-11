@@ -18,8 +18,6 @@ export interface CompanyConfig {
   headline2: string;
   /** 서브 카피 */
   subtext: string;
-  /** Hero 대표 지표 3개 */
-  metrics?: { value: string; label: string }[];
   /** 기술 스택 그룹 (undefined = 기본값 사용) */
   skillGroups?: SkillGroup[];
   /** 메인 프로젝트 노출 순서 (slug 배열, undefined = 기본 순서) */
@@ -31,18 +29,12 @@ export interface CompanyConfig {
 // ─── Default (generic) ────────────────────────────────────────────────────────
 export const defaultConfig: CompanyConfig = {
   id: "default",
-  label: "AI / NLP Engineer",
-  headline1: "이채연",
-  headline2: "AI / NLP Engineer",
+  label: "이채연 · AI / NLP Engineer",
+  headline1: "Build the pipeline.",
+  headline2: "Verify the output.",
   subtext:
-    "문서 AI, 검색·RAG, LLM 최적화 프로젝트를 개발했습니다.\n현재 문서 인식 엔진의 정확도 개선 업무를 하고 있습니다.",
-  metrics: [
-    { value: "34.1% → 91.7%", label: "문서 AI 항목 추출" },
-    { value: "2.3s → 0.47s", label: "온디바이스 응답" },
-    { value: "BERTScore +0.16", label: "의료 RAG" },
-  ],
+    "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
   projectOrder: [
-    "doc-extraction",           // 문서 AI 실무 — 진단 체계·합성 벤치마크·GT 감사
     "killkong",                 // 압축·역할분리·병목실측 — 아키텍처 판단 최강
     "medical-chatbot",          // RAG 파이프라인 깊이 + 평가셋 설계
     "korean-noise-restoration", // 태스크 재정의 — 구조적 진단
@@ -55,18 +47,12 @@ export const defaultConfig: CompanyConfig = {
 // ─── Full (전체 버전, ?company=full) ──────────────────────────────────────────
 const fullConfig: CompanyConfig = {
   id: "full",
-  label: "AI / NLP Engineer",
-  headline1: "이채연",
-  headline2: "AI / NLP Engineer",
+  label: "이채연 · AI / NLP Engineer",
+  headline1: "Build the pipeline.",
+  headline2: "Prove it works.",
   subtext:
-    "문서 AI, 검색·RAG, LLM 최적화 프로젝트를 개발했습니다.\n현재 문서 인식 엔진의 정확도 개선 업무를 하고 있습니다.",
-  metrics: [
-    { value: "34.1% → 91.7%", label: "문서 AI 항목 추출" },
-    { value: "2.3s → 0.47s", label: "온디바이스 응답" },
-    { value: "BERTScore +0.16", label: "의료 RAG" },
-  ],
+    "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
   projectOrder: [
-    "doc-extraction",
     "killkong",
     "finview",
     "medical-chatbot",
@@ -83,16 +69,11 @@ const fullConfig: CompanyConfig = {
 // ─── 아키브소프트 ─────────────────────────────────────────────────────────────
 const archivSoftConfig: CompanyConfig = {
   id: "archivsoft",
-  label: "AI / NLP Engineer",
-  headline1: "이채연",
-  headline2: "AI / NLP Engineer",
+  label: "이채연 · LLM · 문서 AI · 패턴인식",
+  headline1: "문서를 읽는 것에서",
+  headline2: "이해하는 AI로.",
   subtext:
-    "문서 AI와 검색·RAG 파이프라인을 개발했습니다.\n현재 문서 인식 엔진의 정확도 개선 업무를 하고 있습니다.",
-  metrics: [
-    { value: "34.1% → 91.7%", label: "문서 AI 항목 추출" },
-    { value: "14GB → 3.0GB", label: "LLM 경량화" },
-    { value: "BERTScore +0.16", label: "의료 RAG" },
-  ],
+    "LLM 파인튜닝(LoRA·양자화)과 하이브리드 RAG(BM25·FAISS·리랭킹)으로 비정형 문서를 이해·구조화하는 AI 파이프라인을 설계하고, 패턴인식부터 모델 서빙까지 전 과정을 정량 검증합니다.",
   skillGroups: [
     {
       cat: "LLM · 파인튜닝",
