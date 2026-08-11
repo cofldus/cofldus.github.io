@@ -30,6 +30,11 @@ export interface Project {
   insight?: string;
   /** insight 섹션 제목 (기본 "배운 점", 연구형은 "결과 해석" 등) */
   insightLabel?: string;
+  /**
+   * 트러블슈팅·실험 기록이 없어 기술 선택 근거가 핵심 증거인 프로젝트는
+   * 접힌 상세 기록 대신 본문에 바로 노출한다.
+   */
+  promoteDecisions?: boolean;
   award?: string;
   repoUrl?: string;
   repoName?: string;
@@ -439,6 +444,7 @@ export const projects: Project[] = [
       { value: "+6.2%p", label: "SSIM 개선" },
       { value: "80%", label: "의료진 평가" },
     ],
+    promoteDecisions: true,
     decisions: [
       {
         tech: "CycleGAN (Unpaired) vs Pix2Pix (Paired)",
@@ -490,6 +496,7 @@ export const projects: Project[] = [
       { value: "87%", label: "혼잡 회피율" },
       { value: "10,000건", label: "처리 검증" },
     ],
+    promoteDecisions: true,
     decisions: [
       {
         tech: "FP-Growth vs 단순 거리 기반 추천",
@@ -609,6 +616,7 @@ export const projects: Project[] = [
       { value: "CPT", label: "Phase 2" },
       { value: "GDPO", label: "Phase 3" },
     ],
+    promoteDecisions: true,
     decisions: [
       {
         tech: "Nougat/Marker VLM 파서 vs 일반 텍스트 파서",
@@ -720,6 +728,7 @@ export const projects: Project[] = [
       { value: "STOMP", label: "실시간 채팅" },
       { value: "Kakao Maps", label: "PinMap" },
     ],
+    promoteDecisions: true,
     decisions: [
       {
         tech: "Zustand SSR Hydration 이슈 — 클라이언트 전용 초기화",

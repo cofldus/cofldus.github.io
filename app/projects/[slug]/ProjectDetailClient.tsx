@@ -99,6 +99,13 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
         </Section>
       )}
 
+      {/* 03 — 기술 선택 근거 (트러블슈팅·실험이 없어 이게 핵심인 프로젝트만) */}
+      {p.promoteDecisions && p.decisions.length > 0 && (
+        <Section step="03" title="기술 선택 근거">
+          <DecisionList decisions={p.decisions} />
+        </Section>
+      )}
+
       {/* 04 — 배운 점 / 결과 해석 */}
       {p.insight && (
         <Section step="04" title={p.insightLabel ?? "배운 점"}>
@@ -242,10 +249,60 @@ function TroubleCard({
   );
 }
 
+/* ── 기술 선택 근거 목록 (본문·접힌 기록 공용) ── */
+function DecisionList({ decisions }: { decisions: Project["decisions"] }) {
+  return (
+    <>
+      {decisions.map((d, i) => (
+        <div key={d.tech}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 10 }}>
+            <Num>{String(i + 1).padStart(2, "0")}</Num>
+            <h3 style={{
+              fontFamily: "var(--font-label)", fontSize: 15, fontWeight: 700,
+              color: INK, margin: 0, letterSpacing: "-0.01em",
+            }}>
+              {d.tech}
+            </h3>
+          </div>
+          <p style={{
+            fontFamily: "var(--font-sans)", fontSize: 15, lineHeight: 1.8,
+            color: BODY, margin: 0, paddingLeft: 32, wordBreak: "keep-all",
+          }}>
+            {d.reason}
+          </p>
+          {d.refs && d.refs.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 8px", marginTop: 12, paddingLeft: 32 }}>
+              {d.refs.map((ref) => (
+                <a
+                  key={ref.url}
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily: "var(--font-label)", fontSize: 10.5, fontWeight: 600,
+                    color: A, background: "rgba(79,192,209,0.07)",
+                    border: "1px solid rgba(79,192,209,0.25)", borderRadius: 3,
+                    padding: "2px 8px", textDecoration: "none",
+                    letterSpacing: "0.02em", lineHeight: 1.8,
+                  }}
+                >
+                  ↗ {ref.label}
+                </a>
+              ))}
+            </div>
+          )}
+          {i < decisions.length - 1 && <Divider />}
+        </div>
+      ))}
+    </>
+  );
+}
+
 /* ── 상세 기록 (기술 선택 + 실험 로그 — 기본 접힘) ── */
 function DetailAppendix({ p }: { p: Project }) {
   const [show, setShow] = useState(false);
-  const hasDecisions = p.decisions && p.decisions.length > 0;
+  // 본문으로 승격한 프로젝트는 접힌 기록에서 제외
+  const hasDecisions = !p.promoteDecisions && p.decisions && p.decisions.length > 0;
   const hasExperiments = p.experiments && p.experiments.length > 0;
   const extraArch = (p.archImages ?? []).slice(2);
   const hasExtraArch = extraArch.length > 0;
@@ -254,18 +311,6 @@ function DetailAppendix({ p }: { p: Project }) {
   return (
     <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-        {!show && (
-          <p style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 13,
-            color: "#94A3B8",
-            margin: 0,
-            textAlign: "center",
-            letterSpacing: "-0.01em",
-          }}>
-            기술 선택 이유, 실험 과정, 트레이드오프를 기록했습니다.
-          </p>
-        )}
         <button
           onClick={() => setShow((v) => !v)}
           style={{
@@ -308,47 +353,7 @@ function DetailAppendix({ p }: { p: Project }) {
           {hasDecisions && (
             <div style={{ marginBottom: 48 }}>
               <SubHeading step="A" title="기술 선택 근거" />
-              {p.decisions.map((d, i) => (
-                <div key={d.tech}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 10 }}>
-                    <Num>{String(i + 1).padStart(2, "0")}</Num>
-                    <h3 style={{
-                      fontFamily: "var(--font-label)", fontSize: 15, fontWeight: 700,
-                      color: INK, margin: 0, letterSpacing: "-0.01em",
-                    }}>
-                      {d.tech}
-                    </h3>
-                  </div>
-                  <p style={{
-                    fontFamily: "var(--font-sans)", fontSize: 15, lineHeight: 1.8,
-                    color: BODY, margin: 0, paddingLeft: 32, wordBreak: "keep-all",
-                  }}>
-                    {d.reason}
-                  </p>
-                  {d.refs && d.refs.length > 0 && (
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 8px", marginTop: 12, paddingLeft: 32 }}>
-                      {d.refs.map((ref) => (
-                        <a
-                          key={ref.url}
-                          href={ref.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            fontFamily: "var(--font-label)", fontSize: 10.5, fontWeight: 600,
-                            color: A, background: "rgba(79,192,209,0.07)",
-                            border: "1px solid rgba(79,192,209,0.25)", borderRadius: 3,
-                            padding: "2px 8px", textDecoration: "none",
-                            letterSpacing: "0.02em", lineHeight: 1.8,
-                          }}
-                        >
-                          ↗ {ref.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                  {i < p.decisions.length - 1 && <Divider />}
-                </div>
-              ))}
+              <DecisionList decisions={p.decisions} />
             </div>
           )}
 
