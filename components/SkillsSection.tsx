@@ -6,34 +6,22 @@ import type { SkillGroup } from "@/lib/companyConfig";
 
 const defaultGroups: SkillGroup[] = [
   {
-    cat: "LLM / 에이전트",
-    core: ["LangChain", "FAISS(IVF)", "bge-reranker-v2-m3"],
-    primary: ["BM25", "Multi-Agent", "GPT-4.1"],
-    secondary: ["EXAONE", "Qwen2.5", "Gemma-2", "CPT", "SFT", "GDPO"],
+    cat: "AI / NLP",
+    core: ["Python", "PyTorch", "HuggingFace"],
+    primary: ["LoRA", "Quantization"],
+    secondary: [],
   },
   {
-    cat: "NLP / 파인튜닝",
-    core: ["HuggingFace", "LoRA", "KoBART"],
-    primary: ["KoELECTRA", "Quantization", "JAMO 전처리"],
-    secondary: ["T5", "Nougat/Marker", "arXiv/PubMed 파이프라인"],
+    cat: "Retrieval / RAG",
+    core: ["FAISS", "BM25", "Cross-Encoder"],
+    primary: ["LangChain"],
+    secondary: [],
   },
   {
-    cat: "ML / 분석",
-    core: ["PyTorch", "XGBoost"],
-    primary: ["Scikit-learn", "SHAP", "OpenCV"],
-    secondary: ["CycleGAN", "KMeans", "SMOTE", "FP-Growth"],
-  },
-  {
-    cat: "서빙 / 인프라",
-    core: ["Python", "FastAPI", "Docker"],
+    cat: "Serving",
+    core: ["FastAPI", "Docker"],
     primary: ["PostgreSQL", "Redis"],
-    secondary: ["Flask", "SQLite", "UiPath RPA"],
-  },
-  {
-    cat: "프론트 / 시각화",
-    core: ["React", "Next.js"],
-    primary: ["D3.js", "TypeScript"],
-    secondary: ["Tailwind CSS", "Zustand"],
+    secondary: [],
   },
 ];
 
@@ -46,12 +34,6 @@ export default function SkillsSection() {
       <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "40px var(--cp)" }}>
 
         <div style={{ marginBottom: 24 }}>
-          <p style={{
-            fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em",
-            textTransform: "uppercase", color: "var(--accent)", marginBottom: 8,
-          }}>
-            Capabilities
-          </p>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             기술 스택
           </h2>

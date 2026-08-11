@@ -256,12 +256,6 @@ export default function EducationSection() {
       <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "44px var(--cp)" }}>
 
         <div style={{ marginBottom: 32 }}>
-          <p style={{
-            fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em",
-            textTransform: "uppercase", color: "var(--accent)", marginBottom: 8,
-          }}>
-            Background
-          </p>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             학력 · 경력 · 이력
           </h2>

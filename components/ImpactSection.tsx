@@ -3,44 +3,45 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
+/**
+ * 최종값을 DOM에 먼저 넣고, 애니메이션이 가능한 환경에서만 카운트업한다.
+ * (서버 렌더링·스크린리더·prefers-reduced-motion 에서는 실제 수치가 그대로 보인다)
+ */
 function CountUp({ end, decimals = 0 }: { end: number; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
-  const [val, setVal] = useState(0);
-
-  // 인쇄 시 즉시 최종값으로 설정
-  useEffect(() => {
-    const handler = () => setVal(end);
-    window.addEventListener("beforeprint", handler);
-    return () => window.removeEventListener("beforeprint", handler);
-  }, [end]);
+  const [val, setVal] = useState(end);
 
   useEffect(() => {
     if (!inView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const t0 = performance.now();
     const run = (now: number) => {
-      const p = Math.min((now - t0) / 1400, 1);
+      const p = Math.min((now - t0) / 1200, 1);
       const e = 1 - Math.pow(1 - p, 3);
       setVal(parseFloat((end * e).toFixed(decimals)));
       if (p < 1) requestAnimationFrame(run);
+      else setVal(end);
     };
     requestAnimationFrame(run);
   }, [inView, end, decimals]);
+
   return <span ref={ref}>{val.toFixed(decimals)}</span>;
 }
 
 const achievements = [
   {
+    end: 91.7, decimals: 1, suffix: "%",
+    label: "문서 AI 항목 추출",
+    desc: "단계별 평가셋으로 손실 구간을 측정하고 인식 구조를 전환해 34.1% → 91.7%",
+    note: "합성 문서 420장 4,732필드  ·  기업 실무",
+  },
+  {
     end: 76, decimals: 0, suffix: "%",
     label: "모델 경량화",
     desc: "경량화 76% 달성으로 모바일 온디바이스 추론 가능 수준 확보",
     note: "LoRA + 4-bit NF4 + Token Pruning  ·  14GB → 3.0GB",
-  },
-  {
-    end: 0.9812, decimals: 4, suffix: "",
-    label: "BERTScore F1",
-    desc: "난독화 한글 복원 AI에서 BERTScore 0.9812 달성",
-    note: "KoELECTRA 분류 → 분기형 KoBART 복원 아키텍처",
   },
   {
     end: 0.16, decimals: 2, suffix: "↑",
@@ -56,12 +57,6 @@ export default function ImpactSection() {
       <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "44px var(--cp)" }}>
 
         <div style={{ marginBottom: 32 }}>
-          <p style={{
-            fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em",
-            textTransform: "uppercase", color: "var(--accent)", marginBottom: 8,
-          }}>
-            Impact
-          </p>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             주요 성과
           </h2>

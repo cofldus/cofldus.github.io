@@ -33,9 +33,6 @@ export default async function ProjectDetailPage({
   const p = getProjectBySlug(slug);
   if (!p) notFound();
 
-  const decisionCount = p.decisions?.length ?? 0;
-  const iterCount     = p.experiments?.length ?? 0;
-  const troubleCount  = p.troubleshooting?.length ?? 0;
 
   return (
     <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
@@ -72,10 +69,10 @@ export default async function ProjectDetailPage({
                 marginBottom: 16,
               }}>
                 <span style={{
-                  fontFamily: "var(--font-display)", fontSize: 11, fontWeight: 800,
-                  letterSpacing: "0.12em", color: "#94A3B8", textTransform: "uppercase",
+                  fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
+                  letterSpacing: "0.04em", color: "#64748B",
                 }}>
-                  PROJECT {p.num}
+                  {p.period}
                 </span>
                 {p.award && (
                   <span style={{
@@ -122,13 +119,6 @@ export default async function ProjectDetailPage({
               )}
 
               <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
-                <p style={{
-                  fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-                  color: SUB, letterSpacing: "0.02em", margin: 0, flexShrink: 0,
-                }}>
-                  {p.period}
-                </p>
-                <span style={{ width: 1, height: 12, background: RULE, flexShrink: 0 }} />
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                   {p.tags.map((t) => (
                     <span key={t} style={{
@@ -201,30 +191,6 @@ export default async function ProjectDetailPage({
 
           {/* ── RIGHT: sidebar ── */}
           <aside className="detail-sidebar" style={{ paddingTop: 48 }}>
-
-            {/* Counts */}
-            <div style={{ marginBottom: 32 }}>
-              {[
-                { n: decisionCount, label: "기술 결정" },
-                { n: iterCount,     label: "실험 라운드" },
-                { n: troubleCount,  label: "현장 이슈" },
-              ].map((s, i) => (
-                <div key={i} style={{
-                  display: "flex", justifyContent: "space-between", alignItems: "baseline",
-                  padding: "10px 0", borderBottom: `1px solid ${RULE}`,
-                }}>
-                  <span style={{ fontFamily: "var(--font-label)", fontSize: 11, color: SUB }}>
-                    {s.label}
-                  </span>
-                  <span style={{
-                    fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 900,
-                    color: INK, letterSpacing: "-0.04em",
-                  }}>
-                    {s.n}
-                  </span>
-                </div>
-              ))}
-            </div>
 
             {/* Highlights */}
             {p.highlights.length > 0 && (

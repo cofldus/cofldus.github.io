@@ -35,18 +35,6 @@ export default function PhilosophySection() {
           padding: "64px var(--cp)",
         }}
       >
-        <p
-          style={{
-            fontFamily: "var(--font-label)",
-            fontSize: 10,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "var(--accent)",
-            marginBottom: 40,
-          }}
-        >
-          Contact
-        </p>
 
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}

@@ -14,8 +14,8 @@ export default function Home() {
       <main style={{ paddingTop: 52 }}>
         <Hero />
         <ImpactSection />
-        <SkillsSection />
         <ProjectSection />
+        <SkillsSection />
         <EducationSection />
         <PhilosophySection />
       </main>

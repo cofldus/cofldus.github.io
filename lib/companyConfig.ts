@@ -29,11 +29,11 @@ export interface CompanyConfig {
 // ─── Default (generic) ────────────────────────────────────────────────────────
 export const defaultConfig: CompanyConfig = {
   id: "default",
-  label: "이채연 · AI / NLP Engineer",
-  headline1: "Build the pipeline.",
-  headline2: "Verify the output.",
+  label: "AI / NLP Engineer",
+  headline1: "이채연",
+  headline2: "AI / NLP Engineer",
   subtext:
-    "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
+    "문서 AI · Retrieval/RAG · LLM 최적화 프로젝트를 개발했습니다. 현재 문서 인식 엔진의 정확도 개선 업무를 하고 있습니다.",
   projectOrder: [
     "doc-extraction",           // 기업 실무 — 단계별 손실 측정과 인식 구조 전환
     "killkong",                 // 압축·역할분리·병목실측 — 아키텍처 판단 최강

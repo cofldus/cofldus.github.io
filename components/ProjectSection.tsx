@@ -752,63 +752,39 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
   const extraTags = p.tags.length - 5;
 
   return (
-    <motion.a
-      href={`/projects/${p.slug}`}
+    <motion.article
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-40px" }}
       variants={fadeUp}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      style={{
-        background: "var(--bg)",
-        border: "1px solid var(--border)",
-        borderRadius: 12,
-        overflow: "hidden",
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.07)",
-        transition: "box-shadow 0.2s, border-color 0.2s",
-        textDecoration: "none",
-        cursor: "pointer",
-      }}
       className="pcard"
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 8px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.12)";
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent-bd)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 1px 2px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.07)";
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-      }}
-      onMouseDown={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        const flash = document.createElement("div");
-        flash.className = "pcard-flash";
-        el.appendChild(flash);
-        setTimeout(() => flash.remove(), 350);
-      }}
     >
-      {/* Thumbnail */}
-      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
-        {p.youtubeId ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${p.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${p.youtubeId}&controls=0&modestbranding=1&rel=0`}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-          />
-        ) : p.videoUrl ? (
-          <video src={p.videoUrl} autoPlay loop muted playsInline style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined} />
-        ) : p.thumbImg ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-        ) : (
-          <div className="pcard-thumb-svg">
-            {Thumb && <Thumb />}
-          </div>
-        )}
-      </div>
+      {/* Thumbnail — 대표 프로젝트(첫 2개)만 영상 자동재생, 나머지는 hover 시 재생 */}
+      <a href={`/projects/${p.slug}`} className="pcard-thumb-link" aria-label={`${p.title} 케이스 스터디`}>
+        <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
+          {p.videoUrl ? (
+            <video
+              src={p.videoUrl}
+              autoPlay={idx < 2}
+              loop
+              muted
+              playsInline
+              preload={idx < 2 ? "auto" : "metadata"}
+              onMouseEnter={(e) => { void (e.currentTarget as HTMLVideoElement).play().catch(() => {}); }}
+              onMouseLeave={(e) => { if (idx >= 2) (e.currentTarget as HTMLVideoElement).pause(); }}
+              style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined}
+            />
+          ) : p.thumbImg ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          ) : (
+            <div className="pcard-thumb-svg">
+              {Thumb && <Thumb />}
+            </div>
+          )}
+        </div>
+      </a>
 
       {/* Body */}
       <div style={{ padding: "22px 24px 0", display: "flex", flexDirection: "column", flex: 1 }}>
@@ -851,8 +827,8 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         </div>
 
         {/* topic — 주제 어구 */}
-        <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.38, letterSpacing: "-0.025em", color: "var(--ink)", marginBottom: 7 }}>
-          {p.topic}
+        <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.38, letterSpacing: "-0.025em", marginBottom: 7 }}>
+          <a href={`/projects/${p.slug}`} className="pcard-title-link">{p.topic}</a>
         </h3>
 
         {/* oneliner — 서비스명 + 구체 한 줄 */}
@@ -877,50 +853,18 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         padding: "10px 20px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
-        <span
-          className="pcard-action-btn"
-          style={{
-            fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-            color: "var(--accent)", letterSpacing: "0.02em",
-            padding: "6px 10px", borderRadius: 6, cursor: "pointer",
-            transition: "background 0.2s",
-            display: "inline-flex", alignItems: "center", gap: 5,
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "radial-gradient(ellipse at center, rgba(79,192,209,0.07) 0%, transparent 75%)";
-            (e.currentTarget.querySelector(".pcard-arrow") as HTMLElement).style.transform = "translateX(3px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            (e.currentTarget.querySelector(".pcard-arrow") as HTMLElement).style.transform = "translateX(0)";
-          }}
-        >
+        <a href={`/projects/${p.slug}`} className="pcard-link pcard-link--primary">
           Case Study
-          <span className="pcard-arrow" style={{ transition: "transform 0.2s ease", display: "inline-block" }}>→</span>
-        </span>
+          <span className="pcard-arrow">→</span>
+        </a>
         {p.repoUrl && (
           <a
             href={p.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-              color: "var(--ink-light)", letterSpacing: "0.04em",
-              textDecoration: "none", padding: "6px 10px", borderRadius: 6,
-              transition: "background 0.2s, color 0.2s",
-              display: "inline-flex", alignItems: "center", gap: 5,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "radial-gradient(ellipse at center, rgba(79,192,209,0.07) 0%, transparent 75%)";
-              e.currentTarget.style.color = "var(--accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "var(--ink-light)";
-            }}
+            className="pcard-link"
           >
-            github ↗
+            GitHub ↗
           </a>
         )}
       </div>
@@ -939,7 +883,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           ))}
         </ul>
       </div>
-    </motion.a>
+    </motion.article>
   );
 }
 
@@ -968,15 +912,9 @@ export default function ProjectSection() {
           style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40 }}
         >
           <div>
-            <p style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>
-              Projects
-            </p>
-            <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 32, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.04em", lineHeight: 1.1, marginBottom: 6 }}>
+            <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 32, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.04em", lineHeight: 1.1 }}>
               프로젝트
             </h2>
-            <p style={{ fontSize: 13, color: "var(--ink-light)" }}>
-              Selected work in LLM, NLP, and applied AI
-            </p>
           </div>
           <a
             href="https://github.com/cofldus" target="_blank" rel="noopener noreferrer"
@@ -1020,29 +958,47 @@ export default function ProjectSection() {
           grid-template-columns: repeat(3, 1fr);
         }
         .pcard {
-          transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-        }
-        .pcard-flash {
-          position: absolute;
-          inset: 0;
-          background: rgba(255,255,255,0.45);
-          pointer-events: none;
-          z-index: 10;
-          animation: pcard-flash 0.32s ease-out forwards;
-        }
-        @keyframes pcard-flash {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.18s ease, border-color 0.18s ease;
         }
         .pcard:hover {
-          transform: translateY(-12px) scale(1.38);
-          box-shadow: 0 24px 48px rgba(0,0,0,0.14), 0 48px 96px rgba(0,0,0,0.22) !important;
-          z-index: 20;
+          transform: translateY(-2px);
+          border-color: #C7CDD4;
         }
-        .pcard:active {
-          transform: translateY(2px) scale(0.96);
-          transition: transform 0.1s ease, box-shadow 0.1s ease;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.09) !important;
+        .pcard-thumb-link { display: block; text-decoration: none; }
+        .pcard-title-link {
+          color: var(--ink);
+          text-decoration: none;
+          transition: color 0.15s;
+        }
+        .pcard-title-link:hover { color: var(--accent); }
+        .pcard-link {
+          font-family: var(--font-label);
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          color: var(--ink-light);
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 6px 2px;
+          transition: color 0.15s;
+        }
+        .pcard-link--primary { color: var(--accent); font-weight: 600; }
+        .pcard-link:hover { color: var(--accent); }
+        .pcard-arrow { transition: transform 0.18s ease; display: inline-block; }
+        .pcard-link:hover .pcard-arrow { transform: translateX(3px); }
+        .pcard-link:focus-visible,
+        .pcard-title-link:focus-visible,
+        .pcard-thumb-link:focus-visible {
+          outline: 2px solid var(--accent);
+          outline-offset: 2px;
         }
         .pcard-thumb {
           border-bottom: 1px solid var(--border-sub);
