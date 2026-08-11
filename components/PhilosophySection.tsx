@@ -49,21 +49,21 @@ export default function PhilosophySection() {
           >
             <h2
               style={{
-                fontSize: "clamp(26px, 3vw, 38px)",
-                fontWeight: 700,
+                fontSize: "clamp(28px, 3.2vw, 38px)",
+                fontWeight: 600,
                 letterSpacing: "-0.03em",
-                lineHeight: 1.2,
+                lineHeight: 1.15,
                 color: "var(--ink)",
-                marginBottom: 14,
+                marginBottom: 16,
               }}
             >
               채용 기회를<br />찾고 있습니다.
             </h2>
             <p
               style={{
-                fontSize: 14,
-                lineHeight: 1.9,
-                color: "var(--ink-light)",
+                fontSize: 16.5,
+                lineHeight: 1.75,
+                color: "var(--ink-mid)",
                 marginBottom: 32,
               }}
             >
@@ -85,7 +85,7 @@ export default function PhilosophySection() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 9,
-                    fontSize: 14,
+                    fontSize: 15,
                     color: "var(--ink-mid)",
                     textDecoration: "none",
                     transition: "color 0.15s",
@@ -125,16 +125,15 @@ export default function PhilosophySection() {
               >
                 <span
                   style={{
-                    fontFamily: "var(--font-label)",
-                    fontSize: 10,
+                    fontFamily: "var(--font-sans)",
+                    fontSize: 13.5,
                     color: "var(--ink-light)",
-                    paddingTop: 2,
-                    letterSpacing: "0.04em",
+                    paddingTop: 1,
                   }}
                 >
                   {row.label}
                 </span>
-                <span style={{ fontSize: 13.5, color: "var(--ink)", lineHeight: 1.5 }}>
+                <span style={{ fontSize: 15, color: "var(--ink)", lineHeight: 1.6 }}>
                   {row.value}
                 </span>
               </div>
@@ -153,11 +152,8 @@ export default function PhilosophySection() {
             alignItems: "center",
           }}
         >
-          <p style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "var(--ink-ghost)" }}>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--ink-light)" }}>
             © 2026 이채연
-          </p>
-          <p style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "var(--ink-ghost)" }}>
-            Lee Chaeyeon
           </p>
         </div>
       </div>

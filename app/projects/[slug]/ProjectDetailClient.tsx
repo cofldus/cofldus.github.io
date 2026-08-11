@@ -3,10 +3,10 @@
 import { useState } from "react";
 import type { Project } from "@/lib/projects";
 
-const A    = "#4fc0d1";
-const INK  = "#0F172A";
-const BODY = "#334155";
-const RULE = "#E2E8F0";
+const A    = "var(--accent)";
+const INK  = "var(--ink)";
+const BODY = "var(--ink-mid)";
+const RULE = "var(--border)";
 
 /** 인사이트 문자열을 단락으로 분리 (\n\n 우선, 없으면 3문장 단위) */
 function splitInsight(text: string): string[] {
@@ -27,7 +27,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
 
       {/* 01 — 문제 정의 */}
       <Section step="01" title="문제 정의 및 접근" first>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18, maxWidth: "var(--measure)" }}>
           {p.desc.split("\n\n").map((para, i) => (
             <p key={i} style={{
               fontFamily: "var(--font-sans)",
@@ -55,7 +55,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 alignItems: "center",
                 justifyContent: "center",
                 padding: i === 0 ? 36 : 24,
-                borderLeft: i > 0 ? `0.5px solid ${RULE}` : "none",
+                borderLeft: i > 0 ? `1px solid var(--border-sub)` : "none",
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -78,12 +78,12 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       <Section step="02" title="핵심 구현 내용">
         {p.bullets.map((b, i) => (
           <div key={i} style={{
-            display: "flex", gap: 18, alignItems: "flex-start",
-            paddingBottom: 12, marginBottom: 12,
+            display: "flex", gap: 16, alignItems: "flex-start",
+            marginBottom: 16, maxWidth: "var(--measure)",
           }}>
             <Num>{String(i + 1).padStart(2, "0")}</Num>
             <span style={{
-              fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.75,
+              fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.8,
               color: BODY, wordBreak: "keep-all",
             }}>
               {b}
@@ -110,18 +110,19 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       {p.insight && (
         <Section step="04" title={p.insightLabel ?? "배운 점"}>
           <div style={{
-            paddingLeft: 20,
-            borderLeft: `3px solid ${A}`,
+            paddingLeft: 22,
+            borderLeft: `1px solid ${RULE}`,
             display: "flex",
             flexDirection: "column",
             gap: 18,
+            maxWidth: "var(--measure)",
           }}>
             {splitInsight(p.insight).map((para, i) => (
               <p key={i} style={{
                 fontFamily: "var(--font-sans)",
                 fontSize: i === 0 ? 16.5 : 15.5,
-                fontWeight: i === 0 ? 600 : 400,
-                lineHeight: 1.9,
+                fontWeight: 400,
+                lineHeight: 1.85,
                 color: i === 0 ? INK : BODY,
                 margin: 0,
                 wordBreak: "keep-all",
@@ -175,46 +176,46 @@ function TroubleCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div style={{ borderBottom: `0.5px solid ${RULE}` }}>
+    <div style={{ borderBottom: `1px solid var(--border-sub)` }}>
       <button
         onClick={onToggle}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        aria-expanded={isOpen}
         style={{
           width: "100%",
+          minHeight: 48,
           display: "flex",
           alignItems: "center",
-          gap: 16,
+          gap: 14,
           padding: "14px 0",
-          background: hovered ? "#F8FAFC" : "transparent",
+          background: "transparent",
           border: "none",
           cursor: "pointer",
           textAlign: "left" as const,
-          borderRadius: 3,
-          transition: "background 0.12s",
         }}
       >
         <span style={{
           flexShrink: 0,
-          fontFamily: "var(--font-display)",
-          fontSize: 10,
-          fontWeight: 800,
-          color: isOpen ? "#0E7490" : "#CBD5E1",
-          letterSpacing: "0.06em",
-          minWidth: 22,
-          transition: "color 0.15s",
+          fontFamily: "var(--font-sans)",
+          fontSize: 13,
+          fontWeight: 400,
+          color: "var(--ink-ghost)",
+          minWidth: 20,
+          fontVariantNumeric: "tabular-nums",
         }}>
           {String(index + 1).padStart(2, "0")}
         </span>
 
         <span style={{
           flex: 1,
-          fontFamily: "var(--font-label)",
-          fontSize: 13.5,
-          fontWeight: isOpen ? 600 : 500,
-          color: isOpen ? "#1E293B" : hovered ? "#334155" : "#475569",
-          letterSpacing: "-0.015em",
-          lineHeight: 1.4,
+          fontFamily: "var(--font-sans)",
+          fontSize: 15.5,
+          fontWeight: 400,
+          color: isOpen || hovered ? INK : BODY,
+          letterSpacing: "-0.01em",
+          lineHeight: 1.5,
+          wordBreak: "keep-all",
           transition: "color 0.15s",
         }}>
           {title}
@@ -222,23 +223,24 @@ function TroubleCard({
 
         <span style={{
           flexShrink: 0,
-          fontSize: 12,
-          color: isOpen ? "#0E7490" : "#CBD5E1",
+          fontSize: 11,
+          color: "var(--ink-light)",
           display: "inline-block",
-          transition: "color 0.15s, transform 0.2s",
+          transition: "transform 0.2s",
           transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
           lineHeight: 1,
         }}>▾</span>
       </button>
 
       {isOpen && (
-        <div style={{ paddingBottom: 18, paddingLeft: 38 }}>
+        <div style={{ paddingBottom: 22, paddingLeft: 34 }}>
           <p style={{
             fontFamily: "var(--font-sans)",
-            fontSize: 14,
+            fontSize: 15.5,
             lineHeight: 1.85,
             color: BODY,
             margin: 0,
+            maxWidth: "var(--measure)",
             wordBreak: "keep-all",
           }}>
             {body}
@@ -258,20 +260,21 @@ function DecisionList({ decisions }: { decisions: Project["decisions"] }) {
           <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 10 }}>
             <Num>{String(i + 1).padStart(2, "0")}</Num>
             <h3 style={{
-              fontFamily: "var(--font-label)", fontSize: 15, fontWeight: 700,
-              color: INK, margin: 0, letterSpacing: "-0.01em",
+              fontFamily: "var(--font-sans)", fontSize: 16.5, fontWeight: 600,
+              color: INK, margin: 0, letterSpacing: "-0.015em", lineHeight: 1.4,
             }}>
               {d.tech}
             </h3>
           </div>
           <p style={{
-            fontFamily: "var(--font-sans)", fontSize: 15, lineHeight: 1.8,
-            color: BODY, margin: 0, paddingLeft: 32, wordBreak: "keep-all",
+            fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.85,
+            color: BODY, margin: 0, paddingLeft: 34,
+            maxWidth: "var(--measure)", wordBreak: "keep-all",
           }}>
             {d.reason}
           </p>
           {d.refs && d.refs.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 8px", marginTop: 12, paddingLeft: 32 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 8px", marginTop: 14, paddingLeft: 34 }}>
               {d.refs.map((ref) => (
                 <a
                   key={ref.url}
@@ -279,11 +282,11 @@ function DecisionList({ decisions }: { decisions: Project["decisions"] }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    fontFamily: "var(--font-label)", fontSize: 10.5, fontWeight: 600,
-                    color: A, background: "rgba(79,192,209,0.07)",
-                    border: "1px solid rgba(79,192,209,0.25)", borderRadius: 3,
-                    padding: "2px 8px", textDecoration: "none",
-                    letterSpacing: "0.02em", lineHeight: 1.8,
+                    fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+                    color: "var(--ink-mid)", background: "transparent",
+                    border: `1px solid ${RULE}`, borderRadius: 4,
+                    padding: "4px 9px", textDecoration: "none",
+                    lineHeight: 1.4,
                   }}
                 >
                   ↗ {ref.label}
@@ -325,19 +328,18 @@ function DetailAppendix({ p }: { p: Project }) {
           }}
         >
           <span style={{
-            fontFamily: "var(--font-label)",
-            fontSize: 11,
-            fontWeight: 600,
-            color: show ? "#0E7490" : "#64748B",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
+            fontFamily: "var(--font-sans)",
+            fontSize: 14,
+            fontWeight: 400,
+            color: "var(--ink-mid)",
+            letterSpacing: "-0.005em",
             transition: "color 0.15s",
           }}>
             {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
           </span>
           <span style={{
-            fontSize: 9,
-            color: show ? "#0E7490" : "#94A3B8",
+            fontSize: 10,
+            color: "var(--ink-light)",
             display: "inline-block",
             transition: "transform 0.2s, color 0.15s",
             transform: show ? "rotate(180deg)" : "rotate(0deg)",
@@ -369,10 +371,10 @@ function DetailAppendix({ p }: { p: Project }) {
                       <div style={{
                         width: isLast ? 8 : 6, height: isLast ? 8 : 6,
                         borderRadius: "50%",
-                        background: isLast ? A : "#CBD5E1",
+                        background: isLast ? A : "var(--ink-ghost)",
                       }} />
                       {i < p.experiments!.length - 1 && (
-                        <div style={{ width: 24, height: 1, background: "#CBD5E1" }} />
+                        <div style={{ width: 24, height: 1, background: "var(--border)" }} />
                       )}
                     </div>
                   );
@@ -391,9 +393,9 @@ function DetailAppendix({ p }: { p: Project }) {
                       paddingTop: 2,
                     }}>
                       <span style={{
-                        fontFamily: "var(--font-display)", fontSize: 9, fontWeight: 800,
-                        color: isLast ? A : "#94A3B8",
-                        letterSpacing: "0.08em", lineHeight: 1, marginBottom: 10,
+                        fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 400,
+                        color: isLast ? A : "var(--ink-ghost)",
+                        lineHeight: 1, marginBottom: 10,
                       }}>
                         {e.id}
                       </span>
@@ -404,31 +406,32 @@ function DetailAppendix({ p }: { p: Project }) {
                     <div style={{ flex: 1 }}>
                       {isLast && (
                         <div style={{
-                          fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700,
-                          color: A, letterSpacing: "0.1em", textTransform: "uppercase",
-                          marginBottom: 8,
+                          fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+                          color: A, marginBottom: 8,
                         }}>
-                          ✓ 최종 채택
+                          최종 채택
                         </div>
                       )}
                       <p style={{
-                        fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700,
+                        fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600,
                         color: INK, margin: "0 0 8px",
-                        lineHeight: 1.5, letterSpacing: "-0.01em", wordBreak: "keep-all",
+                        lineHeight: 1.5, letterSpacing: "-0.015em", wordBreak: "keep-all",
                       }}>
                         {e.hypothesis}
                       </p>
                       <p style={{
-                        fontFamily: "var(--font-sans)", fontSize: 14.5, lineHeight: 1.75,
-                        color: BODY, margin: "0 0 12px", wordBreak: "keep-all",
+                        fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.8,
+                        color: BODY, margin: "0 0 12px",
+                        maxWidth: "var(--measure)", wordBreak: "keep-all",
                       }}>
                         {e.result}
                       </p>
                       <div style={{
-                        fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 600,
-                        color: isLast ? A : "#475569", letterSpacing: "-0.01em",
+                        fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 400,
+                        color: isLast ? A : "var(--ink-mid)", letterSpacing: "-0.005em",
+                        lineHeight: 1.7, maxWidth: "var(--measure)", wordBreak: "keep-all",
                       }}>
-                        → {e.conclusion}
+                        {e.conclusion}
                       </div>
                     </div>
                   </div>
@@ -467,20 +470,20 @@ function Section({
 }) {
   return (
     <section style={{
-      paddingTop: first ? 40 : 36,
-      paddingBottom: 36,
-      borderTop: first ? "none" : `0.5px solid ${RULE}`,
+      paddingTop: first ? 56 : 64,
+      paddingBottom: 8,
     }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 28 }}>
         <span style={{
-          fontFamily: "var(--font-display)", fontSize: 10, fontWeight: 900,
-          color: A, letterSpacing: "0.1em", flexShrink: 0,
+          fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+          color: "var(--ink-ghost)", flexShrink: 0,
+          fontVariantNumeric: "tabular-nums",
         }}>
           {step}
         </span>
         <h2 style={{
-          fontFamily: "var(--font-label)", fontSize: 17, fontWeight: 700,
-          color: INK, margin: 0, letterSpacing: "-0.02em",
+          fontFamily: "var(--font-sans)", fontSize: 22, fontWeight: 600,
+          color: INK, margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3,
         }}>
           {title}
         </h2>
@@ -492,16 +495,16 @@ function Section({
 
 function SubHeading({ step, title }: { step: string; title: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
+    <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 24 }}>
       <span style={{
-        fontFamily: "var(--font-display)", fontSize: 10, fontWeight: 900,
-        color: "#94A3B8", letterSpacing: "0.1em", flexShrink: 0,
+        fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+        color: "var(--ink-ghost)", flexShrink: 0,
       }}>
         {step}
       </span>
       <h2 style={{
-        fontFamily: "var(--font-label)", fontSize: 17, fontWeight: 700,
-        color: "#475569", margin: 0, letterSpacing: "-0.02em",
+        fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 600,
+        color: INK, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.35,
       }}>
         {title}
       </h2>
@@ -512,8 +515,9 @@ function SubHeading({ step, title }: { step: string; title: string }) {
 function Num({ children }: { children: React.ReactNode }) {
   return (
     <span style={{
-      fontFamily: "var(--font-display)", fontSize: 10, fontWeight: 800,
-      color: A, letterSpacing: "0.06em", flexShrink: 0, paddingTop: 4, minWidth: 18,
+      fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+      color: "var(--ink-ghost)", flexShrink: 0, paddingTop: 4, minWidth: 20,
+      fontVariantNumeric: "tabular-nums",
     }}>
       {children}
     </span>
@@ -521,5 +525,5 @@ function Num({ children }: { children: React.ReactNode }) {
 }
 
 function Divider() {
-  return <div style={{ height: "0.5px", background: "#E2E8F0", margin: "24px 0" }} />;
+  return <div style={{ height: "1px", background: "var(--border-sub)", margin: "28px 0" }} />;
 }

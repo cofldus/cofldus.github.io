@@ -19,10 +19,10 @@ export async function generateMetadata({
   return { title: `${project.title} — 이채연` };
 }
 
-const A    = "#4fc0d1";
-const INK  = "#0F172A";
-const SUB  = "#64748B";
-const RULE = "#E2E8F0";
+const A    = "var(--accent)";
+const INK  = "var(--ink)";
+const SUB  = "var(--ink-mid)";
+const RULE = "var(--border)";
 
 export default async function ProjectDetailPage({
   params,
@@ -46,8 +46,8 @@ export default async function ProjectDetailPage({
             className="back-link"
             style={{
               display: "inline-flex", alignItems: "center", gap: 6,
-              fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
-              letterSpacing: "0.08em", textTransform: "uppercase",
+              fontFamily: "var(--font-sans)", fontSize: 13.5, fontWeight: 400,
+              letterSpacing: "-0.005em",
               color: SUB, textDecoration: "none", transition: "color 0.15s",
             }}
           >
@@ -63,46 +63,25 @@ export default async function ProjectDetailPage({
           {/* ── LEFT: title + article ── */}
           <div>
             {/* Hero title block */}
-            <div style={{ padding: "48px 0 40px", borderBottom: `1px solid ${RULE}` }}>
-              <div style={{
-                display: "flex", alignItems: "center", gap: 14,
-                marginBottom: 16,
+            <div style={{ padding: "56px 0 44px", borderBottom: `1px solid ${RULE}` }}>
+              {/* 기간 · 수상 — 한 줄 */}
+              <p style={{
+                fontFamily: "var(--font-sans)", fontSize: 13.5, fontWeight: 400,
+                color: "var(--ink-light)", margin: "0 0 18px", lineHeight: 1.4,
               }}>
-                <span style={{
-                  fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
-                  letterSpacing: "0.04em", color: "#64748B",
-                }}>
-                  {p.period}
-                </span>
+                {p.period}
                 {p.award && (
-                  <span style={{
-                    fontFamily: "var(--font-label)",
-                    fontSize: 9.5,
-                    fontWeight: 600,
-                    color: "#92400E",
-                    background: "#FFFBEB",
-                    border: "0.5px solid rgba(245,158,11,0.28)",
-                    borderRadius: 3,
-                    padding: "0 9px",
-                    height: 20,
-                    letterSpacing: "0.03em",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                    lineHeight: 1,
-                  }}>
-                    <span style={{ fontSize: 8, color: "#F59E0B", lineHeight: 1 }}>★</span>
-                    {p.award}
-                  </span>
+                  <span style={{ color: A }}>{" · "}{p.award}</span>
                 )}
-              </div>
+              </p>
 
               <h1 style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(22px, 2.8vw, 38px)",
-                fontWeight: 700, color: INK,
-                letterSpacing: "-0.025em", lineHeight: 1.2,
-                marginBottom: p.subtitle ? 9 : 16,
+                fontFamily: "var(--font-sans)",
+                fontSize: "clamp(30px, 3.6vw, 42px)",
+                fontWeight: 600, color: INK,
+                letterSpacing: "-0.035em", lineHeight: 1.15,
+                margin: 0,
+                maxWidth: "20ch",
                 wordBreak: "keep-all", overflowWrap: "break-word",
               }}>
                 {p.title}
@@ -110,61 +89,54 @@ export default async function ProjectDetailPage({
 
               {p.subtitle && (
                 <p style={{
-                  fontFamily: "var(--font-sans)", fontSize: 14.5,
-                  lineHeight: 1.6, color: SUB, margin: "0 0 16px",
-                  wordBreak: "keep-all",
+                  fontFamily: "var(--font-sans)", fontSize: 18,
+                  lineHeight: 1.6, color: SUB, margin: "14px 0 0",
+                  maxWidth: "52ch", wordBreak: "keep-all",
                 }}>
                   {p.subtitle}
                 </p>
               )}
 
-              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                  {p.tags.map((t) => (
-                    <span key={t} style={{
-                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 400,
-                      letterSpacing: "0.04em",
-                      background: "#F4F7F8",
-                      border: "none",
-                      borderRadius: 3,
-                      padding: "0 8px",
-                      height: 20,
-                      color: "#64748B",
-                      display: "inline-flex", alignItems: "center", lineHeight: 1,
-                    }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* 목표 · 역할 */}
-              {(p.goal || p.myRole) && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  {p.goal && (
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                      <span style={{ fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: A, flexShrink: 0 }}>
-                        목표
-                      </span>
-                      <span style={{ width: 1, height: 11, background: RULE, flexShrink: 0, alignSelf: "center" }} />
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: 13.5, lineHeight: 1.65, color: INK, margin: 0, wordBreak: "keep-all" }}>
-                        {p.goal}
-                      </p>
-                    </div>
-                  )}
-                  {p.myRole && (
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                      <span style={{ fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: SUB, flexShrink: 0 }}>
-                        역할
-                      </span>
-                      <span style={{ width: 1, height: 11, background: RULE, flexShrink: 0, alignSelf: "center" }} />
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: 13.5, lineHeight: 1.65, color: INK, margin: 0, wordBreak: "keep-all" }}>
-                        {p.myRole}
-                      </p>
-                    </div>
-                  )}
-                </div>
+              {/* 목표 — 리드 문장 */}
+              {p.goal && (
+                <p style={{
+                  fontFamily: "var(--font-sans)", fontSize: 16.5, lineHeight: 1.75,
+                  color: INK, margin: "28px 0 0",
+                  maxWidth: "var(--measure)", wordBreak: "keep-all",
+                }}>
+                  {p.goal}
+                </p>
               )}
+
+              {/* 담당 — 한 줄 */}
+              {p.myRole && (
+                <p style={{
+                  fontFamily: "var(--font-sans)", fontSize: 15, lineHeight: 1.7,
+                  color: SUB, margin: "14px 0 0",
+                  maxWidth: "var(--measure)", wordBreak: "keep-all",
+                }}>
+                  <span style={{ color: "var(--ink-light)" }}>담당 </span>
+                  {p.myRole}
+                </p>
+              )}
+
+              {/* 태그 */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 28 }}>
+                {p.tags.map((t) => (
+                  <span key={t} style={{
+                    fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 400,
+                    letterSpacing: "-0.005em",
+                    background: "var(--tag-bg)",
+                    border: `1px solid ${RULE}`,
+                    borderRadius: 4,
+                    padding: "5px 10px",
+                    color: "var(--tag-text)",
+                    display: "inline-flex", alignItems: "center", lineHeight: 1,
+                  }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Readme / Overview image */}
@@ -190,32 +162,32 @@ export default async function ProjectDetailPage({
           </div>
 
           {/* ── RIGHT: sidebar ── */}
-          <aside className="detail-sidebar" style={{ paddingTop: 48 }}>
+          <aside className="detail-sidebar" style={{ paddingTop: 56 }}>
 
             {/* Highlights */}
             {p.highlights.length > 0 && (
               <div style={{ marginBottom: 28 }}>
                 <div style={{
-                  fontFamily: "var(--font-label)", fontSize: 9, fontWeight: 700,
-                  color: SUB, letterSpacing: "0.1em", textTransform: "uppercase",
-                  marginBottom: 14,
+                  fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+                  color: "var(--ink-light)", marginBottom: 16,
                 }}>
                   성과
                 </div>
                 {p.highlights.map((h, i) => (
                   <div key={h.label} style={{
-                    marginBottom: 14, paddingBottom: 14,
-                    borderBottom: i < p.highlights.length - 1 ? `1px solid ${RULE}` : "none",
+                    marginBottom: 16, paddingBottom: 16,
+                    borderBottom: i < p.highlights.length - 1 ? `1px solid var(--border-sub)` : "none",
                   }}>
                     <div style={{
-                      fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 900,
-                      color: A, letterSpacing: "-0.04em", lineHeight: 1,
+                      fontFamily: "var(--font-sans)", fontSize: 21, fontWeight: 500,
+                      color: INK, letterSpacing: "-0.03em", lineHeight: 1.15,
+                      fontVariantNumeric: "tabular-nums",
                     }}>
                       {h.value}
                     </div>
                     <div style={{
-                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 600,
-                      color: SUB, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4,
+                      fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
+                      color: SUB, marginTop: 5, lineHeight: 1.45, wordBreak: "keep-all",
                     }}>
                       {h.label}
                     </div>

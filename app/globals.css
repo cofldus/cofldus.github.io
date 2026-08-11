@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --ink:          #0A0A0A;
-  --ink-mid:      #6B7280;
-  --ink-light:    #9CA3AF;
-  --ink-ghost:    #D1D5DB;
+  /* 색 — 오프화이트 + 거의 검정 + 포인트 1색 */
+  --ink:          #171717;
+  --ink-mid:      #666666;
+  --ink-light:    #8A8A85;
+  --ink-ghost:    #B8B8B2;
   --bg:           #FFFFFF;
   --bg-subtle:    #FAFAF8;
-  --page-bg:      #F8F8F7;
-  --border:       #E5E7EB;
-  --border-sub:   #F3F4F6;
+  --page-bg:      #FAFAF8;
+  --border:       #E5E5E1;
+  --border-sub:   #EFEFEB;
   --accent:       #4fc0d1;
   --accent-bg:    #F0F4FF;
   --accent-bd:    #D8D8D8;
-  --tag-bg:       #F3F4F6;
-  --tag-text:     #374151;
+  --tag-bg:       transparent;
+  --tag-text:     #666666;
 
   --font-sans: 'Inter', 'Noto Sans KR', ui-sans-serif, sans-serif;
   --font-mono: 'DM Mono', ui-monospace, monospace;
@@ -22,8 +23,14 @@
   --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
   --font-label: 'Outfit', 'Noto Sans KR', sans-serif;
 
-  --cw: 1360px;
-  --cp: 48px;
+  /* 폭 — 텍스트는 좁게, 증거 자료는 넓게 */
+  --cw: 1160px;
+  --cp: 40px;
+  --measure: 72ch;      /* 본문 텍스트 최대 폭 */
+
+  /* 세로 리듬 */
+  --sec-gap: 128px;     /* 섹션 사이 */
+  --sec-head: 48px;     /* 섹션 제목 → 콘텐츠 */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,9 +40,17 @@ body {
   background: var(--page-bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 900px) {
+  :root { --sec-gap: 88px; --sec-head: 36px; }
+}
+@media (max-width: 640px) {
+  :root { --sec-gap: 72px; --sec-head: 28px; --cp: 20px; }
+  body { font-size: 16px; }
 }
 
 section {
@@ -49,10 +64,23 @@ section#tech-stack {
   box-shadow: none;
 }
 
-/* 반응형 패딩 */
-@media (max-width: 640px) {
-  :root { --cp: 20px; }
+/* ── 공통 섹션 리듬 ── */
+.sec-wrap {
+  max-width: var(--cw);
+  margin: 0 auto;
+  padding: var(--sec-gap) var(--cp);
 }
+.sec-title {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: var(--sec-head);
+}
+/* 본문 텍스트는 좁게 */
+.measure { max-width: var(--measure); }
 
 /* ── 모바일 반응형 ── */
 @media (max-width: 640px) {
@@ -83,6 +111,36 @@ section#tech-stack {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
+
+  /* 상세: 세로 여백 압축, 사이드바를 본문 위로 */
+  .detail-grid {
+    gap: 32px;
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+  .detail-sidebar { padding-top: 0 !important; }
+
+  /* 넓은 콘텐츠(다이어그램·표)는 자기 영역 안에서만 가로 스크롤 */
+  .detail-grid table,
+  .detail-grid pre {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* 본문이 가로로 넘치지 않도록 */
+html, body { overflow-x: hidden; }
+img, video, svg { max-width: 100%; }
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── 케이스 스터디 상세 페이지 레이아웃 ── */
@@ -100,8 +158,8 @@ section#tech-stack {
 }
 @media (min-width: 900px) {
   .detail-grid {
-    grid-template-columns: 1fr 200px;
-    gap: 64px;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 72px;
     align-items: start;
   }
   .detail-grid > :first-child {
@@ -110,6 +168,11 @@ section#tech-stack {
   .detail-sidebar {
     position: sticky;
     top: 88px;
+  }
+  /* 본문 텍스트는 좁게, 이미지·표는 넓게 */
+  .detail-grid > :first-child article > section > p,
+  .detail-grid > :first-child article > section > div > p {
+    max-width: var(--measure);
   }
 }
 @keyframes btn-shine {
@@ -122,16 +185,16 @@ section#tech-stack {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-label);
-  font-size: 12px;
-  font-weight: 700;
-  color: #4fc0d1;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--ink-mid);
   text-decoration: none;
-  border-bottom: 1.5px solid #4fc0d1;
-  padding-bottom: 2px;
-  transition: opacity 0.15s;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
 }
-.detail-github-link:hover { opacity: 0.6; }
+.detail-github-link:hover { color: var(--ink); border-color: var(--ink); }
 
 /* 프로젝트 카드 print-only 요소 — 화면에서 숨김 */
 .pcard-print-detail { display: none; }

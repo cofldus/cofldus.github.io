@@ -13,56 +13,56 @@ export default function Hero() {
   const company = useCompany();
 
   return (
-    <section id="about" style={{ background: "#FFFFFF", overflow: "hidden" }}>
+    <section id="about" className="hero" style={{ background: "var(--bg)" }}>
       <div style={{
         width: "100%",
         maxWidth: "var(--cw)",
         margin: "0 auto",
-        padding: "64px var(--cp) 56px",
+        padding: "0 var(--cp)",
       }}>
 
         {/* 헤드라인 + 사진 */}
         <div style={{
           display: "flex",
-          alignItems: "flex-end",
+          alignItems: "center",
           gap: "clamp(32px, 5vw, 80px)",
         }}>
           <motion.div
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            style={{ flex: 1, minWidth: 0, paddingLeft: 2 }}
+            style={{ flex: 1, minWidth: 0 }}
           >
             <h1 style={{
-              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-              fontSize: "clamp(36px, 4.6vw, 64px)",
-              fontWeight: 300,
-              lineHeight: 1.1,
-              letterSpacing: "-0.03em",
-              color: "#0A0A0A",
+              fontFamily: "var(--font-sans)",
+              fontSize: "clamp(40px, 5vw, 60px)",
+              fontWeight: 600,
+              lineHeight: 1.07,
+              letterSpacing: "-0.035em",
+              color: "var(--ink)",
               margin: 0,
             }}>
               {company.headline1}
             </h1>
 
             <p style={{
-              fontFamily: "var(--font-label)",
-              fontSize: "clamp(14px, 1.5vw, 18px)",
-              fontWeight: 500,
-              letterSpacing: "0.01em",
-              color: "#6B7280",
-              margin: "14px 0 0",
+              fontFamily: "var(--font-sans)",
+              fontSize: "clamp(19px, 2vw, 23px)",
+              fontWeight: 400,
+              letterSpacing: "-0.01em",
+              color: "var(--ink-mid)",
+              margin: "12px 0 0",
             }}>
               {company.headline2}
             </p>
 
             <p style={{
               fontFamily: "var(--font-sans)",
-              fontSize: 14.5,
-              lineHeight: 1.85,
-              color: "#4B5563",
-              margin: "26px 0 0",
-              maxWidth: "58ch",
+              fontSize: 18,
+              lineHeight: 1.75,
+              color: "var(--ink-mid)",
+              margin: "28px 0 0",
+              maxWidth: "46ch",
               wordBreak: "keep-all",
             }}>
               {company.subtext}
@@ -77,9 +77,11 @@ export default function Hero() {
             style={{ flexShrink: 0 }}
           >
             <div style={{
-              width: "clamp(130px, 13vw, 175px)",
+              width: "clamp(140px, 14vw, 190px)",
               aspectRatio: "3 / 4",
               overflow: "hidden",
+              borderRadius: 10,
+              border: "1px solid var(--border)",
             }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -101,47 +103,49 @@ export default function Hero() {
           animate="show"
           variants={fadeUp}
           transition={{ delay: 0.1 }}
-          style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap", marginTop: 36 }}
+          style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginTop: 40 }}
         >
-          <a href="#projects" className="hero-cta hero-cta--primary">프로젝트</a>
+          <a href="#projects" className="hero-cta hero-cta--primary">프로젝트 보기</a>
           <a href="/resume_v1.html" className="hero-cta">이력서</a>
-          <a href="https://github.com/cofldus" target="_blank" rel="noopener noreferrer" className="hero-cta hero-cta--text">
-            GitHub ↗
-          </a>
         </motion.div>
 
       </div>
 
       <style>{`
+        .hero {
+          min-height: 560px;
+          display: flex;
+          align-items: center;
+          padding: 72px 0;
+        }
         .hero-photo-col { display: none !important; }
         @media (min-width: 768px) {
           .hero-photo-col { display: block !important; }
         }
+        @media (max-width: 640px) {
+          .hero { min-height: 0; padding: 56px 0 48px; }
+        }
         .hero-cta {
-          font-family: var(--font-label);
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
+          font-family: var(--font-sans);
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: -0.005em;
           text-decoration: none;
-          padding: 10px 20px;
-          border-radius: 3px;
-          border: 1px solid #D1D5DB;
-          color: #4B5563;
+          padding: 11px 20px;
+          border-radius: 6px;
+          border: 1px solid var(--border);
+          color: var(--ink-mid);
+          background: var(--bg);
           transition: border-color 0.15s, color 0.15s;
         }
-        .hero-cta:hover { border-color: #0A0A0A; color: #0A0A0A; }
+        .hero-cta:hover { border-color: var(--ink); color: var(--ink); }
         .hero-cta--primary {
-          background: #0A0A0A;
-          border-color: #0A0A0A;
+          background: var(--ink);
+          border-color: var(--ink);
           color: #FFFFFF;
         }
-        .hero-cta--primary:hover { opacity: 0.8; color: #FFFFFF; }
-        .hero-cta--text {
-          border-color: transparent;
-          padding-left: 6px;
-          padding-right: 6px;
-        }
-        .hero-cta--text:hover { border-color: transparent; }
+        .hero-cta--primary:hover { opacity: 0.85; color: #FFFFFF; border-color: var(--ink); }
+        .hero-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       `}</style>
     </section>
   );

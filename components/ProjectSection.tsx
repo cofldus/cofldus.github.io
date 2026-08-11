@@ -736,9 +736,10 @@ const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
 function Chip({ text }: { text: string }) {
   return (
     <span style={{
-      fontFamily: "var(--font-label)", fontSize: 10.5, fontWeight: 500,
-      padding: "3px 8px", background: "var(--tag-bg)", color: "var(--tag-text)",
+      fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 400,
+      padding: "5px 10px", background: "transparent", color: "var(--tag-text)",
       border: "1px solid var(--border)", borderRadius: 4, whiteSpace: "nowrap" as const,
+      lineHeight: 1.2,
     }}>
       {text}
     </span>
@@ -747,7 +748,6 @@ function Chip({ text }: { text: string }) {
 
 function ProjectCard({ p, idx }: { p: Project; idx: number }) {
   const Thumb = thumbMap[p.num];
-  const displayNum = String(idx + 1).padStart(2, "0");
   const visibleTags = p.tags.slice(0, 5);
   const extraTags = p.tags.length - 5;
 
@@ -787,38 +787,35 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       </a>
 
       {/* Body */}
-      <div style={{ padding: "22px 24px 0", display: "flex", flexDirection: "column", flex: 1 }}>
+      <div style={{ padding: "24px 24px 0", display: "flex", flexDirection: "column", flex: 1 }}>
 
-        {/* num + metadata chips */}
-        <div style={{ marginBottom: 10 }}>
-          <span style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.2em", fontWeight: 700, color: "var(--accent)", display: "block", marginBottom: 7 }}>
-            {displayNum}
-          </span>
-          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
+        {/* 프로젝트 성격 / 기간 */}
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6, alignItems: "center" }}>
             {p.date && (
               <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 500,
-                color: "#475569", background: "#F1F5F9", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
+                fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 400,
+                color: "var(--ink-light)", lineHeight: 1.4,
               }}>
                 {p.date}
               </span>
             )}
+            {p.date && p.period && (
+              <span style={{ width: 2, height: 2, borderRadius: "50%", background: "var(--ink-ghost)", display: "inline-block", flexShrink: 0 }} />
+            )}
             {p.period && (
               <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 400,
-                color: "#94A3B8", background: "#F8FAFC", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
+                fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 400,
+                color: "var(--ink-light)", lineHeight: 1.4,
               }}>
                 {p.period}
               </span>
             )}
             {p.award && (
               <span style={{
-                fontFamily: "var(--font-sans)", fontSize: 9, fontWeight: 400,
-                color: "#4fc0d1", background: "rgba(79,192,209,0.08)",
-                border: "1px solid rgba(79,192,209,0.35)", borderRadius: 20,
-                padding: "2px 7px", display: "inline-flex", alignItems: "center", lineHeight: 1,
+                fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 400,
+                color: "var(--accent)", lineHeight: 1.4,
+                borderLeft: "1px solid var(--border)", paddingLeft: 8, marginLeft: 2,
               }}>
                 {p.award}
               </span>
@@ -827,12 +824,12 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         </div>
 
         {/* topic — 주제 어구 */}
-        <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.38, letterSpacing: "-0.025em", marginBottom: 7 }}>
+        <h3 style={{ fontSize: 19, fontWeight: 600, lineHeight: 1.35, letterSpacing: "-0.02em", marginBottom: 9 }}>
           <a href={`/projects/${p.slug}`} className="pcard-title-link">{p.topic}</a>
         </h3>
 
-        {/* oneliner — 서비스명 + 구체 한 줄 */}
-        <p style={{ fontSize: 12, fontWeight: 400, lineHeight: 1.6, letterSpacing: "-0.008em", color: "var(--ink-light)", marginBottom: 14 }}>
+        {/* oneliner — 한 문장 설명 */}
+        <p style={{ fontSize: 14.5, fontWeight: 400, lineHeight: 1.65, letterSpacing: "-0.005em", color: "var(--ink-mid)", marginBottom: 18, wordBreak: "keep-all" as const }}>
           {p.oneliner}
         </p>
 
@@ -901,35 +898,27 @@ export default function ProjectSection() {
   const svgProjects = projects.filter(p => researchSlugs.includes(p.slug));
 
   return (
-    <section id="projects" style={{ background: "var(--bg-subtle)", borderTop: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "72px var(--cp)" }}>
+    <section id="projects" style={{ background: "var(--bg)" }}>
+      <div className="sec-wrap">
 
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40 }}
+          style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 24, marginBottom: "var(--sec-head)" }}
         >
-          <div>
-            <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 32, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.04em", lineHeight: 1.1 }}>
-              프로젝트
-            </h2>
-          </div>
+          <h2 className="sec-title" style={{ marginBottom: 0 }}>프로젝트</h2>
           <a
             href="https://github.com/cofldus" target="_blank" rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12.5, fontWeight: 500, color: "var(--accent)", textDecoration: "none", flexShrink: 0, marginLeft: 24, transition: "opacity 0.15s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            className="pcard-link"
+            style={{ flexShrink: 0 }}
           >
-            GitHub
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            GitHub ↗
           </a>
         </motion.div>
 
-        <div className="pcard-grid" style={{ marginBottom: 60 }}>
+        <div className="pcard-grid" style={{ marginBottom: 72 }}>
           {videoProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={i} />)}
         </div>
 
@@ -951,7 +940,7 @@ export default function ProjectSection() {
         .pcard-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 40px;
+          gap: 28px;
           align-items: start;
         }
         .pcard-grid-svg {
@@ -968,8 +957,11 @@ export default function ProjectSection() {
         }
         .pcard:hover {
           transform: translateY(-2px);
-          border-color: #C7CDD4;
+          border-color: var(--ink-ghost);
         }
+        .pcard:hover .pcard-thumb img,
+        .pcard:hover .pcard-thumb video { opacity: 0.94; }
+        .pcard-thumb img, .pcard-thumb video { transition: opacity 0.18s ease; }
         .pcard-thumb-link { display: block; text-decoration: none; }
         .pcard-title-link {
           color: var(--ink);
@@ -1003,7 +995,7 @@ export default function ProjectSection() {
         .pcard-thumb {
           border-bottom: 1px solid var(--border-sub);
           background: #0A1628;
-          height: 340px;
+          aspect-ratio: 16 / 10;
           overflow: hidden;
           display: flex;
           align-items: center;
