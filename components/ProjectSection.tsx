@@ -232,6 +232,22 @@ const projects: Project[] = [
     repoUrl: "https://github.com/cofldus/MOIM-Client",
     repoName: "MOIM-Client",
   },
+  {
+    slug: "doc-extraction",
+    num: "12",
+    title: "합성 테스트셋·GT 대체 사다리로 병목을 격리한 공문서 정보추출 엔진 진단·개선",
+    topic: "공공 서식 이미지를 구조화 JSON으로 추출하는 상용 문서 AI 엔진의 정량 진단·개선",
+    oneliner: "법정 별지서식 기반 합성 테스트셋 4,732 필드를 자체 구축하고, 단계별 GT 주입 사다리로 파이프라인 병목을 격리해 VLM 전환·파인튜닝·운영 설정을 정량 근거로 확정한 실무 프로젝트",
+    date: "2026.07–",
+    period: "문서 AI 기업 실무",
+    desc: "E2E 정확도 34%라는 숫자는 Detection·Recognition·필드 연결 중 '어디가' 문제인지 알려주지 않습니다. 법정 별지서식에 가상 값을 채우면서 그 좌표를 동시에 정답으로 저장하는 방식으로 합성 테스트셋 420장·4,732 필드를 자체 구축하고, 각 단계에 GT를 주입·제거하는 E1~E6 대체 사다리로 병목을 층별로 격리했습니다. 진단 결과를 근거로 OCR 기하 규칙 파이프라인을 VLM 관계 명시형 KIE로 전환해 같은 벤치마크에서 91.7%를 달성했고, LoRA 파인튜닝 승격 게이트와 운영 추론 설정까지 정량 근거로 확정했습니다.",
+    bullets: [
+      "실문서 61건×5회 반복 하네스로 오류를 시스템적·불안정·확률적으로 분류, 프롬프트 대신 ROI crop 도입으로 손글씨 필드 0/10→10/10·응답 6.3s→0.8~1.4s",
+      "E1~E6 GT 대체 사다리: GT bbox에서 Recognition 85.1% vs E2E 34.1% → Detection 박스 품질·위치 기반 필드 연결이 이중 병목임을 격리 증명, VLM 관계 명시형 KIE 전환으로 91.7%",
+      "신규 서식 F1 0.339 급락을 필드 단위 재분류로 감사 — 값 오류 151건 vs GT 표기 차이 727건(4.8배)을 밝혀 재학습 없이 재채점만으로 F1 0.761 회복",
+    ],
+    tags: ["Qwen-VL", "vLLM", "PaddleOCR", "LoRA", "합성 데이터셋", "PyTorch", "FastAPI"],
+  },
 ];
 
 // ─── SVG shared constants ─────────────────────────────────────────
@@ -705,10 +721,59 @@ function Thumb11() {
   );
 }
 
+function Thumb12() {
+  const AC = "#2E7D74";
+  const bars = [
+    { label: "E2E (전부 예측)",        pct: 34.1, text: "34.1%" },
+    { label: "+ GT 위치 (인식만)",     pct: 85.1, text: "85.1%" },
+    { label: "+ GT 위치·글자 (연결만)", pct: 78.5, text: "78.5%" },
+    { label: "VLM 관계 명시형 KIE",    pct: 91.7, text: "91.7%" },
+  ];
+  return (
+    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">DOCUMENT AI · BOTTLENECK ISOLATION</text>
+      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
+
+      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">GT Ladder</text>
+      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>합성 테스트셋 4,732 필드 · 단계별 GT 주입으로 병목 격리</text>
+
+      {bars.map((b, i) => {
+        const y = 76 + i * 16;
+        const w = (b.pct / 100) * 165;
+        const strong = i === 3;
+        return (
+          <g key={b.label}>
+            <text x={14} y={y + 7} fill={strong ? AC : INK2} fontSize={8.5} fontFamily={SAN} fontWeight={strong ? 600 : 400}>{b.label}</text>
+            <rect x={140} y={y} width={165} height={9} rx={2} fill={BOX} />
+            <rect x={140} y={y} width={w} height={9} rx={2}
+              fill={strong ? "rgba(46,125,116,0.85)" : "rgba(46,125,116,0.30)"} />
+            <text x={140 + w + 5} y={y + 7.5} fill={strong ? AC : MUTED} fontSize={8} fontFamily={MON} fontWeight={strong ? 700 : 400}>{b.text}</text>
+          </g>
+        );
+      })}
+
+      <line x1={14} y1={148} x2={346} y2={148} stroke={LINE} strokeWidth={0.8} />
+
+      {[
+        { x: 14,  label: "추출 정확도",   value: "34→92%" },
+        { x: 134, label: "합성 GT 필드",  value: "4,732" },
+        { x: 254, label: "GT 감사 F1",   value: "+0.42" },
+      ].map((m, i) => (
+        <g key={m.label}>
+          {i > 0 && <line x1={m.x - 6} y1={152} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
+          <text x={m.x} y={163} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
+          <text x={m.x} y={199} fill={i === 0 ? MG : AC} fontSize={24} fontFamily={MON} fontWeight={700}>{m.value}</text>
+        </g>
+      ))}
+      <text x={14} y={214} fill={MUTED} fontSize={8} fontFamily={SAN}>Qwen-VL · vLLM · PaddleOCR · LoRA · 합성 데이터셋</text>
+    </svg>
+  );
+}
+
 const thumbMap: Record<string, React.FC> = {
   "01": Thumb01, "02": Thumb02, "03": Thumb03, "04": Thumb04,
   "05": Thumb05, "07": Thumb07, "08": Thumb08,
-  "09": Thumb09, "11": Thumb11,
+  "09": Thumb09, "11": Thumb11, "12": Thumb12,
 };
 
 // ─── Layout ───────────────────────────────────────────────────────
