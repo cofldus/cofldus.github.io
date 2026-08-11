@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 interface Project {
@@ -36,7 +37,7 @@ const featured: Project[] = [
     title: "온디바이스 콩글리쉬 교정 에이전트",
     period: "포스코 AI·BigData 아카데미 · 2025.07–08",
     headline:
-      "14GB 모델을 3.0GB로 압축하고 검색 구간을 최적화해 스마트폰 CPU에서 실시간 교정이 동작하도록 만들었습니다.",
+      "14GB 모델을 3.0GB로 압축하고 검색 구간을 최적화해 Android 단말의 ARM CPU에서 실시간 교정이 동작하도록 만들었습니다.",
     metric: "2.3s → 0.47s",
     metricLabel: "응답 시간",
     tags: ["Qwen2.5", "LoRA", "FAISS", "4-bit 양자화"],
@@ -56,16 +57,20 @@ const featured: Project[] = [
   },
 ];
 
+/** 기본 노출 5개 + 접어두는 4개 */
 const more = [
   { slug: "korean-noise-restoration", title: "한글 난독화 복원", metric: "BERTScore 0.9812", tags: "KoBART · KoELECTRA" },
-  { slug: "finview", title: "재무 리포트 자동 생성", metric: "분류 정확도 91%", tags: "XGBoost · GPT-4" },
+  { slug: "rocketan", title: "강의 퀴즈 자동 생성", metric: "", tags: "LangChain · FAISS · RAG" },
   { slug: "lovelop", title: "상권 시뮬레이션 플랫폼", metric: "4분 22초 → 48초", tags: "GPT-4.1 · Multi-Agent" },
-  { slug: "rocketan", title: "강의 퀴즈 자동 생성", metric: "청크 512 → 256", tags: "LangChain · FAISS" },
   { slug: "ct-mri-cyclegan", title: "CT→MRI 변환 연구", metric: "SSIM +6.2%p", tags: "CycleGAN · PyTorch" },
-  { slug: "llm-for-science", title: "과학 도메인 LLM 연구", metric: "진행 중", tags: "CPT · GDPO" },
+  { slug: "llm-for-science", title: "과학 도메인 LLM 연구", metric: "", tags: "CPT · SFT · GDPO" },
+];
+
+const moreHidden = [
+  { slug: "finview", title: "재무 리포트 자동 생성", metric: "", tags: "XGBoost · GPT-4" },
   { slug: "airpa", title: "학과 탐색 자동화", metric: "8h → 3h", tags: "UiPath · T5" },
   { slug: "hunchgame", title: "인파 분산 서비스", metric: "밀집도 예측 84%", tags: "FP-Growth · SQLite" },
-  { slug: "moim", title: "실시간 모임 플랫폼", metric: "커밋 1,124", tags: "Next.js · WebSocket" },
+  { slug: "moim", title: "실시간 모임 플랫폼", metric: "", tags: "Next.js · WebSocket" },
 ];
 
 const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
@@ -195,6 +200,8 @@ function HalfCard({ p }: { p: Project }) {
 }
 
 export default function ProjectSection() {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <section id="projects" style={{ background: "var(--bg)" }}>
       <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "96px var(--cp)" }}>
@@ -235,7 +242,7 @@ export default function ProjectSection() {
           </motion.p>
 
           <div style={{ borderTop: "1px solid var(--border)" }}>
-            {more.map((m) => (
+            {(showAll ? [...more, ...moreHidden] : more).map((m) => (
               <a
                 key={m.slug}
                 href={`/projects/${m.slug}`}
@@ -250,6 +257,16 @@ export default function ProjectSection() {
               </a>
             ))}
           </div>
+
+          {!showAll && (
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="pmore-toggle"
+            >
+              전체 프로젝트 보기 ({more.length + moreHidden.length})
+            </button>
+          )}
         </div>
 
       </div>
@@ -308,6 +325,21 @@ export default function ProjectSection() {
           color: var(--ink-mid); letter-spacing: -0.01em;
         }
         .pmore-arrow { color: #D1D5DB; flex-shrink: 0; }
+        .pmore-toggle {
+          margin-top: 20px;
+          background: none;
+          border: none;
+          padding: 6px 0;
+          cursor: pointer;
+          font-family: var(--font-label);
+          font-size: 12.5px;
+          font-weight: 600;
+          color: var(--accent);
+          letter-spacing: 0.02em;
+          transition: opacity 0.15s;
+        }
+        .pmore-toggle:hover { opacity: 0.7; }
+        .pmore-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
         @media (max-width: 900px) {
           .pcard-hero { grid-template-columns: 1fr; gap: 32px; }

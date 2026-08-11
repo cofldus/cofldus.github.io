@@ -144,14 +144,24 @@ export default async function ProjectDetailPage({
 
               <h1 style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(22px, 2.8vw, 38px)",
+                fontSize: "clamp(24px, 3vw, 40px)",
                 fontWeight: 700, color: INK,
-                letterSpacing: "-0.025em", lineHeight: 1.2,
-                marginBottom: 16,
+                letterSpacing: "-0.03em", lineHeight: 1.2,
+                marginBottom: p.subtitle ? 10 : 16,
                 wordBreak: "keep-all", overflowWrap: "break-word",
               }}>
                 {p.title}
               </h1>
+
+              {p.subtitle && (
+                <p style={{
+                  fontFamily: "var(--font-sans)", fontSize: 15.5,
+                  lineHeight: 1.6, color: SUB, margin: "0 0 16px",
+                  wordBreak: "keep-all",
+                }}>
+                  {p.subtitle}
+                </p>
+              )}
 
               <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
                 <p style={{
