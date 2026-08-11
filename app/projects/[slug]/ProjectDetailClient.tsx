@@ -23,7 +23,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
     <article>
 
       {/* 01 — 문제 정의 */}
-      <Section step="01" title="문제 정의 및 접근" first>
+      <Section step="01" title="문제 정의 및 접근" first id="sec-problem">
         <p style={{
           fontFamily: "var(--font-sans)",
           fontSize: 16.5, lineHeight: 1.85, color: BODY,
@@ -35,7 +35,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
 
       {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
       {p.archImages && p.archImages.length > 0 && (
-        <Section step="ARCH" title="시스템 아키텍처">
+        <Section step="ARCH" title="시스템 아키텍처" id="sec-arch">
           <div style={{
             display: "flex",
             alignItems: "stretch",
@@ -53,7 +53,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={src}
-                  alt={`아키텍처 다이어그램 ${i + 1}`}
+                  alt={`${p.title} 시스템 구성도 ${i + 1}. ${p.summary?.solution ?? ""}`}
                   style={{
                     display: "block",
                     width: "100%",
@@ -68,7 +68,7 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
       )}
 
       {/* 02 — 핵심 구현 */}
-      <Section step="02" title="핵심 구현 내용">
+      <Section step="02" title="핵심 구현 내용" id="sec-impl">
         {p.bullets.map((b, i) => (
           <div key={i} style={{
             display: "flex", gap: 18, alignItems: "flex-start",
@@ -87,14 +87,14 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
 
       {/* 03 — 트러블슈팅 */}
       {p.troubleshooting && p.troubleshooting.length > 0 && (
-        <Section step="03" title="트러블슈팅">
+        <Section step="03" title="트러블슈팅" id="sec-trouble">
           <TroubleshootingList items={p.troubleshooting} />
         </Section>
       )}
 
       {/* 04 — 배운 점 */}
       {p.insight && (
-        <Section step="04" title="배운 점">
+        <Section step="04" title="배운 점" id="sec-learned">
           <div style={{
             paddingLeft: 20,
             borderLeft: `3px solid ${A}`,
@@ -140,6 +140,7 @@ function TroubleshootingList({ items }: { items: NonNullable<Project["troublesho
             index={i}
             title={t.title}
             body={t.body}
+            cat={t.cat}
             isOpen={isOpen}
             onToggle={() => setOpen(isOpen ? null : i)}
           />
@@ -150,27 +151,34 @@ function TroubleshootingList({ items }: { items: NonNullable<Project["troublesho
 }
 
 function TroubleCard({
-  index, title, body, isOpen, onToggle,
+  index, title, body, cat, isOpen, onToggle,
 }: {
   index: number;
   title: string;
   body: string;
+  cat?: string;
   isOpen: boolean;
   onToggle: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
+  const panelId = `trouble-panel-${index}`;
+  const btnId = `trouble-btn-${index}`;
 
   return (
     <div style={{ borderBottom: `0.5px solid ${RULE}` }}>
       <button
+        id={btnId}
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        className="trouble-btn"
         style={{
           width: "100%",
           display: "flex",
           alignItems: "center",
-          gap: 16,
+          gap: 14,
           padding: "14px 0",
           background: hovered ? "#F8FAFC" : "transparent",
           border: "none",
@@ -180,18 +188,25 @@ function TroubleCard({
           transition: "background 0.12s",
         }}
       >
-        <span style={{
-          flexShrink: 0,
-          fontFamily: "var(--font-display)",
-          fontSize: 10,
-          fontWeight: 800,
-          color: isOpen ? "#0E7490" : "#CBD5E1",
-          letterSpacing: "0.06em",
-          minWidth: 22,
-          transition: "color 0.15s",
-        }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        {cat && (
+          <span style={{
+            flexShrink: 0,
+            fontFamily: "var(--font-label)",
+            fontSize: 9,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            color: isOpen ? "#0E7490" : "#94A3B8",
+            background: isOpen ? "rgba(14,116,144,0.07)" : "#F1F5F9",
+            borderRadius: 3,
+            padding: "3px 7px",
+            lineHeight: 1,
+            minWidth: 82,
+            textAlign: "center" as const,
+            transition: "color 0.15s, background 0.15s",
+          }}>
+            {cat}
+          </span>
+        )}
 
         <span style={{
           flex: 1,
@@ -200,13 +215,14 @@ function TroubleCard({
           fontWeight: isOpen ? 600 : 500,
           color: isOpen ? "#1E293B" : hovered ? "#334155" : "#475569",
           letterSpacing: "-0.015em",
-          lineHeight: 1.4,
+          lineHeight: 1.45,
+          wordBreak: "keep-all" as const,
           transition: "color 0.15s",
         }}>
           {title}
         </span>
 
-        <span style={{
+        <span aria-hidden="true" style={{
           flexShrink: 0,
           fontSize: 12,
           color: isOpen ? "#0E7490" : "#CBD5E1",
@@ -218,7 +234,7 @@ function TroubleCard({
       </button>
 
       {isOpen && (
-        <div style={{ paddingBottom: 18, paddingLeft: 38 }}>
+        <div id={panelId} role="region" aria-labelledby={btnId} style={{ paddingBottom: 18, paddingLeft: cat ? 96 : 38 }}>
           <p style={{
             fontFamily: "var(--font-sans)",
             fontSize: 14,
@@ -449,15 +465,16 @@ function DetailAppendix({ p }: { p: Project }) {
 }
 
 function Section({
-  step, title, first = false, children,
+  step, title, first = false, id, children,
 }: {
-  step: string; title: string; first?: boolean; children: React.ReactNode;
+  step: string; title: string; first?: boolean; id?: string; children: React.ReactNode;
 }) {
   return (
-    <section style={{
+    <section id={id} style={{
       paddingTop: first ? 40 : 36,
       paddingBottom: 36,
       borderTop: first ? "none" : `0.5px solid ${RULE}`,
+      scrollMarginTop: 76,
     }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 24 }}>
         <span style={{

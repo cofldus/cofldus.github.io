@@ -130,7 +130,10 @@ function Meta({ p }: { p: Project }) {
         fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
         color: "#6B7280", lineHeight: 1.7, margin: "0 0 24px",
       }}>
-        {p.tags.join("  ·  ")}
+        {p.tags.slice(0, 3).join("  ·  ")}
+        {p.tags.length > 3 && (
+          <span style={{ color: "#C7CDD4" }}>{`  +${p.tags.length - 3}`}</span>
+        )}
       </p>
 
       <span style={{

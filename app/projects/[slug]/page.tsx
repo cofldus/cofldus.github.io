@@ -3,6 +3,9 @@ import { projects, getProjectBySlug } from "@/lib/projects";
 import type { Metadata } from "next";
 import Link from "next/link";
 import ProjectDetailClient from "./ProjectDetailClient";
+import StickyToc from "@/components/StickyToc";
+import MetricWithNote from "@/components/MetricWithNote";
+import BackLink from "@/components/BackLink";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -16,7 +19,30 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
-  return { title: `${project.title} — 이채연` };
+
+  const title = `${project.title} — 이채연`;
+  const description =
+    project.summary
+      ? `${project.summary.problem} ${project.summary.result}`
+      : project.desc.slice(0, 160);
+  const image = project.readmeImage ?? project.archImages?.[0] ?? "/icon.png";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${project.category} · ${project.title}`,
+      description,
+      type: "article",
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.category} · ${project.title}`,
+      description,
+      images: [image],
+    },
+  };
 }
 
 const A    = "#4fc0d1";
@@ -37,6 +63,22 @@ export default async function ProjectDetailPage({
   const iterCount     = p.experiments?.length ?? 0;
   const troubleCount  = p.troubleshooting?.length ?? 0;
 
+  const toc = [
+    { id: "sec-problem", label: "문제 정의" },
+    ...(p.archImages?.length ? [{ id: "sec-arch", label: "아키텍처" }] : []),
+    { id: "sec-impl", label: "핵심 구현" },
+    ...(troubleCount > 0 ? [{ id: "sec-trouble", label: "트러블슈팅" }] : []),
+    ...(p.insight ? [{ id: "sec-learned", label: "배운 점" }] : []),
+  ];
+
+  const evidence = p.evidence ?? (
+    p.repoUrl ? [{ label: p.repoName ?? "GitHub", href: p.repoUrl }] : []
+  );
+
+  const idx  = projects.findIndex((x) => x.slug === p.slug);
+  const prev = idx > 0 ? projects[idx - 1] : null;
+  const next = idx >= 0 && idx < projects.length - 1 ? projects[idx + 1] : null;
+
   return (
     <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <div style={{ height: 52 }} />
@@ -44,18 +86,16 @@ export default async function ProjectDetailPage({
       {/* ── Back nav (full-width strip) ── */}
       <div style={{ borderBottom: `1px solid ${RULE}` }}>
         <div className="detail-outer" style={{ padding: "20px var(--cp)" }}>
-          <Link
-            href="/#projects"
+          <BackLink
             className="back-link"
             style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
               letterSpacing: "0.08em", textTransform: "uppercase",
               color: SUB, textDecoration: "none", transition: "color 0.15s",
+              cursor: "pointer",
             }}
-          >
-            ← 프로젝트 목록
-          </Link>
+          />
         </div>
       </div>
 
@@ -69,13 +109,15 @@ export default async function ProjectDetailPage({
             <div style={{ padding: "48px 0 40px", borderBottom: `1px solid ${RULE}` }}>
               <div style={{
                 display: "flex", alignItems: "center", gap: 14,
-                marginBottom: 16,
+                marginBottom: 16, flexWrap: "wrap",
               }}>
                 <span style={{
-                  fontFamily: "var(--font-display)", fontSize: 11, fontWeight: 800,
-                  letterSpacing: "0.12em", color: "#94A3B8", textTransform: "uppercase",
+                  fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 700,
+                  letterSpacing: "0.08em", color: "#0E7490",
+                  background: "rgba(14,116,144,0.07)", borderRadius: 3,
+                  padding: "4px 9px", lineHeight: 1,
                 }}>
-                  PROJECT {p.num}
+                  {p.category}
                 </span>
                 {p.award && (
                   <span style={{
@@ -138,34 +180,45 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
 
-              {/* 목표 · 역할 */}
-              {(p.goal || p.myRole) && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  {p.goal && (
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                      <span style={{ fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: A, flexShrink: 0 }}>
-                        목표
-                      </span>
-                      <span style={{ width: 1, height: 11, background: RULE, flexShrink: 0, alignSelf: "center" }} />
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: 13.5, lineHeight: 1.65, color: INK, margin: 0, wordBreak: "keep-all" }}>
-                        {p.goal}
-                      </p>
-                    </div>
-                  )}
-                  {p.myRole && (
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                      <span style={{ fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: SUB, flexShrink: 0 }}>
-                        역할
-                      </span>
-                      <span style={{ width: 1, height: 11, background: RULE, flexShrink: 0, alignSelf: "center" }} />
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: 13.5, lineHeight: 1.65, color: INK, margin: 0, wordBreak: "keep-all" }}>
-                        {p.myRole}
-                      </p>
-                    </div>
-                  )}
+              {/* 상단 성과 지표 */}
+              {p.highlights.length > 0 && (
+                <div className="detail-topmetrics">
+                  {p.highlights.map((h) => (
+                    <MetricWithNote key={h.label} value={h.value} label={h.label} note={h.note} />
+                  ))}
                 </div>
               )}
             </div>
+
+            {/* 요약 카드 */}
+            {p.summary && (
+              <div className="detail-summary">
+                {[
+                  { k: "Problem", v: p.summary.problem },
+                  { k: "Solution", v: p.summary.solution },
+                  { k: "Result", v: p.summary.result },
+                  { k: "My Role", v: p.summary.role },
+                ].map((row) => (
+                  <div key={row.k} className="detail-summary-row">
+                    <span style={{
+                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700,
+                      letterSpacing: "0.1em", textTransform: "uppercase",
+                      color: row.k === "Result" ? "#0E7490" : "#94A3B8",
+                    }}>
+                      {row.k}
+                    </span>
+                    <p style={{
+                      fontFamily: "var(--font-sans)", fontSize: 14, lineHeight: 1.7,
+                      color: row.k === "Result" ? INK : "#334155", margin: 0,
+                      fontWeight: row.k === "Result" ? 600 : 400,
+                      wordBreak: "keep-all",
+                    }}>
+                      {row.v}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Readme / Overview image */}
             {p.readmeImage && (
@@ -189,79 +242,74 @@ export default async function ProjectDetailPage({
             <ProjectDetailClient project={p} />
           </div>
 
-          {/* ── RIGHT: sidebar ── */}
-          <aside className="detail-sidebar" style={{ paddingTop: 48 }}>
+          {/* ── RIGHT: sticky 목차 + 자료 ── */}
+          <aside className="detail-sidebar">
+            <div className="detail-sidebar-inner">
+              <StickyToc items={toc} />
 
-            {/* Counts */}
-            <div style={{ marginBottom: 32 }}>
-              {[
-                { n: decisionCount, label: "기술 결정" },
-                { n: iterCount,     label: "실험 라운드" },
-                { n: troubleCount,  label: "현장 이슈" },
-              ].map((s, i) => (
-                <div key={i} style={{
-                  display: "flex", justifyContent: "space-between", alignItems: "baseline",
-                  padding: "10px 0", borderBottom: `1px solid ${RULE}`,
-                }}>
-                  <span style={{ fontFamily: "var(--font-label)", fontSize: 11, color: SUB }}>
-                    {s.label}
-                  </span>
-                  <span style={{
-                    fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 900,
-                    color: INK, letterSpacing: "-0.04em",
+              {/* Evidence */}
+              {evidence.length > 0 && (
+                <div className="detail-evidence">
+                  <div style={{
+                    fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 700,
+                    color: SUB, letterSpacing: "0.1em", textTransform: "uppercase",
+                    marginBottom: 10,
                   }}>
-                    {s.n}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Highlights */}
-            {p.highlights.length > 0 && (
-              <div style={{ marginBottom: 28 }}>
-                <div style={{
-                  fontFamily: "var(--font-label)", fontSize: 9, fontWeight: 700,
-                  color: SUB, letterSpacing: "0.1em", textTransform: "uppercase",
-                  marginBottom: 14,
-                }}>
-                  성과
-                </div>
-                {p.highlights.map((h, i) => (
-                  <div key={h.label} style={{
-                    marginBottom: 14, paddingBottom: 14,
-                    borderBottom: i < p.highlights.length - 1 ? `1px solid ${RULE}` : "none",
-                  }}>
-                    <div style={{
-                      fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 900,
-                      color: A, letterSpacing: "-0.04em", lineHeight: 1,
-                    }}>
-                      {h.value}
-                    </div>
-                    <div style={{
-                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 600,
-                      color: SUB, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4,
-                    }}>
-                      {h.label}
-                    </div>
+                    자료
                   </div>
-                ))}
-              </div>
-            )}
+                  {evidence.map((e) =>
+                    e.locked ? (
+                      <span key={e.label} className="ev-item ev-item--locked">
+                        <span aria-hidden="true">🔒</span> {e.label}
+                        <span className="ev-note">비공개</span>
+                      </span>
+                    ) : (
+                      <a
+                        key={e.label}
+                        href={e.href}
+                        target={e.href?.startsWith("http") ? "_blank" : undefined}
+                        rel={e.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="ev-item"
+                      >
+                        {e.label}
+                        <span aria-hidden="true" className="ev-arrow">↗</span>
+                      </a>
+                    )
+                  )}
+                </div>
+              )}
 
-            {/* GitHub */}
-            {p.repoUrl && (
-              <a
-                href={p.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="detail-github-link"
-              >
-                GitHub ↗
-              </a>
-            )}
+              <div style={{
+                marginTop: 20, paddingTop: 14, borderTop: `1px solid ${RULE}`,
+                display: "flex", gap: 16,
+                fontFamily: "var(--font-label)", fontSize: 11, color: SUB,
+              }}>
+                <span>기술 결정 {decisionCount}</span>
+                <span>실험 {iterCount}</span>
+                <span>이슈 {troubleCount}</span>
+              </div>
+            </div>
           </aside>
 
         </div>
+
+        {/* ── 이전 / 다음 프로젝트 ── */}
+        <nav aria-label="프로젝트 이동" className="detail-pager">
+          {prev ? (
+            <Link href={`/projects/${prev.slug}`} className="pager-item pager-item--prev">
+              <span className="pager-label">← 이전 프로젝트</span>
+              <span className="pager-title">{prev.category}</span>
+              <span className="pager-sub">{prev.summary?.result ?? prev.period}</span>
+            </Link>
+          ) : <span />}
+          {next && (
+            <Link href={`/projects/${next.slug}`} className="pager-item pager-item--next">
+              <span className="pager-label">다음 프로젝트 →</span>
+              <span className="pager-title">{next.category}</span>
+              <span className="pager-sub">{next.summary?.result ?? next.period}</span>
+            </Link>
+          )}
+        </nav>
       </div>
     </main>
   );

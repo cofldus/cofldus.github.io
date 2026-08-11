@@ -2,9 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cofldus.github.io"),
   title: "이채연 — AI / NLP Engineer Portfolio",
   description:
-    "AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트.",
+    "문서 AI, 검색·RAG, LLM 최적화 프로젝트를 개발한 AI/NLP 엔지니어 이채연의 포트폴리오.",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "이채연 · AI / NLP Engineer",
+    title: "이채연 — AI / NLP Engineer",
+    description:
+      "문서 AI 항목 추출 34.1% → 91.7%, 온디바이스 LLM 응답 2.3s → 0.47s, 의료 RAG BERTScore +0.16",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "이채연 — AI / NLP Engineer",
+    description:
+      "문서 AI 항목 추출 34.1% → 91.7%, 온디바이스 LLM 응답 2.3s → 0.47s, 의료 RAG BERTScore +0.16",
+  },
 };
 
 export default function RootLayout({
