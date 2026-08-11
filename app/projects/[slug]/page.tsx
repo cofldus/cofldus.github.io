@@ -279,15 +279,16 @@ export default async function ProjectDetailPage({
                 </div>
               )}
 
-              <div style={{
-                marginTop: 20, paddingTop: 14, borderTop: `1px solid ${RULE}`,
-                display: "flex", gap: 16,
-                fontFamily: "var(--font-label)", fontSize: 11, color: SUB,
-              }}>
-                <span>기술 결정 {decisionCount}</span>
-                <span>실험 {iterCount}</span>
-                <span>이슈 {troubleCount}</span>
-              </div>
+              {(decisionCount + iterCount + troubleCount) > 0 && (
+                <p style={{
+                  marginTop: 20, paddingTop: 14, borderTop: `1px solid ${RULE}`,
+                  fontFamily: "var(--font-label)", fontSize: 11, lineHeight: 1.7,
+                  color: SUB, margin: "20px 0 0",
+                }}>
+                  기술 선택 근거 {decisionCount}건과 실험 기록 {iterCount}건은
+                  본문 하단 상세 기록에서 볼 수 있습니다.
+                </p>
+              )}
             </div>
           </aside>
 

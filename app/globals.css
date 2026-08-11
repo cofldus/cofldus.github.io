@@ -216,6 +216,44 @@ section#tech-stack {
   .pager-item--next { text-align: left; align-items: flex-start; }
 }
 
+/* Decision Log */
+.dlog {
+  margin: 0 0 18px 32px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  background: #F8FAFC;
+  padding: 4px 18px;
+}
+.dlog-row {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid #E9EEF3;
+}
+.dlog-row:last-child { border-bottom: none; }
+.dlog-k {
+  font-family: var(--font-label);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: #94A3B8;
+}
+.dlog-k--hl { color: #0E7490; }
+.dlog-v {
+  font-family: var(--font-sans);
+  font-size: 13.5px; line-height: 1.65;
+  color: #334155; word-break: keep-all;
+}
+.dlog-v--hl {
+  color: #0F172A; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .dlog { margin-left: 0; }
+  .dlog-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
 /* 숫자 정렬 */
 .detail-topmetrics, .hero-metrics, .pmore-metric {
   font-variant-numeric: tabular-nums;

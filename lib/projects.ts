@@ -2,6 +2,17 @@ export interface Decision {
   tech: string;
   reason: string;
   refs?: { label: string; url: string }[];
+  /** Decision Log 요약 — 있으면 카드 상단에 4칸으로 표시 */
+  log?: {
+    /** 왜 검토했는가 (관측된 현상) */
+    why: string;
+    /** 비교한 선택지 */
+    compared: string;
+    /** 최종 채택 */
+    chose: string;
+    /** 확인된 수치 */
+    measured: string;
+  };
 }
 
 export interface Experiment {
@@ -169,6 +180,12 @@ export const projects: Project[] = [
     decisions: [
       {
         tech: "BM25 + FAISS 하이브리드 vs 단일 벡터 검색",
+        log: {
+          why: "'폐색전증 항응고 치료 시작 기준' 질의에서 임상 수치가 기재된 문서 대신 같은 주제의 일반 설명 문서가 상위에 검색됐습니다.",
+          compared: "FAISS 단독 / BM25 단독 / BM25 + FAISS 병렬",
+          chose: "BM25(k=20) + FAISS(k=20) 병렬로 후보 40건 확보",
+          measured: "Recall@5 기준 BM25 단독 대비 11%, FAISS 단독 대비 8% 향상",
+        },
         refs: [
           { label: "RAG (Lewis et al., 2020)", url: "https://arxiv.org/abs/2005.11401" },
           { label: "FAISS (Johnson et al., 2017)", url: "https://arxiv.org/abs/1702.08734" },
@@ -179,6 +196,12 @@ export const projects: Project[] = [
       },
       {
         tech: "bge-reranker vs 단순 Top-K 점수 절삭",
+        log: {
+          why: "후보 40건을 모두 LLM에 전달했을 때 더 적은 수를 넣었을 때보다 BERTScore가 낮았습니다.",
+          compared: "후보 40건 전체 입력 / 검색 점수 상위 N건 절삭 / Cross-Encoder 재정렬 후 상위 5건",
+          chose: "bge-reranker-v2-m3로 질문과 문서를 함께 인코딩해 상위 5건 선택",
+          measured: "BERTScore +0.16 (상위 10건일 때는 개선 폭 절반 이하)",
+        },
         refs: [
           { label: "bge-reranker-v2-m3 (BAAI)", url: "https://huggingface.co/BAAI/bge-reranker-v2-m3" },
         ],
@@ -351,6 +374,12 @@ export const projects: Project[] = [
     decisions: [
       {
         tech: "LoRA + 4-bit NF4 + 토큰 Pruning 세 기법 조합",
+        log: {
+          why: "CPU 추론과 메모리 3GB 이하가 목표였는데, 한 가지 압축 기법만으로는 도달하지 못했습니다.",
+          compared: "4-bit NF4 단독 / LoRA 단독 / 토큰 Pruning 단독 / 세 기법 조합",
+          chose: "세 기법 조합 (각각 가중치 비트폭, 학습 파라미터 수, 어휘 테이블 크기를 줄임)",
+          measured: "14GB → 3.0GB (76% 감소), CPU 추론 0.3s",
+        },
         refs: [
           { label: "LoRA (Hu et al., 2021)", url: "https://arxiv.org/abs/2106.09685" },
           { label: "QLoRA/NF4 (Dettmers et al., 2023)", url: "https://arxiv.org/abs/2305.14314" },
@@ -360,11 +389,23 @@ export const projects: Project[] = [
       },
       {
         tech: "전용 FAISS 벡터 DB로 콩글리쉬 지식 분리",
+        log: {
+          why: "630개 콩글리쉬 패턴을 SFT로 학습시켰으나, 학습 후에도 비슷한 패턴을 교정하지 못하는 경우가 반복됐습니다.",
+          compared: "SFT로 가중치에 학습 / 매 요청마다 전체 DB 검색 / 검색과 판단 역할 분리",
+          chose: "역할 분리 (용례 검색은 FAISS, 문맥 판단은 LLM)",
+          measured: "패턴 DB 630건 검색 0.02초 이내",
+        },
         reason:
           "처음에는 630개 콩글리쉬 패턴을 SFT(지도 파인튜닝)로 모델 가중치에 직접 학습시켰습니다. 그러나 학습 후에도 비슷한 패턴이 입력되면 교정하지 못하거나 다른 표현으로 바꾸는 경우가 반복됐습니다. 한국인 특화 콩글리쉬는 원래 학습 데이터에 거의 없는 표현이라, 소량의 추가 학습만으로는 가중치에 안정적으로 반영되지 않았습니다. 대안으로 매 요청마다 전체 패턴 DB를 검색하는 방식을 검토했습니다. 다만 이 경우 FAISS 검색 시간이 전체 응답 시간에 그대로 더해져 온디바이스 목표와 맞지 않았습니다. 최종적으로 콩글리쉬 용례는 FAISS DB에 두고 LLM은 문법·문맥 판단만 수행하도록 역할을 나눴습니다. 어떤 패턴에 해당하는지 찾는 작업은 검색이 담당하고, 그 표현이 문맥상 어색한지 판단하는 작업은 LLM이 담당합니다. 이렇게 나눈 뒤 두 작업 모두 결과가 안정적이었습니다.",
       },
       {
-        tech: "SQLite LRU 캐시 레이어 추가",
+        tech: "FAISS HNSW → IVF 전환 및 SQLite LRU 캐시 추가",
+        log: {
+          why: "cProfile로 측정한 결과 FAISS 검색 0.21s와 SQLite 조회 0.12s가 LLM 추론보다 오래 걸렸습니다.",
+          compared: "HNSW 인덱스 / IVF 인덱스 / IVF + LRU 캐시",
+          chose: "IVF(nlist=100, nprobe=10) + SQLite LRU 캐시",
+          measured: "검색 0.21s → 0.07s, 평균 응답 추가 35% 감소",
+        },
         reason:
           "cProfile로 전체 응답 시간을 구간별로 측정했습니다. LLM 추론보다 FAISS 검색(0.21s)과 SQLite 조회(0.12s)가 차지하는 비중이 컸습니다. 먼저 FAISS 인덱스를 IVF 구조로 바꿔 검색 시간을 0.07s로 줄였습니다. 다만 사용자가 같은 콩글리쉬 표현을 반복 입력하는 경우가 많아, 매번 벡터 연산을 다시 수행할 필요는 없었습니다. 최근 조회 결과를 SQLite에 LRU(오래 참조되지 않은 항목부터 제거) 방식으로 저장하면, 이미 조회한 패턴은 0.001s 이하로 응답할 수 있습니다. 캐시를 추가한 뒤 평균 응답 시간이 35% 더 줄었습니다.",
       },
@@ -856,6 +897,12 @@ export const projects: Project[] = [
     decisions: [
       {
         tech: "문서 전체를 이해하는 AI(VLM) vs 글자 인식(OCR) + 위치 규칙",
+        log: {
+          why: "위치와 글자를 정답으로 주입해도 위치 규칙 기반 항목 연결이 78.5%를 넘지 못했습니다. 서식마다 라벨과 값의 배치가 달랐기 때문입니다.",
+          compared: "OCR + 위치 규칙 / VLM 단독 / VLM + OCR 텍스트 보조 / VLM 관계 명시형 KIE",
+          chose: "VLM 관계 명시형 KIE (OCR 텍스트를 참고로 주면 오히려 90.5% → 83.0%로 하락)",
+          measured: "동일 테스트셋 4,732 필드에서 34.1% → 91.7%",
+        },
         reason:
           "기존 엔진은 OCR로 글자를 읽은 뒤 '라벨 오른쪽 칸에 있는 값이 해당 항목의 값'이라는 위치 규칙으로 항목을 연결합니다. 합성 테스트셋 4,732 필드에서 이 방식은 34.1%였습니다. 위치와 글자를 정답으로 주입해도 연결 단계가 78.5%를 넘지 못했습니다. 서식마다 라벨과 값의 배치가 달라, 고정된 위치 규칙으로 처리할 수 있는 범위가 여기까지였습니다. 이미지 전체를 입력받아 어느 라벨에 어느 값이 대응하는지 판단하도록 지시한 VLM은 같은 테스트셋에서 91.7%였습니다. VLM에 OCR이 읽은 글자를 참고 정보로 함께 전달한 경우도 측정했는데, 정확도가 90.5%에서 83.0%로 낮아졌습니다. 기존 OCR 파이프라인은 제거하지 않고 단계별 손실을 측정하는 기준선으로 유지했습니다.",
       },

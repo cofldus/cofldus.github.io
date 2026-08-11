@@ -320,7 +320,13 @@ function DetailAppendix({ p }: { p: Project }) {
               {p.decisions.map((d, i) => (
                 <div key={d.tech}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 10 }}>
-                    <Num>{String(i + 1).padStart(2, "0")}</Num>
+                    <span style={{
+                      fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 700,
+                      color: "#0E7490", letterSpacing: "0.06em", flexShrink: 0,
+                      minWidth: 32,
+                    }}>
+                      D-{String(i + 1).padStart(2, "0")}
+                    </span>
                     <h3 style={{
                       fontFamily: "var(--font-label)", fontSize: 15, fontWeight: 700,
                       color: INK, margin: 0, letterSpacing: "-0.01em",
@@ -328,6 +334,23 @@ function DetailAppendix({ p }: { p: Project }) {
                       {d.tech}
                     </h3>
                   </div>
+
+                  {d.log && (
+                    <div className="dlog">
+                      {[
+                        { k: "Why", v: d.log.why },
+                        { k: "Compared", v: d.log.compared },
+                        { k: "Decision", v: d.log.chose },
+                        { k: "Measured", v: d.log.measured },
+                      ].map((row) => (
+                        <div key={row.k} className="dlog-row">
+                          <span className={`dlog-k${row.k === "Measured" ? " dlog-k--hl" : ""}`}>{row.k}</span>
+                          <span className={`dlog-v${row.k === "Measured" ? " dlog-v--hl" : ""}`}>{row.v}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   <p style={{
                     fontFamily: "var(--font-sans)", fontSize: 15, lineHeight: 1.8,
                     color: BODY, margin: 0, paddingLeft: 32, wordBreak: "keep-all",

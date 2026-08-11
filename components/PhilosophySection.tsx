@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 
 const links = [
-  { label: "lcylcy1717@gmail.com", href: "mailto:lcylcy1717@gmail.com", name: "Email" },
+  { label: "lcylcy3816@naver.com", href: "mailto:lcylcy3816@naver.com", name: "Email" },
   { label: "github.com/cofldus", href: "https://github.com/cofldus", name: "GitHub", external: true },
+  { label: "linkedin.com/in/chaeyeon-lee-113698274", href: "https://www.linkedin.com/in/chaeyeon-lee-113698274", name: "LinkedIn", external: true },
+  { label: "velog.io/@miainflorence", href: "https://velog.io/@miainflorence", name: "Blog", external: true },
   { label: "이력서 보기", href: "/resume_v1.html", name: "Resume" },
 ];
 
