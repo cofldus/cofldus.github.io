@@ -41,6 +41,11 @@ export interface Project {
     topic: string;
     /** 카드 한 줄 설명 */
     oneliner: string;
+    /**
+     * 카드용 짧은 기간·소속 표기. 없으면 period 를 그대로 쓴다.
+     * 사실값은 period 한 곳에서 관리하고, 여기서는 표기만 줄인다.
+     */
+    period?: string;
     thumbImg?: string;
     thumbBg?: string;
     thumbAutoHeight?: boolean;
@@ -160,6 +165,7 @@ export const projects: Project[] = [
   {
     slug: "airpa",
     card: {
+      period: "2023.11",
       topic: "진로 상담 교사의 학과 탐색·요약을 자동화하는 교육 지원 시스템",
       oneliner: "AiRPA — UiPath RPA와 T5 요약 모델로 인당 30분 학과 탐색을 즉시 완료하는 자동화 서비스",
       thumbBg: "#FFFFFF",
@@ -167,7 +173,7 @@ export const projects: Project[] = [
     num: "01",
     title: "AiRPA: 학과 탐색 자동화 시스템",
     subtitle: "이질적인 3개 소스를 RPA로 수집하고 T5 요약으로 포맷을 통일",
-    period: "한국지능정보사회진흥원 해커톤",
+    period: "2023.11 · 한국지능정보사회진흥원 해커톤",
     goal: "진로 상담 교사의 학과 탐색·요약 시간을 인당 30분 → 즉시로 단축, 학생 가치관 기반 개인화 추천 리포트 자동 생성",
     myRole: "전체 아키텍처 설계 · UiPath RPA 시나리오 구현 · T5 요약 모델 연동 · 개인화 추천 로직 및 엑셀 리포트 출력 개발",
     desc: "진로 상담 교사가 학생 한 명을 위해 교육부 포털, 대학알리미, 졸업생 블로그를 직접 찾아보고 정리하는 데 30분 이상을 쓴다는 현장 관찰에서 시작했습니다.\n\n세 소스는 로그인 방식과 동적 로딩 구조, 데이터 포맷이 모두 달라 하나의 스크래퍼로 묶기 어려웠습니다. 실제 브라우저를 구동하는 UiPath RPA를 쓰면 소스별 차이를 별도 코드 없이 처리할 수 있어 이 방식을 택했습니다.\n\n수집한 텍스트는 소스마다 형식이 달라 그대로는 비교가 안 됐습니다. T5 추상 요약으로 일정한 형식으로 압축한 뒤, 학생 가치관 설문 기반 5개 시나리오로 추천까지 연결했습니다.",
@@ -248,6 +254,7 @@ export const projects: Project[] = [
   {
     slug: "medical-chatbot",
     card: {
+      period: "멋쟁이사자처럼 · 팀 프로젝트",
       topic: "의료 질의에 근거 있는 답변을 제공하는 Advanced RAG 시스템",
       oneliner: "BM25·FAISS·ReRanker를 결합해 전문 의료 데이터 검색 정확도를 높인 근거 기반 답변 시스템",
     },
@@ -334,6 +341,7 @@ export const projects: Project[] = [
   {
     slug: "korean-noise-restoration",
     card: {
+      period: "2026.01 · AI 자연어처리 과정 3기",
       topic: "난독화된 한글 리뷰를 유형별로 복원하는 NLP 파이프라인",
       oneliner: "KoELECTRA 분류기와 KoBART 복원 모델을 분기해 노이즈 유형별 복원 안정성을 높인 시스템",
     },
@@ -424,6 +432,7 @@ export const projects: Project[] = [
   {
     slug: "killkong",
     card: {
+      period: "2025.07–08",
       topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
       oneliner: "LoRA·4bit 양자화와 FAISS 개인화 메모리로 0.47초 응답을 구현한 콩글리시 교정 에이전트",
     },
@@ -561,6 +570,7 @@ export const projects: Project[] = [
   {
     slug: "ct-mri-cyclegan",
     card: {
+      period: "2023.06–09 · 딥러닝연구개발소 연구원",
       topic: "CT→MRI 의료영상 변환 연구",
       oneliner: "CycleGAN 기반 도메인 변환으로 구조 보존 성능을 개선한 생성 모델 실험",
       thumbImg: "/arch/ct-mri-result.png",
@@ -619,13 +629,14 @@ export const projects: Project[] = [
   {
     slug: "hunchgame",
     card: {
+      period: "2023.09",
       topic: "유동인구 밀집도를 예측해 혼잡 회피 경로를 실시간으로 추천하는 안전 서비스",
       oneliner: "HunchGame — FP-Growth 패턴 마이닝과 XGBoost 밀집도 예측으로 행사장 분산 동선을 제공하는 시스템",
     },
     num: "07",
     title: "눈치게임: 인파 분산 서비스",
     subtitle: "혼잡도·거리 등 4개 지표를 가중 합산해 대안 장소를 추천",
-    period: "성신여자대학교 IT경진대회",
+    period: "2023.09 · 성신여자대학교 IT경진대회",
     goal: "축제·행사 시 특정 장소에 인파가 밀집되는 현상을 실시간 위치 데이터로 분산 유도, 안전사고 예방 서비스 구현",
     myRole: "위치 기반 혼잡도 알고리즘 설계 · 게이미피케이션 인센티브 시스템 개발 · 팀 기획 및 발표 리드",
     desc: "인파가 한 지점에 몰릴 때 위험을 알리는 것만으로는 이동이 일어나지 않습니다. 지금 갈 수 있는 다른 장소를 함께 제시해야 합니다.\n\nNaver Maps 혼잡도 API와 사용자 제보, 그리고 seed_data.py로 연령·성별·시간대를 조합해 만든 시뮬레이션 이동 로그를 함께 사용했습니다. FP-Growth로 이 로그에서 장소 간 이동 패턴을 추출했습니다.\n\n추천 점수는 혼잡도, 거리, 장소 유사도, 시간대 네 지표를 정규화해 가중 합산합니다. 인파가 몰리는 시점에는 네트워크가 불안정해질 수 있어, 히트맵과 추천 결과를 기기 내 SQLite에 캐싱하는 구조를 처음부터 포함했습니다.",
@@ -669,6 +680,7 @@ export const projects: Project[] = [
   {
     slug: "lovelop",
     card: {
+      period: "2026.02 · AI 자연어처리 과정 3기",
       topic: "가게 운영 변화를 고객 반응으로 미리 검증하는 AI 시뮬레이션 플랫폼",
       oneliner: "160개 AI 고객 페르소나와 11개 지표로 가격·메뉴·운영 변화의 영향을 실험하는 의사결정 지원 시스템",
       thumbBg: "#FFFFFF",
@@ -749,12 +761,13 @@ export const projects: Project[] = [
   {
     slug: "llm-for-science",
     card: {
+      period: "2026.03– · Pseudo Lab · 진행 중",
       topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구 프로젝트",
       oneliner: "LLM for Science — CPT·SFT·GDPO 파이프라인으로 arXiv·PubMed 데이터를 과학 도메인에 정렬하는 오픈 리서치",
     },
     num: "09",
     title: "LLM for Science: 과학 도메인 특화 CPT·GDPO 연구",
-    period: "Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중",
+    period: "2026.03– · Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중",
     goal: "과학 도메인(arXiv·PubMed) 특화 LLM 개발을 위한 CPT·SFT·GDPO 파이프라인 리서치, 수식·표 무손실 처리 방법론 탐구",
     myRole: "Nougat/Marker 기반 파싱 파이프라인 분석 · CPT/SFT 데이터 생성 구조 스터디 · GDPO 멀티 리워드 RL 실험 참여",
     desc: "Pseudo Lab 오픈 리서치 커뮤니티의 스터디 멤버로 참여 중인 공동 연구입니다. 제 기여 범위는 파싱 파이프라인 분석, CPT 데이터 전략 스터디, GDPO 실험 참여입니다.\n\n과학 도메인 LLM 구축에는 서로 다른 세 가지 문제가 있습니다. 첫째, 일반 텍스트 파서가 수식과 표를 손실시킵니다. 둘째, 도메인 특화 학습이 기존 언어 능력을 저하시킵니다. 셋째, 사실 정확도와 형식 준수, 응답 간결성을 하나의 보상 값으로 합치면 서로 상충합니다.\n\n세 문제를 하나의 파이프라인으로 묶지 않고 각각 다른 기술로 다루는 3단계 구성으로 연구가 진행됩니다.",
@@ -797,6 +810,7 @@ export const projects: Project[] = [
   {
     slug: "rocketan",
     card: {
+      period: "2026.03–04 · 로켓단 인턴십",
       topic: "강의 자료에서 맥락 기반 퀴즈와 학습 가이드를 자동 생성하는 RAG 시스템",
       oneliner: "로켓단 퀴즈 생성기 — FAISS 벡터 검색과 LangChain으로 강의 내용 기반 문항을 즉시 생성하는 출제 자동화 서비스",
       thumbAutoHeight: true,
@@ -869,6 +883,7 @@ export const projects: Project[] = [
   {
     slug: "moim",
     card: {
+      period: "2024.12–2025.03 · 경기대 LINKVERSE",
       topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",
       oneliner: "MOIM — STOMP WebSocket과 Kakao Maps를 채팅과 통합해 외부 앱 없이 장소 선택부터 모임 확정까지 지원하는 서비스",
     },

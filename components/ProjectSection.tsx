@@ -507,6 +507,8 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
   const cardDesc = p.card?.oneliner ?? p.subtitle ?? "";
   const thumbImg = p.card?.thumbImg;
   const thumbBg = p.card?.thumbBg ?? p.thumbBg;
+  // 사실값은 period 한 곳에서 관리하고, 카드에서는 짧은 표기만 쓴다
+  const cardPeriod = p.card?.period ?? p.period;
 
   return (
     <motion.article
@@ -549,12 +551,12 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         {/* 프로젝트 성격 / 기간 */}
         <div style={{ marginBottom: 12 }}>
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6, alignItems: "center" }}>
-            {p.period && (
+            {cardPeriod && (
               <span style={{
                 fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 400,
                 color: "var(--ink-light)", lineHeight: 1.4,
               }}>
-                {p.period}
+                {cardPeriod}
               </span>
             )}
             {p.award && (
