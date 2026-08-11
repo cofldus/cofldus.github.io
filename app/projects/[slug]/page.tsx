@@ -105,11 +105,21 @@ export default async function ProjectDetailPage({
                 fontSize: "clamp(22px, 2.8vw, 38px)",
                 fontWeight: 700, color: INK,
                 letterSpacing: "-0.025em", lineHeight: 1.2,
-                marginBottom: 16,
+                marginBottom: p.subtitle ? 9 : 16,
                 wordBreak: "keep-all", overflowWrap: "break-word",
               }}>
                 {p.title}
               </h1>
+
+              {p.subtitle && (
+                <p style={{
+                  fontFamily: "var(--font-sans)", fontSize: 14.5,
+                  lineHeight: 1.6, color: SUB, margin: "0 0 16px",
+                  wordBreak: "keep-all",
+                }}>
+                  {p.subtitle}
+                </p>
+              )}
 
               <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
                 <p style={{

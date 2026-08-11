@@ -8,8 +8,11 @@ const INK  = "#0F172A";
 const BODY = "#334155";
 const RULE = "#E2E8F0";
 
-/** 인사이트 문자열을 3문장 단위 단락으로 분리 */
+/** 인사이트 문자열을 단락으로 분리 (\n\n 우선, 없으면 3문장 단위) */
 function splitInsight(text: string): string[] {
+  if (text.includes("\n\n")) {
+    return text.split("\n\n").map((s) => s.trim()).filter(Boolean);
+  }
   const sentences = text.split(/(?<=다[.!])\s+/).filter(Boolean);
   const out: string[] = [];
   for (let i = 0; i < sentences.length; i += 3) {
@@ -24,13 +27,17 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
 
       {/* 01 — 문제 정의 */}
       <Section step="01" title="문제 정의 및 접근" first>
-        <p style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 16.5, lineHeight: 1.85, color: BODY,
-          margin: 0, wordBreak: "keep-all",
-        }}>
-          {p.desc}
-        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {p.desc.split("\n\n").map((para, i) => (
+            <p key={i} style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: 16.5, lineHeight: 1.85, color: BODY,
+              margin: 0, wordBreak: "keep-all",
+            }}>
+              {para}
+            </p>
+          ))}
+        </div>
       </Section>
 
       {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
@@ -92,9 +99,9 @@ export default function ProjectDetailClient({ project: p }: { project: Project }
         </Section>
       )}
 
-      {/* 04 — 배운 점 */}
+      {/* 04 — 배운 점 / 결과 해석 */}
       {p.insight && (
-        <Section step="04" title="배운 점">
+        <Section step="04" title={p.insightLabel ?? "배운 점"}>
           <div style={{
             paddingLeft: 20,
             borderLeft: `3px solid ${A}`,
