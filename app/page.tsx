@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ImpactSection from "@/components/ImpactSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectSection from "@/components/ProjectSection";
 import EducationSection from "@/components/EducationSection";
@@ -13,9 +12,8 @@ export default function Home() {
       <Navbar />
       <main style={{ paddingTop: 52 }}>
         <Hero />
-        <ImpactSection />
-        <SkillsSection />
         <ProjectSection />
+        <SkillsSection />
         <EducationSection />
         <PhilosophySection />
       </main>

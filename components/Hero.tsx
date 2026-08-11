@@ -161,7 +161,6 @@ function RevealLine({
 export default function Hero() {
   const company = useCompany();
   const subtextControls = useAnimation();
-  const labelControls = useAnimation();
   const photoControls = useAnimation();
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -170,11 +169,9 @@ export default function Hero() {
   useEffect(() => {
     if (!isInView) return;
 
-    labelControls.set({ opacity: 0 });
     photoControls.set({ opacity: 0 });
     subtextControls.start("hidden");
 
-    labelControls.start({ opacity: 1, transition: { duration: 0.5 } });
     photoControls.start({ opacity: 1, transition: { duration: 0.9, delay: 0.2 } });
     subtextControls.start("show");
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,23 +190,6 @@ export default function Hero() {
         padding: "52px var(--cp) 48px",
       }}>
 
-        {/* 상단 라벨 */}
-        <motion.p
-          animate={labelControls}
-          initial={{ opacity: 0 }}
-          style={{
-            fontFamily: "var(--font-label)",
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#9CA3AF",
-            marginBottom: 24,
-          }}
-        >
-          {company.label}
-        </motion.p>
-
         {/* 메인 레이아웃: 헤드라인 + 사진 */}
         <div style={{
           display: "flex",
@@ -217,27 +197,33 @@ export default function Hero() {
           gap: "clamp(32px, 5vw, 80px)",
           marginBottom: 32,
         }}>
-          <h1
-            style={{
-              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-              fontSize: "clamp(32px, 4.4vw, 62px)",
-              fontWeight: 300,
-              lineHeight: 1.18,
-              color: "#0A0A0A",
-              margin: 0,
-              flex: 1,
-              minWidth: 0,
-              paddingLeft: 4,
-            }}
-          >
-            {/* line 1: clip reveal 0.25s 후 */}
-            <span style={{ display: "block", position: "relative" }}>
-              <RevealLine text={company.headline1} revealDelay={0.25} waveDelay={1.2} scaleOrigin="left" />
-              <StarCluster />
-            </span>
-            {/* line 2: clip reveal 0.9s 후, 착지 후 부들부들 */}
-            <RevealLine text={company.headline2} revealDelay={0.9} waveDelay={2.35} shake />
-          </h1>
+          <div style={{ flex: 1, minWidth: 0, paddingLeft: 4 }}>
+            <h1
+              style={{
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                fontSize: "clamp(38px, 5vw, 70px)",
+                fontWeight: 300,
+                lineHeight: 1.1,
+                color: "#0A0A0A",
+                margin: 0,
+              }}
+            >
+              <span style={{ display: "block", position: "relative" }}>
+                <RevealLine text={company.headline1} revealDelay={0.25} waveDelay={1.2} scaleOrigin="left" />
+                <StarCluster />
+              </span>
+            </h1>
+            <p style={{
+              fontFamily: "var(--font-label)",
+              fontSize: "clamp(14px, 1.5vw, 19px)",
+              fontWeight: 500,
+              letterSpacing: "0.02em",
+              color: "#6B7280",
+              margin: "14px 0 0",
+            }}>
+              {company.headline2}
+            </p>
+          </div>
 
           {/* 사진 */}
           <motion.div
@@ -265,50 +251,63 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 하단: 서브카피 + CTA */}
+        {/* 하단: 서브카피 + 지표 + CTA */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={subtextControls}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "clamp(24px, 4vw, 64px)",
-            flexWrap: "wrap",
-            paddingTop: 24,
-          }}
         >
           <motion.p
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.032 } },
-            }}
+            variants={fadeUp}
             style={{
               fontFamily: "var(--font-sans)",
-              fontSize: 13.5,
+              fontSize: 14.5,
               lineHeight: 1.85,
-              color: "#6B7280",
+              color: "#4B5563",
               fontWeight: 400,
               margin: 0,
-              flex: 1,
-              minWidth: 200,
+              whiteSpace: "pre-line",
+              wordBreak: "keep-all",
             }}
           >
-            {company.subtext.split("").map((ch, i) => (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, y: 7 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.28, ease: "easeOut" } },
-                }}
-                style={{ display: "inline-block", whiteSpace: ch === " " ? "pre" : "normal" }}
-              >
-                {ch}
-              </motion.span>
-            ))}
+            {company.subtext}
           </motion.p>
 
-          <motion.div variants={fadeUp} style={{ display: "flex", gap: 20, alignItems: "center", flexShrink: 0 }}>
+          {/* 대표 지표 3개 */}
+          {company.metrics && (
+            <motion.div
+              variants={fadeUp}
+              className="hero-metrics"
+              style={{ marginTop: 40, paddingTop: 28, borderTop: "1px solid rgba(10,10,10,0.08)" }}
+            >
+              {company.metrics.map((m) => (
+                <div key={m.label}>
+                  <div style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "clamp(20px, 2.2vw, 28px)",
+                    fontWeight: 500,
+                    letterSpacing: "-0.02em",
+                    color: "#0A0A0A",
+                    lineHeight: 1.15,
+                    whiteSpace: "nowrap",
+                  }}>
+                    {m.value}
+                  </div>
+                  <div style={{
+                    fontFamily: "var(--font-label)",
+                    fontSize: 11.5,
+                    color: "#9CA3AF",
+                    marginTop: 7,
+                    letterSpacing: "0.02em",
+                  }}>
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          <motion.div variants={fadeUp} style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap", marginTop: 40 }}>
             <a
               href="#projects"
               style={{
@@ -322,7 +321,7 @@ export default function Hero() {
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >
-              View Projects
+              프로젝트
             </a>
             <a
               href="/resume_v1.html"
@@ -345,7 +344,7 @@ export default function Hero() {
                 e.currentTarget.style.color = "#6B7280";
               }}
             >
-              Resume
+              이력서
             </a>
           </motion.div>
         </motion.div>
@@ -356,6 +355,14 @@ export default function Hero() {
         .hero-photo-col { display: none !important; }
         @media (min-width: 768px) {
           .hero-photo-col { display: block !important; }
+        }
+        .hero-metrics {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 32px;
+        }
+        @media (max-width: 640px) {
+          .hero-metrics { grid-template-columns: 1fr; gap: 20px; }
         }
       `}</style>
     </section>

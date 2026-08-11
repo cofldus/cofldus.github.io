@@ -1,756 +1,153 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useCompany } from "@/context/CompanyContext";
 
 interface Project {
   slug: string;
-  num: string;
   title: string;
-  topic: string;
-  oneliner: string;
-  date?: string;
-  period?: string;
-  desc: string;
-  bullets: string[];
+  period: string;
+  /** 카드 한 문장 요약 */
+  headline: string;
+  /** 카드에 노출할 대표 수치 하나 */
+  metric: string;
+  metricLabel: string;
   tags: string[];
   award?: string;
-  repoUrl?: string;
-  repoName?: string;
   videoUrl?: string;
-  youtubeId?: string;
-  thumbBg?: string;
   thumbImg?: string;
-  thumbAutoHeight?: boolean;
+  thumbBg?: string;
 }
 
-const projects: Project[] = [
-  {
-    slug: "airpa",
-    num: "01",
-    title: "AiRPA: 학생 진로 탐색 자동화 시스템",
-    topic: "진로 상담 교사의 학과 탐색·요약을 자동화하는 교육 지원 시스템",
-    oneliner: "UiPath RPA와 T5 요약 모델로 인당 30분 걸리던 학과 탐색을 자동화한 서비스",
-    date: "2023.11",
-    desc: "진로 상담 교사가 학생 한 명을 위해 교육부 포털·대학알리미·졸업생 블로그를 수동 탐색·요약하는 데 인당 30분 이상을 소비한다는 현장 관찰에서 시작했습니다. 소스마다 로그인 방식과 동적 로딩 구조, 데이터 포맷이 달라 단일 스크래퍼로는 통합이 어려웠습니다. 실제 브라우저를 구동하는 RPA로 소스별 차이를 흡수하고, T5 모델로 수집된 비정형 텍스트를 일관된 요약으로 압축한 뒤, 학생 가치관 설문 기반 5개 시나리오로 개인화 추천까지 연결했습니다.",
-    bullets: [
-      "UiPath RPA로 로그인·동적 로딩 포함 3개 이질적 소스에서 학과 정보·졸업생 후기 평균 200건 자동 수집",
-      "T5 추상 요약으로 소스별 포맷을 통일: TF-IDF 대비 문장 자연도 23% 향상, 학과 100개 처리 시간 8h→3h 단축",
-      "설문 기반 '안정성 중시형·성장 지향형' 등 5가지 시나리오로 개인화 추천, 전체 자동화율 95%+",
-    ],
-    tags: ["UiPath RPA", "Python", "HuggingFace T5", "TF-IDF", "Excel 자동화"],
-    award: "한국지능정보사회진흥원 해커톤 특별상",
-    videoUrl: "/airpa_demo.mp4",
-    thumbBg: "#FFFFFF",
-  },
-  {
-    slug: "medical-chatbot",
-    num: "02",
-    title: "BM25·FAISS·리랭커 3단 파이프라인으로 설계한 의료 자문봇",
-    topic: "의료 질의에 근거 있는 답변을 제공하는 Advanced RAG 시스템",
-    oneliner: "BM25·FAISS·ReRanker를 결합해 전문 의료 데이터 검색 정확도를 높인 근거 기반 답변 시스템",
-    period: "AI NLP 집중과정 · 팀",
-    desc: "FAISS 벡터 검색만 사용했을 때 전문 의학 용어가 포함된 문서를 찾지 못하는 경우가 있었습니다. 검색된 문서를 모두 LLM에 전달하면 관련 없는 문서 내용이 답변에 인용되는 문제도 있었습니다. 검색을 두 단계로 나눴습니다. 정확한 용어 일치는 BM25가, 의미 유사도는 FAISS가 담당해 후보를 모으고, bge-reranker가 질문과 각 문서를 다시 비교해 상위 5건만 LLM에 전달합니다. 5.5만 건 전문 의학 JSON(약 2.2억 토큰) 코퍼스를 사용했습니다.",
-    bullets: [
-      "BM25(정확한 용어 일치, k=20)와 FAISS(의미 유사도, k=20)를 함께 실행해 정답 문서가 후보에 포함되는 비율 개선",
-      "BAAI/bge-reranker-v2-m3로 후보 40건을 질문과 다시 비교해 상위 5건 선택, LLM에 전달하는 문서 수 축소",
-      "직접 설계한 평가셋(의학 QA 100문항, 전공자 1인 검수)으로 reranker 적용 전후 비교: 객관식 정확도 +0.04, 서술형 BERTScore +0.16",
-    ],
-    tags: ["EXAONE-3.5", "BM25", "FAISS", "RAG", "bge-reranker-v2-m3", "LangChain", "Python"],
-    videoUrl: "/medical-chatbot_demo.mp4",
-    repoUrl: "https://github.com/cofldus/medical-chatbot_aegis-bio-sentinels",
-    repoName: "medical-chatbot_aegis-bio-sentinels",
-  },
-  {
-    slug: "korean-noise-restoration",
-    num: "03",
-    title: "분류기→복원기 2단 구조로 재설계한 한글 난독화 복원 AI",
-    topic: "난독화된 한글 리뷰를 유형별로 복원하는 NLP 파이프라인",
-    oneliner: "KoELECTRA 분류기와 KoBART 복원 모델을 분기해 노이즈 유형별 복원 안정성을 높인 시스템",
-    date: "2026.01",
-    period: "AI NLP 집중과정 3기",
-    desc: "변형된 리뷰 텍스트를 원래 표기로 되돌리는 프로젝트입니다. 변형 유형은 두 가지입니다. 야민정음은 '머'를 '뫄'처럼 모양이 비슷한 글자로 바꾸고, 음운 오류는 '됩니다'를 '됩니당'처럼 발음이 비슷한 표기로 바꿉니다. 복원할 때 참고하는 정보가 각각 글자 모양과 발음으로 다릅니다. 하나의 모델로 함께 학습했을 때 두 유형이 섞인 문장에서 출력이 일정하지 않았고, 학습 데이터를 3배로 늘려도 오류율이 줄지 않았습니다. 변형 유형을 먼저 분류한 뒤 유형별 복원 모델로 전달하는 구조로 변경했습니다.",
-    bullets: [
-      "KoELECTRA Noise Classifier로 입력 유형 판별 후 야민정음·음운오류 전용 KoBART 모델로 분기 처리",
-      "BPE 토크나이저가 야민정음 자모를 [UNK]로 처리하는 문제를 먼저 해결: JAMO(초·중·종성) 전처리로 토큰 손실 방지",
-      "BERTScore 0.9812 · CER 0.0426 달성, 분기 설계 도입 전 베이스라인 대비 +5.6%p 개선",
-    ],
-    tags: ["KoBART", "KoELECTRA", "JAMO", "Noise Classifier", "PyTorch", "HuggingFace"],
-    videoUrl: "/korean-noise-restoration_demo.mp4",
-    repoUrl: "https://github.com/cofldus/korean-noise-restoration",
-    repoName: "korean-noise-restoration",
-  },
-  {
-    slug: "killkong",
-    num: "04",
-    title: "맥락 기반 콩글리쉬 교정 에이전트: ARM CPU 실시간 추론을 위한 76% 압축·역할 분리",
-    topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
-    oneliner: "LoRA·4bit 양자화와 FAISS 개인화 메모리로 0.47초 응답을 구현한 콩글리시 교정 에이전트",
-    date: "2025.07–08",
-    desc: "'블랙 컨슈머', 'after 신청' 같은 한국인 특화 콩글리쉬는 LLM 학습 데이터에 거의 없어 교정 결과가 일정하지 않았습니다. 서비스를 스마트폰에서 동작시키기로 하면서 14GB 모델을 ARM CPU에서 실행해야 하는 제약이 추가됐습니다. 모델 압축과 지식 분리를 함께 설계했습니다. LLM은 문법과 문맥 판단만 수행하고, 콩글리쉬 용례는 별도 벡터 DB에서 검색해 전달합니다.",
-    bullets: [
-      "모델 압축: LoRA + 4-bit NF4 양자화 + 멀티링구얼 토큰 Pruning(~10%) 조합으로 14GB→3.0GB(76%), ARM CPU(Snapdragon 865 기준) 추론 0.3s",
-      "지식 분리: FAISS(IVF)와 SQLite LRU 캐시를 함께 사용해 630개 콩글리쉬 패턴 DB(SNS·커뮤니티 크롤링 + 수기 검수)를 0.02초 내 검색",
-      "응답 지연 2.3s → 0.47s(Snapdragon 865 측정). cProfile로 측정한 결과 FAISS 검색 0.21s와 SQLite 조회 0.12s가 LLM 추론보다 오래 걸려 두 구간을 먼저 최적화",
-    ],
-    tags: ["Qwen2.5", "LoRA", "4-bit 양자화", "FAISS", "BM25", "SQLite", "LangChain", "FastAPI", "Docker"],
-    award: "포스코 인재창조원 장려상 · 팀 리더",
-    videoUrl: "/killkong_demo.mp4",
-    repoUrl: "https://github.com/cofldus/killkong_konglish-corrector",
-    repoName: "killkong_konglish-corrector",
-  },
-  {
-    slug: "finview",
-    num: "05",
-    title: "500개 상장사 재무를 즉시 해설해주는 AI 애널리스트",
-    topic: "재무제표와 뉴스를 함께 해석하는 생성형 AI 재무 분석 서비스",
-    oneliner: "공시 수치 계산 모듈과 GPT 리포트 생성을 분리해 재무 리스크를 설명하는 AI 애널리스트",
-    date: "2024.09–11",
-    period: "성신여대 · 팀장",
-    desc: "재무 비율 계산을 GPT-4에 직접 요청하면 같은 입력에서도 계산 결과가 달라지는 경우가 있었습니다. 수치 계산과 해설 생성을 분리했습니다. XGBoost가 500개 상장사의 재무지표를 A~D 등급으로 분류하고, KMeans가 업종과 규모가 유사한 기업을 묶습니다. GPT-4에는 이 결과와 근거 데이터만 전달하고, GPT-4는 결과를 설명하는 역할만 담당합니다.",
-    bullets: [
-      "ETL 파이프라인: DART API(500개 상장사 재무제표) + 네이버 뉴스 200건 자동 수집 → XGBoost 신용 등급 분류(91%) + KMeans 군집화",
-      "GPT-4에는 군집 평균 패턴과 리스크 태그를 전달하고 계산은 Python 코드에서 처리, GPT-4 응답에 직접 계산한 수치가 포함된 비율이 80% 감소(전후 각 50건 수동 확인)",
-      "리포트 생성 5분→30초(10배 단축), 사용자 만족도 4.4/5.0",
-    ],
-    tags: ["GPT-4", "XGBoost", "KMeans", "SHAP", "SMOTE", "DART API", "Flask", "D3.js"],
-    videoUrl: "/finview_demo.mp4",
-    thumbBg: "#FFFFFF",
-    repoUrl: "https://github.com/cofldus/finview_generative-ai-report",
-    repoName: "finview_generative-ai-report",
-  },
-  {
-    slug: "ct-mri-cyclegan",
-    num: "06",
-    title: "CycleGAN 기반 CT→MRI 교차-모달리티 변환",
-    topic: "CT→MRI 의료영상 변환 연구",
-    oneliner: "CycleGAN 기반 도메인 변환으로 구조 보존 성능을 개선한 생성 모델 실험",
-    date: "2023.06–09",
-    period: "딥러닝연구개발소",
-    desc: "CT·MRI 도메인 간 Cycle-Consistency Loss 기반 비지도 교차-모달리티 변환 연구입니다. 같은 환자의 CT와 MRI를 같은 시점에 촬영한 Paired 데이터는 임상에서 구하기 어려워 Unpaired Image-to-Image Translation으로 접근했고, Generator와 Discriminator의 학습 불균형에서 오는 GAN 특유의 불안정성은 학습률·업데이트 비율 실험으로 잡았습니다.",
-    bullets: [
-      "Loss 조합 실험: ResNet-9 + VGG Perceptual Loss + Identity Loss로 저주파 구조(뼈·장기 경계) 보존, Spectral Norm으로 학습 안정성 확보",
-      "GAN 학습 불균형 해소: G·D 학습률 분리(2e-4/1e-4) + 업데이트 비율 G:D=2:1 설계로 모드 콜랩스 없이 수렴",
-      "정량 평가: SSIM 0.82→0.88(+6.2%p), 해부학적 구조 유실률 30% 감소 · 의료진 맹검 평가 80% '진단 보조 가치 있음'",
-    ],
-    tags: ["CycleGAN", "ResNet-9", "PatchGAN", "VGG Perceptual Loss", "Spectral Norm", "PyTorch", "OpenCV"],
-    repoUrl: "https://github.com/cofldus/medical_image_translation",
-    repoName: "medical_image_translation",
-    thumbBg: "#0F172A",
-    thumbImg: "/arch/ct-mri-result.png",
-  },
-  {
-    slug: "hunchgame",
-    num: "07",
-    title: "눈치게임: 위치 기반 인파 분산 서비스",
-    topic: "유동인구 밀집도를 예측해 혼잡 회피 경로를 실시간으로 추천하는 안전 서비스",
-    oneliner: "FP-Growth 패턴 마이닝과 XGBoost 밀집도 예측으로 행사장 분산 동선을 제공하는 시스템",
-    date: "2023.09",
-    desc: "압사 사고는 군중이 대안을 모른 채 한 지점에 몰릴 때 일어납니다. 위험하다고 알리는 것만으로는 부족하고 지금 갈 수 있는 다른 장소를 함께 제시해야 합니다. Naver Maps 혼잡도 API와 사용자 제보, seed_data.py로 연령·성별·시간대를 조합해 만든 시뮬레이션 이동 로그를 합쳐 FP-Growth로 이동 패턴을 뽑고, 혼잡도·거리·장소 유사도·시간대 4개 가중치로 추천 점수를 설계했습니다. 인파가 몰리는 순간에는 네트워크도 불안정해지기 때문에 오프라인 SQLite 캐시를 처음부터 구조에 넣었습니다.",
-    bullets: [
-      "FP-Growth로 시뮬레이션 이동 로그(seed_data.py: 연령·성별·시간대 변수 조합 생성, 10,000건 처리 검증) + Naver Maps 혼잡도 조합 → 장소 간 이동 선호 연관 규칙 추출",
-      "추천 점수 엔진: 혼잡도(40%)·거리(30%)·장소 유사도(20%)·시간대(10%) 정규화 가중치 설계",
-      "오프라인 대응: SQLite 기기 내 캐시로 서버 응답 없이도 히트맵·추천 동작, 실시간 밀집도 예측 84%·혼잡 회피율 87% 달성",
-    ],
-    tags: ["FP-Growth", "SQLite", "Python", "위치 API", "히트맵", "추천 엔진"],
-    award: "성신여자대학교 IT경진대회 장려상",
-    videoUrl: "/hunchgame_demo.mp4",
-    repoUrl: "https://github.com/cofldus/hunchgame_density-predict-service",
-    repoName: "hunchgame_density-predict-service",
-  },
-  {
-    slug: "lovelop",
-    num: "08",
-    title: "160 AI 고객 페르소나로 운영 변화 전후 소비 행동을 시뮬레이션하는 실상권 플랫폼",
-    topic: "가게 운영 변화를 고객 반응으로 미리 검증하는 AI 시뮬레이션 플랫폼",
-    oneliner: "160개 AI 고객 페르소나와 11개 지표로 가격·메뉴·운영 변화의 영향을 실험하는 의사결정 지원 시스템",
-    date: "2026.02",
-    period: "AI NLP 집중과정 3기",
-    desc: "자영업자 15명을 인터뷰한 결과, 매출 예측값보다 매장 조건을 바꿨을 때의 변화를 확인하고 싶다는 요구가 반복해서 나왔습니다. 매출을 예측하는 대신 조건을 바꿔 실행해 보는 시뮬레이션 구조로 설계했습니다. 조건별 고객 반응은 160개의 AI 페르소나가 각각 판단하며, 각 페르소나는 인지부터 재방문까지 5단계를 거칩니다. LLM 호출은 상권 수치를 정리하는 단계와 전략을 제안하는 단계로 나눴습니다.",
-    bullets: [
-      "LLM 호출 2단계 분리: Temperature 0.1로 상권 수치를 정리한 뒤 Temperature 0.7로 전략을 제안하도록 순차 실행",
-      "160개 페르소나 시뮬레이션: 방문 목적 4유형, 세대 5종, 성별과 동반 인원을 조합해 고객 구성을 재현하고 각 페르소나가 5단계 의사결정 수행",
-      "조건 변경 전후를 11개 지표로 비교하는 리포트 생성, 자영업자 대상 조사에서 사용 의향 80% 확인",
-    ],
-    tags: ["GPT-4.1", "Multi-Agent", "LLM Agent", "Gemma-2-9b", "EXAONE", "Python", "React", "Flask"],
-    videoUrl: "/lovelop_demo.mp4",
-    thumbBg: "#FFFFFF",
-    repoUrl: "https://github.com/cofldus/lovelop_commerce-agent-simulation",
-    repoName: "lovelop_commerce-agent-simulation",
-  },
-  {
-    slug: "llm-for-science",
-    num: "09",
-    title: "LLM for Science: 과학 도메인 특화 CPT·GDPO 연구",
-    topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구 프로젝트",
-    oneliner: "CPT·SFT·GDPO 파이프라인으로 arXiv·PubMed 데이터를 과학 도메인에 정렬하는 오픈 리서치",
-    date: "2026.03~",
-    period: "Pseudo Lab · 진행 중",
-    desc: "과학 도메인 LLM 구축에는 병목이 세 가지 있습니다. 일반 텍스트 파서가 수식·표를 손실시키는 파싱 문제, 도메인 특화 학습이 일반 언어 능력을 훼손하는 Catastrophic Forgetting, 그리고 사실 정확도·형식 준수·응답 간결성 세 지표가 동일 보상 스칼라에서 상충하는 보상 붕괴입니다. 세 병목을 각기 다른 기술로 다루는 3단계 연구에 참여 중입니다.",
-    bullets: [
-      "Phase 1: Nougat/Marker(VLM 파서)로 arXiv·PubMed·OpenStax 수식(LaTeX)·표(Markdown) 무손실 파싱 파이프라인 이해 및 GPT-4o Teacher 기반 SFT 합성 데이터 생성 구조 분석",
-      "Phase 2 (Nemotron CPT): 과학 데이터 80~85% / 일반 도메인 15~20% 혼합 전략으로 Catastrophic Forgetting 억제 원리 및 next-token prediction 기반 도메인 지식 주입 실험 참여",
-      "Phase 3 (GDPO): Rubric(RaR)·Format·Length 세 보상 신호의 그룹 내 독립 정규화로 보상 붕괴 없이 다차원 정렬을 달성하는 메커니즘 분석 및 실험 중",
-    ],
-    tags: ["Nemotron", "CPT", "SFT", "GDPO", "arXiv/PubMed", "Nougat/Marker", "HuggingFace", "Multi-Reward RL", "Python"],
-  },
-  {
-    slug: "rocketan",
-    num: "10",
-    title: "STT 강의 스크립트 퀴즈·학습 가이드 자동 생성기",
-    topic: "강의 자료에서 맥락 기반 퀴즈와 학습 가이드를 자동 생성하는 RAG 시스템",
-    oneliner: "FAISS 벡터 검색과 LangChain으로 강의 내용 기반 문항을 생성하는 출제 자동화 서비스",
-    date: "2026.03–04",
-    period: "로켓단 인턴십",
-    thumbAutoHeight: true,
-    desc: "강의 영상과 자료를 업로드하면 개념 퀴즈와 학습 가이드를 생성하는 시스템입니다. 강사가 수업 자료를 반복 정리하고 출제하는 데 쓰던 시간을 RAG 파이프라인으로 줄였습니다. FAISS 벡터 검색과 LangChain 체인으로 강의 맥락에 맞는 문제와 해설을 만듭니다.",
-    bullets: [
-      "문서 청크 설계 → FAISS 인덱싱 파이프라인 → Semantic 검색 → LLM 퀴즈·해설 자동 생성; 청크 크기·overlap 실험으로 검색 품질 최적화",
-      "LangChain RetrievalQA 체인으로 강의 맥락 기반 객관식·서술형 혼합 문제 생성; 평가셋 설계로 난이도별 품질 정량 검증",
-      "강의별 독립 인덱스 네임스페이스 구조로 다중 코스 동시 운영 지원, temperature·캐싱으로 생성 재현성 확보",
-    ],
-    tags: ["LangChain", "FAISS", "RAG", "Python", "OpenAI API", "LLM"],
-    videoUrl: "/rocketan_demo.mp4",
-    repoUrl: "https://github.com/orgs/Mutsa-Rocketdan/repositories",
-    repoName: "Mutsa-Rocketdan",
-  },
-  {
-    slug: "moim",
-    num: "11",
-    title: "MOIM: 실시간 채팅 기반 모임 플랫폼",
-    topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",
-    oneliner: "STOMP WebSocket과 Kakao Maps를 채팅에 통합해 외부 앱 없이 장소 선택부터 모임 확정까지 지원하는 서비스",
-    date: "2024.12–2025.03",
-    period: "경기대학교 LINKVERSE",
-    desc: "〔AI 기술 비사용 풀스택 프로젝트〕 약속 잡기의 모든 흐름(장소 검색 → 후보 핀 등록 → 투표 → 확정)을 실시간 채팅 안에서 끝냅니다. Next.js 15 App Router와 STOMP WebSocket으로 실시간성을 확보하고, Kakao Maps API로 장소 핀 공유를 채팅 메시지와 같은 인터페이스에 통합했습니다. Next.js/TypeScript/WebSocket 개발 경험을 보여주기 위해 포함했습니다.",
-    bullets: [
-      "STOMP/WebSocket 기반 실시간 채팅: 채팅 메시지 · 장소 핀 공유 · 투표 현황을 단일 소켓 채널에서 동기화",
-      "Kakao Maps PinMap: 후보 장소를 지도 핀으로 등록·공유, 투표 결과와 마커를 실시간 연동",
-      "Zustand + Next.js 15: SSR Hydration 이슈 해결 · 모바일 터치 이벤트 탭/스크롤 분리",
-    ],
-    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "WebSocket/STOMP", "Kakao Maps API", "Docker"],
-    repoUrl: "https://github.com/cofldus/MOIM-Client",
-    repoName: "MOIM-Client",
-  },
+const featured: Project[] = [
   {
     slug: "doc-extraction",
-    num: "12",
-    title: "정답지가 포함된 합성 문서 4,732문항으로 단계별 손실을 측정한 문서 인식 엔진 개선 (34%→92%)",
-    topic: "증명서·진단서 사진에서 이름·날짜 같은 항목을 추출하는 문서 AI 엔진의 정확도 개선",
-    oneliner: "정부 공개 서식으로 정답 좌표가 포함된 합성 문서를 생성해 단계별 손실을 측정하고, 인식 방식을 변경해 같은 문서에서 34%에서 92%로 개선한 실무 프로젝트",
-    date: "2026.07–",
-    period: "문서 AI 기업 실무",
-    desc: "회사의 문서 인식 엔진은 증명서 사진에서 이름, 날짜, 주소 같은 항목을 추출합니다. 이 엔진은 값의 위치를 찾고, 글자를 읽고, 읽은 값을 해당 항목에 연결하는 세 단계로 동작합니다. 정확도 34%라는 값만으로는 어느 단계에서 손실이 발생하는지 확인할 수 없었습니다. 실제 문서에는 정답 좌표가 없어 단계별 측정이 불가능했습니다. 정부 공개 법정 서식에 가짜 값을 채우면서 그 좌표를 함께 저장하는 방식으로 정답지가 포함된 합성 문서 420장, 4,732문항을 만들었습니다. 단계마다 정답을 주입해 측정한 결과 글자 인식보다 위치 탐지와 항목 연결에서 손실이 컸습니다. 이 결과를 근거로 인식 방식을 VLM 기반으로 변경해 같은 문서에서 91.7%가 됐습니다.",
-    bullets: [
-      "실제 문서 61건을 5회씩 반복 실행하는 채점 도구로 항상 같은 오답이 나오는 항목과 실행마다 달라지는 항목을 구분, 손글씨 항목은 해당 영역만 잘라 확대하는 전처리로 10회 중 0회에서 10회 정답",
-      "단계별 정답 주입 측정: 위치 정답을 주면 글자 인식 85.1%, 전부 예측하면 34.1%로 위치 탐지와 항목 연결의 손실이 크다는 것을 확인하고 VLM 관계 명시형 KIE로 전환해 91.7%",
-      "새 서식에서 F1이 0.86에서 0.34로 떨어졌을 때 정답지를 먼저 검토, 오답 727건이 표기 방식 차이였음을 확인하고 재추론 없이 재채점만으로 0.76 회복",
-    ],
-    tags: ["Qwen-VL", "vLLM", "PaddleOCR", "LoRA", "합성 데이터셋", "PyTorch", "FastAPI"],
+    title: "문서 AI 엔진 정확도 개선",
+    period: "기업 실무 · 2026.07–",
+    headline:
+      "증명서·진단서에서 항목을 추출하는 엔진의 오류 구간을 단계별로 측정하고, 인식 구조를 VLM 기반으로 변경했습니다.",
+    metric: "34.1% → 91.7%",
+    metricLabel: "항목 추출 정확도",
+    tags: ["Qwen-VL", "vLLM", "PaddleOCR", "LoRA"],
     thumbImg: "/doc-extraction_thumb.png",
     thumbBg: "#FFFFFF",
   },
+  {
+    slug: "killkong",
+    title: "온디바이스 콩글리쉬 교정 에이전트",
+    period: "포스코 AI·BigData 아카데미 · 2025.07–08",
+    headline:
+      "14GB 모델을 3.0GB로 압축하고 검색 구간을 최적화해 스마트폰 CPU에서 실시간 교정이 동작하도록 만들었습니다.",
+    metric: "2.3s → 0.47s",
+    metricLabel: "응답 시간",
+    tags: ["Qwen2.5", "LoRA", "FAISS", "4-bit 양자화"],
+    award: "장려상 · 팀 리더",
+    videoUrl: "/killkong_demo.mp4",
+  },
+  {
+    slug: "medical-chatbot",
+    title: "의료 문서 검색 RAG 파이프라인",
+    period: "AI NLP 집중과정 · 팀 프로젝트",
+    headline:
+      "벡터 검색이 놓치는 전문 의학 용어 문서를 BM25로 보완하고, Cross-Encoder로 후보를 다시 정렬했습니다.",
+    metric: "BERTScore +0.16",
+    metricLabel: "서술형 답변 품질",
+    tags: ["BM25", "FAISS", "bge-reranker", "EXAONE"],
+    videoUrl: "/medical-chatbot_demo.mp4",
+  },
 ];
 
-// ─── SVG shared constants ─────────────────────────────────────────
-const SAN = "Inter, -apple-system, system-ui, sans-serif";
-const MON = "'IBM Plex Mono', 'Courier New', monospace";
-const INK  = "#1D2640";
-const INK2 = "#3D4A68";
-const MUTED = "#8896B0";
-const LINE = "rgba(29,38,64,0.08)";
-const BOX  = "rgba(29,38,64,0.04)";
-const BSTR = "rgba(29,38,64,0.11)";
-const MG   = "#3A7A5A"; // muted forest green for positive metrics
-
-// ─── SVG Thumbnails (light mode) ─────────────────────────────────
-
-function Thumb01() {
-  const AC = "#3B5BDB";
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">AUTOMATION FLOW · AiRPA</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Automate</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>이질적 소스 → UiPath 자동 수집 → T5 요약 → 학과 맞춤 추천 리포트</text>
-
-      {["교육부 포털", "대학알리미", "졸업생 블로그"].map((label, i) => (
-        <g key={label}>
-          <rect x={14} y={76 + i * 18} width={76} height={13} rx={2} fill={BOX} stroke={BSTR} strokeWidth={0.8} />
-          <text x={52} y={76 + i * 18 + 9} textAnchor="middle" fill={INK} fontSize={8.5} fontFamily={SAN}>{label}</text>
-        </g>
-      ))}
-
-      <line x1={90} y1={82} x2={110} y2={96} stroke={LINE} strokeWidth={0.8} />
-      <line x1={90} y1={91} x2={110} y2={96} stroke={LINE} strokeWidth={0.8} />
-      <line x1={90} y1={112} x2={110} y2={100} stroke={LINE} strokeWidth={0.8} />
-
-      <rect x={110} y={84} width={68} height={28} rx={3} fill={`rgba(59,91,219,0.09)`} stroke={`rgba(59,91,219,0.3)`} strokeWidth={1.2} />
-      <text x={144} y={96} textAnchor="middle" fill={AC} fontSize={10} fontFamily={SAN} fontWeight={600}>UiPath RPA</text>
-      <text x={144} y={107} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={MON}>login · parse · crawl</text>
-
-      <line x1={178} y1={98} x2={194} y2={98} stroke={`rgba(59,91,219,0.3)`} strokeWidth={1} />
-      <polygon points="192,95 198,98 192,101" fill={`rgba(59,91,219,0.3)`} />
-
-      <rect x={198} y={84} width={68} height={28} rx={3} fill={`rgba(59,91,219,0.05)`} stroke={`rgba(59,91,219,0.2)`} strokeWidth={1} />
-      <text x={232} y={96} textAnchor="middle" fill={AC} fontSize={10} fontFamily={SAN} fontWeight={600}>HuggingFace T5</text>
-      <text x={232} y={107} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={MON}>abstractive summ.</text>
-
-      <line x1={266} y1={98} x2={282} y2={98} stroke={`rgba(59,91,219,0.3)`} strokeWidth={1} />
-      <polygon points="280,95 286,98 280,101" fill={`rgba(59,91,219,0.3)`} />
-
-      {["안정형", "성장형", "+3 유형"].map((p, i) => (
-        <g key={p}>
-          <rect x={286} y={76 + i * 16} width={58} height={12} rx={2}
-            fill={i === 0 ? `rgba(59,91,219,0.1)` : i === 1 ? `rgba(59,91,219,0.06)` : BOX}
-            stroke={i < 2 ? `rgba(59,91,219,0.22)` : BSTR} strokeWidth={0.8} />
-          <text x={315} y={76 + i * 16 + 9} textAnchor="middle" fill={i < 2 ? AC : INK2} fontSize={8.5} fontFamily={SAN} fontWeight={i < 2 ? 600 : 400}>{p}</text>
-        </g>
-      ))}
-
-      <line x1={14} y1={138} x2={346} y2={138} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "자동화율",  value: "95%+" },
-        { x: 134, label: "처리 시간", value: "8h→3h" },
-        { x: 254, label: "수집량/회", value: "200건" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={142} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={153} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={192} fill={i === 1 ? MG : AC} fontSize={28} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={214} fill={MUTED} fontSize={8} fontFamily={SAN}>★ 한국지능정보사회진흥원 특별상  ·  UiPath · HuggingFace T5 · TF-IDF</text>
-    </svg>
-  );
-}
-
-function Thumb02() {
-  const AC = "#37697C";
-  const layers = [
-    { label: "Query Input",       detail: "medical question",         hi: false },
-    { label: "Hybrid Retrieval",  detail: "BM25(k=20)  ·  FAISS(k=20)", hi: true  },
-    { label: "Rerank Layer",      detail: "40 candidates → Top-5",    hi: true  },
-    { label: "Response",          detail: "EXAONE 3.5-7.8B",          hi: false },
-  ];
-  const rowY = [76, 95, 114, 133];
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">HIGH-TRUST RAG · MEDICAL BOT</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Precision</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>BM25 + FAISS → bge-reranker → EXAONE  ·  5.5만건 코퍼스</text>
-
-      <line x1={24} y1={79} x2={24} y2={136} stroke={LINE} strokeWidth={0.8} />
-
-      {layers.map((l, i) => (
-        <g key={i}>
-          <circle cx={24} cy={rowY[i] + 2} r={3.5}
-            fill={l.hi ? `rgba(55,105,124,0.15)` : "none"}
-            stroke={l.hi ? AC : BSTR}
-            strokeWidth={l.hi ? 1.1 : 0.8} />
-          <text x={36} y={rowY[i] + 6} fill={l.hi ? AC : INK} fontSize={10} fontFamily={SAN} fontWeight={l.hi ? 600 : 400}>{l.label}</text>
-          <text x={210} y={rowY[i] + 6} fill={MUTED} fontSize={9} fontFamily={MON}>{l.detail}</text>
-        </g>
-      ))}
-
-      <line x1={14} y1={148} x2={346} y2={148} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "Accuracy",  value: "+0.04↑" },
-        { x: 134, label: "BERTScore", value: "+0.16↑" },
-        { x: 254, label: "코퍼스",    value: "5.5만건" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={152} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={163} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={200} fill={i < 2 ? MG : AC} fontSize={27} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={215} fill={MUTED} fontSize={8} fontFamily={SAN}>BM25 · FAISS · bge-reranker-v2-m3 · EXAONE</text>
-    </svg>
-  );
-}
-
-function Thumb03() {
-  const AC = "#8B6240";
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">NLP · BRANCH CLASSIFIER</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Restoration</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>JAMO 전처리 → KoELECTRA 분류 → 분기형 KoBART 복원</text>
-
-      {/* main flow nodes */}
-      {[
-        { cx: 35,  label: "Noisy",      sub: "noise text" },
-        { cx: 110, label: "JAMO",       sub: "전처리" },
-        { cx: 195, label: "Classifier", sub: "KoELECTRA" },
-      ].map((n, i) => (
-        <g key={i}>
-          <circle cx={n.cx} cy={95} r={4}
-            fill={i > 0 ? `rgba(139,98,64,0.12)` : "none"}
-            stroke={i > 0 ? AC : BSTR}
-            strokeWidth={i > 0 ? 1.1 : 0.8} />
-          {i < 2 && <line x1={n.cx + 4} y1={95} x2={[35, 110, 195][i + 1] - 4} y2={95} stroke={LINE} strokeWidth={0.8} />}
-          <text x={n.cx} y={110} textAnchor="middle" fill={i > 0 ? AC : INK} fontSize={9.5} fontFamily={SAN} fontWeight={i > 0 ? 600 : 400}>{n.label}</text>
-          <text x={n.cx} y={121} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={MON}>{n.sub}</text>
-        </g>
-      ))}
-
-      {/* fork */}
-      <line x1={199} y1={95} x2={240} y2={95} stroke={LINE} strokeWidth={0.8} />
-      <line x1={240} y1={95} x2={240} y2={82} stroke={LINE} strokeWidth={0.8} />
-      <line x1={240} y1={95} x2={240} y2={110} stroke={LINE} strokeWidth={0.8} />
-      <line x1={240} y1={82} x2={254} y2={82} stroke={LINE} strokeWidth={0.8} />
-      <line x1={240} y1={110} x2={254} y2={110} stroke={LINE} strokeWidth={0.8} />
-
-      <circle cx={310} cy={82} r={4} fill={`rgba(139,98,64,0.15)`} stroke={AC} strokeWidth={1.1} />
-      <text x={310} y={72} textAnchor="middle" fill={AC} fontSize={9.5} fontFamily={SAN} fontWeight={600}>KoBART-A</text>
-      <text x={310} y={97} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={SAN}>야민정음 복원</text>
-
-      <circle cx={310} cy={110} r={4} fill={`rgba(139,98,64,0.08)`} stroke={AC} strokeWidth={0.9} />
-      <text x={310} y={124} textAnchor="middle" fill={AC} fontSize={9.5} fontFamily={SAN} fontWeight={600}>KoBART-B</text>
-      <text x={310} y={135} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={SAN}>음운오류 복원</text>
-
-      <line x1={14} y1={142} x2={346} y2={142} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "BERTScore", value: "0.9812" },
-        { x: 134, label: "CER",       value: "0.0426" },
-        { x: 254, label: "향상폭",    value: "+5.6%p" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={146} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={157} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={196} fill={i < 2 ? MG : AC} fontSize={27} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={214} fill={MUTED} fontSize={8} fontFamily={SAN}>KoBART · KoELECTRA · JAMO 분해 · PyTorch</text>
-    </svg>
-  );
-}
-
-function Thumb04() {
-  const AC = "#6B5898";
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">ON-DEVICE LLM · MODEL COMPRESSION</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Compression</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>LoRA · 4-bit NF4 · Token Pruning → 온디바이스 실시간 추론</text>
-
-      {/* Before bar */}
-      <text x={14} y={84} fill={MUTED} fontSize={8.5} fontFamily={SAN}>Before</text>
-      <rect x={14} y={89} width={238} height={13} rx={2}
-        fill={`rgba(160,40,40,0.07)`} stroke={`rgba(160,40,40,0.22)`} strokeWidth={0.8} />
-      <text x={258} y={101} fill={`rgba(160,40,40,0.65)`} fontSize={11.5} fontFamily={MON} fontWeight={700}>14 GB</text>
-
-      {/* Stack labels */}
-      <text x={14} y={118} fill={MUTED} fontSize={8.5} fontFamily={SAN}>LoRA fine-tuning  ·  4-bit NF4 quantization  ·  Multilingual token pruning ~10%</text>
-
-      {/* After bar */}
-      <text x={14} y={134} fill={MUTED} fontSize={8.5} fontFamily={SAN}>After</text>
-      <rect x={14} y={139} width={57} height={13} rx={2}
-        fill={`rgba(107,88,152,0.12)`} stroke={`rgba(107,88,152,0.38)`} strokeWidth={1} />
-      <text x={78} y={151} fill={AC} fontSize={11.5} fontFamily={MON} fontWeight={700}>3.0 GB  ↓76%</text>
-
-      <line x1={14} y1={160} x2={346} y2={160} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "응답 지연",   value: "0.47s" },
-        { x: 134, label: "CPU 추론",    value: "0.3s" },
-        { x: 254, label: "모바일 일관성", value: "92%+" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={164} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={175} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={207} fill={i < 2 ? MG : AC} fontSize={26} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={218} fill={MUTED} fontSize={8} fontFamily={SAN}>★ 포스코 인재창조원 장려상  ·  Qwen2.5 · LoRA · FAISS · FastAPI</text>
-    </svg>
-  );
-}
-
-function Thumb05() {
-  const AC = "#3D5E8C";
-  const nodes = [
-    { cx: 55,  label: "DART API", sub: "500사 ETL",   hi: false },
-    { cx: 145, label: "XGBoost",  sub: "신용등급 91%", hi: true  },
-    { cx: 235, label: "KMeans",   sub: "군집화",       hi: true  },
-    { cx: 318, label: "GPT-4",    sub: "서사 해설",    hi: false },
-  ];
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">FINTECH · GENERATIVE REPORT</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Analysis</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>DART ETL → XGBoost 분류 → GPT-4 서사 해설  ·  환각 80%↓</text>
-
-      {nodes.map((n, i) => (
-        <g key={n.label}>
-          <circle cx={n.cx} cy={88} r={4}
-            fill={n.hi ? `rgba(61,94,140,0.12)` : "none"}
-            stroke={n.hi ? AC : BSTR}
-            strokeWidth={n.hi ? 1.1 : 0.8} />
-          {i < 3 && <line x1={n.cx + 4} y1={88} x2={nodes[i + 1].cx - 4} y2={88} stroke={LINE} strokeWidth={0.8} />}
-          <text x={n.cx} y={103} textAnchor="middle" fill={n.hi ? AC : INK} fontSize={9.5} fontFamily={SAN} fontWeight={n.hi ? 600 : 400}>{n.label}</text>
-          <text x={n.cx} y={114} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={SAN}>{n.sub}</text>
-        </g>
-      ))}
-
-      {/* annotation */}
-      <text x={14} y={133} fill={MUTED} fontSize={8.5} fontFamily={SAN}>군집 패턴·리스크 태그 → GPT-4 컨텍스트 주입 → 수치 계산은 LLM 바깥에서  ·  환각 80%↓</text>
-
-      <line x1={14} y1={144} x2={346} y2={144} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "분류 정확도", value: "91%" },
-        { x: 134, label: "처리 속도",   value: "10x" },
-        { x: 254, label: "만족도",      value: "4.4/5" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={148} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={159} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={196} fill={i < 2 ? MG : AC} fontSize={27} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={214} fill={MUTED} fontSize={8} fontFamily={SAN}>GPT-4 · XGBoost · KMeans · SHAP · DART API · D3.js</text>
-    </svg>
-  );
-}
-
-
-function Thumb07() {
-  const AC = "#3D7A5A";
-  const heat = [
-    [0.92, 0.55, 0.28, 0.12],
-    [0.68, 0.95, 0.48, 0.22],
-    [0.38, 0.78, 0.72, 0.42],
-    [0.14, 0.32, 0.52, 0.64],
-  ];
-  const zones = ["홍대", "이태원", "강남", "여의도"];
-  const fc = (v: number) =>
-    v > 0.75 ? `rgba(160,40,40,${0.07 + v * 0.16})`
-    : v > 0.45 ? `rgba(160,120,30,${0.07 + v * 0.14})`
-    : `rgba(50,120,70,${0.06 + v * 0.18})`;
-  const sc = (v: number) =>
-    v > 0.75 ? `rgba(160,40,40,${0.18 + v * 0.18})`
-    : v > 0.45 ? `rgba(160,120,30,${0.16 + v * 0.15})`
-    : `rgba(50,120,70,${0.16 + v * 0.16})`;
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">CROWD SAFETY · DENSITY ROUTING</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Dispersion</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>FP-Growth 패턴 → 가중치 추천 엔진 → SQLite 오프라인 캐시</text>
-
-      {heat.map((row, r) =>
-        row.map((v, c) => (
-          <rect key={`h-${r}-${c}`} x={44 + c * 34} y={74 + r * 18} width={30} height={14} rx={2}
-            fill={fc(v)} stroke={sc(v)} strokeWidth={0.7} />
-        ))
-      )}
-      {zones.map((z, i) => (
-        <text key={z} x={38} y={85 + i * 18} fill={MUTED} fontSize={8.5} fontFamily={SAN} textAnchor="end">{z}</text>
-      ))}
-
-      <rect x={198} y={72} width={150} height={88} rx={3} fill={BOX} stroke={BSTR} strokeWidth={0.8} />
-      <text x={273} y={85} textAnchor="middle" fill={MUTED} fontSize={8.5} fontFamily={SAN}>추천 가중치</text>
-      {[
-        { label: "혼잡도", w: 40 },
-        { label: "거리",   w: 30 },
-        { label: "유사도", w: 20 },
-        { label: "시간대", w: 10 },
-      ].map((item, i) => (
-        <g key={item.label}>
-          <text x={206} y={100 + i * 17} fill={INK2} fontSize={8.5} fontFamily={SAN}>{item.label}</text>
-          <rect x={248} y={93 + i * 17} width={54} height={6} rx={1} fill={`rgba(29,38,64,0.05)`} />
-          <rect x={248} y={93 + i * 17} width={item.w * 0.54} height={6} rx={1} fill={`rgba(61,122,90,${0.18 + (item.w / 40) * 0.38})`} />
-          <text x={308} y={100 + i * 17} fill={AC} fontSize={8.5} fontFamily={MON} fontWeight={700} textAnchor="end">{item.w}%</text>
-        </g>
-      ))}
-
-      <line x1={14} y1={168} x2={346} y2={168} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "밀집도 예측", value: "84%" },
-        { x: 134, label: "혼잡 회피율", value: "87%" },
-        { x: 254, label: "처리 검증",   value: "10,000건" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={172} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={183} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={212} fill={i < 2 ? MG : AC} fontSize={24} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={218} fill={MUTED} fontSize={8} fontFamily={SAN}>★ 성신여대 IT경진대회 장려상  ·  FP-Growth · SQLite · 위치 API</text>
-    </svg>
-  );
-}
-
-function Thumb08() {
-  const AC = "#5A4C98";
-  const barWidths = [22, 30, 18, 26, 34];
-  const barLabels = ["매출 변화", "방문 빈도", "객단가", "재방문율", "경쟁 지수"];
-  return (
-    <svg viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <text x={14} y={13} fill={MUTED} fontSize={8.5} fontFamily={MON} letterSpacing="0.12em">COMMERCE AI · SCENARIO SIMULATION</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke={LINE} strokeWidth={0.8} />
-
-      <text x={14} y={46} fill={AC} fontSize={28} fontFamily={SAN} fontWeight="700">Simulation</text>
-      <text x={14} y={62} fill={MUTED} fontSize={9.5} fontFamily={SAN}>160 페르소나 · 2-Stage GPT · Before / After 11지표 검증</text>
-
-      {/* inputs */}
-      <circle cx={44} cy={88} r={4} fill={BOX} stroke={BSTR} strokeWidth={0.8} />
-      <text x={44} y={103} textAnchor="middle" fill={INK} fontSize={9} fontFamily={SAN}>매장 조건</text>
-      <circle cx={44} cy={118} r={4} fill={`rgba(90,76,152,0.1)`} stroke={`rgba(90,76,152,0.28)`} strokeWidth={1} />
-      <text x={44} y={133} textAnchor="middle" fill={AC} fontSize={9} fontFamily={SAN}>160 페르소나</text>
-
-      <line x1={48} y1={88} x2={94} y2={100} stroke={LINE} strokeWidth={0.8} />
-      <line x1={48} y1={118} x2={94} y2={106} stroke={LINE} strokeWidth={0.8} />
-
-      {/* 2-stage GPT */}
-      <circle cx={100} cy={103} r={4} fill={`rgba(90,76,152,0.12)`} stroke={AC} strokeWidth={1.1} />
-      <text x={100} y={88} textAnchor="middle" fill={AC} fontSize={9} fontFamily={SAN} fontWeight={600}>분석가 GPT</text>
-      <text x={100} y={98} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={MON}>Temp 0.1</text>
-      <line x1={100} y1={107} x2={100} y2={113} stroke={LINE} strokeWidth={0.8} strokeDasharray="3 2" />
-      <circle cx={100} cy={119} r={4} fill={`rgba(90,76,152,0.07)`} stroke={`rgba(90,76,152,0.28)`} strokeWidth={1} />
-      <text x={100} y={132} textAnchor="middle" fill={AC} fontSize={9} fontFamily={SAN} fontWeight={600}>전략가 GPT</text>
-      <text x={100} y={142} textAnchor="middle" fill={MUTED} fontSize={7.5} fontFamily={MON}>Temp 0.7</text>
-
-      <line x1={104} y1={111} x2={162} y2={100} stroke={LINE} strokeWidth={0.8} />
-
-      {/* before/after bars */}
-      <rect x={162} y={74} width={182} height={80} rx={3} fill={BOX} stroke={BSTR} strokeWidth={0.8} />
-      <text x={253} y={86} textAnchor="middle" fill={MUTED} fontSize={8} fontFamily={SAN}>Before / After  11지표</text>
-      {barLabels.map((label, i) => (
-        <g key={label}>
-          <text x={170} y={99 + i * 12} fill={INK2} fontSize={8} fontFamily={SAN}>{label}</text>
-          <rect x={228} y={93 + i * 12} width={56} height={6} rx={1} fill={`rgba(29,38,64,0.05)`} />
-          <rect x={228} y={93 + i * 12} width={barWidths[i] + 12} height={6} rx={1} fill={`rgba(90,76,152,${0.16 + i * 0.05})`} />
-        </g>
-      ))}
-
-      <line x1={14} y1={162} x2={346} y2={162} stroke={LINE} strokeWidth={0.8} />
-
-      {[
-        { x: 14,  label: "사용 의향",   value: "80%" },
-        { x: 134, label: "검증 지표",   value: "11개" },
-        { x: 254, label: "AI 페르소나", value: "160명" },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x - 6} y1={166} x2={m.x - 6} y2={215} stroke={LINE} strokeWidth={0.8} />}
-          <text x={m.x} y={177} fill={MUTED} fontSize={8.5} fontFamily={SAN}>{m.label}</text>
-          <text x={m.x} y={207} fill={i < 2 ? MG : AC} fontSize={26} fontFamily={MON} fontWeight={700}>{m.value}</text>
-        </g>
-      ))}
-      <text x={14} y={218} fill={MUTED} fontSize={8} fontFamily={SAN}>★ AI NLP 집중과정 3기 장려상  ·  GPT-4.1 · Gemma-2-9b · Flask</text>
-    </svg>
-  );
-}
-
-function Thumb09() {
-  const BG = "#080E1A";
-  const AC = "#A78BFA";
-  const GR = "#34D399";
-  const W = "#E2E8F0";
-  const M2 = "#4B6080";
-  return (
-    <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="360" height="200" fill={BG}/>
-      <text x={14} y={14} fill={M2} fontSize={8} fontFamily={MON} letterSpacing="0.14em">SCIENTIFIC LLM · CPT + GDPO ALIGNMENT</text>
-      <line x1={14} y1={20} x2={346} y2={20} stroke="rgba(167,139,250,0.1)" strokeWidth={0.6}/>
-
-      <text x={14} y={56} fill={AC} fontSize={38} fontFamily={SAN} fontWeight="800" letterSpacing="-0.04em">Alignment</text>
-      <text x={14} y={71} fill={M2} fontSize={9} fontFamily={MON}>arXiv · PubMed → Nougat → Nemotron CPT → GDPO</text>
-
-      {/* Pipeline: 3 nodes */}
-      {[
-        { cx: 60,  label: "Data",  sub: "arXiv · PubMed", hi: false },
-        { cx: 180, label: "CPT",   sub: "Nemotron",       hi: true  },
-        { cx: 300, label: "GDPO",  sub: "×3 Rewards",     hi: true  },
-      ].map((s, i) => (
-        <g key={i}>
-          <circle cx={s.cx} cy={108} r={28}
-            fill={s.hi ? "rgba(167,139,250,0.12)" : "rgba(75,96,128,0.15)"}
-            stroke={s.hi ? "rgba(167,139,250,0.4)" : "rgba(75,96,128,0.3)"}
-            strokeWidth={1.2}/>
-          <text x={s.cx} y={104} textAnchor="middle" fill={s.hi ? AC : W} fontSize={12} fontFamily={SAN} fontWeight="700">{s.label}</text>
-          <text x={s.cx} y={116} textAnchor="middle" fill={M2} fontSize={7} fontFamily={MON}>{s.sub}</text>
-          {i < 2 && (
-            <>
-              <line x1={s.cx+28} y1={108} x2={s.cx+60} y2={108} stroke="rgba(167,139,250,0.25)" strokeWidth={1} strokeDasharray="4 3"/>
-              <polygon points={`${s.cx+58},105 ${s.cx+64},108 ${s.cx+58},111`} fill="rgba(167,139,250,0.3)"/>
-            </>
-          )}
-        </g>
-      ))}
-
-      {/* Metrics */}
-      <line x1={14} y1={148} x2={346} y2={148} stroke="rgba(167,139,250,0.08)" strokeWidth={0.6}/>
-      {[
-        { x: 14,  label: "Base Model", value: "Nemotron", c: AC, size: 22 },
-        { x: 154, label: "Rewards",    value: "×3",       c: GR, size: 32 },
-        { x: 254, label: "Method",     value: "GDPO",     c: W,  size: 26 },
-      ].map((m, i) => (
-        <g key={m.label}>
-          {i > 0 && <line x1={m.x-8} y1={152} x2={m.x-8} y2={196} stroke="rgba(167,139,250,0.07)" strokeWidth={0.6}/>}
-          <text x={m.x} y={163} fill={M2} fontSize={8} fontFamily={MON}>{m.label}</text>
-          <text x={m.x} y={192} fill={m.c} fontSize={m.size} fontFamily={MON} fontWeight="700">{m.value}</text>
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function Thumb11() {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/moim_ui.png"
-      alt="MOIM 플랫폼"
-      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
-    />
-  );
-}
-
-const thumbMap: Record<string, React.FC> = {
-  "01": Thumb01, "02": Thumb02, "03": Thumb03, "04": Thumb04,
-  "05": Thumb05, "07": Thumb07, "08": Thumb08,
-  "09": Thumb09, "11": Thumb11,
-};
-
-// ─── Layout ───────────────────────────────────────────────────────
+const more = [
+  { slug: "korean-noise-restoration", title: "한글 난독화 복원", metric: "BERTScore 0.9812", tags: "KoBART · KoELECTRA" },
+  { slug: "finview", title: "재무 리포트 자동 생성", metric: "분류 정확도 91%", tags: "XGBoost · GPT-4" },
+  { slug: "lovelop", title: "상권 시뮬레이션 플랫폼", metric: "4분 22초 → 48초", tags: "GPT-4.1 · Multi-Agent" },
+  { slug: "rocketan", title: "강의 퀴즈 자동 생성", metric: "청크 512 → 256", tags: "LangChain · FAISS" },
+  { slug: "ct-mri-cyclegan", title: "CT→MRI 변환 연구", metric: "SSIM +6.2%p", tags: "CycleGAN · PyTorch" },
+  { slug: "llm-for-science", title: "과학 도메인 LLM 연구", metric: "진행 중", tags: "CPT · GDPO" },
+  { slug: "airpa", title: "학과 탐색 자동화", metric: "8h → 3h", tags: "UiPath · T5" },
+  { slug: "hunchgame", title: "인파 분산 서비스", metric: "밀집도 예측 84%", tags: "FP-Growth · SQLite" },
+  { slug: "moim", title: "실시간 모임 플랫폼", metric: "커밋 1,124", tags: "Next.js · WebSocket" },
+];
 
 const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
 
-function Chip({ text }: { text: string }) {
+function Visual({ p }: { p: Project }) {
+  if (p.videoUrl) {
+    return <video src={p.videoUrl} autoPlay loop muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />;
+  }
+  if (p.thumbImg) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }} />;
+  }
+  return null;
+}
+
+function Meta({ p }: { p: Project }) {
   return (
-    <span style={{
-      fontFamily: "var(--font-label)", fontSize: 10.5, fontWeight: 500,
-      padding: "3px 8px", background: "var(--tag-bg)", color: "var(--tag-text)",
-      border: "1px solid var(--border)", borderRadius: 4, whiteSpace: "nowrap" as const,
-    }}>
-      {text}
-    </span>
+    <>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+        <span style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "#9CA3AF" }}>
+          {p.period}
+        </span>
+        {p.award && (
+          <span style={{
+            fontFamily: "var(--font-sans)", fontSize: 10, fontWeight: 400,
+            color: "#4fc0d1", background: "rgba(79,192,209,0.08)",
+            border: "1px solid rgba(79,192,209,0.35)", borderRadius: 20,
+            padding: "2px 8px", lineHeight: 1.4,
+          }}>
+            {p.award}
+          </span>
+        )}
+      </div>
+
+      <h3 style={{
+        fontSize: 21, fontWeight: 700, lineHeight: 1.3,
+        letterSpacing: "-0.025em", color: "var(--ink)", margin: "0 0 12px",
+      }}>
+        {p.title}
+      </h3>
+
+      <p style={{
+        fontSize: 14, lineHeight: 1.75, color: "var(--ink-light)",
+        margin: "0 0 28px", wordBreak: "keep-all" as const,
+      }}>
+        {p.headline}
+      </p>
+
+      <div style={{ marginBottom: 24 }}>
+        <div style={{
+          fontFamily: "var(--font-sans)", fontSize: 30, fontWeight: 500,
+          letterSpacing: "-0.03em", color: "#0A0A0A", lineHeight: 1.1,
+        }}>
+          {p.metric}
+        </div>
+        <div style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "#9CA3AF", marginTop: 6 }}>
+          {p.metricLabel}
+        </div>
+      </div>
+
+      <p style={{
+        fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
+        color: "#6B7280", lineHeight: 1.7, margin: "0 0 24px",
+      }}>
+        {p.tags.join("  ·  ")}
+      </p>
+
+      <span style={{
+        display: "inline-flex", alignItems: "center", gap: 6,
+        fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 600,
+        color: "var(--accent)", letterSpacing: "0.02em",
+      }}>
+        Case Study
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </span>
+    </>
   );
 }
 
-function ProjectCard({ p, idx }: { p: Project; idx: number }) {
-  const Thumb = thumbMap[p.num];
-  const displayNum = String(idx + 1).padStart(2, "0");
-  const visibleTags = p.tags.slice(0, 5);
-  const extraTags = p.tags.length - 5;
-
+function FeaturedCard({ p }: { p: Project }) {
   return (
     <motion.a
       href={`/projects/${p.slug}`}
@@ -759,321 +156,171 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       viewport={{ once: true, margin: "-40px" }}
       variants={fadeUp}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      style={{
-        background: "var(--bg)",
-        border: "1px solid var(--border)",
-        borderRadius: 12,
-        overflow: "hidden",
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.07)",
-        transition: "box-shadow 0.2s, border-color 0.2s",
-        textDecoration: "none",
-        cursor: "pointer",
-      }}
-      className="pcard"
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 8px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.12)";
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent-bd)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 1px 2px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.07)";
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-      }}
-      onMouseDown={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        const flash = document.createElement("div");
-        flash.className = "pcard-flash";
-        el.appendChild(flash);
-        setTimeout(() => flash.remove(), 350);
-      }}
+      className="pcard pcard-hero"
+      style={{ textDecoration: "none", display: "grid", alignItems: "center" }}
     >
-      {/* Thumbnail */}
-      <div className="pcard-thumb" style={{ ...(p.thumbBg ? { background: p.thumbBg } : {}), ...(!p.videoUrl && !p.youtubeId && !thumbMap[p.num] && !p.thumbImg ? { height: "auto" } : {}) }}>
-        {p.youtubeId ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${p.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${p.youtubeId}&controls=0&modestbranding=1&rel=0`}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-          />
-        ) : p.videoUrl ? (
-          <video src={p.videoUrl} autoPlay loop muted playsInline style={p.thumbAutoHeight ? { width: "100%", height: "100%", objectFit: "contain", display: "block" } : undefined} />
-        ) : p.thumbImg ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.thumbImg} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-        ) : (
-          <div className="pcard-thumb-svg">
-            {Thumb && <Thumb />}
-          </div>
-        )}
+      <div className="pcard-hero-visual" style={{ background: p.thumbBg ?? "#0F172A" }}>
+        <Visual p={p} />
       </div>
-
-      {/* Body */}
-      <div style={{ padding: "22px 24px 0", display: "flex", flexDirection: "column", flex: 1 }}>
-
-        {/* num + metadata chips */}
-        <div style={{ marginBottom: 10 }}>
-          <span style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.2em", fontWeight: 700, color: "var(--accent)", display: "block", marginBottom: 7 }}>
-            {displayNum}
-          </span>
-          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
-            {p.date && (
-              <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 500,
-                color: "#475569", background: "#F1F5F9", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
-              }}>
-                {p.date}
-              </span>
-            )}
-            {p.period && (
-              <span style={{
-                fontFamily: "var(--font-label)", fontSize: 9.5, fontWeight: 400,
-                color: "#94A3B8", background: "#F8FAFC", borderRadius: 3,
-                padding: "0 7px", height: 18, display: "inline-flex", alignItems: "center", lineHeight: 1,
-              }}>
-                {p.period}
-              </span>
-            )}
-            {p.award && (
-              <span style={{
-                fontFamily: "var(--font-sans)", fontSize: 9, fontWeight: 400,
-                color: "#4fc0d1", background: "rgba(79,192,209,0.08)",
-                border: "1px solid rgba(79,192,209,0.35)", borderRadius: 20,
-                padding: "2px 7px", display: "inline-flex", alignItems: "center", lineHeight: 1,
-              }}>
-                {p.award}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* topic — 주제 어구 */}
-        <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.38, letterSpacing: "-0.025em", color: "var(--ink)", marginBottom: 7 }}>
-          {p.topic}
-        </h3>
-
-        {/* oneliner — 서비스명 + 구체 한 줄 */}
-        <p style={{ fontSize: 12, fontWeight: 400, lineHeight: 1.6, letterSpacing: "-0.008em", color: "var(--ink-light)", marginBottom: 14 }}>
-          {p.oneliner}
-        </p>
-
-        {/* Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 18 }}>
-          {visibleTags.map((t) => <Chip key={t} text={t} />)}
-          {extraTags > 0 && (
-            <span style={{ fontFamily: "var(--font-label)", fontSize: 10.5, color: "var(--ink-light)", alignSelf: "center" }}>
-              +{extraTags}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* 하단 버튼 */}
-      <div style={{
-        borderTop: "1px solid var(--border-sub)",
-        padding: "10px 20px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-      }}>
-        <span
-          className="pcard-action-btn"
-          style={{
-            fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-            color: "var(--accent)", letterSpacing: "0.02em",
-            padding: "6px 10px", borderRadius: 6, cursor: "pointer",
-            transition: "background 0.2s",
-            display: "inline-flex", alignItems: "center", gap: 5,
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "radial-gradient(ellipse at center, rgba(79,192,209,0.07) 0%, transparent 75%)";
-            (e.currentTarget.querySelector(".pcard-arrow") as HTMLElement).style.transform = "translateX(3px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            (e.currentTarget.querySelector(".pcard-arrow") as HTMLElement).style.transform = "translateX(0)";
-          }}
-        >
-          Case Study
-          <span className="pcard-arrow" style={{ transition: "transform 0.2s ease", display: "inline-block" }}>→</span>
-        </span>
-        {p.repoUrl && (
-          <a
-            href={p.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-              color: "var(--ink-light)", letterSpacing: "0.04em",
-              textDecoration: "none", padding: "6px 10px", borderRadius: 6,
-              transition: "background 0.2s, color 0.2s",
-              display: "inline-flex", alignItems: "center", gap: 5,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "radial-gradient(ellipse at center, rgba(79,192,209,0.07) 0%, transparent 75%)";
-              e.currentTarget.style.color = "var(--accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "var(--ink-light)";
-            }}
-          >
-            github ↗
-          </a>
-        )}
-      </div>
-
-      {/* print-only: 항상 DOM에 있고 화면에선 숨김, 인쇄에서만 표시 */}
-      <div className="pcard-print-detail">
-        <p style={{ fontSize: 11, lineHeight: 1.7, color: "#4B5563", marginBottom: 10, wordBreak: "keep-all" as const }}>
-          {p.desc}
-        </p>
-        <ul style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-          {p.bullets.map((b) => (
-            <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 10.5, lineHeight: 1.65, color: "#111827", wordBreak: "keep-all" as const }}>
-              <span style={{ color: "#2563EB", flexShrink: 0, marginTop: 1 }}>›</span>
-              {b}
-            </li>
-          ))}
-        </ul>
+      <div className="pcard-hero-body">
+        <Meta p={p} />
       </div>
     </motion.a>
   );
 }
 
-const DEFAULT_RESEARCH_SLUGS = ["ct-mri-cyclegan", "llm-for-science"];
+function HalfCard({ p }: { p: Project }) {
+  return (
+    <motion.a
+      href={`/projects/${p.slug}`}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-40px" }}
+      variants={fadeUp}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className="pcard"
+      style={{ textDecoration: "none", display: "flex", flexDirection: "column" }}
+    >
+      <div className="pcard-half-visual" style={{ background: p.thumbBg ?? "#0F172A" }}>
+        <Visual p={p} />
+      </div>
+      <div style={{ padding: "32px 4px 0" }}>
+        <Meta p={p} />
+      </div>
+    </motion.a>
+  );
+}
 
 export default function ProjectSection() {
-  const company = useCompany();
-  const researchSlugs = company.researchSlugs ?? DEFAULT_RESEARCH_SLUGS;
-
-  const videoProjects = company.projectOrder
-    ? company.projectOrder
-        .map(slug => projects.find(p => p.slug === slug))
-        .filter((p): p is Project => p !== undefined)
-    : projects.filter(p => !researchSlugs.includes(p.slug));
-  const svgProjects = projects.filter(p => researchSlugs.includes(p.slug));
-
   return (
-    <section id="projects" style={{ background: "var(--bg-subtle)", borderTop: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "72px var(--cp)" }}>
+    <section id="projects" style={{ background: "var(--bg)" }}>
+      <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "96px var(--cp)" }}>
 
-        <motion.div
+        <motion.h2
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40 }}
+          style={{
+            fontFamily: "var(--font-sans)", fontSize: 30, fontWeight: 700,
+            color: "var(--ink)", letterSpacing: "-0.04em", lineHeight: 1.1,
+            marginBottom: 64,
+          }}
         >
-          <div>
-            <p style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>
-              Projects
-            </p>
-            <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 32, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.04em", lineHeight: 1.1, marginBottom: 6 }}>
-              프로젝트
-            </h2>
-            <p style={{ fontSize: 13, color: "var(--ink-light)" }}>
-              Selected work in LLM, NLP, and applied AI
-            </p>
-          </div>
-          <a
-            href="https://github.com/cofldus" target="_blank" rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12.5, fontWeight: 500, color: "var(--accent)", textDecoration: "none", flexShrink: 0, marginLeft: 24, transition: "opacity 0.15s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          프로젝트
+        </motion.h2>
+
+        <FeaturedCard p={featured[0]} />
+
+        <div className="pcard-half-grid">
+          <HalfCard p={featured[1]} />
+          <HalfCard p={featured[2]} />
+        </div>
+
+        {/* 그 외 작업 */}
+        <div style={{ marginTop: 112 }}>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            style={{
+              fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 600,
+              color: "#9CA3AF", letterSpacing: "0.04em", marginBottom: 8,
+            }}
           >
-            GitHub
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </motion.div>
+            그 외 작업
+          </motion.p>
 
-        <div className="pcard-grid" style={{ marginBottom: 60 }}>
-          {videoProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={i} />)}
+          <div style={{ borderTop: "1px solid var(--border)" }}>
+            {more.map((m) => (
+              <a
+                key={m.slug}
+                href={`/projects/${m.slug}`}
+                className="pmore-row"
+              >
+                <span className="pmore-title">{m.title}</span>
+                <span className="pmore-tags">{m.tags}</span>
+                <span className="pmore-metric">{m.metric}</span>
+                <svg className="pmore-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Research section */}
-        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 48, marginBottom: 40 }}>
-          <p style={{ fontFamily: "var(--font-label)", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--accent)", marginBottom: 6 }}>
-            Research &amp; Exploration
-          </p>
-          <p style={{ fontSize: 13, color: "var(--ink-light)" }}>
-            논문 탐구 및 실험 프로젝트
-          </p>
-        </div>
-        <div className="pcard-grid pcard-grid-svg">
-          {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={videoProjects.length + i} />)}
-        </div>
       </div>
 
       <style>{`
-        .pcard-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 40px;
-          align-items: start;
+        .pcard { transition: opacity 0.2s; }
+        .pcard:hover { opacity: 0.72; }
+
+        .pcard-hero {
+          grid-template-columns: 1.15fr 1fr;
+          gap: clamp(40px, 5vw, 72px);
+          margin-bottom: 112px;
         }
-        .pcard-grid-svg {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .pcard {
-          transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-        }
-        .pcard-flash {
-          position: absolute;
-          inset: 0;
-          background: rgba(255,255,255,0.45);
-          pointer-events: none;
-          z-index: 10;
-          animation: pcard-flash 0.32s ease-out forwards;
-        }
-        @keyframes pcard-flash {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
-        }
-        .pcard:hover {
-          transform: translateY(-12px) scale(1.38);
-          box-shadow: 0 24px 48px rgba(0,0,0,0.14), 0 48px 96px rgba(0,0,0,0.22) !important;
-          z-index: 20;
-        }
-        .pcard:active {
-          transform: translateY(2px) scale(0.96);
-          transition: transform 0.1s ease, box-shadow 0.1s ease;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.09) !important;
-        }
-        .pcard-thumb {
-          border-bottom: 1px solid var(--border-sub);
-          background: #0A1628;
-          height: 340px;
+        .pcard-hero-visual {
+          aspect-ratio: 16 / 10;
+          border-radius: 10px;
           overflow: hidden;
-          display: flex;
+          border: 1px solid var(--border);
+        }
+        .pcard-hero-body { min-width: 0; }
+
+        .pcard-half-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: clamp(40px, 5vw, 72px);
+        }
+        .pcard-half-visual {
+          aspect-ratio: 16 / 10;
+          border-radius: 10px;
+          overflow: hidden;
+          border: 1px solid var(--border);
+        }
+
+        .pmore-row {
+          display: grid;
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.8fr) 16px;
           align-items: center;
-          justify-content: center;
+          gap: 20px;
+          padding: 22px 4px;
+          border-bottom: 1px solid var(--border);
+          text-decoration: none;
+          transition: padding-left 0.18s ease;
         }
-        .pcard-thumb video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
+        .pmore-row:hover { padding-left: 12px; }
+        .pmore-row:hover .pmore-title { color: var(--accent); }
+        .pmore-title {
+          font-size: 15px; font-weight: 600; color: var(--ink);
+          letter-spacing: -0.015em; transition: color 0.18s;
+          word-break: keep-all;
         }
-        .pcard-thumb-svg {
-          width: 100%;
-          height: 100%;
-          background: var(--bg-subtle);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-          box-sizing: border-box;
+        .pmore-tags {
+          font-family: var(--font-label); font-size: 12px; color: #9CA3AF;
         }
-        @media (max-width: 1024px) {
-          .pcard-grid-svg { grid-template-columns: repeat(2, 1fr); }
+        .pmore-metric {
+          font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+          color: var(--ink-mid); letter-spacing: -0.01em;
+        }
+        .pmore-arrow { color: #D1D5DB; flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+          .pcard-hero { grid-template-columns: 1fr; gap: 32px; }
+          .pcard-half-grid { grid-template-columns: 1fr; gap: 72px; }
+          .pcard-hero { margin-bottom: 72px; }
         }
         @media (max-width: 640px) {
-          .pcard-grid, .pcard-grid-svg { grid-template-columns: 1fr; }
+          .pmore-row {
+            grid-template-columns: 1fr auto;
+            grid-template-areas: "title metric" "tags tags";
+            gap: 6px 16px;
+          }
+          .pmore-title { grid-area: title; }
+          .pmore-metric { grid-area: metric; font-size: 13px; }
+          .pmore-tags { grid-area: tags; }
+          .pmore-arrow { display: none; }
         }
       `}</style>
     </section>
