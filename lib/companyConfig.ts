@@ -35,6 +35,7 @@ export const defaultConfig: CompanyConfig = {
   subtext:
     "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
   projectOrder: [
+    "doc-extraction",           // 기업 실무 — 단계별 손실 측정과 인식 구조 전환
     "killkong",                 // 압축·역할분리·병목실측 — 아키텍처 판단 최강
     "medical-chatbot",          // RAG 파이프라인 깊이 + 평가셋 설계
     "korean-noise-restoration", // 태스크 재정의 — 구조적 진단
@@ -53,6 +54,7 @@ const fullConfig: CompanyConfig = {
   subtext:
     "도메인 특화 RAG 파이프라인(BM25·FAISS·리랭킹)과 NLP/LLM 서비스를 설계·구현하고, 검색 정확도와 응답 품질을 평가 파이프라인으로 정량 검증합니다.",
   projectOrder: [
+    "doc-extraction",
     "killkong",
     "finview",
     "medical-chatbot",
@@ -101,7 +103,7 @@ const archivSoftConfig: CompanyConfig = {
       secondary: [],
     },
   ],
-  projectOrder: ["killkong", "finview", "airpa", "medical-chatbot", "korean-noise-restoration"],
+  projectOrder: ["doc-extraction", "killkong", "finview", "airpa", "medical-chatbot", "korean-noise-restoration"],
   researchSlugs: ["ct-mri-cyclegan"],
 };
 

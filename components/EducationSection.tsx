@@ -19,6 +19,12 @@ const mainExp = [
     cat: "경력 · 활동",
     items: [
       {
+        role: "문서 인식 엔진 품질 개선 · 단계별 손실 측정 체계 구축",
+        org: "문서 AI 기업 실무",
+        period: "2026.07– 재직 중",
+        desc: "",
+      },
+      {
         role: "Scientific LLM · CPT · SFT · GDPO 리서치",
         org: "가짜연구소 (Pseudo Lab) 12기 러너 · 오픈 리서치 커뮤니티",
         period: "진행 중",
