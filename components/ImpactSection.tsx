@@ -60,7 +60,7 @@ export default function ImpactSection() {
           white-space: nowrap;
           transition: color 0.15s;
         }
-        .impact-item:hover .impact-metric { color: var(--accent); }
+        .impact-item:hover .impact-metric { color: var(--accent-text); }
         .impact-label {
           font-family: var(--font-sans);
           font-size: 13.5px;
@@ -68,7 +68,7 @@ export default function ImpactSection() {
           letter-spacing: -0.005em;
           word-break: keep-all;
         }
-        .impact-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .impact-item:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
 
         @media (max-width: 760px) {
           .impact-grid { grid-template-columns: 1fr; gap: 28px; padding: 32px 0; }

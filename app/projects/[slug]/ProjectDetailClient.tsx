@@ -3,7 +3,8 @@
 import { useState } from "react";
 import type { Project } from "@/lib/projects";
 
-const A    = "var(--accent)";
+const A    = "var(--accent)";       // 선·점 등 장식
+const AT   = "var(--accent-text)";  // 텍스트 강조
 const INK  = "var(--ink)";
 const BODY = "var(--ink-mid)";
 const RULE = "var(--border)";
@@ -394,7 +395,7 @@ function DetailAppendix({ p }: { p: Project }) {
                     }}>
                       <span style={{
                         fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 400,
-                        color: isLast ? A : "var(--ink-ghost)",
+                        color: isLast ? AT : "var(--ink-ghost)",
                         lineHeight: 1, marginBottom: 10,
                       }}>
                         {e.id}
@@ -407,7 +408,7 @@ function DetailAppendix({ p }: { p: Project }) {
                       {isLast && (
                         <div style={{
                           fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-                          color: A, marginBottom: 8,
+                          color: AT, marginBottom: 8,
                         }}>
                           최종 채택
                         </div>
@@ -428,7 +429,7 @@ function DetailAppendix({ p }: { p: Project }) {
                       </p>
                       <div style={{
                         fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 400,
-                        color: isLast ? A : "var(--ink-mid)", letterSpacing: "-0.005em",
+                        color: isLast ? AT : "var(--ink-mid)", letterSpacing: "-0.005em",
                         lineHeight: 1.7, maxWidth: "var(--measure)", wordBreak: "keep-all",
                       }}>
                         {e.conclusion}

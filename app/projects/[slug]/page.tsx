@@ -19,7 +19,7 @@ export async function generateMetadata({
   return { title: `${project.title} — 이채연` };
 }
 
-const A    = "var(--accent)";
+const A    = "var(--accent-text)";  // 이 페이지의 액센트는 전부 텍스트 용도
 const INK  = "var(--ink)";
 const SUB  = "var(--ink-mid)";
 const RULE = "var(--border)";

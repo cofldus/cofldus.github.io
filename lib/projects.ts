@@ -35,6 +35,16 @@ export interface Project {
    * 접힌 상세 기록 대신 본문에 바로 노출한다.
    */
   promoteDecisions?: boolean;
+  /** 홈 카드 전용 표시 필드. 상세 페이지는 사용하지 않는다. */
+  card?: {
+    /** 카드 제목 (상세의 title 과 문구가 다름) */
+    topic: string;
+    /** 카드 한 줄 설명 */
+    oneliner: string;
+    thumbImg?: string;
+    thumbBg?: string;
+    thumbAutoHeight?: boolean;
+  };
   award?: string;
   repoUrl?: string;
   repoName?: string;
@@ -48,6 +58,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "doc-extraction",
+    card: {
+      topic: "증명서·진단서에서 항목을 추출하는 문서 AI 엔진의 정확도 개선",
+      oneliner: "단계별 평가셋을 구축해 손실 구간을 측정하고 VLM 기반으로 전환해 34.1% → 91.7%",
+      thumbImg: "/doc-extraction_thumb.png",
+      thumbBg: "#FFFFFF",
+    },
     num: "12",
     title: "문서 AI 엔진 정확도 개선",
     subtitle: "단계별 평가셋 구축과 VLM 전환으로 34.1% → 91.7%",
@@ -143,6 +159,11 @@ export const projects: Project[] = [
   },
   {
     slug: "airpa",
+    card: {
+      topic: "진로 상담 교사의 학과 탐색·요약을 자동화하는 교육 지원 시스템",
+      oneliner: "AiRPA — UiPath RPA와 T5 요약 모델로 인당 30분 학과 탐색을 즉시 완료하는 자동화 서비스",
+      thumbBg: "#FFFFFF",
+    },
     num: "01",
     title: "AiRPA: 학과 탐색 자동화 시스템",
     subtitle: "이질적인 3개 소스를 RPA로 수집하고 T5 요약으로 포맷을 통일",
@@ -226,6 +247,10 @@ export const projects: Project[] = [
   },
   {
     slug: "medical-chatbot",
+    card: {
+      topic: "의료 질의에 근거 있는 답변을 제공하는 Advanced RAG 시스템",
+      oneliner: "BM25·FAISS·ReRanker를 결합해 전문 의료 데이터 검색 정확도를 높인 근거 기반 답변 시스템",
+    },
     num: "02",
     title: "의료 문서 검색 RAG 자문봇",
     subtitle: "BM25와 FAISS를 함께 검색하고 Cross-Encoder로 재정렬해 서술형 BERTScore +0.16",
@@ -308,6 +333,10 @@ export const projects: Project[] = [
   },
   {
     slug: "korean-noise-restoration",
+    card: {
+      topic: "난독화된 한글 리뷰를 유형별로 복원하는 NLP 파이프라인",
+      oneliner: "KoELECTRA 분류기와 KoBART 복원 모델을 분기해 노이즈 유형별 복원 안정성을 높인 시스템",
+    },
     num: "03",
     title: "한글 난독화 복원 AI",
     subtitle: "변형 유형을 먼저 분류한 뒤 유형별 복원 모델로 분기해 BERTScore 0.9812",
@@ -394,6 +423,10 @@ export const projects: Project[] = [
   },
   {
     slug: "killkong",
+    card: {
+      topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
+      oneliner: "LoRA·4bit 양자화와 FAISS 개인화 메모리로 0.47초 응답을 구현한 콩글리시 교정 에이전트",
+    },
     num: "04",
     title: "온디바이스 콩글리쉬 교정 에이전트",
     subtitle: "14GB 모델을 3.0GB로 경량화하고 ARM CPU 응답 시간을 0.47초로 단축",
@@ -456,6 +489,11 @@ export const projects: Project[] = [
   },
   {
     slug: "finview",
+    card: {
+      topic: "재무제표와 뉴스를 함께 해석하는 생성형 AI 재무 분석 서비스",
+      oneliner: "공시 수치 계산 모듈과 GPT 리포트 생성을 분리해 재무 리스크를 설명하는 AI 애널리스트",
+      thumbBg: "#FFFFFF",
+    },
     num: "05",
     title: "500개 상장사 재무를 즉시 해설해주는 AI 애널리스트",
     period: "2024.09–11 · 성신여자대학교 · 팀장",
@@ -522,6 +560,12 @@ export const projects: Project[] = [
   },
   {
     slug: "ct-mri-cyclegan",
+    card: {
+      topic: "CT→MRI 의료영상 변환 연구",
+      oneliner: "CycleGAN 기반 도메인 변환으로 구조 보존 성능을 개선한 생성 모델 실험",
+      thumbImg: "/arch/ct-mri-result.png",
+      thumbBg: "#0F172A",
+    },
     num: "06",
     title: "CT→MRI 교차 모달리티 변환 연구",
     subtitle: "Paired 데이터 없이 CycleGAN으로 학습해 SSIM 0.82→0.88",
@@ -574,6 +618,10 @@ export const projects: Project[] = [
   },
   {
     slug: "hunchgame",
+    card: {
+      topic: "유동인구 밀집도를 예측해 혼잡 회피 경로를 실시간으로 추천하는 안전 서비스",
+      oneliner: "HunchGame — FP-Growth 패턴 마이닝과 XGBoost 밀집도 예측으로 행사장 분산 동선을 제공하는 시스템",
+    },
     num: "07",
     title: "눈치게임: 인파 분산 서비스",
     subtitle: "혼잡도·거리 등 4개 지표를 가중 합산해 대안 장소를 추천",
@@ -620,6 +668,11 @@ export const projects: Project[] = [
   },
   {
     slug: "lovelop",
+    card: {
+      topic: "가게 운영 변화를 고객 반응으로 미리 검증하는 AI 시뮬레이션 플랫폼",
+      oneliner: "160개 AI 고객 페르소나와 11개 지표로 가격·메뉴·운영 변화의 영향을 실험하는 의사결정 지원 시스템",
+      thumbBg: "#FFFFFF",
+    },
     num: "08",
     title: "상권 시뮬레이션 플랫폼",
     subtitle: "160개 AI 페르소나로 운영 조건 변경 전후를 11개 지표로 비교",
@@ -695,6 +748,10 @@ export const projects: Project[] = [
   },
   {
     slug: "llm-for-science",
+    card: {
+      topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구 프로젝트",
+      oneliner: "LLM for Science — CPT·SFT·GDPO 파이프라인으로 arXiv·PubMed 데이터를 과학 도메인에 정렬하는 오픈 리서치",
+    },
     num: "09",
     title: "LLM for Science: 과학 도메인 특화 CPT·GDPO 연구",
     period: "Pseudo Lab · 오픈 리서치 커뮤니티 · 진행 중",
@@ -739,6 +796,11 @@ export const projects: Project[] = [
   },
   {
     slug: "rocketan",
+    card: {
+      topic: "강의 자료에서 맥락 기반 퀴즈와 학습 가이드를 자동 생성하는 RAG 시스템",
+      oneliner: "로켓단 퀴즈 생성기 — FAISS 벡터 검색과 LangChain으로 강의 내용 기반 문항을 즉시 생성하는 출제 자동화 서비스",
+      thumbAutoHeight: true,
+    },
     num: "10",
     title: "강의 퀴즈·학습 가이드 생성기",
     subtitle: "강의 자료를 FAISS로 검색해 맥락 기반 문항을 생성하는 RAG 파이프라인",
@@ -806,6 +868,10 @@ export const projects: Project[] = [
   },
   {
     slug: "moim",
+    card: {
+      topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",
+      oneliner: "MOIM — STOMP WebSocket과 Kakao Maps를 채팅과 통합해 외부 앱 없이 장소 선택부터 모임 확정까지 지원하는 서비스",
+    },
     num: "11",
     title: "MOIM: 실시간 채팅 모임 플랫폼",
     subtitle: "장소 검색부터 투표·확정까지를 채팅 안에서 처리 (AI 미사용 풀스택)",

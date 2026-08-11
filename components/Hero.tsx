@@ -145,7 +145,7 @@ export default function Hero() {
           color: #FFFFFF;
         }
         .hero-cta--primary:hover { opacity: 0.85; color: #FFFFFF; border-color: var(--ink); }
-        .hero-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .hero-cta:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
       `}</style>
     </section>
   );

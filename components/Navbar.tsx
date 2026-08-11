@@ -58,7 +58,7 @@ export default function Navbar() {
                 color: "var(--ink-light)", textDecoration: "none", letterSpacing: "0.04em",
                 transition: "color 0.15s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-text)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-light)")}
               >{l.label}</a>
             ))}
@@ -69,6 +69,8 @@ export default function Navbar() {
             className="nav-burger"
             onClick={() => setOpen((o) => !o)}
             aria-label="메뉴"
+            aria-expanded={open}
+            aria-controls="nav-drawer"
           >
             {open ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -83,7 +85,7 @@ export default function Navbar() {
         </div>
 
         {/* 모바일 드롭다운 */}
-        <div className={`nav-drawer ${open ? "nav-drawer--open" : ""}`}>
+        <div id="nav-drawer" className={`nav-drawer ${open ? "nav-drawer--open" : ""}`}>
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="nav-drawer-link">
               {l.label}

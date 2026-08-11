@@ -90,7 +90,7 @@ export default function PhilosophySection() {
                     textDecoration: "none",
                     transition: "color 0.15s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-text)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-mid)")}
                 >
                   {item.icon}

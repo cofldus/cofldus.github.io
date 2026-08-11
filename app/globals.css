@@ -11,7 +11,10 @@
   --page-bg:      #FAFAF8;
   --border:       #E5E5E1;
   --border-sub:   #EFEFEB;
+  /* 민트는 선·배경·장식 전용 (흰 배경 대비 약 2.1:1 — 텍스트에 부적합) */
   --accent:       #4fc0d1;
+  /* 링크·hover 텍스트·숫자 강조는 이쪽 (흰 배경 대비 약 5.4:1) */
+  --accent-text:  #0E7490;
   --accent-bg:    #F0F4FF;
   --accent-bd:    #D8D8D8;
   --tag-bg:       transparent;
@@ -180,7 +183,7 @@ img, video, svg { max-width: 100%; }
   60%  { opacity: 0.6; transform: scale(1.4); }
   100% { opacity: 0; transform: scale(1.8); }
 }
-.back-link:hover { color: var(--accent) !important; }
+.back-link:hover { color: var(--accent-text) !important; }
 .detail-github-link {
   display: inline-flex;
   align-items: center;
