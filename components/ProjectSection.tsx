@@ -679,7 +679,8 @@ export default function ProjectSection() {
             연구 프로젝트
           </h3>
         </div>
-        <div className="pcard-grid pcard-grid-svg">
+        {/* 연구 카드가 3개 미만이면 2열 기준으로 — 1장일 때 메인 카드와 같은 폭 */}
+        <div className={`pcard-grid pcard-grid-svg${svgProjects.length < 3 ? " pcard-grid-svg--2" : ""}`}>
           {svgProjects.map((p, i) => <ProjectCard key={p.num} p={p} idx={videoProjects.length + i} />)}
         </div>
       </div>
@@ -693,6 +694,9 @@ export default function ProjectSection() {
         }
         .pcard-grid-svg {
           grid-template-columns: repeat(3, 1fr);
+        }
+        .pcard-grid-svg--2 {
+          grid-template-columns: repeat(2, 1fr);
         }
         .pcard {
           background: var(--bg);
@@ -766,10 +770,10 @@ export default function ProjectSection() {
           box-sizing: border-box;
         }
         @media (max-width: 1024px) {
-          .pcard-grid-svg { grid-template-columns: repeat(2, 1fr); }
+          .pcard-grid-svg, .pcard-grid-svg--2 { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
-          .pcard-grid, .pcard-grid-svg { grid-template-columns: 1fr; }
+          .pcard-grid, .pcard-grid-svg, .pcard-grid-svg--2 { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>
