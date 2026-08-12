@@ -133,32 +133,28 @@ const sideByCat = (cat: string) =>
 
 const education = byCat(mainExp, "학력");
 const allCareer = byCat(mainExp, "경력 · 활동");
-const training = byCat(mainExp, "교육이수");
 const awards = sideByCat("수상");
-const certs = sideByCat("자격증");
-const langs = sideByCat("어학");
+// 교육이수 · 자격증 · 어학은 데이터로만 보관하고 홈에는 노출하지 않는다.
 
-// 현재 실무 + AI/NLP 관련 경력 4건만 홈에 노출. 나머지는 이력서에서 확인.
-const HOME_CAREER_ORGS = [
+const pick = (orgs: string[]) =>
+  orgs
+    .map((org) => allCareer.find((it) => it.org === org))
+    .filter((it): it is (typeof allCareer)[0] => Boolean(it));
+
+// 고용 관계가 있던 것만 '경력'으로 둔다 (실무 · 인턴십 · 연구원)
+const homeCareer = pick([
   "문서 AI 기업 실무",
-  "가짜연구소 (Pseudo Lab) 12기 러너 · 오픈 리서치 커뮤니티",
   "멋쟁이사자처럼 로켓단 인턴십",
   "(주)딥러닝연구개발 · 한성대학교 연구원",
-];
-const homeCareer = HOME_CAREER_ORGS
-  .map((org) => allCareer.find((it) => it.org === org))
-  .filter((it): it is (typeof allCareer)[0] => Boolean(it));
+]);
 
-// AI/NLP 관련 수상 2건만 노출
+// 커뮤니티 리서치 참여는 위계를 나눠 별도 표기
+const homeResearch = pick([
+  "가짜연구소 (Pseudo Lab) 12기 러너 · 오픈 리서치 커뮤니티",
+]);
+
+// AI/NLP 관련 수상 2건만 노출. 나머지 이력은 이력서에서 확인.
 const homeAwards = awards.slice(0, 2);
-
-// 나머지는 건수로만 요약 (실제 데이터에서 계산 — 임의 숫자 아님)
-const restSummary = [
-  training.length > 0 ? `교육이수 ${training.length}건` : null,
-  awards.length > homeAwards.length ? `그 밖의 수상 ${awards.length - homeAwards.length}건` : null,
-  certs.length > 0 ? `자격증 ${certs.length}건` : null,
-  langs.length > 0 ? `어학 ${langs.length}건` : null,
-].filter(Boolean).join(" · ");
 
 // ─── 표시 컴포넌트 ───────────────────────────────────────────────
 
@@ -236,6 +232,18 @@ export default function EducationSection() {
             ))}
           </div>
 
+          {/* 연구 · 활동 — 고용 관계가 아닌 참여 */}
+          {homeResearch.length > 0 && (
+            <>
+              <GroupTitle>연구 · 활동</GroupTitle>
+              <div style={{ marginBottom: 48 }}>
+                {homeResearch.map((it) => (
+                  <Row key={it.org} period={it.period} title={it.role} org={it.org} />
+                ))}
+              </div>
+            </>
+          )}
+
           {/* 학력 */}
           <GroupTitle>학력</GroupTitle>
           <div style={{ marginBottom: 48 }}>
@@ -252,19 +260,7 @@ export default function EducationSection() {
             ))}
           </div>
 
-          {/* 그 외 — 건수만 */}
-          {restSummary && (
-            <>
-              <GroupTitle>그 외</GroupTitle>
-              <p style={{
-                fontFamily: "var(--font-sans)", fontSize: 15.5, fontWeight: 400,
-                color: "var(--ink-mid)", lineHeight: 1.7, margin: "0 0 40px",
-                wordBreak: "keep-all" as const,
-              }}>
-                {restSummary}
-              </p>
-            </>
-          )}
+          {/* 교육이수 · 자격증 · 어학은 이력서에서 확인 */}
 
           <a href="/resume_v1.html" className="bg-cta">
             전체 이력 보기

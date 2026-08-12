@@ -599,7 +599,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <a href={`/projects/${p.slug}`} className="pcard-link pcard-link--primary">
-          Case Study
+          자세히 보기
           <span className="pcard-arrow">→</span>
         </a>
         {p.repoUrl && (
