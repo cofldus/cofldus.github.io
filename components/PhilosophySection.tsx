@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 
-// LinkedIn·Blog 는 주소를 확인한 뒤 여기에 추가한다.
 const links = [
   { label: "Email", href: "mailto:lcylcy3816@naver.com" },
   { label: "GitHub", href: "https://github.com/cofldus", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/chaeyeon-lee-113698274", external: true },
+  { label: "Blog", href: "https://velog.io/@miainflorence", external: true },
   { label: "Resume", href: "/resume_v1.html" },
 ];
 
