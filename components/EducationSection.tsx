@@ -2,6 +2,11 @@
 
 import { motion } from "framer-motion";
 
+// ─────────────────────────────────────────────────────────────────
+// 이력 원본 데이터. 전체는 이력서(/resume_v1.html)에서 확인하고,
+// 홈에서는 아래 HOME_* 선택자로 일부만 노출한다. 데이터는 지우지 않는다.
+// ─────────────────────────────────────────────────────────────────
+
 // 왼쪽 — 주요 경험 (역할/프로젝트 중심)
 const mainExp = [
   {
@@ -120,163 +125,189 @@ const sideInfo = [
   },
 ];
 
-function MainCatBlock({ c, delay }: { c: typeof mainExp[0]; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.4 }}
-      style={{ marginBottom: 22 }}
-    >
-      <div style={{
-        padding: "5px 12px",
-        background: "rgba(79,192,209,0.06)",
-        borderLeft: "2px solid rgba(79,192,209,0.4)",
-        borderRadius: "0 4px 4px 0",
-        marginBottom: 4,
-      }}>
-        <span style={{
-          fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
-          letterSpacing: "0.14em", textTransform: "uppercase" as const,
-          color: "#3ea8b8",
-          WebkitFontSmoothing: "antialiased",
-        }}>
-          {c.cat}
-        </span>
-      </div>
+// ─── 홈 노출 선택 ────────────────────────────────────────────────
+const byCat = (list: typeof mainExp, cat: string) =>
+  list.find((c) => c.cat === cat)?.items ?? [];
+const sideByCat = (cat: string) =>
+  sideInfo.find((c) => c.cat === cat)?.items ?? [];
 
-      {c.items.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            padding: "10px 0 10px 14px",
-            borderBottom: "1px solid var(--border-sub)",
-          }}
-        >
-          {/* 역할/프로젝트 — 메인 정보 */}
-          <p style={{
-            fontSize: 14,
-            fontWeight: 600,
-            color: "var(--ink)",
-            lineHeight: 1.45,
-            marginBottom: 3,
-            letterSpacing: "-0.01em",
-          }}>
-            {item.role}
-          </p>
-          {/* 기관 + 기간 — 서브 정보 */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span style={{
-              fontFamily: "var(--font-label)", fontSize: 11,
-              color: "var(--ink-light)", lineHeight: 1.4,
-            }}>
-              {item.org}
-            </span>
-            {item.period && (
-              <>
-                <span style={{ width: 2, height: 2, borderRadius: "50%", background: "var(--ink-ghost)", display: "inline-block", flexShrink: 0 }} />
-                <span style={{
-                  fontFamily: "var(--font-label)", fontSize: 11,
-                  color: "var(--ink-light)", letterSpacing: "0.02em",
-                }}>
-                  {item.period}
-                </span>
-              </>
-            )}
-          </div>
-        </div>
-      ))}
-    </motion.div>
+const education = byCat(mainExp, "학력");
+const allCareer = byCat(mainExp, "경력 · 활동");
+const training = byCat(mainExp, "교육이수");
+const awards = sideByCat("수상");
+const certs = sideByCat("자격증");
+const langs = sideByCat("어학");
+
+// 현재 실무 + AI/NLP 관련 경력 4건만 홈에 노출. 나머지는 이력서에서 확인.
+const HOME_CAREER_ORGS = [
+  "문서 AI 기업 실무",
+  "가짜연구소 (Pseudo Lab) 12기 러너 · 오픈 리서치 커뮤니티",
+  "멋쟁이사자처럼 로켓단 인턴십",
+  "(주)딥러닝연구개발 · 한성대학교 연구원",
+];
+const homeCareer = HOME_CAREER_ORGS
+  .map((org) => allCareer.find((it) => it.org === org))
+  .filter((it): it is (typeof allCareer)[0] => Boolean(it));
+
+// AI/NLP 관련 수상 2건만 노출
+const homeAwards = awards.slice(0, 2);
+
+// 나머지는 건수로만 요약 (실제 데이터에서 계산 — 임의 숫자 아님)
+const restSummary = [
+  training.length > 0 ? `교육이수 ${training.length}건` : null,
+  awards.length > homeAwards.length ? `그 밖의 수상 ${awards.length - homeAwards.length}건` : null,
+  certs.length > 0 ? `자격증 ${certs.length}건` : null,
+  langs.length > 0 ? `어학 ${langs.length}건` : null,
+].filter(Boolean).join(" · ");
+
+// ─── 표시 컴포넌트 ───────────────────────────────────────────────
+
+function GroupTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 style={{
+      fontFamily: "var(--font-sans)",
+      fontSize: 16,
+      fontWeight: 600,
+      color: "var(--ink)",
+      letterSpacing: "-0.01em",
+      lineHeight: 1.4,
+      margin: "0 0 14px",
+      paddingBottom: 10,
+      borderBottom: "1px solid var(--border)",
+    }}>
+      {children}
+    </h3>
   );
 }
 
-function SideCatBlock({ c, delay }: { c: typeof sideInfo[0]; delay: number }) {
+function Row({ period, title, org }: { period: string; title: string; org?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.4 }}
-      style={{ marginBottom: 22 }}
-    >
-      <div style={{
-        padding: "5px 12px",
-        background: "rgba(79,192,209,0.06)",
-        borderLeft: "2px solid rgba(79,192,209,0.4)",
-        borderRadius: "0 4px 4px 0",
-        marginBottom: 4,
+    <div className="bg-row">
+      <span style={{
+        fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 400,
+        color: "var(--ink-light)", lineHeight: 1.6, whiteSpace: "nowrap" as const,
       }}>
-        <span style={{
-          fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 600,
-          letterSpacing: "0.14em", textTransform: "uppercase" as const,
-          color: "#3ea8b8",
-          WebkitFontSmoothing: "antialiased",
+        {period}
+      </span>
+      <div>
+        <p style={{
+          fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 500,
+          color: "var(--ink)", lineHeight: 1.55, margin: 0,
+          letterSpacing: "-0.01em", wordBreak: "keep-all" as const,
         }}>
-          {c.cat}
-        </span>
-      </div>
-
-      {c.items.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            padding: "9px 0 9px 14px",
-            borderBottom: "1px solid var(--border-sub)",
-          }}
-        >
+          {title}
+        </p>
+        {org && (
           <p style={{
-            fontSize: 13,
-            fontWeight: 600,
-            color: "var(--ink)",
-            lineHeight: 1.4,
-            marginBottom: 2,
-            letterSpacing: "-0.01em",
+            fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 400,
+            color: "var(--ink-mid)", lineHeight: 1.6, margin: "3px 0 0",
+            wordBreak: "keep-all" as const,
           }}>
-            {item.label}
+            {org}
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-            <span style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "var(--ink-light)" }}>
-              {item.org}
-            </span>
-            <span style={{ width: 2, height: 2, borderRadius: "50%", background: "var(--ink-ghost)", display: "inline-block", flexShrink: 0 }} />
-            <span style={{ fontFamily: "var(--font-label)", fontSize: 11, color: "var(--ink-light)" }}>
-              {item.period}
-            </span>
-          </div>
-        </div>
-      ))}
-    </motion.div>
+        )}
+      </div>
+    </div>
   );
 }
 
 export default function EducationSection() {
   return (
-    <section id="education" style={{ borderTop: "1px solid var(--border)", background: "var(--bg-subtle)" }}>
-      <div style={{ maxWidth: "var(--cw)", margin: "0 auto", padding: "44px var(--cp)" }}>
+    <section id="education" style={{ borderTop: "1px solid var(--border)", background: "var(--bg)" }}>
+      <div className="sec-wrap">
 
-        <div style={{ marginBottom: 32 }}>
-          <h2 style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-            학력 · 경력 · 이력
-          </h2>
-        </div>
+        <h2 className="sec-title">경력 · 학력</h2>
 
-        <div className="edu-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 60px", alignItems: "start" }}>
-          {/* 좌측: 주요 경험 */}
-          <div>
-            {mainExp.map((c, i) => (
-              <MainCatBlock key={c.cat} c={c} delay={i * 0.07} />
+        <div style={{ maxWidth: "var(--measure)" }}>
+
+          {/* 경력 */}
+          <GroupTitle>경력</GroupTitle>
+          <div style={{ marginBottom: 48 }}>
+            {homeCareer.map((it) => (
+              <motion.div
+                key={it.org}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35 }}
+              >
+                <Row period={it.period} title={it.role} org={it.org} />
+              </motion.div>
             ))}
           </div>
 
-          {/* 우측: 수상·자격증·어학 */}
-          <div style={{ paddingLeft: 32, borderLeft: "1px solid var(--border)" }}>
-            {sideInfo.map((c, i) => (
-              <SideCatBlock key={c.cat} c={c} delay={0.1 + i * 0.07} />
+          {/* 학력 */}
+          <GroupTitle>학력</GroupTitle>
+          <div style={{ marginBottom: 48 }}>
+            {education.map((it) => (
+              <Row key={it.org} period={it.period} title={`${it.org} ${it.role}`} />
             ))}
           </div>
+
+          {/* 수상 */}
+          <GroupTitle>수상</GroupTitle>
+          <div style={{ marginBottom: 48 }}>
+            {homeAwards.map((it) => (
+              <Row key={it.label} period={it.period} title={it.label} org={it.org} />
+            ))}
+          </div>
+
+          {/* 그 외 — 건수만 */}
+          {restSummary && (
+            <>
+              <GroupTitle>그 외</GroupTitle>
+              <p style={{
+                fontFamily: "var(--font-sans)", fontSize: 15.5, fontWeight: 400,
+                color: "var(--ink-mid)", lineHeight: 1.7, margin: "0 0 40px",
+                wordBreak: "keep-all" as const,
+              }}>
+                {restSummary}
+              </p>
+            </>
+          )}
+
+          <a href="/resume_v1.html" className="bg-cta">
+            전체 이력 보기
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
+
+      <style>{`
+        .bg-row {
+          display: grid;
+          grid-template-columns: 160px 1fr;
+          gap: 20px;
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-sub);
+        }
+        .bg-row:last-child { border-bottom: none; }
+
+        .bg-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          min-height: 44px;
+          padding: 11px 20px;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          font-family: var(--font-sans);
+          font-size: 15px;
+          font-weight: 400;
+          color: var(--ink-mid);
+          text-decoration: none;
+          transition: border-color 0.15s, color 0.15s;
+        }
+        .bg-cta:hover { border-color: var(--ink); color: var(--ink); }
+        .bg-cta:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+
+        @media (max-width: 640px) {
+          .bg-row {
+            grid-template-columns: 1fr;
+            gap: 5px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

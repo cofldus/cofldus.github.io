@@ -103,12 +103,6 @@ section#tech-stack {
     border-bottom: none;
   }
 
-  /* Education: 2열 → 1열 */
-  .edu-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-  }
-
   /* Contact/Philosophy: 2열 → 1열 */
   .contact-grid {
     grid-template-columns: 1fr !important;
