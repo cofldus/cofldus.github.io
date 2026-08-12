@@ -210,7 +210,7 @@ function Thumb04() {
       <text x={14} y={134} fill={MUTED} fontSize={8.5} fontFamily={SAN}>After</text>
       <rect x={14} y={139} width={57} height={13} rx={2}
         fill={`rgba(107,88,152,0.12)`} stroke={`rgba(107,88,152,0.38)`} strokeWidth={1} />
-      <text x={78} y={151} fill={AC} fontSize={11.5} fontFamily={MON} fontWeight={700}>3.0 GB  ↓76%</text>
+      <text x={78} y={151} fill={AC} fontSize={11.5} fontFamily={MON} fontWeight={700}>3.5 GB  ↓75%</text>
 
       <line x1={14} y1={160} x2={346} y2={160} stroke={LINE} strokeWidth={0.8} />
 

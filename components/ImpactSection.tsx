@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const achievements = [
   { metric: "34.1% → 91.7%", label: "Document AI 항목 추출 정확도", href: "/projects/doc-extraction" },
-  { metric: "2.3s → 0.47s", label: "온디바이스 응답 시간", href: "/projects/killkong" },
-  { metric: "+0.16", label: "Medical RAG BERTScore", href: "/projects/medical-chatbot" },
+  { metric: "2.3s → 0.47s", label: "온디바이스 end-to-end 응답 시간", href: "/projects/killkong" },
+  { metric: "+0.16", label: "의료 RAG 서술형 답변 BERTScore", href: "/projects/medical-chatbot" },
 ];
 
 export default function ImpactSection() {
