@@ -1,530 +1,424 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { Project } from "@/lib/projects";
 
-const A    = "var(--accent)";       // 선·점 등 장식
-const AT   = "var(--accent-text)";  // 텍스트 강조
-const INK  = "var(--ink)";
-const BODY = "var(--ink-mid)";
-const RULE = "var(--border)";
+type PagerLink = { slug: string; title: string };
+
+interface SectionDef {
+  id: string;
+  title: string;
+}
 
 /** 인사이트 문자열을 단락으로 분리 (\n\n 우선, 없으면 3문장 단위) */
-function splitInsight(text: string): string[] {
-  if (text.includes("\n\n")) {
-    return text.split("\n\n").map((s) => s.trim()).filter(Boolean);
-  }
+function splitParagraphs(text: string): string[] {
+  if (text.includes("\n\n")) return text.split("\n\n").map((s) => s.trim()).filter(Boolean);
   const sentences = text.split(/(?<=다[.!])\s+/).filter(Boolean);
   const out: string[] = [];
-  for (let i = 0; i < sentences.length; i += 3) {
-    out.push(sentences.slice(i, i + 3).join(" "));
-  }
+  for (let i = 0; i < sentences.length; i += 3) out.push(sentences.slice(i, i + 3).join(" "));
   return out.length > 1 ? out : [text];
 }
 
-export default function ProjectDetailClient({ project: p }: { project: Project }) {
+/** 담당 문자열 "A · B · C" → 목록 */
+const splitRole = (role: string) => role.split(/\s+·\s+/).map((s) => s.trim()).filter(Boolean);
+
+export default function ProjectDetailClient({
+  project: p,
+  poster,
+  prev,
+  next,
+}: {
+  project: Project;
+  poster?: string;
+  prev?: PagerLink;
+  next?: PagerLink;
+}) {
+  const hasArch = Boolean(p.pipeline?.length || p.archImages?.length);
+  const hasDecisions = Boolean(p.decisionRecords?.length || p.decisions.length);
+  const hasChallenges = Boolean(p.troubleshooting?.length || p.experiments?.length || (p.archImages?.length ?? 0) > 2);
+
+  const sections: SectionDef[] = [
+    { id: "overview", title: "Project Overview" },
+    { id: "problem", title: "Problem & Constraints" },
+    ...(p.myRole ? [{ id: "role", title: "My Responsibilities" }] : []),
+    ...(hasArch ? [{ id: "architecture", title: "System Architecture" }] : []),
+    ...(hasDecisions ? [{ id: "decisions", title: "Key Engineering Decisions" }] : []),
+    { id: "results", title: "Evaluation & Results" },
+    ...(hasChallenges ? [{ id: "challenges", title: "Challenges & Improvements" }] : []),
+    ...(p.insight ? [{ id: "lessons", title: "Lessons Learned" }] : []),
+  ];
+  const num = (id: string) => String(sections.findIndex((s) => s.id === id) + 1).padStart(2, "0");
+
+  const active = useActiveSection(sections.map((s) => s.id));
+
   return (
-    <article>
+    <div className="container cs-grid">
+      <article className="cs-article">
 
-      {/* 01 — 문제 정의 */}
-      <Section step="01" title="문제 정의 및 접근" first>
-        <div style={{ display: "flex", flexDirection: "column", gap: 18, maxWidth: "var(--measure)" }}>
-          {p.desc.split("\n\n").map((para, i) => (
-            <p key={i} style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 16.5, lineHeight: 1.85, color: BODY,
-              margin: 0, wordBreak: "keep-all",
-            }}>
-              {para}
-            </p>
-          ))}
-        </div>
-      </Section>
+        {/* 01 — Overview */}
+        <Section id="overview" num={num("overview")} title="Project Overview">
+          <div className="cs-prose">
+            {p.goal && <p className="cs-lead">{p.goal}</p>}
+          </div>
+          {p.disclosure && <p className="cs-note">{p.disclosure}</p>}
+          {p.videoUrl ? (
+            <figure className="cs-media">
+              <video
+                src={p.videoUrl}
+                controls
+                muted
+                playsInline
+                preload="none"
+                poster={poster}
+                aria-label={`${p.title} 데모 영상`}
+              />
+              <figcaption>데모 영상 · 소리 없음</figcaption>
+            </figure>
+          ) : p.readmeImage ? (
+            <figure className="cs-media">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={p.readmeImage} alt={`${p.title} 예시 화면`} loading="lazy" />
+              {p.context === "work" && <figcaption>공개 법정 서식에 합성 값을 채운 테스트 문서 예시</figcaption>}
+            </figure>
+          ) : null}
+        </Section>
 
-      {/* ARCH — 시스템 아키텍처 (핵심 2장만) */}
-      {p.archImages && p.archImages.length > 0 && (
-        <Section step="ARCH" title="시스템 아키텍처">
-          <div style={{
-            display: "flex",
-            alignItems: "stretch",
-          }}>
-            {p.archImages.slice(0, 2).map((src, i, arr) => (
-              <div key={i} style={{
-                flex: i === 0 ? "1 1 0" : "0 0 42%",
-                minWidth: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: i === 0 ? 36 : 24,
-                borderLeft: i > 0 ? `1px solid var(--border-sub)` : "none",
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={src}
-                  alt={`아키텍처 다이어그램 ${i + 1}`}
-                  style={{
-                    display: "block",
-                    width: "100%",
-                    height: arr.length === 2 ? "100%" : "auto",
-                    objectFit: "contain",
-                  }}
-                />
+        {/* 02 — Problem & Constraints */}
+        <Section id="problem" num={num("problem")} title="Problem & Constraints">
+          <div className="cs-prose">
+            {p.desc.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
+          </div>
+          {p.constraints && p.constraints.length > 0 && (
+            <>
+              <h3 className="cs-subhead">제약 조건</h3>
+              <ul className="cs-list">
+                {p.constraints.map((c) => <li key={c}>{c}</li>)}
+              </ul>
+            </>
+          )}
+        </Section>
+
+        {/* 03 — My Responsibilities */}
+        {p.myRole && (
+          <Section id="role" num={num("role")} title="My Responsibilities">
+            <ul className="cs-list">
+              {splitRole(p.myRole).map((r) => <li key={r}>{r}</li>)}
+            </ul>
+          </Section>
+        )}
+
+        {/* 04 — System Architecture */}
+        {hasArch && (
+          <Section id="architecture" num={num("architecture")} title="System Architecture">
+            {p.pipeline && p.pipeline.length > 0 && (
+              <div className="pipeline" role="group" aria-label="처리 흐름 비교">
+                {p.pipeline.map((row, ri) => (
+                  <div key={row.caption} className={`pipeline-row${ri === p.pipeline!.length - 1 ? " pipeline-row--after" : ""}`}>
+                    <span className="pipeline-caption">{row.caption}</span>
+                    <ol className="pipeline-stages">
+                      {row.stages.map((st, si) => (
+                        <li key={st}>
+                          {si > 0 && <span className="pipeline-arrow" aria-hidden="true">→</span>}
+                          <span className="pipeline-stage">{st}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {row.result && <span className="pipeline-result">{row.result}</span>}
+                  </div>
+                ))}
+                {p.pipelineNote && <p className="pipeline-foot">{p.pipelineNote}</p>}
               </div>
+            )}
+            {p.archImages && p.archImages.length > 0 && (
+              <div className={`cs-arch${p.pipeline ? " cs-arch--after" : ""}`}>
+                {p.archImages.slice(0, 2).map((src, i) => (
+                  <figure key={src}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt={`${p.title} 시스템 구성도 ${i + 1}`} loading="lazy" />
+                  </figure>
+                ))}
+              </div>
+            )}
+          </Section>
+        )}
+
+        {/* 05 — Key Engineering Decisions */}
+        {hasDecisions && (
+          <Section id="decisions" num={num("decisions")} title="Key Engineering Decisions">
+            {p.decisionRecords && p.decisionRecords.length > 0 ? (
+              <>
+                {p.decisionRecords.map((d, i) => (
+                  <article key={d.title} className="decision">
+                    <h3 className="decision-title">
+                      <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                      {d.title}
+                    </h3>
+                    <dl>
+                      <div><dt>Problem</dt><dd>{d.problem}</dd></div>
+                      <div>
+                        <dt>Options</dt>
+                        <dd><ul className="decision-options">{d.options.map((o) => <li key={o}>{o}</li>)}</ul></dd>
+                      </div>
+                      <div><dt>Decision</dt><dd className="decision-chosen">{d.decision}</dd></div>
+                      <div><dt>Trade-off</dt><dd>{d.tradeoff}</dd></div>
+                      <div><dt>Validation</dt><dd className="decision-validation">{d.validation}</dd></div>
+                    </dl>
+                  </article>
+                ))}
+                {p.decisions.length > 0 && (
+                  <div>
+                    <h3 className="cs-subhead">의사결정 상세 서술 · 참고 문헌</h3>
+                    <Accordion
+                      items={p.decisions.map((d) => ({
+                        title: d.tech,
+                        body: <DecisionBody reason={d.reason} refs={d.refs} />,
+                      }))}
+                    />
+                  </div>
+                )}
+              </>
+            ) : (
+              <Accordion
+                defaultOpen={0}
+                items={p.decisions.map((d) => ({
+                  title: d.tech,
+                  body: <DecisionBody reason={d.reason} refs={d.refs} />,
+                }))}
+              />
+            )}
+          </Section>
+        )}
+
+        {/* 06 — Evaluation & Results */}
+        <Section id="results" num={num("results")} title="Evaluation & Results">
+          {p.highlights.length > 0 && (
+            <div className="results">
+              {p.highlights.map((h) => (
+                <div key={h.label} className="result">
+                  <span className="result-value">{h.value}</span>
+                  <span className="result-label">{h.label}</span>
+                  {h.condition && <span className="result-cond">{h.condition}</span>}
+                </div>
+              ))}
+            </div>
+          )}
+          <h3 className="cs-subhead">구현과 결과</h3>
+          <ul className="cs-list">
+            {p.bullets.map((b) => <li key={b}>{b}</li>)}
+          </ul>
+        </Section>
+
+        {/* 07 — Challenges & Improvements */}
+        {hasChallenges && (
+          <Section id="challenges" num={num("challenges")} title="Challenges & Improvements">
+            {p.troubleshooting && p.troubleshooting.length > 0 && (
+              <>
+                <h3 className="cs-subhead cs-subhead--first">트러블슈팅</h3>
+                <Accordion items={p.troubleshooting.map((t) => ({ title: t.title, body: <p>{t.body}</p> }))} />
+              </>
+            )}
+            {p.experiments && p.experiments.length > 0 && (
+              <>
+                <h3 className="cs-subhead">실험 로그 — 가설과 결과</h3>
+                <Accordion
+                  numbered={false}
+                  items={p.experiments.map((e) => ({
+                    title: `${e.id} · ${e.hypothesis}`,
+                    body: (
+                      <>
+                        <p><span className="acc-k">결과</span>{e.result}</p>
+                        <p><span className="acc-k">결론</span>{e.conclusion}</p>
+                      </>
+                    ),
+                  }))}
+                />
+              </>
+            )}
+            {(p.archImages?.length ?? 0) > 2 && (
+              <>
+                <h3 className="cs-subhead">세부 다이어그램</h3>
+                <Accordion
+                  items={[{
+                    title: "세부 플로우 다이어그램 보기",
+                    body: (
+                      <div className="cs-arch">
+                        {p.archImages!.slice(2).map((src, i) => (
+                          <figure key={src}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={src} alt={`${p.title} 세부 다이어그램 ${i + 1}`} loading="lazy" />
+                          </figure>
+                        ))}
+                      </div>
+                    ),
+                  }]}
+                />
+              </>
+            )}
+          </Section>
+        )}
+
+        {/* 08 — Lessons Learned */}
+        {p.insight && (
+          <Section id="lessons" num={num("lessons")} title="Lessons Learned">
+            <div className="cs-prose cs-insight">
+              {splitParagraphs(p.insight).map((para, i) => <p key={i}>{para}</p>)}
+            </div>
+          </Section>
+        )}
+
+        {/* 이전 · 다음 */}
+        {(prev || next) && (
+          <nav className="cs-pager" aria-label="다른 프로젝트">
+            {prev ? (
+              <a href={`/projects/${prev.slug}/`}>
+                <span className="dir">← 이전</span>
+                <span className="name">{prev.title}</span>
+              </a>
+            ) : <span />}
+            {next ? (
+              <a href={`/projects/${next.slug}/`} className="next">
+                <span className="dir">다음 →</span>
+                <span className="name">{next.title}</span>
+              </a>
+            ) : <span />}
+          </nav>
+        )}
+      </article>
+
+      {/* 사이드바 — 목차 · 핵심 결과 · 링크 */}
+      <aside className="cs-aside" aria-label="페이지 정보">
+        <nav aria-label="목차">
+          <p className="cs-toc-title">On this page</p>
+          <div className="cs-toc">
+            {sections.map((s) => (
+              <a key={s.id} href={`#${s.id}`} aria-current={active === s.id ? "true" : undefined}>{s.title}</a>
             ))}
           </div>
-        </Section>
-      )}
+        </nav>
 
-      {/* 02 — 핵심 구현 */}
-      <Section step="02" title="핵심 구현 내용">
-        {p.bullets.map((b, i) => (
-          <div key={i} style={{
-            display: "flex", gap: 16, alignItems: "flex-start",
-            marginBottom: 16, maxWidth: "var(--measure)",
-          }}>
-            <Num>{String(i + 1).padStart(2, "0")}</Num>
-            <span style={{
-              fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.8,
-              color: BODY, wordBreak: "keep-all",
-            }}>
-              {b}
-            </span>
+        {p.highlights.length > 0 && (
+          <div>
+            <p className="cs-aside-title">Key results</p>
+            <div className="cs-aside-results">
+              {p.highlights.slice(0, 3).map((h) => (
+                <div key={h.label}>
+                  <div className="result-value">{h.value}</div>
+                  <div className="result-label">{h.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </Section>
+        )}
 
-      {/* 03 — 트러블슈팅 */}
-      {p.troubleshooting && p.troubleshooting.length > 0 && (
-        <Section step="03" title="트러블슈팅">
-          <TroubleshootingList items={p.troubleshooting} />
-        </Section>
-      )}
-
-      {/* 03 — 기술 선택 근거 (트러블슈팅·실험이 없어 이게 핵심인 프로젝트만) */}
-      {p.promoteDecisions && p.decisions.length > 0 && (
-        <Section step="03" title="기술 선택 근거">
-          <DecisionList decisions={p.decisions} />
-        </Section>
-      )}
-
-      {/* 04 — 배운 점 / 결과 해석 */}
-      {p.insight && (
-        <Section step="04" title={p.insightLabel ?? "배운 점"}>
-          <div style={{
-            paddingLeft: 22,
-            borderLeft: `1px solid ${RULE}`,
-            display: "flex",
-            flexDirection: "column",
-            gap: 18,
-            maxWidth: "var(--measure)",
-          }}>
-            {splitInsight(p.insight).map((para, i) => (
-              <p key={i} style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: i === 0 ? 16.5 : 15.5,
-                fontWeight: 400,
-                lineHeight: 1.85,
-                color: i === 0 ? INK : BODY,
-                margin: 0,
-                wordBreak: "keep-all",
-              }}>
-                {para}
-              </p>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* ── 상세 기록 (기본 접힘) ── */}
-      <DetailAppendix p={p} />
-
-    </article>
+        {p.repoUrl && (
+          <a href={p.repoUrl} className="text-link" target="_blank" rel="noopener noreferrer">
+            GitHub repository <span aria-hidden="true">↗</span><span className="sr-only">(새 창)</span>
+          </a>
+        )}
+      </aside>
+    </div>
   );
 }
 
-/* ── 트러블슈팅 아코디언 ── */
-function TroubleshootingList({ items }: { items: NonNullable<Project["troubleshooting"]> }) {
-  const [open, setOpen] = useState<number | null>(null);
+/* ── 공용 조각 ─────────────────────────────────────────────── */
+
+function Section({ id, num, title, children }: { id: string; num: string; title: string; children: React.ReactNode }) {
+  return (
+    <section id={id} className="cs-section" aria-labelledby={`${id}-h`}>
+      <div className="cs-section-head">
+        <span className="cs-section-num" aria-hidden="true">{num}</span>
+        <h2 className="cs-section-title" id={`${id}-h`}>{title}</h2>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function DecisionBody({ reason, refs }: { reason: string; refs?: { label: string; url: string }[] }) {
+  return (
+    <>
+      <p>{reason}</p>
+      {refs && refs.length > 0 && (
+        <div className="ref-list">
+          {refs.map((r) => (
+            <a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer">
+              {r.label} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+function Accordion({
+  items,
+  defaultOpen,
+  numbered = true,
+}: {
+  items: { title: string; body: React.ReactNode }[];
+  defaultOpen?: number;
+  numbered?: boolean;
+}) {
+  const baseId = useId();
+  const [open, setOpen] = useState<Set<number>>(() => new Set(defaultOpen !== undefined ? [defaultOpen] : []));
+  const toggle = (i: number) =>
+    setOpen((prev) => {
+      const s = new Set(prev);
+      if (s.has(i)) s.delete(i);
+      else s.add(i);
+      return s;
+    });
 
   return (
-    <div style={{ borderTop: `0.5px solid ${RULE}` }}>
-      {items.map((t, i) => {
-        const isOpen = open === i;
+    <div className="acc">
+      {items.map((it, i) => {
+        const isOpen = open.has(i);
+        const panelId = `${baseId}-p${i}`;
+        const btnId = `${baseId}-b${i}`;
         return (
-          <TroubleCard
-            key={i}
-            index={i}
-            title={t.title}
-            body={t.body}
-            isOpen={isOpen}
-            onToggle={() => setOpen(isOpen ? null : i)}
-          />
+          <div key={it.title} className="acc-item">
+            <h4 className="acc-heading">
+              <button
+                type="button"
+                id={btnId}
+                className="acc-trigger"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => toggle(i)}
+              >
+                {numbered && <span className="acc-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>}
+                <span className="acc-title">{it.title}</span>
+                <span className="acc-icon" aria-hidden="true">{isOpen ? "–" : "+"}</span>
+              </button>
+            </h4>
+            <div id={panelId} role="region" aria-labelledby={btnId} className="acc-panel" hidden={!isOpen}>
+              {it.body}
+            </div>
+          </div>
         );
       })}
     </div>
   );
 }
 
-function TroubleCard({
-  index, title, body, isOpen, onToggle,
-}: {
-  index: number;
-  title: string;
-  body: string;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div style={{ borderBottom: `1px solid var(--border-sub)` }}>
-      <button
-        onClick={onToggle}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        aria-expanded={isOpen}
-        style={{
-          width: "100%",
-          minHeight: 48,
-          display: "flex",
-          alignItems: "center",
-          gap: 14,
-          padding: "14px 0",
-          background: "transparent",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left" as const,
-        }}
-      >
-        <span style={{
-          flexShrink: 0,
-          fontFamily: "var(--font-sans)",
-          fontSize: 13,
-          fontWeight: 400,
-          color: "var(--ink-ghost)",
-          minWidth: 20,
-          fontVariantNumeric: "tabular-nums",
-        }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <span style={{
-          flex: 1,
-          fontFamily: "var(--font-sans)",
-          fontSize: 15.5,
-          fontWeight: 400,
-          color: isOpen || hovered ? INK : BODY,
-          letterSpacing: "-0.01em",
-          lineHeight: 1.5,
-          wordBreak: "keep-all",
-          transition: "color 0.15s",
-        }}>
-          {title}
-        </span>
-
-        <span style={{
-          flexShrink: 0,
-          fontSize: 11,
-          color: "var(--ink-light)",
-          display: "inline-block",
-          transition: "transform 0.2s",
-          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-          lineHeight: 1,
-        }}>▾</span>
-      </button>
-
-      {isOpen && (
-        <div style={{ paddingBottom: 22, paddingLeft: 34 }}>
-          <p style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 15.5,
-            lineHeight: 1.85,
-            color: BODY,
-            margin: 0,
-            maxWidth: "var(--measure)",
-            wordBreak: "keep-all",
-          }}>
-            {body}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ── 기술 선택 근거 목록 (본문·접힌 기록 공용) ── */
-function DecisionList({ decisions }: { decisions: Project["decisions"] }) {
-  return (
-    <>
-      {decisions.map((d, i) => (
-        <div key={d.tech}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 10 }}>
-            <Num>{String(i + 1).padStart(2, "0")}</Num>
-            <h3 style={{
-              fontFamily: "var(--font-sans)", fontSize: 16.5, fontWeight: 600,
-              color: INK, margin: 0, letterSpacing: "-0.015em", lineHeight: 1.4,
-            }}>
-              {d.tech}
-            </h3>
-          </div>
-          <p style={{
-            fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.85,
-            color: BODY, margin: 0, paddingLeft: 34,
-            maxWidth: "var(--measure)", wordBreak: "keep-all",
-          }}>
-            {d.reason}
-          </p>
-          {d.refs && d.refs.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 8px", marginTop: 14, paddingLeft: 34 }}>
-              {d.refs.map((ref) => (
-                <a
-                  key={ref.url}
-                  href={ref.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-                    color: "var(--ink-mid)", background: "transparent",
-                    border: `1px solid ${RULE}`, borderRadius: 4,
-                    padding: "4px 9px", textDecoration: "none",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  ↗ {ref.label}
-                </a>
-              ))}
-            </div>
-          )}
-          {i < decisions.length - 1 && <Divider />}
-        </div>
-      ))}
-    </>
-  );
-}
-
-/* ── 상세 기록 (기술 선택 + 실험 로그 — 기본 접힘) ── */
-function DetailAppendix({ p }: { p: Project }) {
-  const [show, setShow] = useState(false);
-  // 본문으로 승격한 프로젝트는 접힌 기록에서 제외
-  const hasDecisions = !p.promoteDecisions && p.decisions && p.decisions.length > 0;
-  const hasExperiments = p.experiments && p.experiments.length > 0;
-  const extraArch = (p.archImages ?? []).slice(2);
-  const hasExtraArch = extraArch.length > 0;
-  if (!hasDecisions && !hasExperiments && !hasExtraArch) return null;
-
-  return (
-    <section style={{ paddingTop: 36, borderTop: `1px solid ${RULE}` }}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-        <button
-          onClick={() => setShow((v) => !v)}
-          style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "4px 0",
-            outline: "none",
-          }}
-        >
-          <span style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 14,
-            fontWeight: 400,
-            color: "var(--ink-mid)",
-            letterSpacing: "-0.005em",
-            transition: "color 0.15s",
-          }}>
-            {show ? "접기" : "기술 의사결정 · 실험 로그 열기"}
-          </span>
-          <span style={{
-            fontSize: 10,
-            color: "var(--ink-light)",
-            display: "inline-block",
-            transition: "transform 0.2s, color 0.15s",
-            transform: show ? "rotate(180deg)" : "rotate(0deg)",
-            lineHeight: 1,
-          }}>▾</span>
-        </button>
-      </div>
-
-      {show && (
-        <div style={{ marginTop: 36 }}>
-
-          {/* A — 기술 선택 근거 */}
-          {hasDecisions && (
-            <div style={{ marginBottom: 48 }}>
-              <SubHeading step="A" title="기술 선택 근거" />
-              <DecisionList decisions={p.decisions} />
-            </div>
-          )}
-
-          {/* B — 실험 로그 */}
-          {hasExperiments && (
-            <div style={{ marginBottom: hasExtraArch ? 48 : 0 }}>
-              <SubHeading step="B" title="실험 로그 — 시행착오 기록" />
-              <div style={{ display: "flex", alignItems: "center", marginBottom: 36, paddingLeft: 32 }}>
-                {p.experiments!.map((e, i) => {
-                  const isLast = i === p.experiments!.length - 1;
-                  return (
-                    <div key={e.id} style={{ display: "flex", alignItems: "center" }}>
-                      <div style={{
-                        width: isLast ? 8 : 6, height: isLast ? 8 : 6,
-                        borderRadius: "50%",
-                        background: isLast ? A : "var(--ink-ghost)",
-                      }} />
-                      {i < p.experiments!.length - 1 && (
-                        <div style={{ width: 24, height: 1, background: "var(--border)" }} />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              {p.experiments!.map((e, i) => {
-                const isLast = i === p.experiments!.length - 1;
-                return (
-                  <div key={e.id} style={{
-                    display: "flex",
-                    marginBottom: i < p.experiments!.length - 1 ? 32 : 0,
-                  }}>
-                    <div style={{
-                      width: 32, flexShrink: 0,
-                      display: "flex", flexDirection: "column", alignItems: "center",
-                      paddingTop: 2,
-                    }}>
-                      <span style={{
-                        fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 400,
-                        color: isLast ? AT : "var(--ink-ghost)",
-                        lineHeight: 1, marginBottom: 10,
-                      }}>
-                        {e.id}
-                      </span>
-                      {i < p.experiments!.length - 1 && (
-                        <div style={{ flex: 1, width: 1, background: RULE, minHeight: 56 }} />
-                      )}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      {isLast && (
-                        <div style={{
-                          fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-                          color: AT, marginBottom: 8,
-                        }}>
-                          최종 채택
-                        </div>
-                      )}
-                      <p style={{
-                        fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600,
-                        color: INK, margin: "0 0 8px",
-                        lineHeight: 1.5, letterSpacing: "-0.015em", wordBreak: "keep-all",
-                      }}>
-                        {e.hypothesis}
-                      </p>
-                      <p style={{
-                        fontFamily: "var(--font-sans)", fontSize: 15.5, lineHeight: 1.8,
-                        color: BODY, margin: "0 0 12px",
-                        maxWidth: "var(--measure)", wordBreak: "keep-all",
-                      }}>
-                        {e.result}
-                      </p>
-                      <div style={{
-                        fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 400,
-                        color: isLast ? AT : "var(--ink-mid)", letterSpacing: "-0.005em",
-                        lineHeight: 1.7, maxWidth: "var(--measure)", wordBreak: "keep-all",
-                      }}>
-                        {e.conclusion}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* C — 세부 다이어그램 */}
-          {hasExtraArch && (
-            <div>
-              <SubHeading step="C" title="다이어그램 — 세부 플로우" />
-              <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingLeft: 32 }}>
-                {extraArch.map((src, i) => (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`세부 다이어그램 ${i + 1}`}
-                    style={{ display: "block", width: "100%", height: "auto" }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </section>
-  );
-}
-
-function Section({
-  step, title, first = false, children,
-}: {
-  step: string; title: string; first?: boolean; children: React.ReactNode;
-}) {
-  return (
-    <section style={{
-      paddingTop: first ? 56 : 64,
-      paddingBottom: 8,
-    }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 28 }}>
-        <span style={{
-          fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-          color: "var(--ink-ghost)", flexShrink: 0,
-          fontVariantNumeric: "tabular-nums",
-        }}>
-          {step}
-        </span>
-        <h2 style={{
-          fontFamily: "var(--font-sans)", fontSize: 22, fontWeight: 600,
-          color: INK, margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3,
-        }}>
-          {title}
-        </h2>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function SubHeading({ step, title }: { step: string; title: string }) {
-  return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 24 }}>
-      <span style={{
-        fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-        color: "var(--ink-ghost)", flexShrink: 0,
-      }}>
-        {step}
-      </span>
-      <h2 style={{
-        fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 600,
-        color: INK, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.35,
-      }}>
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-function Num({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{
-      fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 400,
-      color: "var(--ink-ghost)", flexShrink: 0, paddingTop: 4, minWidth: 20,
-      fontVariantNumeric: "tabular-nums",
-    }}>
-      {children}
-    </span>
-  );
-}
-
-function Divider() {
-  return <div style={{ height: "1px", background: "var(--border-sub)", margin: "28px 0" }} />;
+/** 현재 화면에 보이는 섹션 id */
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState<string>(ids[0]);
+  const key = ids.join(",");
+  useEffect(() => {
+    const list = key.split(",");
+    const els = list.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => Boolean(el));
+    if (!("IntersectionObserver" in window) || els.length === 0) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-80px 0px -60% 0px", threshold: 0 },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [key]);
+  return active;
 }

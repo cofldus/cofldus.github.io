@@ -1,21 +1,19 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 import { CompanyConfig, defaultConfig, getCompanyConfig } from "@/lib/companyConfig";
 
 const CompanyContext = createContext<CompanyConfig>(defaultConfig);
 
+// URL 쿼리(?company=)는 페이지 수명 동안 바뀌지 않으므로 구독할 이벤트가 없다.
+const subscribe = () => () => {};
+const readCompany = () => new URLSearchParams(window.location.search).get("company");
+const readServer = () => null;
+
 export function CompanyProvider({ children }: { children: React.ReactNode }) {
-  const [config, setConfig] = useState<CompanyConfig>(defaultConfig);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const company = params.get("company");
-    setConfig(getCompanyConfig(company));
-  }, []);
-
+  const company = useSyncExternalStore(subscribe, readCompany, readServer);
   return (
-    <CompanyContext.Provider value={config}>
+    <CompanyContext.Provider value={getCompanyConfig(company)}>
       {children}
     </CompanyContext.Provider>
   );

@@ -1,152 +1,50 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
 import profilePhoto from "./profilePhoto";
 import { useCompany } from "@/context/CompanyContext";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+import { hero, site } from "@/lib/profile";
 
 export default function Hero() {
+  // ?company= 파라미터가 있으면 해당 문구, 없으면 lib/profile.ts 의 hero 문구
   const company = useCompany();
 
   return (
-    <section id="about" className="hero" style={{ background: "var(--bg)" }}>
-      <div style={{
-        width: "100%",
-        maxWidth: "var(--cw)",
-        margin: "0 auto",
-        padding: "0 var(--cp)",
-      }}>
+    <section id="top" className="hero" aria-labelledby="hero-title">
+      <div className="container hero-inner">
+        <div>
+          <p className="eyebrow">{company.label}</p>
 
-        {/* 헤드라인 + 사진 */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "clamp(32px, 5vw, 80px)",
-        }}>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            style={{ flex: 1, minWidth: 0 }}
-          >
-            <h1 style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(40px, 5vw, 60px)",
-              fontWeight: 600,
-              lineHeight: 1.07,
-              letterSpacing: "-0.035em",
-              color: "var(--ink)",
-              margin: 0,
-            }}>
-              {company.headline1}
-            </h1>
+          <h1 className="hero-title" id="hero-title">
+            <span>{company.headline1}</span>
+            <span>{company.headline2}</span>
+          </h1>
 
-            <p style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(19px, 2vw, 23px)",
-              fontWeight: 400,
-              letterSpacing: "-0.01em",
-              color: "var(--ink-mid)",
-              margin: "12px 0 0",
-            }}>
-              {company.headline2}
-            </p>
+          <p className="hero-sub">{company.subtext}</p>
 
-            <p style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 18,
-              lineHeight: 1.75,
-              color: "var(--ink-mid)",
-              margin: "28px 0 0",
-              maxWidth: "46ch",
-              wordBreak: "keep-all",
-            }}>
-              {company.subtext}
-            </p>
-          </motion.div>
+          <ul className="hero-focus" aria-label="핵심 영역">
+            {hero.focus.map((f) => (
+              <li key={f.label}><a href={f.href}>{f.label}</a></li>
+            ))}
+          </ul>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="hero-photo-col"
-            style={{ flexShrink: 0 }}
-          >
-            <div style={{
-              width: "clamp(140px, 14vw, 190px)",
-              aspectRatio: "3 / 4",
-              overflow: "hidden",
-              borderRadius: 10,
-              border: "1px solid var(--border)",
-            }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={profilePhoto}
-                alt="이채연"
-                style={{
-                  width: "100%", height: "100%",
-                  objectFit: "cover", objectPosition: "top center",
-                  display: "block",
-                }}
-              />
-            </div>
-          </motion.div>
+          <div className="hero-cta">
+            <a href="#work" className="btn btn--primary">View Selected Work</a>
+            <a href={site.resumeUrl} className="btn">Resume</a>
+            <a href={site.githubUrl} className="btn" target="_blank" rel="noopener noreferrer">
+              GitHub <span aria-hidden="true">↗</span><span className="sr-only">(새 창)</span>
+            </a>
+          </div>
+
+          <p className="hero-start">
+            먼저 볼 프로젝트 · <a href={hero.startHere.href}>{hero.startHere.label} <span aria-hidden="true">→</span></a>
+          </p>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={fadeUp}
-          transition={{ delay: 0.1 }}
-          style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginTop: 40 }}
-        >
-          <a href="#projects" className="hero-cta hero-cta--primary">프로젝트 보기</a>
-          <a href="/resume_v1.html" className="hero-cta">이력서</a>
-        </motion.div>
-
+        <div className="hero-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={profilePhoto} alt={`${site.name} 프로필 사진`} width={168} height={224} />
+        </div>
       </div>
-
-      <style>{`
-        .hero {
-          min-height: 560px;
-          display: flex;
-          align-items: center;
-          padding: 72px 0;
-        }
-        .hero-photo-col { display: none !important; }
-        @media (min-width: 768px) {
-          .hero-photo-col { display: block !important; }
-        }
-        @media (max-width: 640px) {
-          .hero { min-height: 0; padding: 56px 0 48px; }
-        }
-        .hero-cta {
-          font-family: var(--font-sans);
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: -0.005em;
-          text-decoration: none;
-          padding: 11px 20px;
-          border-radius: 6px;
-          border: 1px solid var(--border);
-          color: var(--ink-mid);
-          background: var(--bg);
-          transition: border-color 0.15s, color 0.15s;
-        }
-        .hero-cta:hover { border-color: var(--ink); color: var(--ink); }
-        .hero-cta--primary {
-          background: var(--ink);
-          border-color: var(--ink);
-          color: #FFFFFF;
-        }
-        .hero-cta--primary:hover { opacity: 0.85; color: #FFFFFF; border-color: var(--ink); }
-        .hero-cta:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
-      `}</style>
     </section>
   );
 }

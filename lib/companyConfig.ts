@@ -1,5 +1,8 @@
 // ─── Company-specific portfolio configuration ───────────────────────────────
 // Usage: cofldus.github.io?company=archivsoft
+// 기본 문구는 lib/profile.ts 의 hero 가 단일 출처다.
+
+import { hero } from "./profile";
 
 export interface SkillGroup {
   cat: string;
@@ -29,20 +32,10 @@ export interface CompanyConfig {
 // ─── Default (generic) ────────────────────────────────────────────────────────
 export const defaultConfig: CompanyConfig = {
   id: "default",
-  label: "AI / NLP Engineer",
-  headline1: "이채연",
-  headline2: "AI / NLP Engineer",
-  subtext:
-    "문서 AI · Retrieval/RAG · LLM 최적화 프로젝트를 개발했습니다. 현재 문서 인식 엔진의 정확도 개선 업무를 하고 있습니다.",
-  projectOrder: [
-    "doc-extraction",           // 기업 실무 — 단계별 손실 측정과 인식 구조 전환
-    "killkong",                 // 압축·역할분리·병목실측 — 아키텍처 판단 최강
-    "medical-chatbot",          // RAG 파이프라인 깊이 + 평가셋 설계
-    "korean-noise-restoration", // 태스크 재정의 — 구조적 진단
-    "finview",                  // 환각 차단 설계 — LLM 한계 인식
-    "lovelop",                  // 창의적 시뮬레이션 구조
-  ],
-  researchSlugs: ["ct-mri-cyclegan"],
+  label: hero.eyebrow,
+  headline1: hero.headline[0],
+  headline2: hero.headline[1],
+  subtext: hero.sub,
 };
 
 // ─── Full (전체 버전, ?company=full) ──────────────────────────────────────────

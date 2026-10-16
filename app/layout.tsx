@@ -1,10 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { site } from "@/lib/profile";
 
 export const metadata: Metadata = {
-  title: "이채연 — AI / NLP Engineer Portfolio",
-  description:
-    "AI·NLP 엔지니어 이채연의 포트폴리오. 한글 복원, 상권분석 SaaS, 콩글리쉬 교정, 재무분석, 의료영상 변환 프로젝트.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.title,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  keywords: [
+    "Applied AI Engineer", "Document AI", "OCR", "VLM", "RAG", "Hybrid Search",
+    "Reranking", "LLM", "FastAPI", "이채연", "AI 엔지니어 포트폴리오",
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: site.url,
+    siteName: `${site.name} Portfolio`,
+    title: site.title,
+    description: site.description,
+  },
+  twitter: { card: "summary", title: site.title, description: site.description },
+  icons: { icon: [{ url: "/favicon3.svg", type: "image/svg+xml" }] },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
@@ -13,7 +39,6 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <link rel="icon" href="/favicon3.svg" type="image/svg+xml" />
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZVMV4CQEJ" />
         <script dangerouslySetInnerHTML={{ __html: `
@@ -22,14 +47,22 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-KZVMV4CQEJ');
         `}} />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Playwrite+IE:wght@100..400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body>
+        <a href="#main" className="skip-link">본문으로 건너뛰기</a>
+        {children}
+      </body>
     </html>
   );
 }

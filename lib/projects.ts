@@ -11,8 +11,59 @@ export interface Experiment {
   conclusion: string;
 }
 
+/**
+ * 기술 의사결정 기록. Problem → Options → Decision → Trade-off → Validation.
+ * 기존 decisions[].reason 서술에서 확인되는 내용만으로 구성한다.
+ */
+export interface DecisionRecord {
+  title: string;
+  problem: string;
+  options: string[];
+  decision: string;
+  tradeoff: string;
+  validation: string;
+}
+
+/** 성과 수치. condition 에 측정 조건·기준선을 함께 적는다. */
+export interface KeyResult {
+  value: string;
+  label: string;
+  condition?: string;
+}
+
+/** 프로젝트 성격 — 기업 실무와 개인·팀 프로젝트를 구분해 표시 */
+export type ProjectContext = "work" | "team" | "personal" | "research";
+
+export const contextLabel: Record<ProjectContext, string> = {
+  work: "기업 실무",
+  team: "팀 프로젝트",
+  personal: "개인 프로젝트",
+  research: "연구",
+};
+
 export interface Project {
   slug: string;
+  context?: ProjectContext;
+  /** 영문 한 줄 분류 (카드 eyebrow) */
+  eyebrow?: string;
+  /** Selected Work 카드 요약 — 대표 프로젝트만 */
+  summary?: {
+    problem: string;
+    role: string;
+    /** 최대 4개 */
+    stack: string[];
+    keyResult?: KeyResult;
+  };
+  /** 상세 — 문제의 제약 조건 */
+  constraints?: string[];
+  /** 상세 — 구조화된 의사결정 기록 (있으면 decisions 보다 먼저 노출) */
+  decisionRecords?: DecisionRecord[];
+  /** 상세 — 시스템 구성 흐름 (아키텍처 이미지가 없을 때 사용) */
+  pipeline?: { caption: string; stages: string[]; result?: string }[];
+  /** pipeline 아래 주석 (측정 조건 등) */
+  pipelineNote?: string;
+  /** 상세 — 공개 범위 안내 (실무 프로젝트) */
+  disclosure?: string;
   num: string;
   title: string;
   /** 제목 아래 한 줄 설명 (제목에서 분리한 방법·성과) */
@@ -22,7 +73,7 @@ export interface Project {
   myRole?: string;
   desc: string;
   bullets: string[];
-  highlights: { value: string; label: string }[];
+  highlights: KeyResult[];
   tags: string[];
   decisions: Decision[];
   experiments?: Experiment[];
@@ -63,14 +114,120 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "doc-extraction",
+    context: "work",
+    eyebrow: "Financial Document Intelligence",
+    summary: {
+      problem:
+        "서식마다 라벨과 값의 배치가 달라, OCR로 읽은 글자를 위치 규칙으로 항목에 연결하는 기존 엔진이 금융 증빙서류의 항목을 안정적으로 추출하지 못했습니다.",
+      role: "평가 체계 설계 · 합성 테스트셋 구축 · 단계별 손실 측정 · VLM 전환 근거 마련 · 추론 설정 확정",
+      stack: ["Qwen-VL", "vLLM", "PaddleOCR", "LoRA"],
+      keyResult: {
+        value: "34.1% → 91.7%",
+        label: "항목 추출 정확도",
+        condition: "합성 테스트셋 420장 · 4,732필드, 동일 문서 비교",
+      },
+    },
+    disclosure:
+      "재직 중인 회사의 실무 프로젝트입니다. 고객사, 실제 문서 원본, 내부 시스템 구조는 공개하지 않고 측정 방법과 판단 과정을 중심으로 정리했습니다. 예시와 수치는 공개 법정 서식으로 만든 합성 테스트셋 기준입니다.",
+    constraints: [
+      "실제 문서에는 정답 좌표가 없어 단계별 정확도를 바로 측정할 수 없었다",
+      "서식마다 라벨과 값의 배치가 다르고, 새 서식이 계속 추가된다",
+      "개인정보가 포함된 문서라 원문 공개와 수동 라벨링에 제약이 있다",
+      "생성 모델의 출력은 같은 입력에서도 실행마다 달라질 수 있다",
+    ],
+    pipeline: [
+      {
+        caption: "기존 구성",
+        stages: ["값 위치 탐지", "글자 인식 (OCR)", "항목 연결 (위치 규칙)"],
+        result: "34.1%",
+      },
+      {
+        caption: "전환 후",
+        stages: ["항목 유형별 영역 크롭", "문서 이미지 전체를 VLM에 입력", "라벨–값 대응을 구조화 필드로 출력"],
+        result: "91.7%",
+      },
+    ],
+    pipelineNote: "정확도는 합성 테스트셋(420장 · 4,732필드) 기준입니다. 내부 서비스 구성은 공개하지 않습니다.",
+    decisionRecords: [
+      {
+        title: "OCR + 위치 규칙에서 VLM 기반 추출로 전환",
+        problem:
+          "기존 엔진은 OCR로 읽은 글자를 '라벨 오른쪽 칸의 값'이라는 위치 규칙으로 항목에 연결했습니다. 합성 테스트셋에서 34.1%였고, 위치와 글자를 정답으로 주입해도 항목 연결이 78.5%를 넘지 못했습니다.",
+        options: [
+          "서식별 위치 규칙을 계속 추가",
+          "문서 이미지 전체를 입력받는 VLM이 라벨–값 대응을 판단",
+          "VLM에 OCR 텍스트를 참고 정보로 함께 전달",
+        ],
+        decision:
+          "이미지 전체를 입력받아 어느 라벨에 어느 값이 대응하는지 판단하는 VLM 구성으로 전환했습니다. 기존 OCR 파이프라인은 제거하지 않고 단계별 손실을 측정하는 기준선으로 유지했습니다.",
+        tradeoff:
+          "생성 모델은 같은 입력에서도 출력이 달라질 수 있습니다. temperature 0에서도 540회 반복 중 완전히 동일한 출력은 96.2%였고, 세션을 바꿔 재확인하는 판정 절차를 추가했습니다.",
+        validation:
+          "같은 합성 테스트셋에서 34.1% → 91.7%. OCR 텍스트를 함께 전달한 조건은 90.5% → 83.0%로 낮아져 채택하지 않았습니다.",
+      },
+      {
+        title: "최종 정확도 대신 단계별 정답 주입으로 손실 분리",
+        problem:
+          "최종 정확도 34%만으로는 위치 탐지, 글자 인식, 항목 연결 중 어느 단계를 고쳐야 하는지 알 수 없었습니다. 실제 문서에는 정답 좌표도 없었습니다.",
+        options: [
+          "최종 정확도 하나로 개선 반복",
+          "실제 문서에 정답 좌표를 수동 라벨링 (건당 5~10분, 150~200건 기준 12~33시간)",
+          "공개 법정 서식에 값을 프로그램으로 채우며 좌표를 함께 저장하는 합성 문서",
+        ],
+        decision:
+          "합성 문서 420장(4,732필드)을 만들고, 단계마다 정답을 주입한 조건 사이의 정확도 차이로 각 단계의 손실을 계산했습니다.",
+        tradeoff:
+          "합성 문서는 실제 스캔과 분포가 다릅니다. 화질 저하를 인쇄·노후화와 촬영 두 종류로 분리해 생성했고, 최종 성능은 사람이 확인한 실제 문서에서 산출한다는 기준을 문서로 정했습니다.",
+        validation:
+          "위치를 정답으로 주면 글자 인식 85.1%, 예측한 위치에서는 73.1%. 위치와 글자를 모두 정답으로 줘도 항목 연결은 78.5%. 글자 인식보다 위치 탐지와 항목 연결의 손실이 크다는 결과가 VLM 전환의 근거가 됐습니다.",
+      },
+      {
+        title: "프롬프트·후처리 규칙 대신 영역 크롭 전처리",
+        problem: "손글씨 항목 등 일부 항목이 반복 실행에서 계속 틀렸습니다.",
+        options: [
+          "오류 항목마다 프롬프트 지시 추가",
+          "결과를 후처리 규칙으로 보정",
+          "해당 영역만 잘라 확대해 입력",
+        ],
+        decision:
+          "원본 이미지를 확인하니 오류 항목은 공통적으로 페이지에서 작게 표시되어 있었습니다. 모델 판단보다 입력 조건이 원인이라고 보고, 항목 유형별로 크롭 범위를 다르게 적용하는 전처리를 도입했습니다.",
+        tradeoff:
+          "규칙이 특정 문서에만 늘어나는 문제는 피했지만, 항목 유형별 크롭 범위를 따로 관리해야 합니다. 손글씨는 값 영역만 좁게, 인쇄 글자는 주변 라벨까지 넓게 자를 때 정확도가 높았습니다.",
+        validation:
+          "손글씨 항목 10회 중 0회 → 10회 정답, 응답 6.3초 → 1초 내외. 글자 이미지는 그대로 두고 옆에 도장만 합성한 통제실험으로 주변 시각 정보가 판단에 쓰인다는 점을 확인했습니다.",
+      },
+      {
+        title: "새 서식의 F1 급락 — 모델보다 정답지를 먼저 검토",
+        problem: "새 서식에서 F1이 0.86에서 0.34로 떨어졌습니다.",
+        options: ["모델 일반화 실패로 보고 재학습", "오답을 항목 단위로 재분류해 원인부터 확인"],
+        decision:
+          "오답 1,817건을 재분류했습니다. 값 자체가 틀린 경우는 151건, 값은 맞지만 항목 이름 표기가 정답지와 다른 경우가 727건이었습니다. 정답지의 표기 규칙을 정정했습니다.",
+        tradeoff:
+          "재학습 없이 해결했지만, 표기 규칙 확정 이전에 만든 학습 데이터가 이전 표기를 쓰는 문제가 남아 데이터 정정 후 재학습을 별도 과제로 분리했습니다.",
+        validation: "재추론 없이 재채점만으로 F1 0.34 → 0.76.",
+      },
+      {
+        title: "출력 토큰 상한 — 운영 모델이 확정되지 않은 상태의 설정",
+        problem:
+          "출력 토큰 상한이 1,100으로 설정되어 있었고, 실제 문서 출력은 2,000~3,000토큰이라 10장 중 7~10장에서 출력이 끊겼습니다.",
+        options: ["3,072 (파인튜닝 모델의 지표 포화점)", "4,096 (기본 모델은 4,096까지 지표 상승)"],
+        decision:
+          "어느 모델을 운영에 쓸지 확정되지 않아 4,096으로 설정하고, 파인튜닝 모델 확정 시 3,072로 낮출 수 있다는 조건을 함께 기록했습니다.",
+        tradeoff:
+          "파인튜닝 모델 기준으로는 3,072와 결과가 같고 처리 시간이 22% 깁니다. 정상 종료되는 문서는 상한과 무관하게 멈추므로 대부분의 문서에서는 처리 시간이 늘지 않습니다.",
+        validation:
+          "1,100부터 4,096까지 단계적으로 측정했습니다. 같은 문장을 반복 생성하는 3건은 상한을 4배로 올려도 해결되지 않아 별도 문제로 분리했습니다.",
+      },
+    ],
     card: {
+      period: "아키브소프트 · 2026.07 – 현재",
       topic: "증명서·진단서에서 항목을 추출하는 문서 AI 엔진의 정확도 개선",
       oneliner: "단계별 평가셋을 구축해 손실 구간을 측정하고 VLM 기반으로 전환해 34.1% → 91.7%",
       thumbImg: "/doc-extraction_thumb.png",
       thumbBg: "#FFFFFF",
     },
     num: "12",
-    title: "문서 AI 엔진 정확도 개선",
+    title: "금융 증빙서류 항목 추출 엔진의 정확도 개선",
     subtitle: "단계별 평가셋 구축과 VLM 전환으로 34.1% → 91.7%",
     period: "2026.07– · 문서 AI 기업 실무",
     goal: "문서 인식 엔진의 단계별 손실을 분리해서 측정할 수 있는 채점 체계를 만들고, 그 결과를 근거로 인식 구조 변경과 모델 학습·운영 설정을 결정",
@@ -82,9 +239,9 @@ export const projects: Project[] = [
       "새 서식에서 F1이 0.86에서 0.34로 떨어졌을 때 모델보다 정답지를 먼저 검토, 오답 727건이 정답지의 표기 방식 차이였음을 확인하고 재학습 없이 재채점만으로 0.76 회복",
     ],
     highlights: [
-      { value: "34%→92%", label: "동일 테스트셋 정확도" },
-      { value: "4,732", label: "합성 테스트 필드" },
-      { value: "0.34→0.76", label: "정답지 정정 후 F1" },
+      { value: "34.1% → 91.7%", label: "항목 추출 정확도", condition: "합성 테스트셋 420장 · 4,732필드, OCR+위치 규칙 대비 VLM 구성" },
+      { value: "0.34 → 0.76", label: "새 서식 F1", condition: "정답지 표기 정정 후 재채점, 재추론 없음" },
+      { value: "6.3s → ~1s", label: "손글씨 항목 응답 시간", condition: "영역 크롭 전처리 적용, 10회 반복 0/10 → 10/10 정답" },
     ],
     decisions: [
       {
@@ -253,8 +410,92 @@ export const projects: Project[] = [
   },
   {
     slug: "medical-chatbot",
+    context: "team",
+    eyebrow: "Medical Domain Hybrid RAG",
+    summary: {
+      problem:
+        "의료 질의에서 벡터 검색은 임상 수치가 담긴 근거 문서를 놓쳤고, 키워드 검색은 영문 원문을 한국어로 풀어 쓴 문서를 놓쳤습니다.",
+      role: "5인 팀 · 하이브리드 검색 파이프라인 설계 · 리랭커 통합 · 평가 지표 실험과 분석",
+      stack: ["BM25", "Vector Search", "bge-reranker-v2-m3", "EXAONE-3.5"],
+      keyResult: {
+        value: "0.731 → 0.886",
+        label: "서술형 답변 BERTScore",
+        condition: "벡터 검색 단독 RAG 대비 BM25 + 리랭커 최종 구성 · 팀 평가셋",
+      },
+    },
+    // TODO(확인 필요): 벡터 저장소 표기. 사이트는 FAISS, GitHub README·데모 화면은 ChromaDB(chroma.sqlite3).
+    // TODO(확인 필요): troubleshooting 의 지연 수치(리랭커 820ms→210ms 와 82ms→48ms, 전체 200ms 예산),
+    //   Recall@5 +11%/+8%, 중복 18%, RAGAS 골드셋은 README 에 근거가 없음. 평가셋 규모도
+    //   사이트(100문항)와 README(약 3.5만 Q&A 쌍)가 다름.
+    constraints: [
+      "'폐색전증 항응고 치료 시작 기준'처럼 구체적인 임상 수치가 답의 근거가 되는 질의가 많다",
+      "영문 원문을 번역·재구성한 문서가 많아 같은 개념의 한국어 표기가 다양하다",
+      "파이프라인 변수를 바꿔 가며 평가를 반복해야 해 로컬 추론이 가능한 모델이 필요했다",
+      "근거가 맞지 않는 답변은 의료 도메인에서 그대로 위험이 된다",
+    ],
+    decisionRecords: [
+      {
+        title: "왜 Fine-tuning이 아니라 RAG인가",
+        problem:
+          "의료 데이터는 문맥이 길고 분야별 분포 편차가 크며, 새로운 지식이 계속 추가됩니다. 답변마다 근거를 제시해야 하는 도메인이기도 합니다.",
+        options: ["의료 데이터로 LLM을 Fine-tuning", "검색으로 근거 문서를 찾아 답변에 전달하는 RAG"],
+        decision:
+          "Fine-tuning은 긴 문맥과 분포 편차를 학습하기에 비효율적이고 새 지식 반영이 어렵다고 판단해, 근거 문서를 함께 제시할 수 있는 RAG를 선택했습니다.",
+        tradeoff:
+          "답변 품질의 상한이 검색 품질에 묶입니다. 그래서 이후의 판단은 대부분 '어떤 문서를 몇 건 LLM에 넘길 것인가'에 집중됐습니다.",
+        validation:
+          "같은 평가셋에서 벡터 검색 단독, BM25 추가, BM25 + 리랭커 구성을 비교해 최종 구성을 정했습니다.",
+      },
+      {
+        title: "왜 BM25 + 벡터 검색 하이브리드인가",
+        problem:
+          "벡터 검색 단독에서는 '혈전예방 가이드라인 서문'처럼 주제는 같지만 임상 수치가 없는 문서가 상위에 올랐고, D-dimer·INR 기준이 적힌 문서는 순위 밖이었습니다.",
+        options: ["벡터 검색 단독", "BM25 키워드 검색 단독", "BM25와 벡터 검색을 병렬 실행해 후보를 합침"],
+        decision:
+          "BM25 단독으로는 한국어로 풀어 쓴 번역 문서가 누락됐습니다. 두 방식이 서로 다른 유형의 문서를 놓친다는 점을 확인하고 BM25(k=20)와 벡터 검색(k=20)을 병렬로 실행해 최대 40건의 후보를 모았습니다.",
+        tradeoff:
+          "후보가 늘어난 만큼 관련 없는 문서도 늘어납니다. BM25를 추가하기만 한 구성은 답변 점수가 거의 변하지 않아, 후보를 다시 추리는 재정렬 단계가 필요했습니다.",
+        validation:
+          "BM25 추가만으로는 서술형 BERTScore 0.731 → 0.728로 변화가 없었습니다. 하이브리드 후보 풀에 리랭커를 결합한 최종 구성에서 0.886이 됐습니다.",
+      },
+      {
+        title: "왜 Cross-Encoder 리랭커로 Top-5만 전달하는가",
+        problem:
+          "후보 40건을 모두 LLM 컨텍스트에 넣으면 더 적게 넣었을 때보다 BERTScore가 낮았습니다. 관련 없는 문서가 답변에 인용됐습니다.",
+        options: [
+          "후보 40건 전체를 컨텍스트로 전달",
+          "검색 점수 기준 Top-K 절삭",
+          "질문과 문서를 함께 인코딩하는 Cross-Encoder로 재정렬 후 Top-5",
+        ],
+        decision:
+          "검색 점수는 문서별 독립 점수라 질문과 문서의 정합성을 직접 평가하지 않습니다. 점수 절삭은 BM25와 FAISS 상위 문서가 겹쳐 후보 다양성도 낮았습니다. bge-reranker-v2-m3로 재정렬해 상위 5건만 전달했습니다.",
+        tradeoff:
+          "후보마다 교차 인코딩이 필요해 지연이 커집니다. 1차 점수로 후보를 줄인 뒤 배치 단일 호출로 재정렬하는 방식으로 처리했습니다.",
+        validation:
+          "벡터 검색 단독 대비 객관식 정확도 0.646 → 0.683, 단답형 BERTScore 0.723 → 0.881, 서술형 BERTScore 0.731 → 0.886. Top-10에서는 개선폭이 Top-5의 절반 이하여서 Top-5로 확정했습니다.",
+      },
+      {
+        title: "왜 EXAONE-3.5인가",
+        problem: "로컬에서 추론 가능한 한국어 지원 모델 중 의학 서술형 답변에 맞는 모델을 골라야 했습니다.",
+        options: ["EXAONE-3.5", "Qwen2.5-Instruct"],
+        decision:
+          "동일 평가셋에서 객관식 정확도, 서술형 BERTScore, 지시문 적합도(답변 형식·한국어 의학 용어 준수)를 비교해 EXAONE-3.5를 선택했습니다.",
+        tradeoff: "Qwen2.5-Instruct의 영어·다국어 범용 성능은 포기했습니다.",
+        validation:
+          "EXAONE-3.5가 지시문 적합도와 한국어 서술형 답변 자연도에서 더 안정적이었습니다. 로컬 추론이 가능해 변수를 바꾸며 반복 평가하는 비용을 통제할 수 있었습니다.",
+      },
+      {
+        title: "평가셋 편향 교정",
+        problem:
+          "평가셋 100문항 초안에서 내과 계열이 63%였고 외과·피부과·산부인과는 과소 대표돼 있었습니다. 이대로면 해당 영역의 성능이 과대평가될 수 있었습니다.",
+        options: ["초안 그대로 사용", "과목·난이도 분포를 재조정"],
+        decision: "10개 과목 균등 배분(각 10문항), 기초·임상·심화 난이도 균등 분배로 재조정하고 전공자 2인 검수를 거쳤습니다.",
+        tradeoff: "평가셋을 다시 만들고 전체 실험을 재검증하는 비용이 들었습니다.",
+        validation: "재조정한 평가셋으로 전체 파이프라인을 재검증했습니다.",
+      },
+    ],
     card: {
-      period: "멋쟁이사자처럼 · 팀 프로젝트",
+      period: "멋쟁이사자처럼 AI NLP 집중과정",
       topic: "의료 질의에 근거 있는 답변을 제공하는 Advanced RAG 시스템",
       oneliner: "BM25·FAISS·ReRanker를 결합해 전문 의료 데이터 검색 정확도를 높인 근거 기반 답변 시스템",
     },
@@ -271,9 +512,9 @@ export const projects: Project[] = [
       "ReRanker 전후 비교: 객관식 정확도 +0.04, 서술형 BERTScore +0.16 향상, 단일 벡터 RAG 대비 명확한 개선",
     ],
     highlights: [
-      { value: "+0.04", label: "Accuracy" },
-      { value: "+0.16", label: "BERTScore" },
-      { value: "5.5만건", label: "코퍼스" },
+      { value: "0.731 → 0.886", label: "서술형 답변 BERTScore", condition: "벡터 검색 단독 RAG 대비 최종 구성 · README 결과표" },
+      { value: "0.646 → 0.683", label: "객관식 정확도", condition: "벡터 검색 단독 RAG 대비 최종 구성 · README 결과표" },
+      { value: "55,918건", label: "의학 원천 문서", condition: "약 2.2억 토큰 · README 기준" },
     ],
     decisions: [
       {
@@ -431,6 +672,67 @@ export const projects: Project[] = [
   },
   {
     slug: "killkong",
+    context: "team",
+    eyebrow: "Lightweight LLM Correction Agent",
+    summary: {
+      problem:
+        "한국인 특화 콩글리시는 LLM 학습 데이터에 드물어 교정이 불안정했고, 모바일 환경을 목표로 모델 크기와 응답 지연을 함께 줄여야 했습니다.",
+      role: "팀 리더 · 통합 · 모델 압축 조합 설계 · 검색 메모리 구현 · 지연 병목 분석",
+      stack: ["Qwen2.5", "LoRA", "4-bit 양자화", "FAISS"],
+      keyResult: {
+        value: "14GB → 3.5GB",
+        label: "모델 크기 75% 감소",
+        condition: "LoRA + 양자화 + 토큰 Pruning 조합",
+      },
+    },
+    // TODO(확인 필요): 응답 지연 수치가 자료마다 다름.
+    //   사이트: end-to-end 평균 2.3s → 0.47s (Snapdragon 865 ARM CPU)
+    //   GitHub README: 평균 응답 시간 1–3초, 예시 processing_time 1.2, FastAPI 서버 + React Native 구조
+    //   README 의 모델은 Qwen2.5-1.5B + LoRA 인데, 14GB 원본 크기는 7B급 FP16 에 해당.
+    //   측정 버전·환경을 확인하기 전까지 지연 수치를 홈·성과 영역에서 강조하지 않는다.
+    constraints: [
+      "14GB 모델을 모바일 단말의 ARM CPU에서 실행해야 했다",
+      "'블랙 컨슈머', 'after 신청' 같은 콩글리시 용례는 학습 데이터에 드물다",
+      "교정문뿐 아니라 '왜 어색한지' 설명 문장의 품질이 사용 경험을 좌우한다",
+    ],
+    decisionRecords: [
+      {
+        title: "Fine-tuning에 지식을 넣는 대신 검색 메모리로 분리",
+        problem:
+          "630개 콩글리시 패턴을 SFT로 직접 학습시켰지만, 희소 패턴이라 파인튜닝 후에도 비슷한 표현을 교정하지 못하거나 엉뚱하게 교정하는 경우가 반복됐습니다.",
+        options: [
+          "패턴을 SFT로 모델 파라미터에 학습",
+          "전용 FAISS 벡터 DB에 패턴을 두고, LLM은 문법·문맥 판단만 수행",
+        ],
+        decision:
+          "콩글리시 지식을 전용 FAISS DB로 분리했습니다. 모델은 '콩글리시인가'를 판단하고, '어떤 패턴인가'는 검색이 담당하도록 역할을 나눴습니다.",
+        tradeoff:
+          "검색 지연이 응답 지연에 그대로 더해지는 구조가 됐고, 온디바이스 목표와 충돌했습니다. 이 비용은 검색 구조 변경과 캐시 계층으로 따로 줄였습니다.",
+        validation:
+          "역할을 나눈 뒤 판단과 검색 각각에서 결과가 안정됐습니다. 유사 예문만 반복 제공하던 문제는 MMR 다양성 제약으로 바꿔 테스트셋 기준 과교정 31% → 11%.",
+      },
+      {
+        title: "압축 기법 하나가 아닌 세 기법의 조합",
+        problem:
+          "4-bit NF4 양자화만으로는 목표 용량에 도달하지 못했고 설명 문장 품질이 흔들렸습니다. LoRA만으로는 베이스 가중치 크기가 그대로였습니다.",
+        options: ["4-bit NF4 단독", "LoRA 단독", "LoRA + 4-bit NF4 + 다국어 토큰 Pruning 조합"],
+        decision:
+          "세 기법이 파라미터 수, 비트폭, 어휘 크기라는 서로 다른 병목을 줄인다는 점을 확인하고 조합했습니다. 품질 열화가 집중된 lm head와 상위 attention 레이어는 8-bit로 유지했습니다.",
+        tradeoff:
+          "교정 정확도는 유지됐지만 긴 설명 문장의 표현 다양성은 압축 전보다 줄었습니다. 실시간 모바일 응답을 위해 의식적으로 받아들인 손실입니다.",
+        validation: "14GB → 3.5GB(75%). 모델 단독 추론 0.3s (Snapdragon 865 ARM CPU).",
+      },
+      {
+        title: "최적화 전에 병목부터 측정",
+        problem: "end-to-end 응답이 평균 2.3초였고, 직관적으로는 LLM 추론이 병목이라고 가정하기 쉬웠습니다.",
+        options: ["LLM 추론 최적화부터 진행", "cProfile로 구간별 지연을 먼저 측정"],
+        decision:
+          "측정 결과 병목은 FAISS 검색(0.21s)과 SQLite I/O(0.12s)였습니다. ARM CPU에서 캐시 효율이 낮던 HNSW 인덱스를 IVF로 바꾸고, SQLite 인덱스와 LRU 캐시를 추가했습니다.",
+        tradeoff:
+          "IVF는 사전 클러스터링 기반 근사 검색이라 탐색 범위(nlist=100, nprobe=10)를 정해야 하고, 캐시 계층이 늘어난 만큼 관리할 구성 요소도 늘었습니다.",
+        validation: "FAISS 검색 0.21s → 0.07s. end-to-end 응답 평균 2.3s → 0.47s (Snapdragon 865 ARM CPU).",
+      },
+    ],
     card: {
       period: "2025.07–08",
       topic: "한국인 영어 오류를 실시간으로 교정하는 경량 LLM 에이전트",
@@ -438,7 +740,8 @@ export const projects: Project[] = [
     },
     num: "04",
     title: "온디바이스 콩글리쉬 교정 에이전트",
-    subtitle: "14GB 모델을 3.5GB로 경량화하고 ARM CPU end-to-end 응답 시간을 0.47초로 단축",
+    // TODO(확인 필요): 원래 부제 "14GB 모델을 3.5GB로 경량화하고 ARM CPU end-to-end 응답 시간을 0.47초로 단축" — 지연 수치 README 와 불일치
+    subtitle: "14GB 모델을 3.5GB로 경량화하고, 지연 병목을 측정해 검색 경로를 다시 설계한 교정 에이전트",
     period: "2025.07–08 · 포스코 AI·BigData 아카데미 30기",
     goal: "14GB 다국어 LLM을 3.5GB로 압축해 CPU에서 end-to-end 0.47초 이내 응답, 모바일 환경에서도 콩글리쉬 실시간 교정 가능한 Agent 구현",
     myRole: "LoRA + 4-bit 양자화 + 토큰 Pruning 조합 설계 · FAISS/SQLite 하이브리드 메모리 구현 · 응답 지연 최적화 전 과정",
@@ -449,9 +752,11 @@ export const projects: Project[] = [
       "end-to-end 응답 지연 2.3s→0.47s(평균, 5배 단축, Snapdragon 865 ARM CPU 측정), 모바일 일관성 92%+ 확보; cProfile로 병목이 LLM이 아닌 FAISS 검색(0.21s)·SQLite I/O(0.12s)임을 실측 후 최적화",
     ],
     highlights: [
-      { value: "75%", label: "모델 경량화 14GB→3.5GB" },
-      { value: "0.47s", label: "end-to-end 응답 평균" },
-      { value: "92%+", label: "모바일 일관성" },
+      { value: "14GB → 3.5GB", label: "모델 크기 (75% 감소)", condition: "LoRA + 4-bit NF4(일부 레이어 8-bit) + 토큰 Pruning · README 동일" },
+      { value: "630개", label: "콩글리시 패턴 DB", condition: "SNS·커뮤니티 수집 + 팀 수기 검수" },
+      { value: "0.21s → 0.07s", label: "FAISS 검색 시간", condition: "HNSW → IVF 인덱스 전환, cProfile 측정" },
+      // TODO(확인 필요): { value: "2.3s → 0.47s", label: "end-to-end 응답 시간" } — README(1–3초)와 불일치
+      // TODO(확인 필요): '모바일 일관성 92%+' 의 정의·측정 방법이 기록에 없어 홈·상세 성과에서 제외. 원래 값: { value: "92%+", label: "모바일 일관성" }
     ],
     decisions: [
       {
@@ -498,6 +803,7 @@ export const projects: Project[] = [
   },
   {
     slug: "finview",
+    context: "team",
     card: {
       topic: "재무제표와 뉴스를 함께 해석하는 생성형 AI 재무 분석 서비스",
       oneliner: "공시 수치 계산 모듈과 GPT 리포트 생성을 분리해 재무 리스크를 설명하는 AI 애널리스트",
@@ -569,6 +875,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ct-mri-cyclegan",
+    context: "research",
     card: {
       period: "2023.06–09 · 딥러닝연구개발소 연구원",
       topic: "CT→MRI 의료영상 변환 연구",
@@ -760,6 +1067,7 @@ export const projects: Project[] = [
   },
   {
     slug: "llm-for-science",
+    context: "research",
     card: {
       period: "2026.03– · Pseudo Lab · 진행 중",
       topic: "과학 논문 수식·표를 무손실 처리하는 도메인 특화 LLM 연구 프로젝트",
@@ -882,6 +1190,7 @@ export const projects: Project[] = [
   },
   {
     slug: "moim",
+    context: "team",
     card: {
       period: "2024.12–2025.03 · 경기대 LINKVERSE",
       topic: "약속 잡기의 전 과정을 채팅 안에서 완결하는 실시간 모임 플랫폼",

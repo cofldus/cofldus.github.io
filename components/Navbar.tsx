@@ -1,142 +1,95 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { site } from "@/lib/profile";
 
 const links = [
-  { label: "프로젝트",  href: "#projects" },
-  { label: "경력",      href: "#education" },
-  { label: "이력서",    href: "/resume_v1.html" },
-  { label: "연락",      href: "#contact" },
+  { label: "Work", hash: "#work" },
+  { label: "Experience", hash: "#experience" },
+  { label: "Capabilities", hash: "#capabilities" },
+  { label: "Projects", hash: "#projects" },
+  { label: "Contact", hash: "#contact" },
 ];
 
-export default function Navbar() {
-  const [visible, setVisible] = useState(true);
+/**
+ * @param base 홈에서는 "" (같은 페이지 앵커), 상세 페이지에서는 "/" (홈으로 이동)
+ */
+export default function Navbar({ base = "" }: { base?: string }) {
   const [open, setOpen] = useState(false);
-  const lastY = useRef(0);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
+  // Esc 로 닫고 버튼으로 포커스 복귀, 데스크톱 폭이 되면 닫기
   useEffect(() => {
-    const fn = () => {
-      const y = window.scrollY;
-      if (y < 80) { setVisible(true); lastY.current = y; return; }
-      if (y > lastY.current + 4) { setVisible(false); setOpen(false); }
-      else if (y < lastY.current - 4) setVisible(true);
-      lastY.current = y;
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
     };
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
+    const mq = window.matchMedia("(min-width: 861px)");
+    const onMq = () => mq.matches && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onMq);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onMq);
+    };
+  }, [open]);
 
   return (
-    <>
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 30,
-        background: "rgba(255,255,255,0.97)",
-        backdropFilter: "blur(10px)",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 0.3s ease",
-      }}>
-        <div style={{
-          maxWidth: "var(--cw)", margin: "0 auto", padding: "0 var(--cp)",
-          height: 52, display: "flex", alignItems: "center", justifyContent: "space-between",
-        }}>
-          {/* 이름 */}
-          <a href="#about" style={{ textDecoration: "none" }}>
-            <span style={{
-              fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 700,
-              letterSpacing: "-0.02em", color: "var(--ink)",
-            }}>
-              이채연
-            </span>
-          </a>
+    <nav className="nav" aria-label="주 메뉴">
+      <div className="container nav-inner">
+        <a href={base || "#top"} className="nav-brand">
+          <span className="nav-brand-name">{site.name}</span>
+          <span className="nav-brand-role">Applied AI Engineer</span>
+        </a>
 
-          {/* 데스크톱 링크 */}
-          <div className="nav-desktop">
-            {links.map((l) => (
-              <a key={l.label} href={l.href} style={{
-                fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 500,
-                color: "var(--ink-light)", textDecoration: "none", letterSpacing: "0.04em",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-light)")}
-              >{l.label}</a>
-            ))}
-          </div>
-
-          {/* 햄버거 버튼 (모바일) */}
-          <button
-            className="nav-burger"
-            onClick={() => setOpen((o) => !o)}
-            aria-label="메뉴"
-            aria-expanded={open}
-            aria-controls="nav-drawer"
-          >
-            {open ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-
-        {/* 모바일 드롭다운 */}
-        <div id="nav-drawer" className={`nav-drawer ${open ? "nav-drawer--open" : ""}`}>
+        <div className="nav-links">
           {links.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="nav-drawer-link">
-              {l.label}
-            </a>
+            <a key={l.hash} href={`${base}${l.hash}`} className="nav-link">{l.label}</a>
           ))}
+          <a href={site.resumeUrl} className="btn btn--primary nav-cta">Resume</a>
         </div>
-      </nav>
 
-      <style>{`
-        .nav-desktop {
-          display: flex;
-          gap: 28px;
-        }
-        .nav-burger {
-          display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 6px;
-          color: var(--ink);
-          align-items: center;
-          justify-content: center;
-        }
-        .nav-drawer {
-          display: none;
-          flex-direction: column;
-          border-top: 1px solid var(--border);
-          background: rgba(255,255,255,0.98);
-          overflow: hidden;
-          max-height: 0;
-          transition: max-height 0.25s ease;
-        }
-        .nav-drawer--open {
-          max-height: 320px;
-        }
-        .nav-drawer-link {
-          display: block;
-          padding: 12px var(--cp);
-          font-family: var(--font-label);
-          font-size: 14px;
-          font-weight: 500;
-          color: var(--ink);
-          text-decoration: none;
-          border-bottom: 1px solid var(--border-sub);
-        }
-        @media (max-width: 640px) {
-          .nav-desktop { display: none; }
-          .nav-burger { display: flex; }
-          .nav-drawer { display: flex; }
-        }
-      `}</style>
-    </>
+        <button
+          ref={buttonRef}
+          type="button"
+          className="nav-burger"
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+          aria-expanded={open}
+          aria-controls="nav-drawer"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+            {open ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
+      </div>
+
+      <div id="nav-drawer" className="nav-drawer" hidden={!open}>
+        {links.map((l) => (
+          <a
+            key={l.hash}
+            href={`${base}${l.hash}`}
+            onClick={(e) => {
+              setOpen(false);
+              // 같은 페이지 앵커는 드로어가 닫힌 뒤 스크롤해야 위치가 어긋나지 않는다
+              const target = !base ? document.querySelector(l.hash) : null;
+              if (target) {
+                e.preventDefault();
+                requestAnimationFrame(() => {
+                  target.scrollIntoView({ block: "start" });
+                  history.replaceState(null, "", l.hash);
+                });
+              }
+            }}
+          >
+            {l.label}
+          </a>
+        ))}
+        <a href={site.resumeUrl} onClick={() => setOpen(false)}>Resume</a>
+      </div>
+    </nav>
   );
 }
