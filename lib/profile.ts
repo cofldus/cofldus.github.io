@@ -70,7 +70,7 @@ export const experience: ExperienceItem[] = [
   {
     company: "아키브소프트",
     companyNote: "문서 AI 기업",
-    // TODO(확인 필요): 직함·고용 형태. 볼트·이력서 어디에도 기록이 없어 비워 둠.
+    role: "연구원",
     area: "Document AI · 문서 검색 엔진",
     period: "2026.07 – 현재",
     current: true,
