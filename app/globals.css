@@ -519,6 +519,9 @@ button { font: inherit; color: inherit; }
 
 @media (max-width: 980px) { .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .mini-grid { grid-template-columns: 1fr; } }
+/* /krafton/ 연결 카드 4장은 2×2 */
+.fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px) { .fit-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════
    Background
