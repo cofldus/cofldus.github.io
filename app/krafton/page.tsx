@@ -149,7 +149,8 @@ export default function KraftonPage() {
               id="experience-title"
               index="02"
               title="Experience"
-              lead={"회사와 연구실에서 맡은 문제와 직접 수행한 범위입니다.\n고객사와 내부 시스템 정보는 공개하지 않습니다."}
+              lead="회사와 연구실에서 맡은 문제와 직접 수행한 범위입니다. 고객사와 내부 시스템 정보는 공개하지 않습니다."
+              wide
             />
             <ol className="exp-list">
               {experienceBrief.map((e) => (
