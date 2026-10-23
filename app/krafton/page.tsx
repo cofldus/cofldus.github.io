@@ -191,7 +191,7 @@ export default function KraftonPage() {
               id="strengths-title"
               index="03"
               title="Strengths"
-              lead="실무와 프로젝트에서 반복해 온 세 가지 방식과, 그것을 확인할 수 있는 작업입니다."
+              lead="반복해 온 세 가지 방식과 근거입니다."
             />
             <div className="cap-grid">
               {strengths.map((c) => (
