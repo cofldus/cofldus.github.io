@@ -7,12 +7,20 @@
 // ─────────────────────────────────────────────────────────────────
 
 import type { DecisionRecord, KeyResult } from "./projects";
+import { experience, type Capability } from "./profile";
 
 export const kraftonHero = {
-  eyebrow: "이채연 · LLM Agent · Evaluation",
-  headline: ["에이전트를 설계하고,", "그 판단을 검증합니다."],
-  sub: "LLM 에이전트의 기억과 의사결정 구조를 만들고, 어디서 틀렸는지 단계별로 나눠 측정하는 엔지니어입니다.",
+  eyebrow: "LLM Agent · Document AI · Evaluation",
+  headline: ["AI가 어디서 틀리는지 찾고,", "구조를 바꿔 고칩니다."],
+  sub: "문서 AI 추출 엔진(실무)과 LLM 에이전트에서, 결과를 단계별로 나눠 측정하고 그 근거로 모델과 구조를 바꿔 온 엔지니어입니다. 이 방식을 사람과 실시간으로 상호작용하는 에이전트로 넓혀 가고 있습니다.",
+  focus: [
+    { label: "LLM Agent", href: "/krafton/agent-sim/" },
+    { label: "Evaluation Design", href: "#strengths" },
+    { label: "Document AI 실무", href: "#experience" },
+  ],
+  startHere: { label: "상권 에이전트 시뮬레이션", href: "/krafton/agent-sim/" },
 };
+
 
 // ─── 대표 연구 사례 ──────────────────────────────────────────────
 export const agentSim = {
@@ -146,5 +154,60 @@ export const supporting = [
     title: "CT→MRI 교차 모달리티 변환",
     desc: "짝지어진 데이터 없이 CycleGAN으로 학습해 구조 보존 성능을 SSIM 0.82 → 0.88로 개선했습니다.",
     stack: "PyTorch · CycleGAN",
+  },
+];
+
+// ─── 경력 (요약) ─────────────────────────────────────────────────
+/** 메인의 experience 를 그대로 쓰되, 아키브소프트는 측정·평가 관련 항목만 남긴다. */
+export const experienceBrief = experience.map((e) =>
+  e.company === "아키브소프트" ? { ...e, points: [e.points[0], e.points[4]] } : e,
+);
+
+// ─── 전문 영역 ───────────────────────────────────────────────────
+export const strengths: Capability[] = [
+  {
+    id: "str-eval",
+    title: "실패 지점을 나눠 측정",
+    keywords: "Evaluation Design · Controlled Comparison · Test Set",
+    problems: [
+      "최종 정확도 하나 대신 단계별 손실을 분리해 어디서 틀리는지 측정",
+      "같은 조건에서 전·후를 비교해 효과와 우연을 구분",
+      "개발용과 최종 시험용 평가셋을 분리해 과적합된 개선을 방지",
+    ],
+    evidence: [
+      { label: "금융 증빙서류 추출 (실무)", detail: "단계별 손실 측정 → VLM 전환 · 34.1% → 91.7%", href: "/projects/doc-extraction/" },
+      { label: "상권 에이전트 시뮬레이션", detail: "같은 에이전트·상권 전·후 비교 · 11개 지표", href: "/krafton/agent-sim/" },
+      { label: "공공기관 문서 검색 (실무)", detail: "Dense → Hybrid 전환 · 골든셋 분리 평가", href: "#experience" },
+    ],
+  },
+  {
+    id: "str-agent",
+    title: "LLM 에이전트 행동 설계",
+    keywords: "Memory · Decision Decomposition · Sampling · Reward",
+    problems: [
+      "이전 경험을 기억으로 넘겨 다음 선택에 반영",
+      "한 번의 응답 대신 판단을 단계로 나눠 실패 단계를 추적",
+      "정확도·형식 등 여러 목표를 하나의 보상으로 합칠 때 생기는 충돌 완화",
+    ],
+    evidence: [
+      { label: "상권 에이전트 시뮬레이션", detail: "기억 구조 · 5단계 의사결정 · 계층화 샘플링", href: "/krafton/agent-sim/" },
+      { label: "KillKong", detail: "FAISS 개인화 메모리 기반 교정 에이전트", href: "/projects/killkong/" },
+      { label: "LLM for Science", detail: "GDPO 다중 보상 강화학습 실험", href: "/projects/llm-for-science/" },
+    ],
+  },
+  {
+    id: "str-resource",
+    title: "제한된 자원 안에서 실험",
+    keywords: "Concurrency · Quantization · Profiling",
+    problems: [
+      "API 한도 안에서 동시 호출을 제한해 대규모 실험 시간을 단축",
+      "양자화·경량화로 큰 모델을 작은 실행 환경에 맞춤",
+      "최적화 전에 병목과 메모리 원인부터 측정",
+    ],
+    evidence: [
+      { label: "에이전트 실험 병렬화", detail: "27시간 → 81분 · 동시 호출 20개", href: "/krafton/agent-sim/#resource" },
+      { label: "KillKong 경량화", detail: "14GB → 3.5GB · LoRA·4-bit·Pruning", href: "/projects/killkong/" },
+      { label: "GPU 메모리 디버깅 (실무)", detail: "27.16GB → 12.2GB · 원인 3가지 분리", href: "/projects/doc-extraction/" },
+    ],
   },
 ];

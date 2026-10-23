@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SectionHead from "@/components/SectionHead";
 import profilePhoto from "@/components/profilePhoto";
 import { contact, site } from "@/lib/profile";
-import { agentSim, kraftonHero, supporting } from "@/lib/krafton";
+import { agentSim, experienceBrief, kraftonHero, strengths, supporting } from "@/lib/krafton";
 import { pngSize } from "@/lib/imageSize";
 
 // 지원서에 넣는 전용 링크. 메인에서 링크하지 않고 검색 노출도 막는다.
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 
 const links = [
   { label: "Work", hash: "#work" },
+  { label: "Experience", hash: "#experience" },
+  { label: "Strengths", hash: "#strengths" },
   { label: "Contact", hash: "#contact" },
 ];
 
@@ -85,6 +87,11 @@ export default function KraftonPage() {
                 <span>{kraftonHero.headline[1]}</span>
               </h1>
               <p className="hero-sub">{kraftonHero.sub}</p>
+              <ul className="hero-focus" aria-label="핵심 영역">
+                {kraftonHero.focus.map((f) => (
+                  <li key={f.label}><a href={f.href}>{f.label}</a></li>
+                ))}
+              </ul>
               <div className="hero-cta">
                 <a href="#work" className="btn btn--primary">View Work</a>
                 <a href={site.resumeUrl} className="btn">Resume</a>
@@ -92,6 +99,9 @@ export default function KraftonPage() {
                   GitHub <span aria-hidden="true">↗</span><span className="sr-only">(새 창)</span>
                 </a>
               </div>
+              <p className="hero-start">
+                먼저 볼 프로젝트 · <a href={kraftonHero.startHere.href}>{kraftonHero.startHere.label} <span aria-hidden="true">→</span></a>
+              </p>
             </div>
             <div className="hero-photo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -133,9 +143,87 @@ export default function KraftonPage() {
           </div>
         </section>
 
+        <section id="experience" className="section section--subtle" aria-labelledby="experience-title">
+          <div className="container">
+            <SectionHead
+              id="experience-title"
+              index="02"
+              title="Experience"
+              lead="회사와 연구실에서 맡은 문제와 직접 수행한 범위입니다. 고객사와 내부 시스템 정보는 공개하지 않습니다."
+            />
+            <ol className="exp-list">
+              {experienceBrief.map((e) => (
+                <li key={e.company} className="exp">
+                  <div className="exp-side">
+                    <span className="exp-period">{e.period}</span>
+                    <h3 className="exp-company">{e.company}</h3>
+                    {(e.role || e.companyNote) && (
+                      <span className="exp-note">{[e.role, e.companyNote].filter(Boolean).join(" · ")}</span>
+                    )}
+                  </div>
+                  <div className="exp-main">
+                    <p className="exp-area">
+                      {e.area}
+                      {e.current && <span className="badge badge--work">재직 중</span>}
+                    </p>
+                    <p className="exp-summary">{e.summary}</p>
+                    <ul className="exp-points">
+                      {e.points.map((pt) => <li key={pt}>{pt}</li>)}
+                    </ul>
+                    <div className="exp-foot">
+                      {e.links?.map((l) => (
+                        <a key={l.href} href={l.href} className="text-link">
+                          {l.label} <span className="arrow" aria-hidden="true">→</span>
+                        </a>
+                      ))}
+                      {e.tech && <span className="mini-stack">{e.tech.join(" · ")}</span>}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section id="strengths" className="section" aria-labelledby="strengths-title">
+          <div className="container">
+            <SectionHead
+              id="strengths-title"
+              index="03"
+              title="Strengths"
+              lead="실무와 프로젝트에서 반복해 온 세 가지 방식과, 그것을 확인할 수 있는 작업입니다."
+            />
+            <div className="cap-grid">
+              {strengths.map((c) => (
+                <article key={c.id} id={c.id} className="cap" aria-labelledby={`${c.id}-title`}>
+                  <header>
+                    <h3 className="cap-title" id={`${c.id}-title`}>{c.title}</h3>
+                    <p className="cap-keywords">{c.keywords}</p>
+                  </header>
+                  <div>
+                    <p className="cap-label">해결할 수 있는 문제</p>
+                    <ul className="cap-problems">
+                      {c.problems.map((pr) => <li key={pr}>{pr}</li>)}
+                    </ul>
+                  </div>
+                  <div className="cap-evidence">
+                    <p className="cap-label">근거</p>
+                    {c.evidence.map((ev) => (
+                      <a key={ev.label} href={ev.href}>
+                        <strong>{ev.label} <span aria-hidden="true">→</span></strong>
+                        <span>{ev.detail}</span>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="section section--subtle" aria-labelledby="contact-title">
           <div className="container contact-inner">
-            <SectionHead id="contact-title" index="02" title="Contact" />
+            <SectionHead id="contact-title" index="04" title="Contact" />
             <a href={`mailto:${contact.email}`} className="contact-email">{contact.email}</a>
             <div className="contact-links">
               {contact.links.map((l) => (
