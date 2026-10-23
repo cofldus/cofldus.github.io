@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import SectionHead from "@/components/SectionHead";
 import profilePhoto from "@/components/profilePhoto";
 import { contact, site } from "@/lib/profile";
-import { agentDecisions, agentSim, kraftonHero, resource, supporting } from "@/lib/krafton";
-import type { KeyResult } from "@/lib/projects";
+import { agentSim, kraftonHero, supporting } from "@/lib/krafton";
 import { pngSize } from "@/lib/imageSize";
 
 // 지원서에 넣는 전용 링크. 메인에서 링크하지 않고 검색 노출도 막는다.
@@ -16,30 +15,14 @@ export const metadata: Metadata = {
 
 const links = [
   { label: "Work", hash: "#work" },
-  { label: "Case", hash: "#case" },
-  { label: "Resource", hash: "#resource" },
   { label: "Contact", hash: "#contact" },
 ];
-
-function Results({ items }: { items: KeyResult[] }) {
-  return (
-    <div className="results">
-      {items.map((h) => (
-        <div key={h.label} className="result">
-          <span className="result-value">{h.value}</span>
-          <span className="result-label">{h.label}</span>
-          {h.condition && <span className="result-cond">{h.condition}</span>}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function FeatureCard() {
   const size = pngSize(agentSim.thumb);
   return (
     <article className="work-card work-card--feature" aria-labelledby="feature-title">
-      <a href="#case" className="work-media" tabIndex={-1} aria-hidden="true">
+      <a href="/krafton/agent-sim/" className="work-media" tabIndex={-1} aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={agentSim.thumb} alt="" width={size?.width} height={size?.height} loading="eager" decoding="async" />
       </a>
@@ -49,7 +32,7 @@ function FeatureCard() {
           <span>{agentSim.period}</span>
         </div>
         <p className="eyebrow">01 — LLM Agent Simulation</p>
-        <h3 className="work-title" id="feature-title"><a href="#case">{agentSim.title}</a></h3>
+        <h3 className="work-title" id="feature-title"><a href="/krafton/agent-sim/">{agentSim.title}</a></h3>
         <p className="work-problem">{agentSim.problem}</p>
         <dl className="facts">
           <div><dt>역할</dt><dd>{agentSim.role}</dd></div>
@@ -64,7 +47,7 @@ function FeatureCard() {
           ))}
         </div>
         <div className="work-actions">
-          <a href="#case" className="text-link">설계 과정 보기 <span className="arrow" aria-hidden="true">↓</span></a>
+          <a href="/krafton/agent-sim/" className="text-link">Case Study <span className="arrow" aria-hidden="true">→</span></a>
           <a href={agentSim.repoUrl} className="text-link text-link--muted" target="_blank" rel="noopener noreferrer">
             GitHub <span aria-hidden="true">↗</span><span className="sr-only">(새 창)</span>
           </a>
@@ -144,65 +127,6 @@ export default function KraftonPage() {
                 );
               })}
             </div>
-          </div>
-        </section>
-
-        <section id="case" className="section section--subtle" aria-labelledby="case-title">
-          <div className="container">
-            <SectionHead id="case-title" index="02" title="에이전트 설계 과정" lead={agentSim.subtitle} />
-
-            <Results items={agentSim.highlights} />
-
-            <div className="pipeline" role="group" aria-label="에이전트 의사결정 단계" style={{ marginTop: 32 }}>
-              <div className="pipeline-row pipeline-row--after">
-                <span className="pipeline-caption">타임슬롯마다</span>
-                <ol className="pipeline-stages">
-                  {agentSim.steps.map((st, si) => (
-                    <li key={st.name}>
-                      {si > 0 && <span className="pipeline-arrow" aria-hidden="true">→</span>}
-                      <span className="pipeline-stage" title={st.detail}>{st.name}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-              <ul className="pipeline-foot" style={{ display: "grid", gap: 4 }}>
-                {agentSim.steps.map((st) => <li key={st.name}><strong>{st.name}</strong> — {st.detail}</li>)}
-              </ul>
-            </div>
-
-            <h3 className="cs-subhead" style={{ margin: "48px 0 16px" }}>에이전트 행동을 사람답게 만든 4가지 설계</h3>
-            {agentDecisions.map((d, i) => (
-              <article key={d.title} className="decision">
-                <h4 className="decision-title">
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  {d.title}
-                </h4>
-                <dl>
-                  <div><dt>Problem</dt><dd>{d.problem}</dd></div>
-                  <div>
-                    <dt>Options</dt>
-                    <dd><ul className="decision-options">{d.options.map((o) => <li key={o}>{o}</li>)}</ul></dd>
-                  </div>
-                  <div><dt>Decision</dt><dd className="decision-chosen">{d.decision}</dd></div>
-                  <div><dt>Trade-off</dt><dd>{d.tradeoff}</dd></div>
-                  <div><dt>Validation</dt><dd className="decision-validation">{d.validation}</dd></div>
-                </dl>
-              </article>
-            ))}
-
-            <div className="cs-media" style={{ marginTop: 40 }}>
-              <video src={agentSim.videoUrl} controls preload="metadata" style={{ width: "100%", borderRadius: "var(--radius)", border: "1px solid var(--border)" }} />
-            </div>
-          </div>
-        </section>
-
-        <section id="resource" className="section" aria-labelledby="resource-title">
-          <div className="container">
-            <SectionHead id="resource-title" index="03" title="자원 관리" lead={resource.lead} />
-            <Results items={resource.results} />
-            <ul className="cap-problems measure" style={{ marginTop: 28 }}>
-              {resource.points.map((pt) => <li key={pt}>{pt}</li>)}
-            </ul>
             <p style={{ marginTop: 32 }}>
               <a href="/" className="text-link">전체 포트폴리오 보기 <span className="arrow" aria-hidden="true">→</span></a>
             </p>
@@ -211,7 +135,7 @@ export default function KraftonPage() {
 
         <section id="contact" className="section section--subtle" aria-labelledby="contact-title">
           <div className="container contact-inner">
-            <SectionHead id="contact-title" index="04" title="Contact" />
+            <SectionHead id="contact-title" index="02" title="Contact" />
             <a href={`mailto:${contact.email}`} className="contact-email">{contact.email}</a>
             <div className="contact-links">
               {contact.links.map((l) => (
