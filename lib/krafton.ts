@@ -1,17 +1,17 @@
 // ─────────────────────────────────────────────────────────────────
-// 크래프톤 AI Research 지원용 페이지 (/krafton/) 콘텐츠.
+// AI Research 지원용 페이지 (/krafton/) 콘텐츠. 회사명은 화면에 내지 않는다.
 //
 // 원칙 (lib/profile.ts 와 같음)
-// - 확인된 사실만 쓴다. 수치 출처는 khai-likelion/agent-sim README.
-// - 크래프톤 연구 설명은 공개된 범위의 한 줄 요약만 쓴다.
+// - 확인된 사실만 쓴다. 에이전트 시뮬레이션 수치 출처는 khai-likelion/agent-sim README,
+//   나머지 프로젝트 수치는 lib/projects.ts.
 // ─────────────────────────────────────────────────────────────────
 
 import type { DecisionRecord, KeyResult } from "./projects";
 
 export const kraftonHero = {
-  eyebrow: "이채연 · AI Research 지원 · LLM Agent",
+  eyebrow: "이채연 · LLM Agent · Evaluation",
   headline: ["그럴듯한 답보다,", "상황에 맞는 행동을."],
-  sub: "160명의 LLM 에이전트가 실제 상권에서 매장을 고르는 시뮬레이션을 설계하며, 에이전트의 기억·의사결정 구조와 그 행동을 검증하는 비교 실험을 만들었습니다. 이 경험을 플레이어와 함께 행동하는 게임 AI 연구로 이어가고 싶습니다.",
+  sub: "LLM 에이전트가 말이 아니라 행동으로 상황을 이해하게 만드는 일, 그리고 그 행동이 맞는지 측정하는 방법에 관심이 있습니다. 160명의 에이전트가 실제 상권에서 매장을 고르는 시뮬레이션에서 기억·의사결정 구조와 통제된 비교 실험을 설계했습니다.",
 };
 
 // ─── 대표 연구 사례 ──────────────────────────────────────────────
@@ -20,6 +20,9 @@ export const agentSim = {
   subtitle: "160명의 생성형 에이전트로 가게 전략의 효과와 역효과를 실행 전에 비교",
   period: "2026.02 · 멋쟁이사자처럼 AI 자연어처리 과정 · 팀 프로젝트",
   repoUrl: "https://github.com/khai-likelion/agent-sim",
+  thumb: "/lovelop_thumb.png",
+  role: "에이전트 의사결정·기억 구조 설계 · 전·후 비교 실험 설계",
+  stack: ["Gemini 2.5 Flash Lite", "asyncio", "OSMnx", "Streamlit"],
   videoUrl: "/lovelop_demo.mp4",
   problem:
     "자영업자가 메뉴·가격·운영을 바꾸기 전에 손님 반응을 미리 보고 싶어 했습니다. 실제 상권 데이터(매장 721개) 위에서 가상 손님이 직접 매장을 고르게 했더니, 초기 에이전트는 거리·가격을 무시하거나 이전 방문과 무관하게 선택했습니다. 말은 그럴듯했지만 행동은 사람 같지 않았습니다.",
@@ -93,43 +96,55 @@ export const resource = {
   ],
 };
 
-// ─── 크래프톤 연구와의 연결 ─────────────────────────────────────
-export const kraftonFit = {
-  lead: "크래프톤은 플레이어와 함께 플레이하는 AI 동료 PUBG Ally를 만들고, Orak으로 게임 속 LLM 에이전트의 이해·판단·행동을 평가합니다. 제가 다뤄 본 문제와 이렇게 이어집니다.",
-  rows: [
-    {
-      mine: "방문 기록·평점을 다음 판단에 넣는 기억 구조",
-      game: "함께 겪은 교전·이동 상황을 기억하고 다음 행동에 반영하는 AI 동료",
-    },
-    {
-      mine: "5단계로 분해한 의사결정과 단계별 로그",
-      game: "에이전트가 상황 인식·계획·실행 중 어느 단계에서 실패했는지 재현하고 분해",
-    },
-    {
-      mine: "같은 조건 전·후 비교 + 11개 지표 + 역효과 진단",
-      game: "성공률 하나가 아니라 부작용까지 보는 게임 에이전트 평가 설계",
-    },
-    {
-      mine: "동시성 제한·모델 선택·기억 요약으로 실험 비용 관리",
-      game: "많은 에피소드를 반복 평가해야 하는 에이전트 연구의 실험 예산 관리",
-    },
-  ],
-};
-
-// ─── 함께 보는 연구·실무 ─────────────────────────────────────────
+// ─── 다른 작업 ───────────────────────────────────────────────────
+/** 에이전트·학습·평가와 가까운 순서. 상세는 /projects/{slug}/ */
 export const supporting = [
   {
+    slug: "killkong",
+    thumb: "/killkong_thumb.png",
+    meta: "팀 프로젝트 · 2025.07–08",
+    title: "실시간 교정 에이전트의 경량화와 지연 최적화",
+    desc: "14GB 모델을 LoRA·4-bit 양자화·토큰 Pruning 조합으로 3.5GB까지 줄이고, 지연 병목을 먼저 측정해 개인화 메모리 검색 경로를 다시 설계했습니다.",
+    stack: "LoRA · 4-bit · FAISS 메모리",
+  },
+  {
     slug: "llm-for-science",
+    thumb: "/arch/llm-for-science.svg",
     meta: "연구 · Pseudo Lab · 진행 중",
-    title: "과학 추론 LLM의 GDPO 강화학습",
-    desc: "정답 여부 하나로는 실패 원인을 구분할 수 없어, 정확도·형식·길이 보상을 따로 정규화하는 GDPO 다중 보상 실험에 참여하고 있습니다.",
+    title: "과학 추론 LLM의 다중 보상 강화학습",
+    desc: "정확도·형식·길이를 하나의 보상으로 합치면 서로 충돌해, 보상을 따로 정규화하는 GDPO 실험에 참여하고 있습니다.",
     stack: "CPT · SFT · GDPO",
   },
   {
     slug: "doc-extraction",
+    thumb: "/doc-extraction_thumb.png",
     meta: "기업 실무 · 아키브소프트",
     title: "문서 AI 추출 엔진의 단계별 손실 측정",
-    desc: "최종 정확도만 보지 않고 단계마다 어디서 정보가 손실되는지 측정하는 체계와 정답 좌표가 있는 합성 테스트셋을 만들었습니다.",
+    desc: "최종 정확도 대신 단계마다 손실을 분리해 측정하는 평가셋을 만들고, 그 결과로 VLM 기반 추출로 전환해 34.1% → 91.7%.",
     stack: "OCR · VLM · 평가셋 설계",
+  },
+  {
+    slug: "korean-noise-restoration",
+    thumb: "/korean-noise-restoration_thumb.png",
+    meta: "2026.01 · AI 자연어처리 과정",
+    title: "한글 난독화 복원",
+    desc: "모든 변형을 한 모델로 풀지 않고 변형 유형을 먼저 분류한 뒤 유형별 복원 모델로 분기해 BERTScore 0.9812.",
+    stack: "KoELECTRA · KoBART",
+  },
+  {
+    slug: "medical-chatbot",
+    thumb: "/medical-chatbot_thumb.png",
+    meta: "팀 프로젝트",
+    title: "의료 문서 검색 RAG",
+    desc: "BM25·FAISS 하이브리드 검색과 Cross-Encoder 재정렬을 설계하고, 평가셋 편향을 교정해 서술형 BERTScore +0.16.",
+    stack: "BM25 · FAISS · Reranker",
+  },
+  {
+    slug: "ct-mri-cyclegan",
+    thumb: "/arch/ct-mri-result.png",
+    meta: "연구 · 딥러닝연구개발소",
+    title: "CT→MRI 교차 모달리티 변환",
+    desc: "짝지어진 데이터 없이 CycleGAN으로 학습해 구조 보존 성능을 SSIM 0.82 → 0.88로 개선했습니다.",
+    stack: "PyTorch · CycleGAN",
   },
 ];
